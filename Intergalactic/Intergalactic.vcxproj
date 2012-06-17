@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6F69B794-A18D-46F1-8EED-2513E5857875}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Intergalactic</RootNamespace>
+    <ProjectName>OSE</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Users\Connor\Desktop\Programming\Box\include;C:\Users\Connor\Desktop\Programming\SFML-2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Connor\Desktop\Programming\Box\lib;C:\Users\Connor\Desktop\Programming\SFML-2\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\Users\Connor\Documents\Programming\Box\include;C:\Users\Connor\Documents\Programming\SFML-2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Connor\Documents\Programming\Box\lib;C:\Users\Connor\Documents\Programming\SFML-2\lib;$(LibraryPath)</LibraryPath>
+    <SourcePath>$(SourcePath)</SourcePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>sfml-system-d-2.lib;sfml-graphics-d-2.lib;sfml-window-d-2.lib;Box2D.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level2</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>sfml-system-2.lib;sfml-graphics-2.lib;sfml-window-2.lib;box2D.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Background.cpp" />
+    <ClCompile Include="BaseRenderable.cpp" />
+    <ClCompile Include="BaseObject.cpp" />
+    <ClCompile Include="BasePhysics.cpp" />
+    <ClCompile Include="BaseRender.cpp" />
+    <ClCompile Include="DebugDraw.cpp" />
+    <ClCompile Include="EntityCreator.cpp" />
+    <ClCompile Include="EntityListGlobal.cpp" />
+    <ClCompile Include="GameGlobals.cpp" />
+    <ClCompile Include="HUDRender.cpp" />
+    <ClCompile Include="IGameState.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainGameState.cpp" />
+    <ClCompile Include="MathUtils.cpp" />
+    <ClCompile Include="PhysicsDef.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Randomiser.cpp" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="StateManager.cpp" />
+    <ClCompile Include="Sun.cpp" />
+    <ClCompile Include="Test.cpp" />
+    <ClCompile Include="VariantMap.cpp" />
+    <ClCompile Include="Vector2.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Background.h" />
+    <ClInclude Include="BaseRenderable.h" />
+    <ClInclude Include="BaseObject.h" />
+    <ClInclude Include="BasePhysics.h" />
+    <ClInclude Include="BaseRender.h" />
+    <ClInclude Include="DebugDraw.h" />
+    <ClInclude Include="EntityList.h" />
+    <ClInclude Include="EntityCreator.h" />
+    <ClInclude Include="EntityListGlobal.h" />
+    <ClInclude Include="GameGlobals.h" />
+    <ClInclude Include="HUDRender.h" />
+    <ClInclude Include="IGameState.h" />
+    <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="MainGameState.h" />
+    <ClInclude Include="MathUtils.h" />
+    <ClInclude Include="PhysicsDef.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Randomiser.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="StateManager.h" />
+    <ClInclude Include="Sun.h" />
+    <ClInclude Include="Test.h" />
+    <ClInclude Include="VariantMap.h" />
+    <ClInclude Include="Vector2.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
