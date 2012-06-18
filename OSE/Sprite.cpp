@@ -12,7 +12,6 @@ Sprite::~Sprite(void)
 void Sprite::Draw()
 {
 	mSprite.setPosition(GameToSFML(GetPosition()).SF());
-	std::cout << "MY ANGLE: " << GetAngle() << "\n";
 	mSprite.setRotation(-GetAngle());
 	mRenderWindow->draw(mSprite);
 }
@@ -28,6 +27,6 @@ void Sprite::SetTexture(const char* path)
 	{
 		mSprite.setTexture(mTexture);
 		mSprite.setPosition(0,0);
-
+		mSprite.setOrigin(mTexture.getSize().x / 2, mTexture.getSize().y / 2);
 	}
 }

@@ -13,6 +13,7 @@ public:
 	//Physics
 
 	void PhysicsInit(BODY_TYPE typ);
+	void PhysicsHullFromModel();
 
 	void Tick();
 

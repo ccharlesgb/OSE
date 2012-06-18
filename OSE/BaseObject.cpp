@@ -6,6 +6,7 @@
 BaseObject::BaseObject(void)
 {
 	mClassName = "ERROR";
+	mModel = "";
 	mIsRenderable = false;
 	mNextThink = 0.f;
 	mLastThink = 0.f;

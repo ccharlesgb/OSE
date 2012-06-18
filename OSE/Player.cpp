@@ -21,16 +21,16 @@ void Player::Spawn()
 	float height = 30;
 
 	//Declare the physics object
-	CircleShape* shape = new CircleShape;
-	shape->mRadius = player_size;
-	shape->mDensity = 1.f;
-	GetPhysObj()->AddPhysicsShape(shape); //Add it to our physics object (They support multipe shapes!)
+	//CircleShape* shape = new CircleShape;
+	//shape->mRadius = player_size;
+	//shape->mDensity = 1.f;
+	//GetPhysObj()->AddPhysicsShape(shape); //Add it to our physics object (They support multipe shapes!)
 
 	GetPhysObj()->SetAngularDamping(7);
 	GetPhysObj()->SetLinearDamping(10);
 
 	SetModel("player");
-	//PhysicsHullFromModel();
+	PhysicsHullFromModel();
 }
 
 Player::~Player(void)
@@ -58,13 +58,11 @@ void Player::Think()
 	Vector2 MousePos = InputHandler::GetMousePosWorld();
 	Vector2 MouseDirHat = (MousePos - GetPos()).Normalize();
 	SetAngle(ig::RadToDeg(-std::atan2(MouseDirHat.y, MouseDirHat.x)) - 90.f);
-	std::cout << "PLAYER ANGLE: " << GetAngle() << "  ";
 
 	Vector2 MoveVector;
 	if (InputHandler::IsKeyPressed(sf::Keyboard::W))
 	{
 		MoveVector.y = 1;
-		std::cout << "Player Y POS: " << GetPos().y << "\n";
 	}
 	else if (InputHandler::IsKeyPressed(sf::Keyboard::S))
 	{

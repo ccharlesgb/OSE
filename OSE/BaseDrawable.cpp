@@ -5,7 +5,6 @@ BaseDrawable::BaseDrawable(sf::RenderWindow *rend)
 {
 	mRenderWindow = rend;
 	mDirtyTransform = true;
-	std::cout << "Setting render window\n";
 }
 
 BaseDrawable::~BaseDrawable(void)

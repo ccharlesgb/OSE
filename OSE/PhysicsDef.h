@@ -29,6 +29,11 @@ public:
 class PolygonShape : public BaseShape
 {
 public:
+	~PolygonShape()
+	{
+		std::cout << "SO LONG\n";
+		mVertices.clear();
+	}
 	std::vector<Vector2> mVertices;
 	int GetVertexCount() {return mVertices.size();};
 	void AddVertex(Vector2 v) {mVertices.push_back(v);};
