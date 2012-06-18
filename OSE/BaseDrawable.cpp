@@ -11,6 +11,17 @@ BaseDrawable::~BaseDrawable(void)
 {
 }
 
+std::string BaseDrawable::GetImagePath(const char* path)
+{
+#ifdef _APPLE_
+	//APPLE STUFF
+	//return whatever;
+#else
+	return ("images/" + std::string(path) + ".png").c_str();
+#endif
+}
+
+
 Vector2 BaseDrawable::GameToSFML(Vector2 Pos)
 {
 	if (mRenderWindow == NULL)

@@ -18,7 +18,7 @@ void Sprite::Draw()
 
 void Sprite::SetTexture(const char* path)
 {
-	std::string FILE_PATH = "images/" + std::string(path) + ".png";
+	std::string FILE_PATH = GetImagePath(path);
 	if (!mTexture.loadFromFile(FILE_PATH))
 	{
 		std::cout << "ERROR COULDN'T FIND SPRITE\n";

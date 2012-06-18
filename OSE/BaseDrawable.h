@@ -17,6 +17,8 @@ public:
 
 	Vector2 GameToSFML(Vector2 pos);
 
+	std::string GetImagePath(const char* path);
+
 	void SetPosition(Vector2 pos) {mPos = pos; mDirtyTransform = true;};
 	Vector2 GetPosition() {return mPos;};
 
