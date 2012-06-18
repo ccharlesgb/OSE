@@ -69,11 +69,6 @@ Vector2 Renderer::ToScreen(Vector2 pos)
 	return pos;
 }
 
-bool Renderer::IsVisible(BaseRender* rend)
-{
-	return true;
-}
-
 void Renderer::OnResize()
 {
 	gGlobals.GameWidth = mRender->getSize().x;
@@ -84,9 +79,9 @@ void Renderer::OnResize()
 //Called whenever ANY entity is added to the game. Check if its renderable then add it to a list
 void Renderer::OnEntityAdded(BaseObject* ent)
 {
-	std::cout << "Entity Added to Renderer: " << ent->GetClassName() << "\n";
 	if (ent->IsRenderable())
 	{
+		std::cout << "Entity Added to Renderer: " << ent->GetClassName() << "\n";
 		AddEntity(ent);
 	}
 	//BaseRender* render = ent->GetRenderer();

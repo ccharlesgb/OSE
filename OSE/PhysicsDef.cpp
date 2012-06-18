@@ -44,7 +44,7 @@ float PhysicsDef::GetAngle()
 {
 	if (mPhysObj)
 	{
-		mAngle = -ig::RadToDeg(mPhysObj->GetAngle());
+		mAngle = ig::RadToDeg(mPhysObj->GetAngle());
 	}
 	return mAngle;
 }

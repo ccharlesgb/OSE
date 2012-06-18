@@ -26,6 +26,7 @@ StateManager::StateManager(void)
 	std::string title = "Intergalactic";
 	Window.create(sf::VideoMode(width, height, 32), title);
 	Window.setFramerateLimit(120);
+	gGlobals.RenderWindow = &Window;
 	//Window.EnableVerticalSync(true);
 	RENDERER->SetWindow(&Window);
 	mStateCount = 0;

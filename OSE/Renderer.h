@@ -32,7 +32,6 @@ public:
 	void OnEntityAdded(BaseObject* ent);
 	void OnEntityRemoved(BaseObject* ent);
 	void AddEntity(BaseObject* render);
-	bool IsVisible(BaseRender* rend);
 	void Clear() {mRender->clear();};
 	void Display() {mRender->display();};
 	void Draw(IGameState *State);

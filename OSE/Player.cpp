@@ -10,7 +10,7 @@ LINKCLASSTONAME("player", Player)
 Player::Player(void)
 {
 	SetPos(Vector2(0,0));
-	
+	RenderInit();
 	PhysicsInit(DYNAMIC_BODY);
 }
 
@@ -58,6 +58,7 @@ void Player::Think()
 	Vector2 MousePos = InputHandler::GetMousePosWorld();
 	Vector2 MouseDirHat = (MousePos - GetPos()).Normalize();
 	SetAngle(ig::RadToDeg(-std::atan2(MouseDirHat.y, MouseDirHat.x)) - 90.f);
+	std::cout << "PLAYER ANGLE: " << GetAngle() << "  ";
 
 	Vector2 MoveVector;
 	if (InputHandler::IsKeyPressed(sf::Keyboard::W))

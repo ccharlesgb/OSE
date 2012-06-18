@@ -80,6 +80,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseDrawable.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="BasePhysics.cpp" />
@@ -104,6 +105,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseDrawable.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="BasePhysics.h" />

@@ -6,10 +6,9 @@
 #include "Vector2.h"
 #include "SFML/Graphics.hpp"
 #include "Matrix3.hpp"
-//#include "Sprite.h"
+#include "Sprite.h"
 
 class PhysicsDef;
-class BaseRender;
 class BaseObject;
 
 typedef void (*InputFunc)(BaseObject* ent, VariantMap &Data);
@@ -24,9 +23,7 @@ private:
 	float mLastThink;
 	std::string mClassName; //The class name of the entity eg "player"
 
-	//TEMPORARY
-	sf::Texture* mTexture;
-	sf::Sprite* mSprite;
+	Sprite* mSprite;
 protected:
 	PhysicsDef *mPhysObj; //Pointer to the physics object for this entity (NOT NECCESSARILY VALID)
 	Matrix3 mMatrix; //Transformation matrix used by ToGlobal and ToLocal
@@ -85,6 +82,7 @@ public:
 	PhysicsDef* GetPhysObj() {return mPhysObj;};
 
 	//Rendering
+	void RenderInit() {mIsRenderable = true;};
 	bool IsRenderable() {return mIsRenderable;};
 	void SetDrawOrder(int o) {mDrawOrder = o;};
 	int GetDrawOrder() {return mDrawOrder;};

@@ -1,6 +1,7 @@
 #include "BaseObject.h"
 #include "EntityCreator.h"
 #include "GameGlobals.h"
+#include "Renderer.h"
 
 BaseObject::BaseObject(void)
 {
@@ -14,6 +15,7 @@ BaseObject::BaseObject(void)
 BaseObject::~BaseObject(void)
 {
 	Inputs.clear();
+	delete mSprite;
 }
 
 BaseObject* BaseObject::CreateEntity(const char* classname)
@@ -62,11 +64,10 @@ void BaseObject::RegisterInput(const char* Name, InputFunc Func)
 
 void BaseObject::SetModel(const char* path)
 {
+	mIsRenderable = true;
 	mModel = path;
-	mTexture = new sf::Texture();
-	std::string FILE_PATH = "images/" + std::string(path) + ".png";
-	mTexture->loadFromFile(FILE_PATH);
-	mSprite->setTexture(*mTexture);
+	mSprite = new Sprite(gGlobals.RenderWindow);
+	mSprite->SetTexture(path);
 }
 
 void BaseObject::Draw()
@@ -76,7 +77,9 @@ void BaseObject::Draw()
 
 void BaseObject::DrawModel()
 {
-	
+	mSprite->SetPosition(GetPos().SF());
+	mSprite->SetAngle(GetAngle());
+	mSprite->Draw();
 }
 
 //Tick: An INTERNAL function called by the game state every frame, only actually Thinks if NextThink < CurTime

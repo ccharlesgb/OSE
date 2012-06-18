@@ -78,6 +78,7 @@
       <Filter>Engine\Utility</Filter>
     </ClCompile>
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="BaseDrawable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameGlobals.h">
@@ -144,6 +145,7 @@
       <Filter>Engine\Utility</Filter>
     </ClInclude>
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="BaseDrawable.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Matrix3.inl">

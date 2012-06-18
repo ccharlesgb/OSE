@@ -1,10 +1,33 @@
 #include "Sprite.h"
 
 
-Sprite::Sprite(void)
+Sprite::Sprite(sf::RenderWindow *rend) : BaseDrawable(rend)
 {
 }
 
 Sprite::~Sprite(void)
 {
+}
+
+void Sprite::Draw()
+{
+	mSprite.setPosition(GameToSFML(GetPosition()).SF());
+	std::cout << "MY ANGLE: " << GetAngle() << "\n";
+	mSprite.setRotation(-GetAngle());
+	mRenderWindow->draw(mSprite);
+}
+
+void Sprite::SetTexture(const char* path)
+{
+	std::string FILE_PATH = "images/" + std::string(path) + ".png";
+	if (!mTexture.loadFromFile(FILE_PATH))
+	{
+		std::cout << "ERROR COULDN'T FIND SPRITE\n";
+	}
+	else
+	{
+		mSprite.setTexture(mTexture);
+		mSprite.setPosition(0,0);
+
+	}
 }
