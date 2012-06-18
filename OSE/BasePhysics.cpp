@@ -3,11 +3,11 @@
 BasePhysics::BasePhysics(void)
 {
 	mPhysObj = NULL;
+	mIsPhysics=true;
 }
 
 void BasePhysics::PhysicsInit(BODY_TYPE typ)
 {
-	mIsPhysics=true;
 	mPhysObj = new PhysicsDef;
 	mPhysObj->SetPos(GetPos());
 	mPhysObj->SetAngle(0);
@@ -21,7 +21,7 @@ void BasePhysics::Tick()
 		mPosition = mPhysObj->GetPos();
 		mAngle = mPhysObj->GetAngle();
 	}
-	BaseRenderable::Tick();
+	BaseObject::Tick();
 }
 
 BasePhysics::~BasePhysics(void)

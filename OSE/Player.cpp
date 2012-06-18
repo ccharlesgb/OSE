@@ -10,7 +10,7 @@ LINKCLASSTONAME("player", Player)
 Player::Player(void)
 {
 	SetPos(Vector2(0,0));
-
+	
 	PhysicsInit(DYNAMIC_BODY);
 }
 
@@ -28,6 +28,9 @@ void Player::Spawn()
 
 	GetPhysObj()->SetAngularDamping(7);
 	GetPhysObj()->SetLinearDamping(10);
+
+	SetModel("player");
+	//PhysicsHullFromModel();
 }
 
 Player::~Player(void)

@@ -11,6 +11,7 @@
 
 class Camera;
 class IGameState;
+class BaseObject;
 
 #define RENDERER Renderer::Instance()
 class Renderer : public IEntityListener<BaseObject*>
@@ -30,7 +31,7 @@ public:
 	void OnResize();
 	void OnEntityAdded(BaseObject* ent);
 	void OnEntityRemoved(BaseObject* ent);
-	void AddRenderer(BaseRender* render);
+	void AddEntity(BaseObject* render);
 	bool IsVisible(BaseRender* rend);
 	void Clear() {mRender->clear();};
 	void Display() {mRender->display();};

@@ -23,9 +23,6 @@
     <ClCompile Include="BasePhysics.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="BaseRenderable.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
@@ -90,9 +87,6 @@
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="BasePhysics.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="BaseRenderable.h">
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">

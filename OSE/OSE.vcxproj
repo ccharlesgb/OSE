@@ -83,7 +83,6 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="BasePhysics.cpp" />
-    <ClCompile Include="BaseRenderable.cpp" />
     <ClCompile Include="DebugDraw.cpp" />
     <ClCompile Include="EntityCreator.cpp" />
     <ClCompile Include="EntityListGlobal.cpp" />
@@ -108,7 +107,6 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="BasePhysics.h" />
-    <ClInclude Include="BaseRenderable.h" />
     <ClInclude Include="DebugDraw.h" />
     <ClInclude Include="EntityCreator.h" />
     <ClInclude Include="EntityListGlobal.h" />

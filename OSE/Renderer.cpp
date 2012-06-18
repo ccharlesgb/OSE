@@ -3,6 +3,7 @@
 #include "InputHandler.h"
 #include "Camera.h"
 #include <Box2D/Collision/b2Collision.h>
+#include "BaseObject.h"
 
 Renderer* Inst = NULL;
 
@@ -27,7 +28,7 @@ Renderer::~Renderer(void)
 	Renderables.Clear();
 }
 
-void Renderer::SetWindow(sf::RenderWindow *wind) 
+void Renderer::SetWindow(sf::RenderWindow *wind)
 {
 	mRender = wind;
 	mView.setSize(gGlobals.GameWidth, gGlobals.GameHeight);
@@ -70,22 +71,6 @@ Vector2 Renderer::ToScreen(Vector2 pos)
 
 bool Renderer::IsVisible(BaseRender* rend)
 {
-	/*
-	sf::IntRect rend_bbi = rend->GetBB();
-	sf::FloatRect rend_bb(rend_bbi.left, rend_bbi.top, rend_bbi.width, rend_bbi.height);
-	sf::FloatRect rend_rect(
-		mRender->ConvertCoords(0,0),
-		sf::Vector2f(mRender->ConvertCoords(mRender->GetView().GetViewport().Width,
-		mRender->GetView().GetViewport().Height)));
-	//std::cout << rend_rect.Top << "\n";
-	if (rend_rect.Intersects(rend_bb))
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}*/
 	return true;
 }
 
@@ -100,23 +85,26 @@ void Renderer::OnResize()
 void Renderer::OnEntityAdded(BaseObject* ent)
 {
 	std::cout << "Entity Added to Renderer: " << ent->GetClassName() << "\n";
+	if (ent->IsRenderable())
+	{
+		AddEntity(ent);
+	}
 	//BaseRender* render = ent->GetRenderer();
 	//AddRenderer(render);
 }
 
-void Renderer::AddRenderer(BaseRender* render)
+void Renderer::AddEntity(BaseObject* render)
 {
 	//Insert the renderer into its correct draw position
-	/*
-	BaseRender* rend = Renderers.FirstEnt();
-	if (Renderers.GetSize() > 0)
+	BaseObject* rend = Renderables.FirstEnt();
+	if (Renderables.GetSize() > 0)
 	{
 		bool FoundPos = false;
 		do
 		{
 			if (render->GetDrawOrder() > rend->GetDrawOrder())
 			{
-				rend = Renderers.NextEnt();
+				rend = Renderables.NextEnt();
 			}
 			else if (render->GetDrawOrder() <= rend->GetDrawOrder())
 			{
@@ -125,7 +113,7 @@ void Renderer::AddRenderer(BaseRender* render)
 		} 
 		while (rend != NULL && !FoundPos);
 	}
-	Renderers.InsertAtCurrent(render);*/
+	Renderables.InsertAtCurrent(render);
 }
 
 void Renderer::OnEntityRemoved(BaseObject* ent)
@@ -149,7 +137,6 @@ void Renderer::Draw(IGameState *State)
 		CurEnt->Draw();
 		CurEnt = Renderables.NextEnt();
 	}
-	//std::cout << "Culled this frame: " << cull << "\n";
 	if (InputHandler::IsKeyPressed(sf::Keyboard::F3))
 		State->DrawDebugData();
 	mRender->setView(mRender->getDefaultView());

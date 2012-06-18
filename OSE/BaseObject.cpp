@@ -25,7 +25,7 @@ BaseObject* BaseObject::CreateEntity(const char* classname)
 }
 
 Matrix3 BaseObject::GetMatrix()
- {
+{
 	 if (mMatrixNeedsUpdate)
 	 {
 		 mMatrix = Matrix3::Transformation(GetOrigin().SF(), GetPos().SF(), GetAngle(), sf::Vector2f(1.f,1.f));
@@ -60,9 +60,23 @@ void BaseObject::RegisterInput(const char* Name, InputFunc Func)
 	Inputs[Name] = Func;
 }
 
+void BaseObject::SetModel(const char* path)
+{
+	mModel = path;
+	mTexture = new sf::Texture();
+	std::string FILE_PATH = "images/" + std::string(path) + ".png";
+	mTexture->loadFromFile(FILE_PATH);
+	mSprite->setTexture(*mTexture);
+}
+
+void BaseObject::Draw()
+{
+	DrawModel();
+}
+
 void BaseObject::DrawModel()
 {
-
+	
 }
 
 //Tick: An INTERNAL function called by the game state every frame, only actually Thinks if NextThink < CurTime

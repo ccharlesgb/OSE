@@ -1,8 +1,8 @@
 #pragma once
-#include "BaseRenderable.h"
+#include "BaseObject.h"
 #include "PhysicsDef.h"
 
-class BasePhysics : public BaseRenderable
+class BasePhysics : public BaseObject
 {
 private:
 

@@ -6,6 +6,7 @@
 #include "Vector2.h"
 #include "SFML/Graphics.hpp"
 #include "Matrix3.hpp"
+//#include "Sprite.h"
 
 class PhysicsDef;
 class BaseRender;
@@ -22,14 +23,21 @@ private:
 	float mNextThink;
 	float mLastThink;
 	std::string mClassName; //The class name of the entity eg "player"
+
+	//TEMPORARY
+	sf::Texture* mTexture;
+	sf::Sprite* mSprite;
 protected:
 	PhysicsDef *mPhysObj; //Pointer to the physics object for this entity (NOT NECCESSARILY VALID)
 	Matrix3 mMatrix; //Transformation matrix used by ToGlobal and ToLocal
 	bool mMatrixNeedsUpdate; //If the matrix needs to be updated (Position/rotation etc has changed)
 	const char* mModel; //Model path (Sprite image)
+
 	Vector2 mPosition;
 	Vector2 mOrigin;
 	float mAngle;
+
+	int mDrawOrder;
 	bool mIsRenderable; //Do we have a renderer?
 	bool mIsPhysics; //Do we have a physics object?
 public:
@@ -60,7 +68,7 @@ public:
 	BaseObject* CreateEntity(const char* classname);
 
 	//Model
-	void SetModel(const char* path) {mModel = path;};
+	void SetModel(const char* path);
 	const char* GetModel() {return mModel;};
 
 	//MetaData (UNFINISHED)
@@ -76,6 +84,11 @@ public:
 	bool IsPhysicsEnabled() {return mIsPhysics;};
 	PhysicsDef* GetPhysObj() {return mPhysObj;};
 
+	//Rendering
+	bool IsRenderable() {return mIsRenderable;};
+	void SetDrawOrder(int o) {mDrawOrder = o;};
+	int GetDrawOrder() {return mDrawOrder;};
+
 	//IO
 	void Fire(const char* Name, VariantMap &Data);
 	void RegisterInput(const char* Name, InputFunc Func);
@@ -87,7 +100,7 @@ public:
 	virtual void Tick();
 	virtual void Think() {};
 	virtual void OnDelete() {}; //Called before the entity is deleted
-	virtual void Draw() {DrawModel();};
+	virtual void Draw();
 
 };
 

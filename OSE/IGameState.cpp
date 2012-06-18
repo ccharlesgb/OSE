@@ -1,5 +1,4 @@
 #include "IGameState.h"
-#include "BaseRenderable.h"
 #include "DebugDraw.h"
 #include "GameGlobals.h"
 
