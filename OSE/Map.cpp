@@ -34,7 +34,7 @@ void Map::Spawn()
 
 MapRender::MapRender()
 {
-	if (!mGrassTex.loadFromFile(resourcePath() + "grass1.png"))
+	if (!mGrassTex.loadFromFile("images/grass1.png"))
 	{
 		std::cout << "Invalid filename: " << "grass1" << "\n";
 	}
