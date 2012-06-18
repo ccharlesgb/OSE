@@ -45,8 +45,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\Connor\Documents\Programming\Box\include;C:\Users\Connor\Documents\Programming\SFML-2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Connor\Documents\Programming\Box\lib;C:\Users\Connor\Documents\Programming\SFML-2\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Connor\Documents\Programming\Box\include;C:\Users\Connor\Documents\Programming\SFML-2.0-rc\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Connor\Documents\Programming\Box\lib;C:\Users\Connor\Documents\Programming\SFML-2.0-rc\lib;$(LibraryPath)</LibraryPath>
     <SourcePath>$(SourcePath)</SourcePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -127,6 +127,7 @@
     <ClInclude Include="MainGameState.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MathUtils.h" />
+    <ClInclude Include="Matrix3.hpp" />
     <ClInclude Include="PhysicsDef.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Prop.h" />
@@ -138,6 +139,9 @@
     <ClInclude Include="Test.h" />
     <ClInclude Include="VariantMap.h" />
     <ClInclude Include="Vector2.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Matrix3.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

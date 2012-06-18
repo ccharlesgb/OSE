@@ -33,8 +33,8 @@ public:
 	void OnEntityRemoved(BaseObject* ent);
 	void AddRenderer(BaseRender* render);
 	bool IsVisible(BaseRender* rend);
-	void Clear() {mRender->Clear();};
-	void Display() {mRender->Display();};
+	void Clear() {mRender->clear();};
+	void Display() {mRender->display();};
 	void Draw(IGameState *State);
 	void SetWindow(sf::RenderWindow *wind);
 };

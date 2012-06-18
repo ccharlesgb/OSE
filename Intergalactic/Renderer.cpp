@@ -63,16 +63,17 @@ Vector2 Renderer::GameToSFML(Vector2 Pos)
 
 Vector2 Renderer::ToScreen(Vector2 pos)
 {
-	Vector2 ScreenCentre = sf::Vector2f(mRender->GetWidth(), mRender->GetHeight());
+	Vector2 ScreenCentre = sf::Vector2f(mRender->getSize().x, mRender->getSize().y);
 	pos.y *= -1.f;
-	pos = pos + ScreenCentre - mView.GetCenter();
+	pos = pos + ScreenCentre - mView.getCenter();
 	return pos;
 }
 
 bool Renderer::IsVisible(BaseRender* rend)
 {
+	/*
 	sf::IntRect rend_bbi = rend->GetBB();
-	sf::FloatRect rend_bb(rend_bbi.Left, rend_bbi.Top, rend_bbi.Width, rend_bbi.Height);
+	sf::FloatRect rend_bb(rend_bbi.left, rend_bbi.top, rend_bbi.width, rend_bbi.height);
 	sf::FloatRect rend_rect(
 		mRender->ConvertCoords(0,0),
 		sf::Vector2f(mRender->ConvertCoords(mRender->GetView().GetViewport().Width,
@@ -85,7 +86,8 @@ bool Renderer::IsVisible(BaseRender* rend)
 	else
 	{
 		return false;
-	}
+	}*/
+	return true;
 }
 
 void Renderer::OnResize()
@@ -131,11 +133,11 @@ void Renderer::Draw(IGameState *State)
 {
 	Clear();
 	sCamera::UpdateView();
-	mView.SetCenter(GameToSFML(sCamera::GetCentre()).SF());
-	mView.SetRotation(sCamera::GetRotation());
-	mView.SetSize(Vector2(mRender->GetWidth() * sCamera::GetZoom(),mRender->GetHeight() * sCamera::GetZoom()).SF());
+	mView.setCenter(GameToSFML(sCamera::GetCentre()).SF());
+	mView.setRotation(sCamera::GetRotation());
+	mView.setSize(Vector2(mRender->getSize().x * sCamera::GetZoom(),mRender->getSize().y * sCamera::GetZoom()).SF());
 
-	mRender->SetView(mView);
+	mRender->setView(mView);
 
 	BaseRender* CurEnt = Renderers.FirstEnt();
 	while(CurEnt != NULL)
@@ -147,6 +149,6 @@ void Renderer::Draw(IGameState *State)
 	//std::cout << "Culled this frame: " << cull << "\n";
 	if (InputHandler::IsKeyPressed(sf::Keyboard::F3))
 		State->DrawDebugData();
-	mRender->SetView(mRender->GetDefaultView());
+	mRender->setView(mRender->getDefaultView());
 	State->GetHUD()->Draw(mRender);
 }

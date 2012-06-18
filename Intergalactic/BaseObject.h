@@ -5,6 +5,7 @@
 #include "EntityCreator.h"
 #include "Vector2.h"
 #include "SFML/Graphics.hpp"
+#include "Matrix3.hpp"
 
 class PhysicsDef;
 class BaseRender;

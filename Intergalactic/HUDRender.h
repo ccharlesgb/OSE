@@ -9,11 +9,11 @@ class HUDRender
 private:
 	sf::RenderTexture mRenderTexture;
 	sf::Text mTextFrameTime;
-	sf::Shape mPlyInd;
+	sf::Shape *mPlyInd;
 	std::map<std::string, sf::Drawable*> mElements;
 	sf::RenderWindow *mRend;
 	sf::Text mText;
-	sf::Shape mCircle;
+	sf::Shape *mCircle;
 public:
 	void AddTextElement(const char* ID);
 	sf::Text* GetTextElement(const char*ID);

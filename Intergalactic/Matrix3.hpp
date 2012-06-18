@@ -40,7 +40,7 @@ namespace sf
 /// \brief Utility class to manipulate 3x3 matrices of floats
 ///
 ////////////////////////////////////////////////////////////
-class SFML_API Matrix3
+class Matrix3
 {
 public :
 
@@ -155,7 +155,7 @@ private :
     float myData[16]; /// Matrix elements (we directly store it as a 4x4 matrix for optimization purpose)
 };
 
-#include <SFML/Graphics/Matrix3.inl>
+#include "Matrix3.inl"
 
 } // namespace sf
 

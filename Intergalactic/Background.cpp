@@ -41,24 +41,24 @@ BGRender::BGRender()
 	mDrawOrder = 0;
 	mDrawingMeteor = false;
 	int tex_size = TEXTURE_SIZE;
-	if (!mStarTex.LoadFromFile("images/star.png"))
+	if (!mStarTex.loadFromFile("images/star.png"))
 	{
 		std::cout << "Invalid filename: " << "star" << "\n";
 	}
-	if (!mMeteorTex.LoadFromFile("images/sun.png"))
+	if (!mMeteorTex.loadFromFile("images/sun.png"))
 	{
 		std::cout << "Invalid filename: " << "sun" << "\n";
 	}
-	mStarTex.SetSmooth(true);
-	mStar.SetTexture(mStarTex);
-	mMeteorSprite.SetTexture(mStarTex);
-	mMeteorSprite.SetOrigin(256,256);
+	mStarTex.setSmooth(true);
+	mStar.setTexture(mStarTex);
+	mMeteorSprite.setTexture(mStarTex);
+	mMeteorSprite.setOrigin(256,256);
 
-	float StarTexWidth = (float)mStarTex.GetWidth();
+	float StarTexWidth = (float)mStarTex.getSize().x;
 	for (int pass=0; pass < MAX_PASSES; pass++)
 	{
-		mTexture[pass].Create(tex_size,tex_size);
-		mTexture[pass].SetSmooth(true);
+		mTexture[pass].create(tex_size,tex_size);
+		mTexture[pass].setSmooth(true);
 		int arr_size = ARR_SIZES[pass];
 		float pos_scale = (float)tex_size / (float)arr_size;
 		float scale = ((float)pos_scale / StarTexWidth) / 1.4f;
@@ -74,19 +74,19 @@ BGRender::BGRender()
 				float individual_scale = scale;// + (ig::Random(-0.1,0.1) * 0.1 * pass);
 				Vector2 pos = Vector2(x,y) * pos_scale;
 				pos = pos + Vector2::Random(-randomness,randomness);
-				mStar.SetScale(individual_scale, individual_scale);
+				mStar.setScale(individual_scale, individual_scale);
 				sf::Color col = sf::Color(ig::Random(190,255),ig::Random(180,200),ig::Random(190,255));
-				mStar.SetPosition(pos.SF());
-				mStar.SetRotation(ig::Random(0,360));
-				mStar.SetColor(col);
-				mTexture[pass].Draw(mStar);
+				mStar.setPosition(pos.SF());
+				mStar.setRotation(ig::Random(0,360));
+				mStar.setColor(col);
+				mTexture[pass].draw(mStar);
 			}
 		}
-		mTexture[pass].Display();
-		mSprite[pass].SetTexture(mTexture[pass].GetTexture());
-		mSprite[pass].SetPosition(0,0);
-		mSprite[pass].SetOrigin(TEXTURE_SIZE / 2, TEXTURE_SIZE / 2);
-		mSprite[pass].SetScale(TEXTURE_SCALE,TEXTURE_SCALE);
+		mTexture[pass].display();
+		mSprite[pass].setTexture(mTexture[pass].getTexture());
+		mSprite[pass].setPosition(0,0);
+		mSprite[pass].setOrigin(TEXTURE_SIZE / 2, TEXTURE_SIZE / 2);
+		mSprite[pass].setScale(TEXTURE_SCALE,TEXTURE_SCALE);
 	}
 }
 
@@ -107,11 +107,11 @@ void BGRender::Draw(sf::RenderWindow *pRender)
 		Vector2 Quadrant; //Quantise the player position a grid size TEXTURE_SIZE
 		Quadrant.x = std::floor((QuadPos.x / (TEXTURE_SIZE_TRUE - SLOP) + 0.5f)) - 0.5f;
 		Quadrant.y = std::floor((QuadPos.y / (TEXTURE_SIZE_TRUE - SLOP) + 0.5f)) - 0.5f;
-		sf::Color col = mSprite[i].GetColor();
+		sf::Color col = mSprite[i].getColor();
 		float alpha = 255 - (ARR_SIZES[i] * ARR_SIZES[i] * (zoom_level - 1) * 0.0015);
 		//float alpha = 255 - ((1.f/zoom_level - 1.f) * (MAX_PASSES - i) * (MAX_PASSES - i) * 12.f);
 		alpha = ig::Limit(alpha, 0, 255);
-		mSprite[i].SetColor(sf::Color(col.r,col.g,col.b, alpha));
+		mSprite[i].setColor(sf::Color(col.r,col.g,col.b, alpha));
 		for (int x=-1; x < 3; x++)
 		{
 			for (int y=-1; y < 3; y++)
@@ -119,8 +119,8 @@ void BGRender::Draw(sf::RenderWindow *pRender)
 				Vector2 Offset = Vector2((x) * (TEXTURE_SIZE - SLOP) * TEXTURE_SCALE, (y) * (TEXTURE_SIZE - SLOP) * TEXTURE_SCALE);
 				Vector2 RenderPos = DepthOffset + (Quadrant * TEXTURE_SIZE_TRUE) + Offset;
 				sf::Vector2f RenderPosSF = GameToSFML(RenderPos, pRender);
-				mSprite[i].SetPosition(RenderPosSF);
-				pRender->Draw(mSprite[i]);
+				mSprite[i].setPosition(RenderPosSF);
+				pRender->draw(mSprite[i]);
 				//std::cout << "PASS: " << i << " ALPHA: " << alpha << "\n";
 			}
 		}
@@ -130,23 +130,23 @@ void BGRender::Draw(sf::RenderWindow *pRender)
 	if (mDrawingMeteor)
 	{
 		mMeteor = mMeteor + Vector2(METEOR_SPEED / zoom_level,METEOR_SPEED / zoom_level);
-		Vector2 DrawPos = pRender->ConvertCoords(mMeteor.x, mMeteor.y);
+		Vector2 DrawPos = pRender->convertCoords(sf::Vector2i(mMeteor.x, mMeteor.y));
 
 		float met_scale = (zoom_level * 0.1) - (zoom_level * zoom_level * 0.005);
 		met_scale = ig::Limit(met_scale,0,0.5);
-		mMeteorSprite.SetColor(sf::Color(255,230,200,255));
+		mMeteorSprite.setColor(sf::Color(255,230,200,255));
 		//Draw Trail
 		int passes = 10;
 		for (int i=passes - 1; i >= 0; i--)
 		{
 			float scale = (((float)passes-(float)i) / (float)passes) * met_scale;
 			DrawPos = DrawPos + Vector2(scale * 40, scale * 40);
-			sf::Color col = mMeteorSprite.GetColor();
+			sf::Color col = mMeteorSprite.getColor();
 			float alpha = 255 - ((i / passes) * 230);
-			mMeteorSprite.SetScale(Vector2(scale,scale).SF());
-			mMeteorSprite.SetColor(sf::Color(col.r,col.g,col.b, alpha));
-			mMeteorSprite.SetPosition(DrawPos.SF());
-			pRender->Draw(mMeteorSprite);
+			mMeteorSprite.setScale(Vector2(scale,scale).SF());
+			mMeteorSprite.setColor(sf::Color(col.r,col.g,col.b, alpha));
+			mMeteorSprite.setPosition(DrawPos.SF());
+			pRender->draw(mMeteorSprite);
 		}
 		if (mMeteor.x > 1000)
 		{

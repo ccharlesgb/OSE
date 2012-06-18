@@ -38,7 +38,7 @@ public:
 	static StateManager* Instance();
 	StateManager(void);
 	~StateManager(void);
-	double GetRealTime() {return double(mClock.GetElapsedTime() / 1000.0);};
+	double GetRealTime() {return double(mClock.getElapsedTime().asSeconds());};
 	void Begin();
 	void Run();
 	void SetState(std::string ID);

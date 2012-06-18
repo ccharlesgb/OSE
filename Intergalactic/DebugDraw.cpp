@@ -13,14 +13,14 @@ DebugDraw::DebugDraw(sf::RenderWindow *r)
 
 void DebugDraw::DrawPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color) 
 { 
-   sf::Shape Shape; 
-   Shape.SetOutlineThickness(1.f); 
+   sf::ConvexShape Shape(vertexCount); 
+   Shape.setOutlineThickness(1.f); 
    for (int32 i = 0; i < vertexCount; ++i) 
    { 
 	  Vector2 pos = RENDERER->GameToSFML(Vector2(vertices[i]) * PIXELS_PER_METRE);
-      Shape.AddPoint(pos.x, pos.y, sf::Color(128*color.r, 128*color.g, 128*color.b, 128), sf::Color(color.r*255, color.g*255, color.b*255, 128)); 
+      Shape.setPoint(i, pos.SF());
    } 
-	pRender->Draw(Shape); 
+	pRender->draw(Shape); 
 } 
 void DebugDraw::DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color) 
 { 

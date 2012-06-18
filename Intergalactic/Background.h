@@ -31,8 +31,8 @@ public:
 	}
 	void PreDraw(sf::RenderWindow *pRender);
 	void Draw(sf::RenderWindow *pRender);
-	void SetSize(Vector2 size) {mSprite[0].Resize(size.SF());};
-	void SetColour(sf::Color col) {mSprite[0].SetColor(col); mColour = col;};
+	void SetSize(Vector2 size) {}; //TODO:IMPLEMENT RESIZE
+	void SetColour(sf::Color col) {mSprite[0].setColor(col); mColour = col;};
 };
 
 class Background : public BaseRenderable

@@ -24,8 +24,8 @@ StateManager::StateManager(void)
 	gGlobals.GameWidth = width;
 	gGlobals.GameHeight = height;
 	std::string title = "Intergalactic";
-	Window.Create(sf::VideoMode(width, height, 32), title);
-	Window.SetFramerateLimit(120);
+	Window.create(sf::VideoMode(width, height, 32), title);
+	Window.setFramerateLimit(120);
 	//Window.EnableVerticalSync(true);
 	RENDERER->SetWindow(&Window);
 	mStateCount = 0;
@@ -74,7 +74,7 @@ void StateManager::Run()
 				mCurrentState->_Tick();
 			}
 			sf::Event Event;
-			while(Window.PollEvent(Event))
+			while(Window.pollEvent(Event))
 			{
 				if (Event.Type == sf::Event::LostFocus)
 				{
