@@ -18,6 +18,7 @@ BaseObject::~BaseObject(void)
 
 BaseObject* BaseObject::CreateEntity(const char* classname)
 {
+	//Create an entity and add it to the global entity list
 	BaseObject* ent = ENTITYCREATOR->CreateEntity(classname);
 	gGlobals.gEntList.Append(ent);
 	return ent;
@@ -45,6 +46,7 @@ Vector2 BaseObject::ToLocal(Vector2 &point)
 
 void BaseObject::Fire(const char* Name, VariantMap &Data)
 {
+	//Fire an input
 	if (Inputs[Name] == NULL)
 	{
 		std::cout << "Invalid input '" << Name << "' invoked!\n";
@@ -58,6 +60,12 @@ void BaseObject::RegisterInput(const char* Name, InputFunc Func)
 	Inputs[Name] = Func;
 }
 
+void BaseObject::DrawModel()
+{
+
+}
+
+//Tick: An INTERNAL function called by the game state every frame, only actually Thinks if NextThink < CurTime
 void BaseObject::Tick()
 {
 	if (mDeleteMe)

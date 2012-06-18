@@ -16,33 +16,29 @@ typedef void (*InputFunc)(BaseObject* ent, VariantMap &Data);
 class BaseObject
 {
 private:
-	std::map<std::string, InputFunc> Inputs;
-	VariantMap mMetaData;
-	bool mDeleteMe;
+	std::map<std::string, InputFunc> Inputs; //Entity IO function pointers
+	VariantMap mMetaData; //Variables that other entities can access
+	bool mDeleteMe; //Should the entity be deleted on the next entity purge?
 	float mNextThink;
 	float mLastThink;
-	std::string mClassName;
-	float mHealth;
-	float mMaxHealth;
-	bool mAlive;
+	std::string mClassName; //The class name of the entity eg "player"
 protected:
-	PhysicsDef *mPhysObj;
-	BaseRender* mRender;
-	Matrix3 mMatrix;
-	bool mMatrixNeedsUpdate;
-
+	PhysicsDef *mPhysObj; //Pointer to the physics object for this entity (NOT NECCESSARILY VALID)
+	Matrix3 mMatrix; //Transformation matrix used by ToGlobal and ToLocal
+	bool mMatrixNeedsUpdate; //If the matrix needs to be updated (Position/rotation etc has changed)
+	const char* mModel; //Model path (Sprite image)
 	Vector2 mPosition;
 	Vector2 mOrigin;
 	float mAngle;
-	bool mIsRenderable;
-	bool mIsPhysics;
+	bool mIsRenderable; //Do we have a renderer?
+	bool mIsPhysics; //Do we have a physics object?
 public:
 	BaseObject(void);
 	virtual ~BaseObject(void);
 
 	void SetClassName(const char* ID)
 	{
-		if (mClassName == "ERROR")
+		if (mClassName == "ERROR") //Only do this once!
 			mClassName = ID;
 	};
 	std::string GetClassName() {return mClassName;};
@@ -62,8 +58,12 @@ public:
 	float GetAngle() {return mAngle;};
 
 	BaseObject* CreateEntity(const char* classname);
-	
-	//MetaData
+
+	//Model
+	void SetModel(const char* path) {mModel = path;};
+	const char* GetModel() {return mModel;};
+
+	//MetaData (UNFINISHED)
 	void SetMetaData(const char* ID, float dat);
 	void SetMetaData(const char* ID, int dat);
 	void SetMetaData(const char* ID, BaseObject* dat);
@@ -72,33 +72,22 @@ public:
 	void Delete() {mDeleteMe = true;};
 	bool FlaggedForDeletion() {return mDeleteMe;};
 
-	//Rendering
-	bool IsRenderable() {return mIsRenderable;};
-	BaseRender* GetRenderer() {return mRender;};
-
 	//Physics
 	bool IsPhysicsEnabled() {return mIsPhysics;};
 	PhysicsDef* GetPhysObj() {return mPhysObj;};
 
-	//Health
-	void SetMaxHealth(float H) {mMaxHealth = H;};
-	float GetMaxHealth() {return mMaxHealth;};
-	void SetHealth(float H) {mHealth = H;};
-	float GetHealth() {return mHealth;};
-	void AddHealth(float am) {mHealth += am; if (mHealth > mMaxHealth) mHealth = mMaxHealth;};
-
 	//IO
 	void Fire(const char* Name, VariantMap &Data);
 	void RegisterInput(const char* Name, InputFunc Func);
+
+	void DrawModel();
 
 	//Hooks
 	virtual void Spawn() {};
 	virtual void Tick();
 	virtual void Think() {};
 	virtual void OnDelete() {}; //Called before the entity is deleted
-	virtual void OnTakeDamage(BaseObject* inf, float Amount) {};
-	virtual void PreDraw() {};
-	virtual void PostDraw() {};
+	virtual void Draw() {DrawModel();};
 
 };
 

@@ -52,9 +52,6 @@ NOTES	: Create default entities, generate the map (eg solar systems)
 */
 void MainGameState::Initialize()
 {
-	bg = CreateEntity("world");
-	bg->Spawn();
-
 	mWorld = new b2World(b2Vec2(0.f,0.f), true);
 	Player = CreateEntity("player");
 	Player->Spawn();
@@ -150,10 +147,7 @@ void MainGameState::OnKeyPressed(sf::Keyboard::Key Key, bool Pressed)
 	{
 		BaseObject* crate = CreateEntity("ent_prop");
 		VariantMap Data;
-		std::string st = "Crate";
-		Data.AddData("path", st);
-//		Data.AddData("path", std::string("Crate"));
-		crate->Fire("SetSprite", Data);
+		crate->SetModel("Crate");
 		crate->SetPos(InputHandler::GetMousePosWorld());
 		crate->Spawn();
 	}

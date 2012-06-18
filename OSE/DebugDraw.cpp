@@ -36,7 +36,7 @@ void DebugDraw::DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, cons
 void DebugDraw::DrawCircle(const b2Vec2& center, float32 radius, const b2Color& color) 
 { 
 	Vector2 pos = RENDERER->GameToSFML(Vector2(center) * PIXELS_PER_METRE);
-    sf::CircleShape Shape(radius, radius / 5.f);
+    sf::CircleShape Shape(radius* PIXELS_PER_METRE, (radius* PIXELS_PER_METRE) / 2.f);
    Shape.setFillColor(sf::Color(color.r*255, color.g*255, color.b*255));
    Shape.setPosition(pos.x, pos.y); 
    pRender->draw(Shape); 
@@ -44,9 +44,10 @@ void DebugDraw::DrawCircle(const b2Vec2& center, float32 radius, const b2Color& 
 void DebugDraw::DrawSolidCircle(const b2Vec2& center, float32 radius, const b2Vec2& axis, const b2Color& color) 
 { 
 	Vector2 pos = RENDERER->GameToSFML(Vector2(center) * PIXELS_PER_METRE);
-   sf::CircleShape Shape(radius, radius / 5.f);
+   sf::CircleShape Shape(radius * PIXELS_PER_METRE, (radius * PIXELS_PER_METRE) / 2.f);
    Shape.setFillColor(sf::Color(color.r*255, color.g*255, color.b*255));
    Shape.setPosition(pos.x, pos.y);
+   Shape.setOrigin((radius * PIXELS_PER_METRE) / 2.f,(radius * PIXELS_PER_METRE) / 2.f);
    pRender->draw(Shape); 
 } 
 void DebugDraw::DrawSegment(const b2Vec2& p1, const b2Vec2& p2, const b2Color& color) 

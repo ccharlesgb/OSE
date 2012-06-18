@@ -3,19 +3,15 @@
 #include "InputHandler.h"
 #include "GameGlobals.h"
 
+//This function registers the entity to the EntityCreator.
+//"player" is the classname. Player is the coded classname
 LINKCLASSTONAME("player", Player)
 
 Player::Player(void)
 {
-	RegisterInput("break", Stop);
-	SetPos(Vector2(1,0));
-	Speed = 0;
-	TankSpeed = 50.f;
-	
-	SetRenderType(RENDER_SPRITE);
-	InitRenderer();
+	SetPos(Vector2(0,0));
+
 	PhysicsInit(DYNAMIC_BODY);
-	GetRenderer()->SetDrawOrder(RENDERGROUP_PLAYER);
 }
 
 void Player::Spawn()
@@ -24,21 +20,14 @@ void Player::Spawn()
 	float width = 25;
 	float height = 30;
 
-	GetRenderer()->SetTexture("ship.png", true);
-	GetRenderer()->SetSize(Vector2(width * 3.4f,width * 3.4f));
+	//Declare the physics object
 	CircleShape* shape = new CircleShape;
 	shape->mRadius = player_size;
 	shape->mDensity = 1.f;
-	GetPhysObj()->AddPhysicsShape(shape);
+	GetPhysObj()->AddPhysicsShape(shape); //Add it to our physics object (They support multipe shapes!)
 
 	GetPhysObj()->SetAngularDamping(7);
 	GetPhysObj()->SetLinearDamping(10);
-}
-
-void Player::Stop(BaseObject *ent, VariantMap &Data)
-{
-	Player* me = dynamic_cast<Player*>(ent);
-	me->GetPhysObj()->SetLinearVelocity(b2Vec2(0,0));
 }
 
 Player::~Player(void)
@@ -53,8 +42,7 @@ void Player::DefinePhysics()
 
 void Player::Think()
 {	
-	float delta = gGlobals.FrameTime;
-
+	//Player movement code
 	float rot = ig::NormalizeAngle(GetAngle());
 
 	float player_walk_speed = 50.f;
@@ -72,6 +60,7 @@ void Player::Think()
 	if (InputHandler::IsKeyPressed(sf::Keyboard::W))
 	{
 		MoveVector.y = 1;
+		std::cout << "Player Y POS: " << GetPos().y << "\n";
 	}
 	else if (InputHandler::IsKeyPressed(sf::Keyboard::S))
 	{

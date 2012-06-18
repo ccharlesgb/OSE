@@ -11,10 +11,6 @@ Prop::Prop(void)
 	RegisterInput("SetSprite", SetSprite);
 	SetPos(Vector2::Random(-80.f,80.f));
 
-	SetRenderType(RENDER_SPRITE);
-	InitRenderer();
-	GetRenderer()->SetDrawOrder(RENDERGROUP_ENTITIES);
-
 	PhysicsInit(DYNAMIC_BODY);
 }
 
@@ -28,7 +24,7 @@ void Prop::SetSprite(BaseObject* ent, VariantMap &Data)
 void Prop::Spawn()
 {
 	//TODO: Add error handling
-	GetRenderer()->SetTexture((mPath + ".png").c_str(), true);
+	std::string mPath(GetModel());
 	std::string file_name = "images/" + mPath + ".txt";
 	std::ifstream myfile((char*)file_name.c_str());
 	if (myfile.is_open())

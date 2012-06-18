@@ -81,10 +81,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Background.cpp" />
     <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="BasePhysics.cpp" />
-    <ClCompile Include="BaseRender.cpp" />
     <ClCompile Include="BaseRenderable.cpp" />
     <ClCompile Include="DebugDraw.cpp" />
     <ClCompile Include="EntityCreator.cpp" />
@@ -94,28 +92,22 @@
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="PhysicsDef.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="MathUtils.cpp" />
     <ClCompile Include="Matrix3.cpp" />
     <ClCompile Include="Randomiser.cpp" />
     <ClCompile Include="VariantMap.cpp" />
     <ClCompile Include="Vector2.cpp" />
-    <ClCompile Include="HUDRender.cpp" />
     <ClCompile Include="MainGameState.cpp" />
-    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Prop.cpp" />
-    <ClCompile Include="StarField.cpp" />
-    <ClCompile Include="Sun.cpp" />
-    <ClCompile Include="Test.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="Background.h" />
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="BasePhysics.h" />
-    <ClInclude Include="BaseRender.h" />
     <ClInclude Include="BaseRenderable.h" />
     <ClInclude Include="DebugDraw.h" />
     <ClInclude Include="EntityCreator.h" />
@@ -125,6 +117,7 @@
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="PhysicsDef.h" />
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="Sprite.h" />
     <ClInclude Include="StateManager.h" />
     <ClInclude Include="MathUtils.h" />
     <ClInclude Include="Matrix3.hpp" />
@@ -132,14 +125,9 @@
     <ClInclude Include="VariantMap.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="EntityList.h" />
-    <ClInclude Include="HUDRender.h" />
     <ClInclude Include="MainGameState.h" />
-    <ClInclude Include="Map.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Prop.h" />
-    <ClInclude Include="StarField.h" />
-    <ClInclude Include="Sun.h" />
-    <ClInclude Include="Test.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Matrix3.inl" />

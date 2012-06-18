@@ -3,9 +3,7 @@
 #include "SFML/Graphics.hpp"
 #include <iostream>
 #include "StateManager.h"
-#include "BaseRender.h"
 #include "EntityListGlobal.h"
-#include "HUDRender.h"
 
 class BaseObject;
 
@@ -23,12 +21,9 @@ private:
 	friend class StateManager;
 protected:
 	sf::Clock mClock;
-	HUDRender* mHUD;
 public:
 	IGameState(void);
 	virtual ~IGameState();
-
-	HUDRender* GetHUD() {return mHUD;};
 
 	void Pause() {mPaused = true;};
 	void UnPause() {mPaused = false;};

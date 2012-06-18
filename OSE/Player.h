@@ -6,10 +6,8 @@
 class Player : public BasePhysics
 {
 private:
-	float Speed;
-	float TankSpeed;
+
 public:
-	static void Stop(BaseObject* ent, VariantMap &Data);
 	Player(void);
 	~Player(void);
 	void Spawn();

@@ -3,7 +3,6 @@
 #include "InputHandler.h"
 #include "Camera.h"
 #include <Box2D/Collision/b2Collision.h>
-#include "HUDRender.h"
 
 Renderer* Inst = NULL;
 
@@ -25,7 +24,7 @@ Renderer::Renderer(void)
 
 Renderer::~Renderer(void)
 {
-	Renderers.Clear();
+	Renderables.Clear();
 }
 
 void Renderer::SetWindow(sf::RenderWindow *wind) 
@@ -99,12 +98,14 @@ void Renderer::OnResize()
 
 void Renderer::OnEntityAdded(BaseObject* ent)
 {
-	BaseRender* render = ent->GetRenderer();
-	AddRenderer(render);
+	std::cout << "Entity Added to Renderer: " << ent->GetClassName() << "\n";
+	//BaseRender* render = ent->GetRenderer();
+	//AddRenderer(render);
 }
 
 void Renderer::AddRenderer(BaseRender* render)
 {
+	/*
 	BaseRender* rend = Renderers.FirstEnt();
 	if (Renderers.GetSize() > 0)
 	{
@@ -122,13 +123,12 @@ void Renderer::AddRenderer(BaseRender* render)
 		} 
 		while (rend != NULL && !FoundPos);
 	}
-	Renderers.InsertAtCurrent(render);
+	Renderers.InsertAtCurrent(render);*/
 }
 
 void Renderer::OnEntityRemoved(BaseObject* ent)
 {
-	BaseRender* render = ent->GetRenderer();
-	Renderers.Delete(render);
+	
 }
 
 void Renderer::Draw(IGameState *State)
@@ -141,16 +141,14 @@ void Renderer::Draw(IGameState *State)
 
 	mRender->setView(mView);
 
-	BaseRender* CurEnt = Renderers.FirstEnt();
+	BaseObject* CurEnt = Renderables.FirstEnt();
 	while(CurEnt != NULL)
 	{
-		CurEnt->PreDraw(mRender);
-		CurEnt->Draw(mRender);
-		CurEnt = Renderers.NextEnt();
+		CurEnt->Draw();
+		CurEnt = Renderables.NextEnt();
 	}
 	//std::cout << "Culled this frame: " << cull << "\n";
 	if (InputHandler::IsKeyPressed(sf::Keyboard::F3))
 		State->DrawDebugData();
 	mRender->setView(mRender->getDefaultView());
-	State->GetHUD()->Draw(mRender);
 }

@@ -96,7 +96,6 @@ NOTES	:
 */
 IGameState::IGameState()
 {
-	mHUD = new HUDRender();
 	mPaused = true;
 	mStarted = false;
 	mPausable = true;

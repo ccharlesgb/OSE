@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <vector>
 #include "SFML/Graphics.hpp"
-#include "BaseRender.h"
 #include "Vector2.h"
 #include <vector>
 #include "DebugDraw.h"
@@ -20,7 +19,7 @@ private:
 	sf::RenderWindow *mRender;
 	sf::View mView;
 	DebugDraw* mPhysDebug;
-	EntityList<BaseRender*> Renderers;
+	EntityList<BaseObject*> Renderables;
 public:
 	Vector2 GameToSFML(Vector2 Pos);
 	Vector2 ToScreen(Vector2 pos);
