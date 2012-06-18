@@ -96,6 +96,7 @@ void Renderer::OnResize()
 	Vector2 Size = Vector2(gGlobals.GameWidth, gGlobals.GameHeight);
 };
 
+//Called whenever ANY entity is added to the game. Check if its renderable then add it to a list
 void Renderer::OnEntityAdded(BaseObject* ent)
 {
 	std::cout << "Entity Added to Renderer: " << ent->GetClassName() << "\n";
@@ -105,6 +106,7 @@ void Renderer::OnEntityAdded(BaseObject* ent)
 
 void Renderer::AddRenderer(BaseRender* render)
 {
+	//Insert the renderer into its correct draw position
 	/*
 	BaseRender* rend = Renderers.FirstEnt();
 	if (Renderers.GetSize() > 0)
