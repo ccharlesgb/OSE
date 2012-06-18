@@ -68,7 +68,6 @@ void Player::Think()
 	Vector2 MouseDirHat = (MousePos - GetPos()).Normalize();
 	SetAngle(ig::RadToDeg(-std::atan2(MouseDirHat.y, MouseDirHat.x)) - 90.f);
 
-
 	Vector2 MoveVector;
 	if (InputHandler::IsKeyPressed(sf::Keyboard::W))
 	{

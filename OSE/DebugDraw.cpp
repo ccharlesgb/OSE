@@ -46,7 +46,7 @@ void DebugDraw::DrawSolidCircle(const b2Vec2& center, float32 radius, const b2Ve
 	Vector2 pos = RENDERER->GameToSFML(Vector2(center) * PIXELS_PER_METRE);
    sf::CircleShape Shape(radius, radius / 5.f);
    Shape.setFillColor(sf::Color(color.r*255, color.g*255, color.b*255));
-   Shape.setPosition(pos.x, pos.y); 
+   Shape.setPosition(pos.x, pos.y);
    pRender->draw(Shape); 
 } 
 void DebugDraw::DrawSegment(const b2Vec2& p1, const b2Vec2& p2, const b2Color& color) 

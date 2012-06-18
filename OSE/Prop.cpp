@@ -33,8 +33,8 @@ void Prop::Spawn()
 	std::ifstream myfile((char*)file_name.c_str());
 	if (myfile.is_open())
 	{
-		PolygonShape* shape = new PolygonShape;
-		shape->mDensity = 1.f;
+		PolygonShape shape;
+		shape.mDensity = 1.f;
 
 		std::string line;
 		while (myfile.good())
@@ -49,12 +49,11 @@ void Prop::Spawn()
 				int x,y;
 				x = atoi(X_COORD.c_str());
 				y = atoi(Y_COORD.c_str());
-				std::cout << "X:" << x << " Y:" << y << "\n";
-				shape->AddVertex(Vector2(x,y));
+				shape.AddVertex(Vector2(x,y));
 			}
 		}
 		myfile.close();
-		GetPhysObj()->AddPhysicsShape(shape);
+		GetPhysObj()->AddPhysicsShape(&shape);
 
 		GetPhysObj()->SetAngularDamping(1);
 		GetPhysObj()->SetLinearDamping(1);

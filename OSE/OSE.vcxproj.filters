@@ -16,29 +16,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Engine\DebugDraw.cpp" />
-    <ClCompile Include="Engine\EntityCreator.cpp" />
-    <ClCompile Include="Engine\EntityListGlobal.cpp" />
-    <ClCompile Include="Engine\GameGlobals.cpp" />
-    <ClCompile Include="Engine\IGameState.cpp" />
-    <ClCompile Include="Engine\InputHandler.cpp" />
-    <ClCompile Include="Engine\PhysicsDef.cpp" />
-    <ClCompile Include="Engine\Renderer.cpp" />
-    <ClCompile Include="Engine\StateManager.cpp" />
-    <ClCompile Include="Game\Background.cpp" />
-    <ClCompile Include="Game\HUDRender.cpp" />
-    <ClCompile Include="Game\MainGameState.cpp" />
-    <ClCompile Include="Game\Map.cpp" />
-    <ClCompile Include="Game\Player.cpp" />
-    <ClCompile Include="Game\Prop.cpp" />
-    <ClCompile Include="Game\StarField.cpp" />
-    <ClCompile Include="Game\Sun.cpp" />
-    <ClCompile Include="Game\Test.cpp" />
-    <ClCompile Include="Engine\Utility\Randomiser.cpp" />
-    <ClCompile Include="Engine\Utility\Vector2.cpp" />
-    <ClCompile Include="Engine\Utility\VariantMap.cpp" />
-    <ClCompile Include="Engine\Utility\Matrix3.cpp" />
-    <ClCompile Include="Engine\Utility\MathUtils.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="BaseObject.cpp">
       <Filter>Engine</Filter>
@@ -126,29 +103,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Engine\DebugDraw.h" />
-    <ClInclude Include="Engine\GameGlobals.h" />
-    <ClInclude Include="Engine\EntityCreator.h" />
-    <ClInclude Include="Engine\EntityListGlobal.h" />
-    <ClInclude Include="Engine\InputHandler.h" />
-    <ClInclude Include="Engine\IGameState.h" />
-    <ClInclude Include="Engine\PhysicsDef.h" />
-    <ClInclude Include="Engine\Renderer.h" />
-    <ClInclude Include="Engine\StateManager.h" />
-    <ClInclude Include="Game\Test.h" />
-    <ClInclude Include="Game\Background.h" />
-    <ClInclude Include="Game\HUDRender.h" />
-    <ClInclude Include="Game\MainGameState.h" />
-    <ClInclude Include="Game\Map.h" />
-    <ClInclude Include="Game\Player.h" />
-    <ClInclude Include="Game\Prop.h" />
-    <ClInclude Include="Game\StarField.h" />
-    <ClInclude Include="Game\Sun.h" />
-    <ClInclude Include="Engine\Utility\Randomiser.h" />
-    <ClInclude Include="Engine\Utility\Vector2.h" />
-    <ClInclude Include="Engine\Utility\VariantMap.h" />
-    <ClInclude Include="Engine\Utility\Matrix3.hpp" />
-    <ClInclude Include="Engine\Utility\MathUtils.h" />
     <ClInclude Include="GameGlobals.h">
       <Filter>Engine</Filter>
     </ClInclude>
@@ -238,7 +192,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Engine\Utility\Matrix3.inl" />
     <None Include="Matrix3.inl">
       <Filter>Engine\Utility</Filter>
     </None>
