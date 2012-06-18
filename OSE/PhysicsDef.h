@@ -41,7 +41,7 @@ public:
 	}
 	Vector2 mVertices[16];
 	int GetVertexCount() {return mVertexCount;};
-	void AddVertex(Vector2 &v) {mVertices[mVertexCount] = v; mVertexCount++;};
+	void AddVertex(const Vector2 &v) {mVertices[mVertexCount] = v; mVertexCount++;};
 };
 
 class PhysicsDef
