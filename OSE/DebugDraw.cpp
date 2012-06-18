@@ -15,6 +15,7 @@ void DebugDraw::DrawPolygon(const b2Vec2* vertices, int32 vertexCount, const b2C
 { 
    sf::ConvexShape Shape(vertexCount); 
    Shape.setOutlineThickness(1.f); 
+   Shape.setFillColor(sf::Color::Transparent);
    for (int32 i = 0; i < vertexCount; ++i) 
    { 
 	  Vector2 pos = RENDERER->GameToSFML(Vector2(vertices[i]) * PIXELS_PER_METRE);
@@ -26,6 +27,7 @@ void DebugDraw::DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, cons
 { 
    sf::ConvexShape Shape(vertexCount);
    Shape.setOutlineThickness(1.f);
+   Shape.setFillColor(sf::Color(color.r*255, color.g*255, color.b*255, 50));
    for (int32 i = 0; i < vertexCount; ++i)
    {
 	  Vector2 pos = RENDERER->GameToSFML(Vector2(vertices[i]) * PIXELS_PER_METRE);

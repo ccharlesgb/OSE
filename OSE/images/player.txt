@@ -1,7 +1,7 @@
 //Box2D Physics Information for Player
 //Wind coordinates anticlockwise
 //Seperate vertices with new lines
-30 55
--30 55
--55 -55
-55 -55
+15 35
+-15 35
+-40 -34
+40 -34
