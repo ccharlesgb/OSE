@@ -27,7 +27,7 @@ void Player::Spawn()
 	//GetPhysObj()->AddPhysicsShape(shape); //Add it to our physics object (They support multipe shapes!)
 
 	GetPhysObj()->SetAngularDamping(7);
-	GetPhysObj()->SetLinearDamping(10);
+	GetPhysObj()->SetLinearDamping(20);
 
 	SetModel("player");
 	PhysicsHullFromModel();

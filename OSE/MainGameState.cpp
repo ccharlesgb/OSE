@@ -53,12 +53,13 @@ NOTES	: Create default entities, generate the map (eg solar systems)
 void MainGameState::Initialize()
 {
 	mWorld = new b2World(b2Vec2(0.f,0.f), true);
+	mWorld->SetContactListener(this);
 	Player = CreateEntity("player");
 	Player->Spawn();
 	gGlobals.Player = Player;
 	sCamera::FollowEntity(Player);
 	sCamera::SetDamping(0);
-	sCamera::SetZoom(10);
+	sCamera::SetZoom(1.5);
 	sCamera::SetZoomDamping(0.2);
 }
 
@@ -146,8 +147,7 @@ void MainGameState::OnKeyPressed(sf::Keyboard::Key Key, bool Pressed)
 	if (Pressed && Key == sf::Keyboard::Space)
 	{
 		BaseObject* crate = CreateEntity("ent_prop");
-		VariantMap Data;
-		crate->SetModel("Crate");
+		crate->SetModel("crate");
 		crate->SetPos(InputHandler::GetMousePosWorld());
 		crate->Spawn();
 	}

@@ -9,6 +9,7 @@ Prop::Prop(void)
 	RegisterInput("SetSprite", SetSprite);
 	SetPos(Vector2::Random(-80.f,80.f));
 
+	RenderInit();
 	PhysicsInit(DYNAMIC_BODY);
 }
 
@@ -21,7 +22,10 @@ void Prop::SetSprite(BaseObject* ent, VariantMap &Data)
 
 void Prop::Spawn()
 {
+	GetPhysObj()->SetAngularDamping(7);
+	GetPhysObj()->SetLinearDamping(10);
 
+	PhysicsHullFromModel();
 }
 
 
