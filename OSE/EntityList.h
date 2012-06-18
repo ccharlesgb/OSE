@@ -112,7 +112,7 @@ template<class T>
 void EntityList<T>::Append(VType ent)
 {
 	mList.push_back(ent);
-	std::vector<IEntityListener<T>*>::iterator i;
+	typename std::vector<IEntityListener<T>*>::iterator i;
 	i = mListeners.begin();
 	while (i != mListeners.end())
 	{
@@ -131,7 +131,7 @@ void EntityList<T>::InsertAtCurrent(VType ent)
 	assert(CurrentIsValid());
 	mList.insert(mIter, ent);
 
-	std::vector<IEntityListener<T>*>::iterator i;
+	typename std::vector<IEntityListener<T>*>::iterator i;
 	i = mListeners.begin();
 	while (i != mListeners.end())
 	{
@@ -154,7 +154,7 @@ void EntityList<T>::Delete(T ent)
 		if ((*i) == ent)
 		{
 			//Inform Listeners
-			std::vector<IEntityListener<T>*>::iterator i2;
+			typename std::vector<IEntityListener<T>*>::iterator i2;
 			i2 = mListeners.begin();
 			while (i2 != mListeners.end())
 			{
@@ -181,7 +181,7 @@ void EntityList<T>::DeleteCurrent()
 {
 	//Inform Listeners
 	//std::cout << "Deleting: " << (*mIter)->GetClassName() << " Index: " << mCurIndex << "\n";
-	std::vector<IEntityListener<T>*>::iterator i;
+	typename std::vector<IEntityListener<T>*>::iterator i;
 	i = mListeners.begin();
 	while (i != mListeners.end())
 	{
