@@ -11,10 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{6F69B794-A18D-46F1-8EED-2513E5857875}</ProjectGuid>
+    <ProjectGuid>{C7D8212C-82CC-43FE-90EE-28537D0A221D}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Intergalactic</RootNamespace>
-    <ProjectName>OSE</ProjectName>
+    <RootNamespace>OSE</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -40,14 +39,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Connor\Desktop\Programming\Box\include;C:\Users\Connor\Desktop\Programming\SFML-2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Connor\Desktop\Programming\Box\lib;C:\Users\Connor\Desktop\Programming\SFML-2\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Connor\Documents\Programming\SFML-2.0-rc\include;C:\Users\Connor\Documents\Programming\Box\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Connor\Documents\Programming\SFML-2.0-rc\lib;C:\Users\Connor\Documents\Programming\Box\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\Connor\Documents\Programming\Box\include;C:\Users\Connor\Documents\Programming\SFML-2.0-rc\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Connor\Documents\Programming\Box\lib;C:\Users\Connor\Documents\Programming\SFML-2.0-rc\lib;$(LibraryPath)</LibraryPath>
-    <SourcePath>$(SourcePath)</SourcePath>
+    <IncludePath>C:\Users\Connor\Documents\Programming\SFML-2.0-rc\include;C:\Users\Connor\Documents\Programming\Box\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Connor\Documents\Programming\SFML-2.0-rc\lib;C:\Users\Connor\Documents\Programming\Box\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -60,12 +58,11 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>sfml-system-d-2.lib;sfml-graphics-d-2.lib;sfml-window-d-2.lib;Box2D.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <WarningLevel>Level2</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
@@ -78,68 +75,70 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>sfml-system.lib;sfml-graphics.lib;sfml-window.lib;box2D.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-system.lib;sfml-graphics.lib;sfml-window.lib;box2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Background.cpp" />
-    <ClCompile Include="BaseRenderable.cpp" />
     <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="BasePhysics.cpp" />
     <ClCompile Include="BaseRender.cpp" />
+    <ClCompile Include="BaseRenderable.cpp" />
     <ClCompile Include="DebugDraw.cpp" />
     <ClCompile Include="EntityCreator.cpp" />
     <ClCompile Include="EntityListGlobal.cpp" />
     <ClCompile Include="GameGlobals.cpp" />
-    <ClCompile Include="HUDRender.cpp" />
     <ClCompile Include="IGameState.cpp" />
     <ClCompile Include="InputHandler.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="MainGameState.cpp" />
-    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="PhysicsDef.cpp" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="MathUtils.cpp" />
     <ClCompile Include="Matrix3.cpp" />
-    <ClCompile Include="PhysicsDef.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Prop.cpp" />
     <ClCompile Include="Randomiser.cpp" />
-    <ClCompile Include="Renderer.cpp" />
-    <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="StateManager.cpp" />
-    <ClCompile Include="Sun.cpp" />
-    <ClCompile Include="Test.cpp" />
     <ClCompile Include="VariantMap.cpp" />
     <ClCompile Include="Vector2.cpp" />
+    <ClCompile Include="HUDRender.cpp" />
+    <ClCompile Include="MainGameState.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Prop.cpp" />
+    <ClCompile Include="StarField.cpp" />
+    <ClCompile Include="Sun.cpp" />
+    <ClCompile Include="Test.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Background.h" />
-    <ClInclude Include="BaseRenderable.h" />
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="BasePhysics.h" />
     <ClInclude Include="BaseRender.h" />
+    <ClInclude Include="BaseRenderable.h" />
     <ClInclude Include="DebugDraw.h" />
-    <ClInclude Include="EntityList.h" />
     <ClInclude Include="EntityCreator.h" />
     <ClInclude Include="EntityListGlobal.h" />
     <ClInclude Include="GameGlobals.h" />
-    <ClInclude Include="HUDRender.h" />
     <ClInclude Include="IGameState.h" />
     <ClInclude Include="InputHandler.h" />
-    <ClInclude Include="MainGameState.h" />
-    <ClInclude Include="Map.h" />
+    <ClInclude Include="PhysicsDef.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="StateManager.h" />
     <ClInclude Include="MathUtils.h" />
     <ClInclude Include="Matrix3.hpp" />
-    <ClInclude Include="PhysicsDef.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="Prop.h" />
     <ClInclude Include="Randomiser.h" />
-    <ClInclude Include="Renderer.h" />
-    <ClInclude Include="Camera.h" />
-    <ClInclude Include="StateManager.h" />
-    <ClInclude Include="Sun.h" />
-    <ClInclude Include="Test.h" />
     <ClInclude Include="VariantMap.h" />
     <ClInclude Include="Vector2.h" />
+    <ClInclude Include="EntityList.h" />
+    <ClInclude Include="HUDRender.h" />
+    <ClInclude Include="MainGameState.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Prop.h" />
+    <ClInclude Include="StarField.h" />
+    <ClInclude Include="Sun.h" />
+    <ClInclude Include="Test.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Matrix3.inl" />

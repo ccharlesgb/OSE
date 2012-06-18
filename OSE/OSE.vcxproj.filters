@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{38fc1b8b-be51-4087-8017-a98cb4639077}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{d3b9b4dd-7134-409d-9893-4b0e1afed9b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Utility">
+      <UniqueIdentifier>{8d86208a-a217-4dde-b236-12c85082c2ad}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Engine\DebugDraw.cpp" />
+    <ClCompile Include="Engine\EntityCreator.cpp" />
+    <ClCompile Include="Engine\EntityListGlobal.cpp" />
+    <ClCompile Include="Engine\GameGlobals.cpp" />
+    <ClCompile Include="Engine\IGameState.cpp" />
+    <ClCompile Include="Engine\InputHandler.cpp" />
+    <ClCompile Include="Engine\PhysicsDef.cpp" />
+    <ClCompile Include="Engine\Renderer.cpp" />
+    <ClCompile Include="Engine\StateManager.cpp" />
+    <ClCompile Include="Game\Background.cpp" />
+    <ClCompile Include="Game\HUDRender.cpp" />
+    <ClCompile Include="Game\MainGameState.cpp" />
+    <ClCompile Include="Game\Map.cpp" />
+    <ClCompile Include="Game\Player.cpp" />
+    <ClCompile Include="Game\Prop.cpp" />
+    <ClCompile Include="Game\StarField.cpp" />
+    <ClCompile Include="Game\Sun.cpp" />
+    <ClCompile Include="Game\Test.cpp" />
+    <ClCompile Include="Engine\Utility\Randomiser.cpp" />
+    <ClCompile Include="Engine\Utility\Vector2.cpp" />
+    <ClCompile Include="Engine\Utility\VariantMap.cpp" />
+    <ClCompile Include="Engine\Utility\Matrix3.cpp" />
+    <ClCompile Include="Engine\Utility\MathUtils.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="BaseObject.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="BasePhysics.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseRender.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseRenderable.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugDraw.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityCreator.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityListGlobal.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameGlobals.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="IGameState.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="InputHandler.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGameState.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsDef.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="StateManager.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Prop.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="StarField.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Sun.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Test.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Background.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="HUDRender.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="MathUtils.cpp">
+      <Filter>Engine\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix3.cpp">
+      <Filter>Engine\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Randomiser.cpp">
+      <Filter>Engine\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2.cpp">
+      <Filter>Engine\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="VariantMap.cpp">
+      <Filter>Engine\Utility</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine\DebugDraw.h" />
+    <ClInclude Include="Engine\GameGlobals.h" />
+    <ClInclude Include="Engine\EntityCreator.h" />
+    <ClInclude Include="Engine\EntityListGlobal.h" />
+    <ClInclude Include="Engine\InputHandler.h" />
+    <ClInclude Include="Engine\IGameState.h" />
+    <ClInclude Include="Engine\PhysicsDef.h" />
+    <ClInclude Include="Engine\Renderer.h" />
+    <ClInclude Include="Engine\StateManager.h" />
+    <ClInclude Include="Game\Test.h" />
+    <ClInclude Include="Game\Background.h" />
+    <ClInclude Include="Game\HUDRender.h" />
+    <ClInclude Include="Game\MainGameState.h" />
+    <ClInclude Include="Game\Map.h" />
+    <ClInclude Include="Game\Player.h" />
+    <ClInclude Include="Game\Prop.h" />
+    <ClInclude Include="Game\StarField.h" />
+    <ClInclude Include="Game\Sun.h" />
+    <ClInclude Include="Engine\Utility\Randomiser.h" />
+    <ClInclude Include="Engine\Utility\Vector2.h" />
+    <ClInclude Include="Engine\Utility\VariantMap.h" />
+    <ClInclude Include="Engine\Utility\Matrix3.hpp" />
+    <ClInclude Include="Engine\Utility\MathUtils.h" />
+    <ClInclude Include="GameGlobals.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseObject.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="BasePhysics.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseRender.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseRenderable.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugDraw.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityCreator.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityList.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityListGlobal.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="InputHandler.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="IGameState.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="MainGameState.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsDef.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="StateManager.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Test.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Prop.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="StarField.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Sun.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDRender.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Background.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="MathUtils.h">
+      <Filter>Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix3.hpp">
+      <Filter>Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Randomiser.h">
+      <Filter>Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="VariantMap.h">
+      <Filter>Engine\Utility</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Engine\Utility\Matrix3.inl" />
+    <None Include="Matrix3.inl">
+      <Filter>Engine\Utility</Filter>
+    </None>
+  </ItemGroup>
+</Project>

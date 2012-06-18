@@ -28,7 +28,8 @@ ObjList* EntityListGlobal::FindInCircle(Vector2 origin, float radius)
 
 ObjList* EntityListGlobal::FindInBox(Vector2 origin, float height, float width)
 {
-
+	ObjList* list;
+	return list;
 }
 
 ObjList* EntityListGlobal::FindByClass(const char* classname)
