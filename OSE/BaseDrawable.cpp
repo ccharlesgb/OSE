@@ -1,6 +1,7 @@
 #include "BaseDrawable.h"
 #include "GameGlobals.h"
 
+
 BaseDrawable::BaseDrawable(sf::RenderWindow *rend)
 {
 	mRenderWindow = rend;
@@ -13,12 +14,7 @@ BaseDrawable::~BaseDrawable(void)
 
 std::string BaseDrawable::GetImagePath(const char* path)
 {
-#ifdef _APPLE_
-	//APPLE STUFF
-	//return whatever;
-#else
 	return ("images/" + std::string(path) + ".png").c_str();
-#endif
 }
 
 
