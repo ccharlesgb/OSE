@@ -21,16 +21,16 @@ void Player::Spawn()
 	float height = 30;
 
 	//Declare the physics object
-	CircleShape* shape = new CircleShape;
-	shape->mRadius = player_size;
-	shape->mDensity = 1.f;
-	GetPhysObj()->AddPhysicsShape(shape); //Add it to our physics object (They support multipe shapes!)
+	//CircleShape* shape = new CircleShape;
+	//shape->mRadius = player_size;
+	//shape->mDensity = 1.f;
+	//GetPhysObj()->AddPhysicsShape(shape); //Add it to our physics object (They support multipe shapes!)
 
 	GetPhysObj()->SetAngularDamping(7);
 	GetPhysObj()->SetLinearDamping(10);
 
 	SetModel("player");
-	//PhysicsHullFromModel();
+	PhysicsHullFromModel();
 }
 
 Player::~Player(void)

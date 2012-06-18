@@ -50,8 +50,14 @@ void BasePhysics::PhysicsHullFromModel()
 			}
 		}
 		myfile.close();
+		/*
+		shape.AddVertex(Vector2(50,50));
+		shape.AddVertex(Vector2(-50,50));
+		shape.AddVertex(Vector2(-50,-50));
+		shape.AddVertex(Vector2(50,-50));
+		std::cout << &shape << "\n";
+		*/
 		GetPhysObj()->AddPhysicsShape(&shape);
-
 		GetPhysObj()->SetAngularDamping(1);
 		GetPhysObj()->SetLinearDamping(1);
 	}

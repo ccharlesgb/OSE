@@ -28,15 +28,20 @@ public:
 
 class PolygonShape : public BaseShape
 {
+private:
+	int mVertexCount;
 public:
+	PolygonShape()
+	{
+		mVertexCount = 0;
+	}
 	~PolygonShape()
 	{
 		std::cout << "SO LONG\n";
-		mVertices.clear();
 	}
-	std::vector<Vector2> mVertices;
-	int GetVertexCount() {return mVertices.size();};
-	void AddVertex(Vector2 v) {mVertices.push_back(v);};
+	Vector2 mVertices[16];
+	int GetVertexCount() {return mVertexCount;};
+	void AddVertex(Vector2 &v) {mVertices[mVertexCount] = v; mVertexCount++;};
 };
 
 class PhysicsDef
