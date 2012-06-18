@@ -2,7 +2,6 @@
 #include "Camera.h"
 #include "GameGlobals.h"
 
-
 LINKCLASSTONAME("background", Background)
 
 #define METEOR_SPEED 20

@@ -111,9 +111,21 @@ public:
 	{
 		return &mSprite;
 	}
-	void SetSize(Vector2 size) {};//TODO:: IMPLEMENT THIS
+	void SetSize(Vector2 size) 
+	{
+		sf::FloatRect BB = mSprite.getLocalBounds();
+		float ScaleX, ScaleY;
+		ScaleX = size.x / BB.width;
+		ScaleY = size.y / BB.height;
+		mSprite.setScale(ScaleX,ScaleY);
+	};
 	void SetColour(sf::Color col) {mSprite.setColor(col); mColour = col;};
 	void SetTexture(const char* FileName, bool Smooth);
+	void PreDraw(sf::RenderWindow *pRender)
+	{
+		mSprite.setPosition(RenderPos(pRender));
+		mSprite.setRotation(GetAngle());
+	};
 };
 
 class TextRender : public BaseRender
