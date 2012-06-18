@@ -72,20 +72,21 @@ void Player::Think()
 	Vector2 MoveVector;
 	if (InputHandler::IsKeyPressed(sf::Keyboard::W))
 	{
-		MoveVector.y = player_walk_speed;	
+		MoveVector.y = 1;
 	}
 	else if (InputHandler::IsKeyPressed(sf::Keyboard::S))
 	{
-		MoveVector.y = -player_walk_speed;
+		MoveVector.y = -1;
 	}
 	if (InputHandler::IsKeyPressed(sf::Keyboard::A))
 	{
-		MoveVector.x = -player_strafe_speed;
+		MoveVector.x = -0.8;
 	}
 	else if (InputHandler::IsKeyPressed(sf::Keyboard::D))
 	{
-		MoveVector.x = player_strafe_speed;
+		MoveVector.x = 0.8;
 	}
+	MoveVector = MoveVector.Normalize() * player_walk_speed;
 	MoveVector = ToGlobal(MoveVector) - GetPos();
 	ApplyForceCenter(MoveVector * 100.f);
 }
