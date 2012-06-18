@@ -5,7 +5,7 @@
 	#include <crtdbg.h>
 #endif
 
-#include "SFML/Graphics.hpp"
+#include <SFML/Graphics.hpp>
 #include "StateManager.h"
 #include "MathUtils.h"
 
