@@ -87,7 +87,7 @@ void EntityList<T>::Clear()
 	T CurEnt = FirstEnt();
 	while (CurrentIsValid())
 	{
-		gGlobals.gEntList.DeleteCurrent();
+		DeleteCurrent();
 		CurEnt = CurrentEnt();
 	}
 	mList.clear();
