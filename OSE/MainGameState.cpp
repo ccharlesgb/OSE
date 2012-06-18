@@ -5,6 +5,7 @@
 #include "BasePhysics.h"
 #include "PhysicsDef.h"
 #include "GameGlobals.h"
+#include "InputHandler.h"
 
 #define VelIterations 8
 #define PosIterations 3
@@ -62,12 +63,6 @@ void MainGameState::Initialize()
 	sCamera::SetDamping(0);
 	sCamera::SetZoom(10);
 	sCamera::SetZoomDamping(0.2);
-
-	//BaseObject* crate = CreateEntity("ent_prop");
-	//VariantMap Data;
-	//Data.AddData("path", std::string("Crate"));
-	//crate->Fire("SetSprite", Data);
-	//crate->Spawn();
 }
 
 /*
@@ -153,10 +148,12 @@ void MainGameState::OnKeyPressed(sf::Keyboard::Key Key, bool Pressed)
 {
 	if (Pressed && Key == sf::Keyboard::Space)
 	{
-		//VariantMap InputData;
-		//InputData.AddData("x_vel", ig::Random(-100,100));
-		//InputData.AddData("y_vel", ig::Random(-100,100));
-		//Player->Fire(std::string("break"), InputData);
+		BaseObject* crate = CreateEntity("ent_prop");
+		VariantMap Data;
+		Data.AddData("path", std::string("Crate"));
+		crate->Fire("SetSprite", Data);
+		crate->SetPos(InputHandler::GetMousePosWorld());
+		crate->Spawn();
 	}
 }
 
