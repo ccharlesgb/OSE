@@ -67,7 +67,6 @@ public:
 	void SetMetaData(const char* ID, int dat);
 	void SetMetaData(const char* ID, BaseObject* dat);
 
-
 	//Deletion
 	void Delete() {mDeleteMe = true;};
 	bool FlaggedForDeletion() {return mDeleteMe;};

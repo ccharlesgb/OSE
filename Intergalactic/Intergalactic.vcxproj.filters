@@ -115,10 +115,10 @@
       <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="Map.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game\Entities</Filter>
     </ClCompile>
     <ClCompile Include="Prop.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game\Entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -201,7 +201,7 @@
       <Filter>Header Files\Game\Entities</Filter>
     </ClInclude>
     <ClInclude Include="Prop.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game\Entities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
