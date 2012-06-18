@@ -62,6 +62,12 @@ void MainGameState::Initialize()
 	sCamera::SetDamping(0);
 	sCamera::SetZoom(10);
 	sCamera::SetZoomDamping(0.2);
+
+	//BaseObject* crate = CreateEntity("ent_prop");
+	//VariantMap Data;
+	//Data.AddData("path", std::string("Crate"));
+	//crate->Fire("SetSprite", Data);
+	//crate->Spawn();
 }
 
 /*
