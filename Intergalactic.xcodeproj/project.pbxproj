@@ -49,6 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		55347B73158EB87C00D334F1 /* Matrix3.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Matrix3.hpp; sourceTree = "<group>"; };
 		55C75DD0158EAB4100B21B74 /* Intergalactic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intergalactic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55C75DD4158EAB4100B21B74 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		55C75E1C158EAD7A00B21B74 /* Background.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Background.cpp; sourceTree = "<group>"; };
@@ -160,8 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				55C75E8D158EB02E00B21B74 /* Headers */,
-				55C75E8E158EB0FB00B21B74 /* Source */,
 				55C75E35158EAD7A00B21B74 /* images */,
+				55C75E8E158EB0FB00B21B74 /* Source */,
 			);
 			path = Intergalactic;
 			sourceTree = "<group>";
@@ -266,6 +267,7 @@
 		55C75E96158EB24900B21B74 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
+				55347B73158EB87C00D334F1 /* Matrix3.hpp */,
 				55C75E1F158EAD7A00B21B74 /* BaseObject.h */,
 				55C75E21158EAD7A00B21B74 /* BasePhysics.h */,
 				55C75E23158EAD7A00B21B74 /* BaseRender.h */,
