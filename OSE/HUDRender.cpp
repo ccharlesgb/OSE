@@ -55,7 +55,7 @@ void HUDRender::Draw(sf::RenderWindow *rend)
 
 	//Draw FrameTime
 	char Buffer[64];
-	#ifdef MAC
+	#ifdef __APPLE__
 		sprintf(Buffer, "Frame Time: %f (%iFPS)", gGlobals.FrameTime, (int)std::floor(1.f/gGlobals.FrameTime));
 	#else
 		sprintf_s(Buffer, "Frame Time: %f (%iFPS)", gGlobals.FrameTime, (int)std::floor(1.f/gGlobals.FrameTime));
@@ -70,7 +70,7 @@ void HUDRender::Draw(sf::RenderWindow *rend)
 
 		DrawText("Player Position:", Vector2(20, 45), 20, sf::Color::Red);
 		//sprintf_s(Buffer, "X : %f    Y : %f", InputHandler::GetMousePosWorld().x, InputHandler::GetMousePosWorld().y);
-		#ifdef MAC
+		#ifdef __APPLE__
 			sprintf(Buffer, "X : %f    Y : %f", ply->GetPos().x, ply->GetPos().y);
 		#else
 			sprintf_s(Buffer, "X : %f    Y : %f", ply->GetPos().x, ply->GetPos().y);
