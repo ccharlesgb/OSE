@@ -51,7 +51,7 @@ NOTES	: Create default entities, generate the map (eg solar systems)
 */
 void MainGameState::Initialize()
 {
-	bg = CreateEntity("background");
+	bg = CreateEntity("world");
 	bg->Spawn();
 
 	mWorld = new b2World(b2Vec2(0.f,0.f), true);

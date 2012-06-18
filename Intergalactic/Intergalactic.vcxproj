@@ -96,9 +96,11 @@
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainGameState.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="MathUtils.cpp" />
     <ClCompile Include="PhysicsDef.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Prop.cpp" />
     <ClCompile Include="Randomiser.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Camera.cpp" />
@@ -123,9 +125,11 @@
     <ClInclude Include="IGameState.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="MainGameState.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="MathUtils.h" />
     <ClInclude Include="PhysicsDef.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Prop.h" />
     <ClInclude Include="Randomiser.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Camera.h" />
