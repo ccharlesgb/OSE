@@ -108,7 +108,7 @@ struct RegisterEnt
 	RegisterEnt(char* name)
 	{
 		BaseRenderableFactory* F = new EntityFactory<T>;
-		ENTITYCREATOR->RegisterEntity(std::string(name), F);
+		ENTITYCREATOR->RegisterEntity(name, F);
 	}
 };
 
