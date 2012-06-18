@@ -9,8 +9,8 @@ BaseRender::BaseRender()
 
 void BaseRender::PreDraw(sf::RenderWindow *pRender)
 {
-	GetDrawable()->setPosition(RenderPos(pRender));
-	GetDrawable()->setRotation(GetAngle());
+	//GetDrawable()->setPosition(RenderPos(pRender));
+	//GetDrawable()->setRotation(GetAngle());
 }
 
 Vector2 BaseRender::ToScreen(Vector2 pos)

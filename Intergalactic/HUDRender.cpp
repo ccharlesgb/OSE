@@ -15,7 +15,7 @@ HUDRender::~HUDRender(void)
 
 void HUDRender::AddShapeElement(const char* ID)
 {
-	mElements[ID] = new sf::Shape();
+	//mElements[ID] = new sf::Shape();
 }
 
 sf::Shape* HUDRender::GetShapeElement(const char*ID)
@@ -35,11 +35,11 @@ sf::Text* HUDRender::GetTextElement(const char*ID)
 
 void HUDRender::DrawText(const char* txt, Vector2 pos, int size, sf::Color col)
 {
-	mText.SetPosition(pos.SF());
-	mText.SetCharacterSize(size);
-	mText.SetColor(col);
-	mText.SetString(txt);
-	mRend->Draw(mText);
+	mText.setPosition(pos.SF());
+	mText.setCharacterSize(size);
+	mText.setColor(col);
+	mText.setString(txt);
+	mRend->draw(mText);
 }
 
 //void HUDRender::DrawCircle(Vector2 pos, float radius, sf::Color col, float outline, sf::Color out_col)
@@ -56,7 +56,7 @@ void HUDRender::Draw(sf::RenderWindow *rend)
 	//Draw FrameTime
 	char Buffer[64];
 	sprintf_s(Buffer, "Frame Time: %f (%iFPS)", gGlobals.FrameTime, (int)std::floor(1.f/gGlobals.FrameTime));
-	mText.SetString(Buffer);
+	mText.setString(Buffer);
 	DrawText(Buffer, Vector2(20,20), 20, sf::Color::Red);
 
 	ObjList *Players = gGlobals.gEntList.FindByClass("player");

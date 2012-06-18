@@ -22,8 +22,8 @@ public:
 	}
 	void PreDraw(sf::RenderWindow *pRender);
 	void Draw(sf::RenderWindow *pRender);
-	void SetSize(Vector2 size) {mSprite.Resize(size.SF());};
-	void SetColour(sf::Color col) {mSprite.SetColor(col); mColour = col;};
+	void SetSize(Vector2 size) {}; //TODO: IMPLEMENT
+	void SetColour(sf::Color col) {mSprite.setColor(col); mColour = col;};
 };
 
 class Map : public BaseRenderable

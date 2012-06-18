@@ -121,9 +121,9 @@ NOTES	: Handles zooming in and out the camera when the mouse wheel is
 */
 void MainGameState::OnEvent(sf::Event &Event)
 {
-	if (Event.Type == sf::Event::MouseWheelMoved)
+	if (Event.type == sf::Event::MouseWheelMoved)
 	{
-		float del = Event.MouseWheel.Delta;
+		float del = Event.mouseWheel.delta;
 		float fac = 1.f;
 		fac = 1.f + (del / 5.f);
 		float zoom = sCamera::GetZoom() * fac;

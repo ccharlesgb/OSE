@@ -28,7 +28,7 @@ private:
 protected:
 	PhysicsDef *mPhysObj;
 	BaseRender* mRender;
-	sf::Matrix3 mMatrix;
+	Matrix3 mMatrix;
 	bool mMatrixNeedsUpdate;
 
 	Vector2 mPosition;
@@ -47,7 +47,7 @@ public:
 	};
 	std::string GetClassName() {return mClassName;};
 
-	sf::Matrix3 GetMatrix();
+	Matrix3 GetMatrix();
 	Vector2 ToGlobal(Vector2 &point);
 	Vector2 ToLocal(Vector2 &point);
 

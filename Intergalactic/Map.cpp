@@ -33,11 +33,11 @@ void Map::Spawn()
 
 MapRender::MapRender()
 {
-	if (!mGrassTex.LoadFromFile("images/grass1.png"))
+	if (!mGrassTex.loadFromFile("images/grass1.png"))
 	{
 		std::cout << "Invalid filename: " << "grass1" << "\n";
 	}
-	mSprite.SetTexture(mGrassTex);
+	mSprite.setTexture(mGrassTex);
 }
 
 void MapRender::PreDraw(sf::RenderWindow *pRender)
@@ -51,8 +51,8 @@ void MapRender::Draw(sf::RenderWindow *pRender)
 	{
 		for (int y=-10;y <= 10; y++)
 		{
-			mSprite.SetPosition(x * TEXTURE_SIZE, y * TEXTURE_SIZE);
-			pRender->Draw(mSprite);
+			mSprite.setPosition(x * TEXTURE_SIZE, y * TEXTURE_SIZE);
+			pRender->draw(mSprite);
 		}
 	}
 }

@@ -46,9 +46,9 @@ inline Matrix3::Matrix3(float a00, float a01, float a02,
 
 
 ////////////////////////////////////////////////////////////
-inline Vector2f Matrix3::Transform(const Vector2f& point) const
+inline sf::Vector2f Matrix3::Transform(const sf::Vector2f& point) const
 {
-    return Vector2f(myData[0] * point.x + myData[4] * point.y + myData[12],
+    return sf::Vector2f(myData[0] * point.x + myData[4] * point.y + myData[12],
                     myData[1] * point.x + myData[5] * point.y + myData[13]);
 }
 
@@ -104,7 +104,7 @@ inline Matrix3 Matrix3::operator *(const Matrix3& right) const
 
 
 ////////////////////////////////////////////////////////////
-inline Matrix3 Matrix3::Transformation(const Vector2f& origin, const Vector2f& translation, float rotation, const Vector2f& scale)
+inline Matrix3 Matrix3::Transformation(const sf::Vector2f& origin, const sf::Vector2f& translation, float rotation, const sf::Vector2f& scale)
 {
     // Combine the transformations
     float angle  = -rotation * 3.141592654f / 180.f;
@@ -125,7 +125,7 @@ inline Matrix3 Matrix3::Transformation(const Vector2f& origin, const Vector2f& t
 
 
 ////////////////////////////////////////////////////////////
-inline Matrix3 Matrix3::Projection(const Vector2f& center, const Vector2f& size, float rotation)
+inline Matrix3 Matrix3::Projection(const sf::Vector2f& center, const sf::Vector2f& size, float rotation)
 {
     // Rotation components
     float angle  = rotation * 3.141592654f / 180.f;

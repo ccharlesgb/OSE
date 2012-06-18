@@ -22,6 +22,8 @@
 //
 ////////////////////////////////////////////////////////////
 
+//THIS IS A MODIFIED VERSION OF THE ORIGINAL SFML MATRIX 3 CLASS
+
 #ifndef SFML_MATRIX3_HPP
 #define SFML_MATRIX3_HPP
 
@@ -33,9 +35,6 @@
 #include <SFML/Graphics/Rect.hpp>
 #include <cmath>
 
-
-namespace sf
-{
 ////////////////////////////////////////////////////////////
 /// \brief Utility class to manipulate 3x3 matrices of floats
 ///
@@ -78,7 +77,7 @@ public :
     /// \return Transformed point
     ///
     ////////////////////////////////////////////////////////////
-    Vector2f Transform(const Vector2f& point) const;
+    sf::Vector2f Transform(const sf::Vector2f& point) const;
 
     ////////////////////////////////////////////////////////////
     /// \brief Return the inverse of the matrix
@@ -126,7 +125,7 @@ public :
     /// \see Projection
     ///
     ////////////////////////////////////////////////////////////
-    static Matrix3 Transformation(const Vector2f& origin, const Vector2f& translation, float rotation, const Vector2f& scale);
+    static Matrix3 Transformation(const sf::Vector2f& origin, const sf::Vector2f& translation, float rotation, const sf::Vector2f& scale);
 
     ////////////////////////////////////////////////////////////
     /// \brief Build a 2D project matrix
@@ -140,7 +139,7 @@ public :
     /// \see Transformation
     ///
     ////////////////////////////////////////////////////////////
-    static Matrix3 Projection(const Vector2f& center, const Vector2f& size, float rotation);
+    static Matrix3 Projection(const sf::Vector2f& center, const sf::Vector2f& size, float rotation);
 
     ////////////////////////////////////////////////////////////
     // Static member data
@@ -156,9 +155,6 @@ private :
 };
 
 #include "Matrix3.inl"
-
-} // namespace sf
-
 
 #endif // SFML_MATRIX3_HPP
 

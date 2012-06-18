@@ -31,7 +31,7 @@ Renderer::~Renderer(void)
 void Renderer::SetWindow(sf::RenderWindow *wind) 
 {
 	mRender = wind;
-	mView.SetSize(mRender->GetWidth(), mRender->GetHeight());
+	mView.setSize(gGlobals.GameWidth, gGlobals.GameHeight);
 	//mView.Zoom(1/RENDER_SCALE);
 	mPhysDebug = new DebugDraw(wind);
 	gGlobals.PhysicsDebugDraw = mPhysDebug;
@@ -52,7 +52,7 @@ Vector2 Renderer::GameToSFML(Vector2 Pos)
 	dPos.x = Pos.x;
 	dPos.y = Pos.y;
 	dPos.y *= -1;
-	sf::Vector2<double> ScreenCentre = sf::Vector2<double>(mRender->GetWidth() / 2.f, mRender->GetHeight() / 2.f);
+	sf::Vector2<double> ScreenCentre = sf::Vector2<double>(gGlobals.GameWidth / 2.f, gGlobals.GameHeight/ 2.f);
 	dPos = dPos + ScreenCentre;
 
 	Pos.x = dPos.x;
@@ -92,7 +92,9 @@ bool Renderer::IsVisible(BaseRender* rend)
 
 void Renderer::OnResize()
 {
-	Vector2 Size = Vector2(mRender->GetWidth(), mRender->GetHeight());
+	gGlobals.GameWidth = mRender->getSize().x;
+	gGlobals.GameHeight = mRender->getSize().y;
+	Vector2 Size = Vector2(gGlobals.GameWidth, gGlobals.GameHeight);
 };
 
 void Renderer::OnEntityAdded(BaseObject* ent)

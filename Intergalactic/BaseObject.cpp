@@ -23,11 +23,11 @@ BaseObject* BaseObject::CreateEntity(const char* classname)
 	return ent;
 }
 
-sf::Matrix3 BaseObject::GetMatrix()
+Matrix3 BaseObject::GetMatrix()
  {
 	 if (mMatrixNeedsUpdate)
 	 {
-		 mMatrix = sf::Matrix3::Transformation(GetOrigin().SF(), GetPos().SF(), GetAngle(), sf::Vector2f(1.f,1.f));
+		 mMatrix = Matrix3::Transformation(GetOrigin().SF(), GetPos().SF(), GetAngle(), sf::Vector2f(1.f,1.f));
 		 mMatrixNeedsUpdate = false;
 	 }
 	 return mMatrix;
