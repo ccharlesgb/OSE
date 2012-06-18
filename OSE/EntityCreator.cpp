@@ -2,15 +2,15 @@
 #include <iostream>
 #include "BaseObject.h"
 
-EntityCreator* Inst = NULL;
+EntityCreator* Inst2 = NULL;
 
 EntityCreator* EntityCreator::Instance()
 {
-	if (Inst == NULL)
+	if (Inst2 == NULL)
 	{
-		Inst = new EntityCreator;
+		Inst2 = new EntityCreator;
 	}
-	return Inst;
+	return Inst2;
 }
 
 EntityCreator::EntityCreator(void)
@@ -29,7 +29,7 @@ EntityCreator::~EntityCreator()
 
 void EntityCreator::Cleanup()
 {
-	delete Inst;
+	delete Inst2;
 }
 
 BaseObject* EntityCreator::CreateEntity(const char* ID)

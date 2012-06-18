@@ -1,6 +1,7 @@
 #include "Map.h"
 #include "Camera.h"
 #include "GameGlobals.h"
+#include "ResourcePath.hpp"
 
 
 LINKCLASSTONAME("world", Map)
@@ -33,7 +34,7 @@ void Map::Spawn()
 
 MapRender::MapRender()
 {
-	if (!mGrassTex.loadFromFile("images/grass1.png"))
+	if (!mGrassTex.loadFromFile(resourcePath() + "grass1.png"))
 	{
 		std::cout << "Invalid filename: " << "grass1" << "\n";
 	}

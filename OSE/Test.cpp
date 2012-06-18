@@ -1,5 +1,7 @@
 #include "Test.h"
 #include <iostream>
+#include <cmath>
+#include "MathUtils.h"
 
 LINKCLASSTONAME("ent_test", Test)
 #define GRAVITY_STRENGTH 150
@@ -77,7 +79,7 @@ void Test::Think()
 	{
 		Vector2 pos_diff = GetPos() - mSun->GetPos();
 		float dist = (pos_diff).Length();
-		float theta = std::acosf(pos_diff.Normalize().Dot(Vector2(1,0))) + mThetaOffset;
+		float theta = acosf(pos_diff.Normalize().Dot(Vector2(1,0))) + mThetaOffset;
 		//std::cout << "PROGRESS: " << std::cos(theta) << "\n";
 		float targ_dist = mSemiMajor* (1-mEcc * mEcc);
 		targ_dist /= (1 + mEcc * cos(theta));

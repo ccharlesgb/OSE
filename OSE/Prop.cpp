@@ -1,6 +1,7 @@
 #include "Prop.h"
 #include <iostream>
 #include <fstream>
+#include <iostream>
 
 LINKCLASSTONAME("ent_prop", Prop)
 #define GRAVITY_STRENGTH 150
@@ -28,7 +29,8 @@ void Prop::Spawn()
 {
 	//TODO: Add error handling
 	GetRenderer()->SetTexture((mPath + ".png").c_str(), true);
-	std::ifstream myfile("images/" + mPath + ".txt");
+	std::string file_name = "images/" + mPath + ".txt";
+	std::ifstream myfile((char*)file_name.c_str());
 	if (myfile.is_open())
 	{
 		PolygonShape* shape = new PolygonShape;

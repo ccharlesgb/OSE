@@ -128,7 +128,7 @@ NOTES	: Insert an entity at the current iteration
 template<class T>
 void EntityList<T>::InsertAtCurrent(VType ent)
 {
-	assert(CurrentIsValid());
+	//assert(CurrentIsValid());
 	mList.insert(mIter, ent);
 
 	typename std::vector<IEntityListener<T>*>::iterator i;

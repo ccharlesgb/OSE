@@ -2,6 +2,7 @@
 #include "Randomiser.h"
 #include <iostream>
 #include <time.h>
+#include <cmath>
 
 namespace ig
 {

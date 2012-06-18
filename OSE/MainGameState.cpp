@@ -150,7 +150,9 @@ void MainGameState::OnKeyPressed(sf::Keyboard::Key Key, bool Pressed)
 	{
 		BaseObject* crate = CreateEntity("ent_prop");
 		VariantMap Data;
-		Data.AddData("path", std::string("Crate"));
+		std::string st = "Crate";
+		Data.AddData("path", st);
+//		Data.AddData("path", std::string("Crate"));
 		crate->Fire("SetSprite", Data);
 		crate->SetPos(InputHandler::GetMousePosWorld());
 		crate->Spawn();

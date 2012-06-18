@@ -55,7 +55,11 @@ void HUDRender::Draw(sf::RenderWindow *rend)
 
 	//Draw FrameTime
 	char Buffer[64];
-	sprintf_s(Buffer, "Frame Time: %f (%iFPS)", gGlobals.FrameTime, (int)std::floor(1.f/gGlobals.FrameTime));
+	#ifdef MAC
+		sprintf(Buffer, "Frame Time: %f (%iFPS)", gGlobals.FrameTime, (int)std::floor(1.f/gGlobals.FrameTime));
+	#else
+		sprintf_s(Buffer, "Frame Time: %f (%iFPS)", gGlobals.FrameTime, (int)std::floor(1.f/gGlobals.FrameTime));
+	#endif
 	mText.setString(Buffer);
 	DrawText(Buffer, Vector2(20,20), 20, sf::Color::Red);
 
@@ -66,7 +70,11 @@ void HUDRender::Draw(sf::RenderWindow *rend)
 
 		DrawText("Player Position:", Vector2(20, 45), 20, sf::Color::Red);
 		//sprintf_s(Buffer, "X : %f    Y : %f", InputHandler::GetMousePosWorld().x, InputHandler::GetMousePosWorld().y);
-		sprintf_s(Buffer, "X : %f    Y : %f", ply->GetPos().x, ply->GetPos().y);
+		#ifdef MAC
+			sprintf(Buffer, "X : %f    Y : %f", ply->GetPos().x, ply->GetPos().y);
+		#else
+			sprintf_s(Buffer, "X : %f    Y : %f", ply->GetPos().x, ply->GetPos().y);
+		#endif
 		DrawText(Buffer, Vector2(20,70), 20, sf::Color::Red);
 
 		int limit = ply->GetPhysObj()->GetLinearVelocity().Length() / 5.f;

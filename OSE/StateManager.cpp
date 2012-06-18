@@ -5,15 +5,15 @@
 #include "MathUtils.h"
 #include "InputHandler.h"
 
-StateManager* Inst = NULL;
+StateManager* Inst3 = NULL;
 
 StateManager* StateManager::Instance()
 {
-	if (Inst == NULL)
+	if (Inst3 == NULL)
 	{
-		Inst = new StateManager;
+		Inst3 = new StateManager;
 	}
-	return Inst;
+	return Inst3;
 }
 
 StateManager::StateManager(void)
@@ -50,7 +50,7 @@ StateManager::~StateManager(void)
 
 void StateManager::Cleanup()
 {
-	delete Inst;
+	delete Inst3;
 }
 
 void StateManager::Begin()
