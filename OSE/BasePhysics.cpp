@@ -21,12 +21,7 @@ void BasePhysics::PhysicsHullFromModel()
 {
 	//TODO: Add error handling
 	std::string mPath(GetModel());
-#ifdef _APPLE
-	//APPLE SHIT
-	//std::string file_name =
-#else
 	std::string file_name = "images/" + mPath + ".txt";
-#endif
 	std::ifstream myfile((char*)file_name.c_str());
 	if (myfile.is_open())
 	{
