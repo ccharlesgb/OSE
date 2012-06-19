@@ -25,11 +25,13 @@ Vector2 InputHandler::GetMousePosWorld()
 	Vector2 WindPos = GetMousePos();
 	Vector2 ViewCentre(gGlobals.GameWidth / 2.f, -gGlobals.GameHeight / 2.f);
 	WindPos.y *= -1;
+	WindPos = WindPos;
 	WindPos = WindPos + sCamera::GetCentre() - ViewCentre;
-	return WindPos * sCamera::GetZoom();
+	return WindPos;
 }
 
 Vector2 InputHandler::GetMousePos()
+{
 	if (!gGlobals.InFocus)
 		return LKPMouse;
 	sf::Vector2f Pos;
