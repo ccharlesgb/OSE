@@ -1,5 +1,5 @@
 #include "Sprite.h"
-
+#include "Resource.h"
 
 Sprite::Sprite(sf::RenderWindow *rend) : BaseDrawable(rend)
 {
@@ -26,6 +26,7 @@ void Sprite::Draw()
 
 void Sprite::SetTexture(const char* path)
 {
+	/*
 	std::string FILE_PATH = GetImagePath(path);
 	if (!mTexture.loadFromFile(FILE_PATH))
 	{
@@ -37,4 +38,8 @@ void Sprite::SetTexture(const char* path)
 		SetPosition(Vector2(0,0));
 		SetOrigin(GetTextureCentre()); //By default origin at middle of texture
 	}
+	*/
+	mSprite.setTexture(*Resource::RequestImage(path));
+	SetPosition(Vector2(0,0));
+	SetOrigin(GetTextureCentre());
 }
