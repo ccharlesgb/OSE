@@ -68,6 +68,7 @@ void PhysicsDef::CreatePhysics(b2World *World)
 	def.angularDamping = 0;
 	def.linearDamping = 0;
 	mPhysObj = World->CreateBody(&def);
+	mPhysObj->SetUserData(mOwner);
 
 }
 

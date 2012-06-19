@@ -10,6 +10,7 @@ Prop::Prop(void)
 	SetPos(Vector2::Random(-80.f,80.f));
 
 	RenderInit();
+	SetDrawOrder(RENDERGROUP_ENTITIES);
 	PhysicsInit(DYNAMIC_BODY);
 }
 
@@ -28,6 +29,13 @@ void Prop::Spawn()
 	PhysicsHullFromModel();
 }
 
+void Prop::StartTouch(CollisionInfo* info)
+{
+	if (info->OtherEnt->GetClassName() == "player")
+	{
+		Delete();
+	}
+}
 
 Prop::~Prop(void)
 {

@@ -11,6 +11,7 @@ Player::Player(void)
 {
 	SetPos(Vector2(0,0));
 	RenderInit();
+	SetDrawOrder(RENDERGROUP_PLAYER);
 	PhysicsInit(DYNAMIC_BODY);
 }
 
@@ -30,6 +31,7 @@ void Player::Spawn()
 	GetPhysObj()->SetLinearDamping(10);
 
 	SetModel("player");
+	SetOrigin(Vector2(0,12));
 	PhysicsHullFromModel();
 }
 

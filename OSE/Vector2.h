@@ -23,7 +23,7 @@ public:
 	Vector2 operator - (Vector2);
 	Vector2 operator * (float);
 	Vector2 operator / (float);
-
+	bool operator==(const Vector2 &other) const;
 	sf::Vector2f SF() {return sf::Vector2f(x,y);};
 	b2Vec2 B2() {return b2Vec2(x,y);};
 

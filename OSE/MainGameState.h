@@ -2,6 +2,7 @@
 
 #include "igamestate.h"
 #include "Box2d.h"
+#include "PhysicsDef.h"
 
 class MainGameState : public IGameState , public b2ContactListener
 {
@@ -30,7 +31,16 @@ public:
 
 	void BeginContact(b2Contact* contact)
 	{
-		contact->GetFixtureA();
+		b2Body *bodyA = contact->GetFixtureA()->GetBody();
+		b2Body *bodyB = contact->GetFixtureB()->GetBody();
+		BaseObject* EntA = static_cast<BaseObject*>(bodyA->GetUserData()); //GetUserData() returns a pointer to the owner!
+		BaseObject* EntB = static_cast<BaseObject*>(bodyB->GetUserData());
+		CollisionInfo info;
+		info.OtherEnt = EntB;
+		EntA->StartTouch(&info);
+		info.OtherEnt = EntA;
+		EntB->StartTouch(&info);
+		std::cout << "Collsion between: " << EntA->GetClassName() << " and : " << EntB->GetClassName() << "\n";
 	}
 
  

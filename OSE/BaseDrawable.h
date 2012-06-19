@@ -7,6 +7,7 @@ class BaseDrawable
 {
 protected:
 	Vector2 mPos;
+	Vector2 mOrigin;
 	float mAngle;
 	float mScale;
 	sf::RenderWindow* mRenderWindow;
@@ -21,6 +22,9 @@ public:
 
 	void SetPosition(Vector2 pos) {mPos = pos; mDirtyTransform = true;};
 	Vector2 GetPosition() {return mPos;};
+
+	void SetOrigin(Vector2 orig) {mOrigin = orig; mDirtyTransform = true;};
+	Vector2 GetOrigin() {return mOrigin;};
 
 	void SetAngle(float a) {mAngle = a; mDirtyTransform = true;};
 	float GetAngle() {return mAngle;};

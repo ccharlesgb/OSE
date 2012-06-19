@@ -3,6 +3,7 @@
 
 Sprite::Sprite(sf::RenderWindow *rend) : BaseDrawable(rend)
 {
+
 }
 
 Sprite::~Sprite(void)
@@ -11,8 +12,15 @@ Sprite::~Sprite(void)
 
 void Sprite::Draw()
 {
-	mSprite.setPosition(GameToSFML(GetPosition()).SF());
-	mSprite.setRotation(-GetAngle());
+	if (mDirtyTransform)
+	{
+		mSprite.setPosition(GameToSFML(GetPosition()).SF());
+		mSprite.setRotation(-GetAngle());
+		mSprite.setTexture(mTexture);
+		mSprite.setOrigin((GetOrigin() + GetTextureCentre()).SF());
+		mSprite.setScale(sf::Vector2f(GetScale(),GetScale()));
+		mDirtyTransform = false;
+	}
 	mRenderWindow->draw(mSprite);
 }
 
@@ -26,7 +34,7 @@ void Sprite::SetTexture(const char* path)
 	else
 	{
 		mSprite.setTexture(mTexture);
-		mSprite.setPosition(0,0);
-		mSprite.setOrigin(mTexture.getSize().x / 2, mTexture.getSize().y / 2);
+		SetPosition(Vector2(0,0));
+		SetOrigin(GetTextureCentre()); //By default origin at middle of texture
 	}
 }

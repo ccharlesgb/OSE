@@ -151,7 +151,7 @@ void MainGameState::OnKeyPressed(sf::Keyboard::Key Key, bool Pressed)
 	if (Pressed && Key == sf::Keyboard::Space)
 	{
 		BaseObject* crate = CreateEntity("ent_prop");
-		crate->SetModel("crate");
+		crate->SetModel("crate", ig::Random(0.5,0.7));
 		crate->SetPos(InputHandler::GetMousePosWorld());
 		crate->Spawn();
 	}

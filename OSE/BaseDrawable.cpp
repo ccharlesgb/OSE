@@ -5,11 +5,16 @@
 BaseDrawable::BaseDrawable(sf::RenderWindow *rend)
 {
 	mRenderWindow = rend;
+	mAngle = 0.f;
+	mScale = 1.f;
+	mPos = Vector2();
+	mOrigin = Vector2();
 	mDirtyTransform = true;
 }
 
 BaseDrawable::~BaseDrawable(void)
 {
+
 }
 
 std::string BaseDrawable::GetImagePath(const char* path)

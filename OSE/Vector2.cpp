@@ -34,6 +34,15 @@ Vector2::~Vector2()
 {
 }
 
+bool Vector2::operator==(const Vector2 &other) const
+{
+	if (other.x != this->x)
+		return false;
+	if (other.y != this->y)
+		return false;
+	return true;
+}
+
 Vector2& Vector2::operator= (const sf::Vector2f &param)
 {
 	x = param.x;

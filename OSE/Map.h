@@ -10,7 +10,7 @@
 class Map : public BaseObject
 {
 private:
-	std::vector<Sprite> mSprites;
+	std::vector<Sprite*> mSprites;
 public:
 	Map(void);
 	~Map(void);

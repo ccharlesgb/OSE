@@ -7,6 +7,15 @@
 #define PIXELS_PER_METRE 64.f
 #define METRES_PER_PIXEL 1/PIXELS_PER_METRE
 
+class BaseObject;
+
+
+class CollisionInfo
+{
+public:
+	BaseObject* OtherEnt;
+};
+
 enum BODY_TYPE
 {
 	STATIC_BODY = b2_staticBody,
@@ -54,6 +63,7 @@ private:
 	float mAngle;
 
 	BODY_TYPE mType;
+	BaseObject* mOwner;
 public:
 	PhysicsDef(void);
 	~PhysicsDef(void);
@@ -75,6 +85,9 @@ public:
 	
 	void SetAngle(float a);
 	float GetAngle();
+
+	void SetOwner(BaseObject* own) {mOwner = own;};
+	BaseObject* GetOwner() {return mOwner;};
 
 	float GetMass() {return mPhysObj->GetMass() * PIXELS_PER_METRE;};
 

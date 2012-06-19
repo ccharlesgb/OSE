@@ -10,8 +10,17 @@
 
 class PhysicsDef;
 class BaseObject;
+class CollisionInfo;
 
 typedef void (*InputFunc)(BaseObject* ent, VariantMap &Data);
+
+enum RenderGroup
+{
+	RENDERGROUP_BACKGROUND, //Draw first
+	RENDERGROUP_ENTITIES,
+	RENDERGROUP_PLAYER,
+	RENDERGROUP_HUD //Draw Last
+};
 
 class BaseObject
 {
@@ -32,9 +41,10 @@ protected:
 
 	Vector2 mPosition;
 	Vector2 mOrigin;
+	Vector2 mScale;
 	float mAngle;
 
-	int mDrawOrder;
+	RenderGroup mDrawOrder;
 	bool mIsRenderable; //Do we have a renderer?
 	bool mIsPhysics; //Do we have a physics object?
 public:
@@ -62,10 +72,13 @@ public:
 	virtual void SetAngle(float a) {mAngle = a; mMatrixNeedsUpdate = true;};
 	float GetAngle() {return mAngle;};
 
+	Vector2 GetSize() {return mSprite->GetSize();};
+
 	BaseObject* CreateEntity(const char* classname);
 
 	//Model
 	void SetModel(const char* path);
+	void SetModel(const char* path, float scale);
 	const char* GetModel() {return mModel;};
 
 	//MetaData (UNFINISHED)
@@ -84,8 +97,8 @@ public:
 	//Rendering
 	void RenderInit() {mIsRenderable = true;};
 	bool IsRenderable() {return mIsRenderable;};
-	void SetDrawOrder(int o) {mDrawOrder = o;};
-	int GetDrawOrder() {return mDrawOrder;};
+	void SetDrawOrder(RenderGroup o) {mDrawOrder = o;};
+	RenderGroup GetDrawOrder() {return mDrawOrder;};
 
 	//IO
 	void Fire(const char* Name, VariantMap &Data);
@@ -99,6 +112,7 @@ public:
 	virtual void Think() {};
 	virtual void OnDelete() {}; //Called before the entity is deleted
 	virtual void Draw();
+	virtual void StartTouch(CollisionInfo* info) {};
 
 };
 

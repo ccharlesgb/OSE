@@ -11,6 +11,7 @@ BasePhysics::BasePhysics(void)
 void BasePhysics::PhysicsInit(BODY_TYPE typ)
 {
 	mPhysObj = new PhysicsDef;
+	mPhysObj->SetOwner(this);
 	mPhysObj->SetPos(GetPos());
 	mPhysObj->SetAngle(0);
 	mPhysObj->SetType(typ);
@@ -45,7 +46,7 @@ void BasePhysics::PhysicsHullFromModel()
 				int x,y;
 				x = atoi(X_COORD.c_str());
 				y = atoi(Y_COORD.c_str());
-				shape.AddVertex(Vector2(x,y));
+				shape.AddVertex(Vector2(x * mScale.x,y * mScale.y));
 				std::cout << "ADDING VERTEX: " << x << " " << y << "\n";
 			}
 		}

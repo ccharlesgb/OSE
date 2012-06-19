@@ -11,6 +11,7 @@ BaseObject::BaseObject(void)
 	mNextThink = 0.f;
 	mLastThink = 0.f;
 	mDeleteMe = false;
+	mScale = Vector2(1.f,1.f);
 }
 
 BaseObject::~BaseObject(void)
@@ -31,7 +32,7 @@ Matrix3 BaseObject::GetMatrix()
 {
 	 if (mMatrixNeedsUpdate)
 	 {
-		 mMatrix = Matrix3::Transformation(GetOrigin().SF(), GetPos().SF(), GetAngle(), sf::Vector2f(1.f,1.f));
+		 mMatrix = Matrix3::Transformation(Vector2().SF(), GetPos().SF(), GetAngle(), sf::Vector2f(1.f,1.f));
 		 mMatrixNeedsUpdate = false;
 	 }
 	 return mMatrix;
@@ -65,10 +66,18 @@ void BaseObject::RegisterInput(const char* Name, InputFunc Func)
 
 void BaseObject::SetModel(const char* path)
 {
+	SetModel(path, 1.f);
+}
+
+void BaseObject::SetModel(const char* path, float scale)
+{
 	mIsRenderable = true;
 	mModel = path;
+	mScale = Vector2(scale,scale);
 	mSprite = new Sprite(gGlobals.RenderWindow);
 	mSprite->SetTexture(path);
+	mSprite->SetScale(scale);
+	SetOrigin(Vector2());
 }
 
 void BaseObject::Draw()
@@ -80,6 +89,7 @@ void BaseObject::DrawModel()
 {
 	mSprite->SetPosition(GetPos().SF());
 	mSprite->SetAngle(GetAngle());
+	mSprite->SetOrigin(GetOrigin());
 	mSprite->Draw();
 }
 

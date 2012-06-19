@@ -12,5 +12,6 @@ public:
 	~Prop(void);
 	void Spawn();
 	void Think();
+	void StartTouch(CollisionInfo* info);
 };
 
