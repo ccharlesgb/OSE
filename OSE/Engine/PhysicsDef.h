@@ -16,12 +16,15 @@ public:
 	BaseObject* OtherEnt;
 };
 
+//What kind of Box2D body are we?
 enum BODY_TYPE
 {
 	STATIC_BODY = b2_staticBody,
-	DYNAMIC_BODY = b2_dynamicBody
+	DYNAMIC_BODY = b2_dynamicBody,
+	KINEMATIC_BODY = b2_kinematicBody
 };
 
+//BaseShape: Used to define physics shapes for box 2d.
 class BaseShape
 {
 public:
@@ -29,12 +32,14 @@ public:
 	BaseShape() {mDensity = 0.1f;};
 };
 
+//CircleShape: Circle Primitive
 class CircleShape : public BaseShape
 {
 public:
 	float mRadius;
 };
 
+//PolygonShape: ConVEX polygon shape.
 class PolygonShape : public BaseShape
 {
 private:
@@ -46,13 +51,18 @@ public:
 	}
 	~PolygonShape()
 	{
-		std::cout << "SO LONG\n";
+		
 	}
-	Vector2 mVertices[16];
+	Vector2 mVertices[16]; //TODO: MAKE THIS DYNAMIC?
 	int GetVertexCount() {return mVertexCount;};
 	void AddVertex(const Vector2 &v) {mVertices[mVertexCount] = v; mVertexCount++;};
 };
 
+/*PhysicsDef: 
+	The Class that controls everything to do with physics on an entity,
+	kinda like a PhysicsObject.
+*/
+			 
 class PhysicsDef
 {
 private:

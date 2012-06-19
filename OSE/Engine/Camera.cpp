@@ -24,7 +24,7 @@ void sCamera::UpdateView()
 	}
 	else
 	{
-		float speed = std::abs(mZoom - mTargetZoom);
+		float speed = abs(mZoom - mTargetZoom);
 		mZoom = ig::Approach(mZoom, mTargetZoom, speed * gGlobals.FrameTime * 8.f);
 	}
 	if (mDamping > 0)
