@@ -190,6 +190,7 @@ void EntityList<T>::DeleteCurrent()
 		i++;
 	}
 	//Delete Entity
+	delete *mIter;
 	mIter = mList.erase(mIter);
 	if (mIter >= mList.end())
 		mCurIsValid = false;

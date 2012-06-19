@@ -113,7 +113,10 @@ void Renderer::AddEntity(BaseObject* render)
 
 void Renderer::OnEntityRemoved(BaseObject* ent)
 {
-	
+	if (ent->IsRenderable())
+	{
+		Renderables.Delete(ent);
+	}
 }
 
 void Renderer::Draw(IGameState *State)
