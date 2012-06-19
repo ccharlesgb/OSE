@@ -6,8 +6,8 @@
 #endif
 
 #include <SFML/Graphics.hpp>
-#include "StateManager.h"
-#include "MathUtils.h"
+#include "Engine/StateManager.h"
+#include "Engine/MathUtils.h"
 
 #ifdef __APPLE__
 #include "CoreFoundation/CoreFoundation.h"
