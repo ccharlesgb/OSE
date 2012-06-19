@@ -55,7 +55,7 @@ void MainGameState::Initialize()
 	Map = CreateEntity("world");
 	Map->Spawn();
 	
-	mWorld = new b2World(b2Vec2(0.f,0.f), true);
+	mWorld = new b2World(b2Vec2(0.f,0.f));
 	mWorld->SetContactListener(this);
 	Player = CreateEntity("player");
 	Player->Spawn();

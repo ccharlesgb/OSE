@@ -44,8 +44,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\Connor\Documents\Programming\SFML-2.0-rc\include;C:\Users\Connor\Documents\Programming\Box\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Connor\Documents\Programming\SFML-2.0-rc\lib;C:\Users\Connor\Documents\Programming\Box\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Connor\Documents\Programming\SFML-2.0-rc\include;C:\Users\Connor\Documents\Programming\Box2D\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Connor\Documents\Programming\SFML-2.0-rc\lib;C:\Users\Connor\Documents\Programming\Box2D\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -58,7 +58,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>sfml-system-d.lib;sfml-graphics-d.lib;sfml-window-d.lib;box2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-system-d.lib;sfml-graphics-d.lib;sfml-window-d.lib;box2d-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

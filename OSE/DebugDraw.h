@@ -3,9 +3,10 @@
 #include "Box2D.h"
 #include "SFML/Graphics.hpp"
 
+
 struct b2AABB; 
 
-class DebugDraw : public b2DebugDraw 
+class DebugDraw : public b2Draw 
 { 
 private:
    sf::RenderWindow *pRender;
