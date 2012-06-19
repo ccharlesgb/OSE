@@ -39,6 +39,7 @@ void Prop::StartTouch(CollisionInfo* info)
 
 Prop::~Prop(void)
 {
+	std::cout << "DELETING PROP\n";
 }
 
 void Prop::Think()

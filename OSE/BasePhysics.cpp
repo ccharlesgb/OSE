@@ -72,6 +72,7 @@ void BasePhysics::Tick()
 
 BasePhysics::~BasePhysics(void)
 {
+	std::cout << "DELETING BAESPHYSICS\n";
 	if (mIsPhysics)
 		delete GetPhysObj();
 }

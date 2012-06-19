@@ -8,7 +8,7 @@ private:
 
 public:
 	BasePhysics(void);
-	~BasePhysics(void);
+	virtual ~BasePhysics(void);
 
 	//Physics
 
