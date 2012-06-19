@@ -120,12 +120,18 @@ void MainGameState::OnEvent(sf::Event &Event)
 	if (Event.type == sf::Event::MouseWheelMoved)
 	{
 		float del = Event.mouseWheel.delta;
+		std::cout << del << "\n";
 		float fac = 1.f;
 		fac = 1.f + (del / 5.f);
 		float zoom = sCamera::GetZoom() * fac;
-		zoom = ig::Limit(zoom, 1, 30.f);
+		zoom = ig::Limit(zoom, 1, 5.f);
 		sCamera::SetZoom(zoom);
 	}
+}
+
+void MainGameState::AdjustZoom(float zoom_target)
+{
+
 }
 
 /*
@@ -153,6 +159,14 @@ void MainGameState::OnKeyPressed(sf::Keyboard::Key Key, bool Pressed)
 		crate->SetModel("crate", ig::Random(0.5,0.7));
 		crate->SetPos(InputHandler::GetMousePosWorld());
 		crate->Spawn();
+	}
+	if (Pressed && Key == sf::Keyboard::LBracket)
+	{
+		sCamera::SetZoom(ig::Limit(sCamera::GetZoom() + 1, 1, 5));
+	}
+	if (Pressed && Key == sf::Keyboard::RBracket)
+	{
+		sCamera::SetZoom(ig::Limit(sCamera::GetZoom() - 1, 1, 5));
 	}
 }
 

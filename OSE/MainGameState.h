@@ -27,6 +27,8 @@ public:
 	void OnEntityCreated(BaseObject* ent);
 	void DrawDebugData();
 
+	void AdjustZoom(float zoom_target);
+
 	void CreatePlanetarySystem(Vector2 Origin);
 
 	void BeginContact(b2Contact* contact)

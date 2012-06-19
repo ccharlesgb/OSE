@@ -14,6 +14,19 @@ class CollisionInfo;
 
 typedef void (*InputFunc)(BaseObject* ent, VariantMap &Data);
 
+class Colour
+{
+public:
+	int r;
+	int g;
+	int b;
+	int a;
+	Colour() {r=g=b=a=255;};
+	Colour(int R, int G, int B) {r=R; g = G; b = B; a = 255;};
+	Colour(int R, int G, int B, int A) {r=R; g = G; b = B; a = A;};
+	Colour(const Colour& col) {r = col.r; g = col.g; b = col.b; a = col.a;};
+};
+
 enum RenderGroup
 {
 	RENDERGROUP_BACKGROUND, //Draw first
@@ -31,7 +44,7 @@ private:
 	float mNextThink;
 	float mLastThink;
 	std::string mClassName; //The class name of the entity eg "player"
-
+	Colour mColour;
 	Sprite* mSprite;
 protected:
 	PhysicsDef *mPhysObj; //Pointer to the physics object for this entity (NOT NECCESSARILY VALID)
@@ -99,6 +112,8 @@ public:
 	bool IsRenderable() {return mIsRenderable;};
 	void SetDrawOrder(RenderGroup o) {mDrawOrder = o;};
 	RenderGroup GetDrawOrder() {return mDrawOrder;};
+	void SetColor(Colour col) {mColour = col;};
+	Colour GetColor() {return mColour;};
 
 	//IO
 	void Fire(const char* Name, VariantMap &Data);
