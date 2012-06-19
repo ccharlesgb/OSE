@@ -18,7 +18,7 @@ void sCamera::UpdateView()
 	{
 		mTargetPos = mTarget->GetPos();
 	}
-	if (mZoomDamping = 0)
+	if (mZoomDamping == 0)
 	{
 		mZoom = mTargetZoom;
 	}
