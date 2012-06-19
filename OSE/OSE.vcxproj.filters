@@ -16,153 +16,153 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="BaseObject.cpp">
+    <ClCompile Include="Engine\BaseDrawable.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="BasePhysics.cpp">
+    <ClCompile Include="Engine\BaseObject.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
+    <ClCompile Include="Engine\BasePhysics.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="DebugDraw.cpp">
+    <ClCompile Include="Engine\Camera.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="EntityCreator.cpp">
+    <ClCompile Include="Engine\DebugDraw.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="EntityListGlobal.cpp">
+    <ClCompile Include="Engine\EntityCreator.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="GameGlobals.cpp">
+    <ClCompile Include="Engine\EntityListGlobal.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="IGameState.cpp">
+    <ClCompile Include="Engine\GameGlobals.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="InputHandler.cpp">
+    <ClCompile Include="Engine\IGameState.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="MainGameState.cpp">
+    <ClCompile Include="Engine\InputHandler.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="PhysicsDef.cpp">
+    <ClCompile Include="Engine\VariantMap.cpp">
+      <Filter>Engine\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Vector2.cpp">
+      <Filter>Engine\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\StateManager.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Renderer.cpp">
+    <ClCompile Include="Engine\Sprite.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="StateManager.cpp">
+    <ClCompile Include="Engine\Renderer.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
+    <ClCompile Include="Engine\Randomiser.cpp">
+      <Filter>Engine\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\MathUtils.cpp">
+      <Filter>Engine\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Matrix3.cpp">
+      <Filter>Engine\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\PhysicsDef.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\main.cpp" />
+    <ClCompile Include="Game\MainGameState.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Map.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Prop.cpp">
+    <ClCompile Include="Game\Player.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="MathUtils.cpp">
-      <Filter>Engine\Utility</Filter>
-    </ClCompile>
-    <ClCompile Include="Matrix3.cpp">
-      <Filter>Engine\Utility</Filter>
-    </ClCompile>
-    <ClCompile Include="Randomiser.cpp">
-      <Filter>Engine\Utility</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector2.cpp">
-      <Filter>Engine\Utility</Filter>
-    </ClCompile>
-    <ClCompile Include="VariantMap.cpp">
-      <Filter>Engine\Utility</Filter>
-    </ClCompile>
-    <ClCompile Include="BaseDrawable.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Map.cpp">
+    <ClCompile Include="Game\Prop.cpp">
       <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameGlobals.h">
+    <ClInclude Include="Engine\InputHandler.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="BaseObject.h">
+    <ClInclude Include="Engine\BaseDrawable.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="BasePhysics.h">
+    <ClInclude Include="Engine\BaseObject.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
+    <ClInclude Include="Engine\BasePhysics.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="DebugDraw.h">
+    <ClInclude Include="Engine\Camera.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="EntityCreator.h">
+    <ClInclude Include="Engine\DebugDraw.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="EntityList.h">
+    <ClInclude Include="Engine\EntityCreator.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="EntityListGlobal.h">
+    <ClInclude Include="Engine\EntityList.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="InputHandler.h">
+    <ClInclude Include="Engine\EntityListGlobal.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="IGameState.h">
+    <ClInclude Include="Engine\GameGlobals.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="MainGameState.h">
+    <ClInclude Include="Engine\IGameState.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="PhysicsDef.h">
+    <ClInclude Include="Engine\Vector2.h">
+      <Filter>Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\VariantMap.h">
+      <Filter>Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\StateManager.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Renderer.h">
+    <ClInclude Include="Engine\Sprite.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="StateManager.h">
+    <ClInclude Include="Engine\Renderer.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
+    <ClInclude Include="Engine\Randomiser.h">
+      <Filter>Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\MathUtils.h">
+      <Filter>Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Matrix3.hpp">
+      <Filter>Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\PhysicsDef.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Prop.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="Prop.h">
+    <ClInclude Include="Game\MainGameState.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Map.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="MathUtils.h">
-      <Filter>Engine\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="Matrix3.hpp">
-      <Filter>Engine\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="Randomiser.h">
-      <Filter>Engine\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector2.h">
-      <Filter>Engine\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="VariantMap.h">
-      <Filter>Engine\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="BaseDrawable.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Sprite.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Map.h">
+    <ClInclude Include="Game\Player.h">
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Matrix3.inl">
+    <None Include="Engine\Matrix3.inl">
       <Filter>Engine\Utility</Filter>
     </None>
   </ItemGroup>

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "igamestate.h"
+#include "../Engine/IGameState.h"
 #include "Box2d.h"
-#include "PhysicsDef.h"
+#include "../Engine/PhysicsDef.h"
 
 class MainGameState : public IGameState , public b2ContactListener
 {

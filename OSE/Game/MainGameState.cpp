@@ -1,11 +1,11 @@
 #include "MainGameState.h"
-#include "BaseObject.h"
-#include "VariantMap.h"
-#include "Camera.h"
-#include "BasePhysics.h"
-#include "PhysicsDef.h"
-#include "GameGlobals.h"
-#include "InputHandler.h"
+#include "../Engine/BaseObject.h"
+#include "../Engine/VariantMap.h"
+#include "../Engine/Camera.h"
+#include "../Engine/BasePhysics.h"
+#include "../Engine/PhysicsDef.h"
+#include "../Engine/GameGlobals.h"
+#include "../Engine/InputHandler.h"
 
 #define VelIterations 8
 #define PosIterations 3
