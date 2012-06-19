@@ -90,6 +90,7 @@
     <ClCompile Include="GameGlobals.cpp" />
     <ClCompile Include="IGameState.cpp" />
     <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="PhysicsDef.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -115,6 +116,7 @@
     <ClInclude Include="GameGlobals.h" />
     <ClInclude Include="IGameState.h" />
     <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="PhysicsDef.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Sprite.h" />

@@ -79,6 +79,7 @@
     </ClCompile>
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="BaseDrawable.cpp" />
+    <ClCompile Include="Map.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameGlobals.h">
@@ -146,6 +147,7 @@
     </ClInclude>
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="BaseDrawable.h" />
+    <ClInclude Include="Map.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Matrix3.inl">
