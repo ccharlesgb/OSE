@@ -54,7 +54,6 @@ void MainGameState::Initialize()
 {
 	Map = CreateEntity("world");
 	Map->Spawn();
-	std::cout << "hai";
 	
 	mWorld = new b2World(b2Vec2(0.f,0.f), true);
 	mWorld->SetContactListener(this);
@@ -124,7 +123,7 @@ void MainGameState::OnEvent(sf::Event &Event)
 		float fac = 1.f;
 		fac = 1.f + (del / 5.f);
 		float zoom = sCamera::GetZoom() * fac;
-		zoom = ig::Limit(zoom, 1.4, 60.f);
+		zoom = ig::Limit(zoom, 1, 30.f);
 		sCamera::SetZoom(zoom);
 	}
 }

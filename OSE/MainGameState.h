@@ -40,7 +40,7 @@ public:
 		EntA->StartTouch(&info);
 		info.OtherEnt = EntA;
 		EntB->StartTouch(&info);
-		std::cout << "Collsion between: " << EntA->GetClassName() << " and : " << EntB->GetClassName() << "\n";
+		//std::cout << "Collsion between: " << EntA->GetClassName() << " and : " << EntB->GetClassName() << "\n";
 	}
 
  

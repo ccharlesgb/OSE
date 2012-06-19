@@ -81,7 +81,6 @@ void Renderer::OnEntityAdded(BaseObject* ent)
 {
 	if (ent->IsRenderable())
 	{
-		std::cout << "Entity Added to Renderer: " << ent->GetClassName() << "\n";
 		AddEntity(ent);
 	}
 	//BaseRender* render = ent->GetRenderer();

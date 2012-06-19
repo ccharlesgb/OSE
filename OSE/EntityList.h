@@ -181,7 +181,6 @@ template<class T>
 void EntityList<T>::DeleteCurrent()
 {
 	//Inform Listeners
-	std::cout << "Deleting: " << (*mIter)->GetClassName() << " Index: " << &mIter << "\n";
 	typename std::vector<IEntityListener<T>*>::iterator i;
 	i = mListeners.begin();
 	while (i != mListeners.end())

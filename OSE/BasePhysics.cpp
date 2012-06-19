@@ -42,7 +42,7 @@ void BasePhysics::PhysicsHullFromModel()
 				x = atoi(X_COORD.c_str());
 				y = atoi(Y_COORD.c_str());
 				shape.AddVertex(Vector2(x * mScale.x,y * mScale.y));
-				std::cout << "ADDING VERTEX: " << x << " " << y << "\n";
+				//std::cout << "ADDING VERTEX: " << x << " " << y << "\n";
 			}
 		}
 		myfile.close();
@@ -67,7 +67,6 @@ void BasePhysics::Tick()
 
 BasePhysics::~BasePhysics(void)
 {
-	std::cout << "DELETING BAESPHYSICS\n";
 	if (mIsPhysics)
 		delete GetPhysObj();
 }
