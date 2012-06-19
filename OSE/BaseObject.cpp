@@ -17,7 +17,9 @@ BaseObject::BaseObject(void)
 BaseObject::~BaseObject(void)
 {
 	Inputs.clear();
-	delete mSprite;
+	if (strlen(mModel) != 0) {
+		delete mSprite;
+	}
 }
 
 BaseObject* BaseObject::CreateEntity(const char* classname)

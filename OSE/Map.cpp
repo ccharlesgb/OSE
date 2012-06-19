@@ -13,13 +13,13 @@ Map::Map(void)
 	RenderInit();
 	SetDrawOrder(RENDERGROUP_BACKGROUND);
 	
-	mSprite = new Sprite(gGlobals.RenderWindow);
-	mSprite->SetTexture("grass1");
+	mBackground = new Sprite(gGlobals.RenderWindow);
+	mBackground->SetTexture("grass1");
 }
 
 Map::~Map(void)
 {
-
+	delete mBackground;
 }
 
 void Map::Think()
@@ -39,8 +39,8 @@ void Map::Draw()
 	{
 		for (int y=-arr_size;y <= arr_size; y++)
 		{
-			mSprite->SetPosition(Vector2(x * TEXTURE_SIZE, y * TEXTURE_SIZE));
-			mSprite->Draw();
+			mBackground->SetPosition(Vector2(x * TEXTURE_SIZE, y * TEXTURE_SIZE));
+			mBackground->Draw();
 		}
 	}
 }

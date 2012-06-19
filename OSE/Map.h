@@ -10,7 +10,7 @@
 class Map : public BaseObject
 {
 private:
-	Sprite* mSprite;
+	Sprite* mBackground;
 public:
 	Map(void);
 	~Map(void);
