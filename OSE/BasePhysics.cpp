@@ -51,8 +51,6 @@ void BasePhysics::PhysicsHullFromModel()
 		}
 		myfile.close();
 		GetPhysObj()->AddPhysicsShape(&shape);
-		GetPhysObj()->SetAngularDamping(1);
-		GetPhysObj()->SetLinearDamping(1);
 	}
 	else
 	{

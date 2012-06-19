@@ -27,7 +27,7 @@ void Player::Spawn()
 	//GetPhysObj()->AddPhysicsShape(shape); //Add it to our physics object (They support multipe shapes!)
 
 	GetPhysObj()->SetAngularDamping(7);
-	GetPhysObj()->SetLinearDamping(10);
+	GetPhysObj()->SetLinearDamping(20);
 
 	SetModel("player");
 	PhysicsHullFromModel();
@@ -57,7 +57,7 @@ void Player::Think()
 
 	Vector2 MousePos = InputHandler::GetMousePosWorld();
 	Vector2 MouseDirHat = (MousePos - GetPos()).Normalize();
-	SetAngle(ig::RadToDeg(-std::atan2(MouseDirHat.y, MouseDirHat.x)) - 90.f);
+	SetAngle(ig::RadToDeg(std::atan2(MouseDirHat.y, MouseDirHat.x)) - 90.f);
 
 	Vector2 MoveVector;
 	if (InputHandler::IsKeyPressed(sf::Keyboard::W))
