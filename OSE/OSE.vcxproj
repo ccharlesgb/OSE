@@ -90,6 +90,7 @@
     <ClCompile Include="Engine\GameGlobals.cpp" />
     <ClCompile Include="Engine\IGameState.cpp" />
     <ClCompile Include="Engine\InputHandler.cpp" />
+    <ClCompile Include="Engine\Resource.cpp" />
     <ClCompile Include="Game\Map.cpp" />
     <ClCompile Include="Engine\PhysicsDef.cpp" />
     <ClCompile Include="Engine\Renderer.cpp" />
@@ -116,6 +117,7 @@
     <ClInclude Include="Engine\GameGlobals.h" />
     <ClInclude Include="Engine\IGameState.h" />
     <ClInclude Include="Engine\InputHandler.h" />
+    <ClInclude Include="engine\resource.h" />
     <ClInclude Include="Game\Map.h" />
     <ClInclude Include="Engine\PhysicsDef.h" />
     <ClInclude Include="Engine\Renderer.h" />

@@ -1,7 +1,6 @@
 #include "Map.h"
-#include "Camera.h"
-#include "GameGlobals.h"
-#include "Sprite.h"
+#include "../Engine/GameGlobals.h"
+#include "../Engine/Sprite.h"
 
 
 LINKCLASSTONAME("world", Map)

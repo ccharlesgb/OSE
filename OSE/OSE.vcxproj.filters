@@ -86,6 +86,7 @@
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Engine\Resource.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\InputHandler.h">
@@ -160,6 +161,7 @@
     <ClInclude Include="Game\Player.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="engine\resource.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Matrix3.inl">

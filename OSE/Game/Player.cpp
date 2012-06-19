@@ -1,7 +1,7 @@
 #include "Player.h"
 #include <iostream>
-#include "InputHandler.h"
-#include "GameGlobals.h"
+#include "../Engine/InputHandler.h"
+#include "../Engine/GameGlobals.h"
 
 //This function registers the entity to the EntityCreator.
 //"player" is the classname. Player is the coded classname
