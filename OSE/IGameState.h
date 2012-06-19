@@ -61,7 +61,7 @@ public:
 template<class T>
 struct RegisterState
 {
-	RegisterState(char* name)
+	RegisterState(const char* name)
 	{
 		BaseStateFactory* F = new StateFactory<T>;
 		STATEMANAGER->RegisterState(std::string(name), F);
