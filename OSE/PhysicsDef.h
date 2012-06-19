@@ -68,7 +68,7 @@ public:
 	PhysicsDef(void);
 	~PhysicsDef(void);
 
-	void PhysicsDef::SetPos(float x, float y) 
+	void SetPos(float x, float y) 
 	{
 		SetPos(Vector2(x,y));
 	};
