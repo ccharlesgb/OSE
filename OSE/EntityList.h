@@ -231,7 +231,7 @@ template<class T>
 T EntityList<T>::NextEnt()
 {
 	mIter++;
-	if (mIter == mList.end())
+	if (mIter >= mList.end())
 	{
 		mCurIsValid = false;
 		return NULL;

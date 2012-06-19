@@ -68,14 +68,12 @@ void IGameState::_Tick()
 	BaseObject* CurEnt = gGlobals.gEntList.FirstEnt();
 	while(gGlobals.gEntList.CurrentIsValid())
 	{
-		//VERY BROKEN :<
 		if (CurEnt->FlaggedForDeletion() == true)
 		{
 			_OnEntityDeleted(CurEnt);
 			gGlobals.gEntList.DeleteCurrent();
 			CurEnt = gGlobals.gEntList.CurrentEnt();
 		}
-		std::cout << CurEnt << "\n";
 		if (gGlobals.gEntList.CurrentIsValid())
 		{
 			CurEnt->Tick();
