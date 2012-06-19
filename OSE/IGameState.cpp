@@ -62,8 +62,8 @@ NOTES	: Internal tick function. Called every frame by statemanager
 */
 void IGameState::_Tick()
 {
-	gGlobals.CurTime = gGlobals.RealTime - mStartTime;
-	Tick();
+	gGlobals.CurTime = gGlobals.RealTime - mStartTime; //Update CurTime
+	Tick(); //Tick the current derived game state
 
 	BaseObject* CurEnt = gGlobals.gEntList.FirstEnt();
 	while(gGlobals.gEntList.CurrentIsValid())
