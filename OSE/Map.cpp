@@ -1,7 +1,7 @@
 #include "Map.h"
 #include "Camera.h"
 #include "GameGlobals.h"
-#include "ResourcePath.hpp"
+#include "Sprite.h"
 
 
 LINKCLASSTONAME("world", Map)
@@ -10,11 +10,27 @@ LINKCLASSTONAME("world", Map)
 
 Map::Map(void)
 {
+	RenderInit();
+	int x = 1;
+	int y = 1;
+	//for (int x=-10;x <= 10; x++)
+	//{
+	//	for (int y=-10;y <= 10; y++)
+	//	{
+			Sprite s = *new Sprite(gGlobals.RenderWindow);
+			s.SetTexture("grass1");
+			s.SetPosition(Vector2(x * TEXTURE_SIZE, y * TEXTURE_SIZE));
+			mSprites.push_back(s);
+	//	}
+	//}
+	
+	/*
 	SetPos(Vector2(-TEXTURE_SIZE / 2.f,TEXTURE_SIZE / 2.f));
 	SetRenderType(RENDER_CUSTOM);
 	SetRenderer(new MapRender);
 	InitRenderer();
 	GetRenderer()->SetDrawOrder(RENDERGROUP_BACKGROUND);
+	*/
 }
 
 Map::~Map(void)
@@ -24,13 +40,23 @@ Map::~Map(void)
 
 void Map::Think()
 {
-
+	
 }
 
 void Map::Spawn()
 {
 
 }
+
+void Map::Draw()
+{
+	for(unsigned int i = 0; i < mSprites.size(); i++)
+	{
+		mSprites[i].Draw();
+	}
+}
+
+/*
 
 MapRender::MapRender()
 {
@@ -62,3 +88,4 @@ MapRender::~MapRender()
 {
 
 }
+*/

@@ -52,6 +52,10 @@ NOTES	: Create default entities, generate the map (eg solar systems)
 */
 void MainGameState::Initialize()
 {
+	Map = CreateEntity("world");
+	Map->Spawn();
+	std::cout << "hai";
+	
 	mWorld = new b2World(b2Vec2(0.f,0.f), true);
 	Player = CreateEntity("player");
 	Player->Spawn();
