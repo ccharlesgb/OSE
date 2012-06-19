@@ -44,7 +44,7 @@ BaseObject* EntityCreator::CreateEntity(const char* ID)
 	return NULL;
 }
 
-void EntityCreator::RegisterEntity(char* &ID, BaseRenderableFactory* F)
+void EntityCreator::RegisterEntity(const char* &ID, BaseRenderableFactory* F)
 {
 	std::cout << "Registering: " << ID << "\n";
 	FactoryMap[ID] = F;

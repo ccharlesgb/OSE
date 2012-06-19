@@ -119,7 +119,7 @@ public:
 template<class T>
 struct RegisterEnt
 {
-	RegisterEnt(char* name)
+	RegisterEnt(const char* name)
 	{
 		BaseRenderableFactory* F = new EntityFactory<T>;
 		ENTITYCREATOR->RegisterEntity(name, F);

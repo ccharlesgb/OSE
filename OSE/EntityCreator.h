@@ -29,6 +29,6 @@ public:
 	EntityCreator(void);
 	~EntityCreator();
 	BaseObject* CreateEntity(const char* ID);
-	void RegisterEntity(char* &ID, BaseRenderableFactory* F);
+	void RegisterEntity(const char* &ID, BaseRenderableFactory* F);
 };
 
