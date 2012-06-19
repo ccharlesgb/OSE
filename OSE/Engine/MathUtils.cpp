@@ -43,7 +43,7 @@ float NormalizeAngle(float Deg)
 
 float Approach(float Current, float Target, float Inc)
 {
-	Inc = abs(Inc);
+	Inc = fabs(Inc);
 
 	if (Current < Target)
 	{
