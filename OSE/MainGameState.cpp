@@ -124,7 +124,7 @@ void MainGameState::OnEvent(sf::Event &Event)
 		float fac = 1.f;
 		fac = 1.f + (del / 5.f);
 		float zoom = sCamera::GetZoom() * fac;
-		zoom = ig::Limit(zoom, 1, 5.f);
+		zoom = ig::Limit(zoom, 1, 3.f);
 		sCamera::SetZoom(zoom);
 	}
 }
@@ -160,13 +160,13 @@ void MainGameState::OnKeyPressed(sf::Keyboard::Key Key, bool Pressed)
 		crate->SetPos(InputHandler::GetMousePosWorld());
 		crate->Spawn();
 	}
-	if (Pressed && Key == sf::Keyboard::LBracket)
+	if (Pressed && Key == sf::Keyboard::O)
 	{
-		sCamera::SetZoom(ig::Limit(sCamera::GetZoom() + 1, 1, 5));
+		sCamera::SetZoom(ig::Limit(sCamera::GetZoom() + 0.5, 1, 3));
 	}
-	if (Pressed && Key == sf::Keyboard::RBracket)
+	if (Pressed && Key == sf::Keyboard::L)
 	{
-		sCamera::SetZoom(ig::Limit(sCamera::GetZoom() - 1, 1, 5));
+		sCamera::SetZoom(ig::Limit(sCamera::GetZoom() - 0.5, 1, 3));
 	}
 }
 
