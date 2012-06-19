@@ -69,15 +69,15 @@ public:
 		if (mClassName == "ERROR") //Only do this once!
 			mClassName = ID;
 	};
-	const std::string GetClassName() {return mClassName;};
+	std::string GetClassName() {return mClassName;};
 
-	const Matrix3 GetMatrix();
-	const Vector2 ToGlobal(Vector2 &point);
-	const Vector2 ToLocal(Vector2 &point);
+	Matrix3 GetMatrix();
+	Vector2 ToGlobal(Vector2 &point);
+	Vector2 ToLocal(Vector2 &point);
 
 	virtual void SetPos(Vector2 p) {mPosition = p; mMatrixNeedsUpdate = true;};
 	void SetPos(float x, float y) {SetPos(Vector2(x,y)); mMatrixNeedsUpdate = true;};
-	const Vector2 GetPos() {return mPosition;};
+	Vector2 GetPos() {return mPosition;};
 
 	void SetOrigin(Vector2 Or) {mOrigin = Or; mMatrixNeedsUpdate = true;};
 	Vector2 GetOrigin() {return mOrigin;};

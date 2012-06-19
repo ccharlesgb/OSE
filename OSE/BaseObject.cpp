@@ -28,7 +28,7 @@ BaseObject* BaseObject::CreateEntity(const char* classname)
 	return ent;
 }
 
-const Matrix3 BaseObject::GetMatrix()
+Matrix3 BaseObject::GetMatrix()
 {
 	 if (mMatrixNeedsUpdate)
 	 {
@@ -38,12 +38,12 @@ const Matrix3 BaseObject::GetMatrix()
 	 return mMatrix;
 }
 
-const Vector2 BaseObject::ToGlobal(Vector2 &point)
+Vector2 BaseObject::ToGlobal(Vector2 &point)
 {
 	return GetMatrix().Transform(point.SF());
 }
 
-const Vector2 BaseObject::ToLocal(Vector2 &point)
+Vector2 BaseObject::ToLocal(Vector2 &point)
 {
 	return GetMatrix().GetInverse().Transform(point.SF());
 }

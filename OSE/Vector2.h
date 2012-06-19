@@ -19,23 +19,23 @@ public:
 
 	Vector2& operator = (const Vector2 &param);
 	Vector2& operator = (const sf::Vector2f &param);
-	Vector2 operator + (const Vector2);
-	Vector2 operator - (const Vector2);
-	Vector2 operator * (const float);
-	Vector2 operator / (const float);
+	Vector2 operator + (Vector2);
+	Vector2 operator - (Vector2);
+	Vector2 operator * (float);
+	Vector2 operator / (float);
 	bool operator==(const Vector2 &other) const;
 	sf::Vector2f SF() {return sf::Vector2f(x,y);};
 	b2Vec2 B2() {return b2Vec2(x,y);};
 
-	static Vector2 Random(const float min, const float max); //return random vector
-	float Dot(const Vector2 two);
-	float Cross(const Vector2 two);
+	static Vector2 Random(float min, float max); //return random vector
+	float Dot(Vector2 two);
+	float Cross(Vector2 two);
 	float Length();
 	float LengthSquared();
 
-	Vector2 Rotate(const float deg);
-	Vector2 Rotate(const float deg, const Vector2& origin);
-	Vector2 Approach(const Vector2 &targ, const float rate);
+	Vector2 Rotate(float deg);
+	Vector2 Rotate(float deg, Vector2& origin);
+	Vector2 Approach(Vector2 &targ, float rate);
 	Vector2 Normalize();
 	Vector2 Normal();
 };
