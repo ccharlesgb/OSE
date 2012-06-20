@@ -27,11 +27,11 @@ void Player::Spawn()
 	//shape->mDensity = 1.f;
 	//GetPhysObj()->AddPhysicsShape(shape); //Add it to our physics object (They support multipe shapes!)
 
-	GetPhysObj()->SetAngularDamping(7);
+	GetPhysObj()->SetAngularDamping(25);
 	GetPhysObj()->SetLinearDamping(10);
 
 	SetModel("player");
-	SetOrigin(Vector2(0,12));
+	SetOrigin(Vector2(0,15));
 	PhysicsHullFromModel();
 }
 
@@ -60,7 +60,7 @@ void Player::Think()
 	Vector2 MousePos = InputHandler::GetMousePosWorld();
 	Vector2 MouseDirHat = (MousePos - GetPos()).Normalize();
 	float TargetAngle = ig::RadToDeg(std::atan2(MouseDirHat.y, MouseDirHat.x)) - 90.f;
-	//GetPhysObj()->ApplyTorque(1.f);
+	GetPhysObj()->ApplyTorque(ig::NormalizeAngle(TargetAngle - GetAngle()) * GetPhysObj()->GetMass());
 	//SetAngle(GetPhysObj()->GetAngle());
 	//SetAngle(TargetAngle);
 

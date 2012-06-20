@@ -59,8 +59,8 @@ void BasePhysics::Tick()
 {
 	if (mPhysObj != NULL)
 	{
-		mPosition = mPhysObj->GetPos();
-		mAngle = mPhysObj->GetAngle();
+		SetPos(mPhysObj->GetPos());
+		SetAngle(mPhysObj->GetAngle());
 	}
 	BaseObject::Tick();
 }
