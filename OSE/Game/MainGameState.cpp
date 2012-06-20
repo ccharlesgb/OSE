@@ -57,6 +57,10 @@ void MainGameState::Initialize()
 	sCamera::SetDamping(0);
 	sCamera::SetZoom(1.5);
 	sCamera::SetZoomDamping(0.2);
+	
+	BaseObject* Ship = CreateEntity("ship");
+	Ship->SetPos(Vector2(100, 0));
+	Ship->Spawn();
 }
 
 /*
