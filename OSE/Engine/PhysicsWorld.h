@@ -20,9 +20,7 @@ public:
 
     bool ReportFixture(b2Fixture* fixture)
     {
-       // if (fixture->IsSensor()) return true; //ignore sensors
-
-		std::cout << "Fixture: " << fixture << "\n";
+        if (fixture->IsSensor()) return true; //ignore sensors
         bool inside = fixture->TestPoint(m_point);
         if (inside)
         {

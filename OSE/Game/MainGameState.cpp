@@ -166,7 +166,8 @@ void MainGameState::OnMouseButtonPressed(sf::Mouse::Button Button, bool Pressed)
 		BaseObject* MouseEnt = mPhysicsWorld.QueryPoint(InputHandler::GetMousePosWorld());
 		if (MouseEnt)
 		{
-			MouseEnt->Delete();
+			if (MouseEnt->GetClassName() != "player")
+				MouseEnt->Delete();
 		}
 	}
 	if (Pressed && Button == sf::Mouse::Button::Left)
