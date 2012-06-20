@@ -3,7 +3,6 @@
 
 Sprite::Sprite(sf::RenderWindow *rend) : BaseDrawable(rend)
 {
-
 }
 
 Sprite::~Sprite(void)
