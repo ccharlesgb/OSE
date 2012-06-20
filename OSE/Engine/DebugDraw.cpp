@@ -54,11 +54,13 @@ void DebugDraw::DrawSolidCircle(const b2Vec2& center, float32 radius, const b2Ve
 } 
 void DebugDraw::DrawSegment(const b2Vec2& p1, const b2Vec2& p2, const b2Color& color) 
 { 
-	//Vector2 pos1 = RENDERER->GameToSFML(p1);
-	//Vector2 pos2 = RENDERER->GameToSFML(p2);
-	//sf::
-	//sf::Shape Line = sf::Shape::Line(pos1.x, pos1.y, pos2.x, pos2.y, 1.f, sf::Color(color.r*255, color.g*255, color.b*255)); 
-	//pRender->Draw(Line); 
+	std::cout << "Segment\n";
+	Vector2 pos1 = RENDERER->GameToSFML(p1);
+	Vector2 pos2 = RENDERER->GameToSFML(p2);
+	sf::VertexArray lines(sf::LinesStrip, 2);
+	lines[0].position = pos1.SF();
+	lines[1].position = pos2.SF();
+	pRender->draw(lines);
 } 
 void DebugDraw::DrawTransform(const b2Transform& xf) 
 { 

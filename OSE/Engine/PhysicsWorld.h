@@ -6,9 +6,10 @@
 #include "../Engine/GameGlobals.h"
 #include "../Engine/Utilities/Vector2.h"
 
-#define VelIterations 8
+#define VelIterations 5
 #define PosIterations 3
 
+//Callback class to return the first body in a AABB Query
 class QueryCallback : public b2QueryCallback
 {
 public:
@@ -37,6 +38,7 @@ public:
     b2Body* m_object;
 };
 
+//Wrapper Class for b2World. Put ALL physics related stuff here
 class PhysicsWorld : public b2ContactListener
 {
 private:
@@ -67,9 +69,14 @@ public:
 		BaseObject* EntB = static_cast<BaseObject*>(bodyB->GetUserData());
 		CollisionInfo info;
 		info.OtherEnt = EntB;
-		EntA->StartTouch(&info);
+		//EntA->StartTouch(&info);
 		info.OtherEnt = EntA;
-		EntB->StartTouch(&info);
+		//EntB->StartTouch(&info);
+		b2WeldJointDef joint;
+		std::cout << "A: " << bodyA << " B: " << bodyB << "\n";
+		joint.Initialize(bodyA, bodyB, bodyA->GetPosition());
+		mWorld->CreateJoint(&joint);
+		std::cout << mWorld->GetJointCount() << "\n";
 	}
 
 	void EndContact(b2Contact* contact)
