@@ -94,11 +94,11 @@ void MainGameState::Tick()
 
 	if (mLastPhysics == -1)
 		mLastPhysics = gGlobals.RealTime;
-	if (mLastPhysics + GetDelta() < gGlobals.RealTime)
+	if (mLastPhysics + GetDelta() < gGlobals.CurTime)
 	{
-		float delta = gGlobals.RealTime - mLastPhysics;
+		float delta = gGlobals.CurTime - mLastPhysics;
 		mPhysicsWorld.Step(delta);
-		mLastPhysics = gGlobals.RealTime;
+		mLastPhysics = gGlobals.CurTime;
 	}
 }
 

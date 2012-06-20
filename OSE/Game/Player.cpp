@@ -17,16 +17,6 @@ Player::Player(void)
 
 void Player::Spawn()
 {
-	float player_size = 30.f;
-	float width = 25;
-	float height = 30;
-
-	//Declare the physics object
-	//CircleShape* shape = new CircleShape;
-	//shape->mRadius = player_size;
-	//shape->mDensity = 1.f;
-	//GetPhysObj()->AddPhysicsShape(shape); //Add it to our physics object (They support multipe shapes!)
-
 	GetPhysObj()->SetAngularDamping(25);
 	GetPhysObj()->SetLinearDamping(10);
 
@@ -48,14 +38,7 @@ void Player::DefinePhysics()
 void Player::Think()
 {	
 	//Player movement code
-	float rot = ig::NormalizeAngle(GetAngle());
-
 	float player_walk_speed = 70.f;
-	float player_strafe_speed = 40.f;
-
-	double x,y;
-	x = sin(ig::DegToRad(rot));
-	y = cos(ig::DegToRad(rot));
 
 	Vector2 MousePos = InputHandler::GetMousePosWorld();
 	Vector2 MouseDirHat = (MousePos - GetPos()).Normalize();
