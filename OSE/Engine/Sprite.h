@@ -7,7 +7,6 @@ class Sprite : public BaseDrawable
 {
 private:
 	sf::Sprite mSprite;
-	sf::Texture mTexture; //This shouldn't be here
 public:
 	Sprite(sf::RenderWindow *rend);
 	~Sprite(void);
@@ -18,7 +17,7 @@ public:
 		size.y = mSprite.getTexture()->getSize().y;
 		return size;
 	};
-	Vector2 GetTextureCentre() {return Vector2(mTexture.getSize().x / 2, mTexture.getSize().y / 2);};
+	Vector2 GetTextureCentre() {return Vector2(mSprite.getTexture()->getSize().x / 2, mSprite.getTexture()->getSize().y / 2);};
 	void Draw();
 	void SetTexture(const char* path);
 };
