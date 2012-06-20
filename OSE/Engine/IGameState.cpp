@@ -73,11 +73,9 @@ void IGameState::_Tick()
 			_OnEntityDeleted(CurEnt);
 			gGlobals.gEntList.DeleteCurrent();
 			CurEnt = gGlobals.gEntList.CurrentEnt();
+			continue;
 		}
-		if (gGlobals.gEntList.CurrentIsValid())
-		{
-			CurEnt->Tick();
-		}
+		CurEnt->Tick();
 		CurEnt = gGlobals.gEntList.NextEnt();
 	}
 }
