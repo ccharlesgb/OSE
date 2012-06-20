@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../Engine/IGameState.h"
-#include <Box2d.h>
 #include "../Engine/PhysicsWorld.h"
 
 class MainGameState : public IGameState

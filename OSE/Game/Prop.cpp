@@ -20,7 +20,6 @@ void Prop::SetSprite(BaseObject* ent, VariantMap &Data)
 	me->mPath = Data.ReadString("path");
 }
 
-
 void Prop::Spawn()
 {
 	GetPhysObj()->SetAngularDamping(7);
