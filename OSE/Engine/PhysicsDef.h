@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "Vector2.h"
+#include "Utilities/Vector2.h"
 #include <Box2D.h>
 
 #define PIXELS_PER_METRE 64.f

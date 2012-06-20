@@ -1,11 +1,11 @@
 #pragma once
-#include "MathUtils.h"
-#include "VariantMap.h"
+#include "Utilities/MathUtils.h"
+#include "Utilities/VariantMap.h"
 #include <iostream>
 #include "EntityCreator.h"
-#include "Vector2.h"
+#include "Utilities/Vector2.h"
 #include "SFML/Graphics.hpp"
-#include "Matrix3.hpp"
+#include "Utilities/Matrix3.hpp"
 #include "Sprite.h"
 
 class PhysicsDef;

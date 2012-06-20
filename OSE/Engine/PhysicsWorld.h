@@ -4,7 +4,7 @@
 #include "../Engine/PhysicsDef.h"
 #include "../Engine/BaseObject.h"
 #include "../Engine/GameGlobals.h"
-#include "../Engine/Vector2.h"
+#include "../Engine/Utilities/Vector2.h"
 
 #define VelIterations 8
 #define PosIterations 3

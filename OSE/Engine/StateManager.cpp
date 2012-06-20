@@ -2,7 +2,7 @@
 #include "IGameState.h"
 #include "Renderer.h"
 #include "GameGlobals.h"
-#include "MathUtils.h"
+#include "Utilities/MathUtils.h"
 #include "InputHandler.h"
 
 StateManager* Inst3 = NULL;

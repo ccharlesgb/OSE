@@ -1,6 +1,6 @@
 #include "MainGameState.h"
 #include "../Engine/BaseObject.h"
-#include "../Engine/VariantMap.h"
+#include "../Engine/Utilities/VariantMap.h"
 #include "../Engine/Camera.h"
 #include "../Engine/BasePhysics.h"
 #include "../Engine/PhysicsDef.h"

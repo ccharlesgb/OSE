@@ -7,7 +7,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "Engine/StateManager.h"
-#include "Engine/MathUtils.h"
+#include "Engine/Utilities/MathUtils.h"
 
 #ifdef __APPLE__
 #include "CoreFoundation/CoreFoundation.h"

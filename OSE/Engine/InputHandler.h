@@ -2,7 +2,7 @@
 
 #include "SFML/Window.hpp"
 #include "SFML/Graphics.hpp"
-#include "Vector2.h"
+#include "Utilities/Vector2.h"
 
 class InputHandler
 {
