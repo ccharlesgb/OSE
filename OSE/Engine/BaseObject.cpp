@@ -8,6 +8,7 @@ BaseObject::BaseObject(void)
 	mClassName = "ERROR";
 	mModel = "";
 	mIsRenderable = false;
+	mIsPhysics = false;
 	mNextThink = 0.f;
 	mLastThink = 0.f;
 	mDeleteMe = false;

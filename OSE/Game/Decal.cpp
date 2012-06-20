@@ -9,11 +9,12 @@ Decal::Decal(void)
 	
 	RenderInit();
 	SetDrawOrder(RENDERGROUP_ENTITIES);
+	
 }
 
 void Decal::Spawn()
 {
-	
+	std::cout << "DECAL PHYS " << mIsPhysics << "\n";
 }
 
 Decal::~Decal(void)

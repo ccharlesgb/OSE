@@ -5,11 +5,11 @@
 BasePhysics::BasePhysics(void)
 {
 	mPhysObj = NULL;
-	mIsPhysics=true;
 }
 
 void BasePhysics::PhysicsInit(BODY_TYPE typ)
 {
+	mIsPhysics = true;
 	mPhysObj = new PhysicsDef;
 	mPhysObj->SetOwner(this);
 	mPhysObj->SetPos(GetPos());

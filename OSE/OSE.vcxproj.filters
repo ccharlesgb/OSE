@@ -11,9 +11,6 @@
     <Filter Include="Game">
       <UniqueIdentifier>{d3b9b4dd-7134-409d-9893-4b0e1afed9b7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Utility">
-      <UniqueIdentifier>{8d86208a-a217-4dde-b236-12c85082c2ad}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\BaseDrawable.cpp">
@@ -46,12 +43,6 @@
     <ClCompile Include="Engine\InputHandler.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\VariantMap.cpp">
-      <Filter>Engine\Utility</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Vector2.cpp">
-      <Filter>Engine\Utility</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\StateManager.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
@@ -60,15 +51,6 @@
     </ClCompile>
     <ClCompile Include="Engine\Renderer.cpp">
       <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Randomiser.cpp">
-      <Filter>Engine\Utility</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\MathUtils.cpp">
-      <Filter>Engine\Utility</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Matrix3.cpp">
-      <Filter>Engine\Utility</Filter>
     </ClCompile>
     <ClCompile Include="Engine\PhysicsDef.cpp">
       <Filter>Engine</Filter>
@@ -88,6 +70,12 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Engine\Resource.cpp" />
     <ClCompile Include="Engine\PhysicsWorld.cpp" />
+    <ClCompile Include="Engine\Utilities\MathUtils.cpp" />
+    <ClCompile Include="Engine\Utilities\Matrix3.cpp" />
+    <ClCompile Include="Engine\Utilities\Randomiser.cpp" />
+    <ClCompile Include="Engine\Utilities\VariantMap.cpp" />
+    <ClCompile Include="Engine\Utilities\Vector2.cpp" />
+    <ClCompile Include="Game\Decal.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\InputHandler.h">
@@ -123,12 +111,6 @@
     <ClInclude Include="Engine\IGameState.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Vector2.h">
-      <Filter>Engine\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\VariantMap.h">
-      <Filter>Engine\Utility</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\StateManager.h">
       <Filter>Engine</Filter>
     </ClInclude>
@@ -137,15 +119,6 @@
     </ClInclude>
     <ClInclude Include="Engine\Renderer.h">
       <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Randomiser.h">
-      <Filter>Engine\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\MathUtils.h">
-      <Filter>Engine\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Matrix3.hpp">
-      <Filter>Engine\Utility</Filter>
     </ClInclude>
     <ClInclude Include="Engine\PhysicsDef.h">
       <Filter>Engine</Filter>
@@ -164,10 +137,14 @@
     </ClInclude>
     <ClInclude Include="engine\resource.h" />
     <ClInclude Include="Engine\PhysicsWorld.h" />
+    <ClInclude Include="engine\utilities\mathutils.h" />
+    <ClInclude Include="engine\utilities\matrix3.hpp" />
+    <ClInclude Include="Engine\Utilities\Randomiser.h" />
+    <ClInclude Include="engine\utilities\variantmap.h" />
+    <ClInclude Include="engine\utilities\vector2.h" />
+    <ClInclude Include="Game\Decal.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Engine\Matrix3.inl">
-      <Filter>Engine\Utility</Filter>
-    </None>
+    <None Include="engine\utilities\matrix3.inl" />
   </ItemGroup>
 </Project>
