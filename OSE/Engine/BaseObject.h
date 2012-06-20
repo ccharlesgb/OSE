@@ -100,7 +100,10 @@ public:
 	void SetMetaData(const char* ID, BaseObject* dat);
 
 	//Deletion
-	void Delete() {mDeleteMe = true;};
+	void Delete() {
+		mDeleteMe = true;
+		OnDelete();
+	};
 	bool FlaggedForDeletion() {return mDeleteMe;};
 
 	//Physics
