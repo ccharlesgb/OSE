@@ -91,33 +91,31 @@ void Renderer::AddEntity(BaseObject* Ent)
 {
 	//Insert the renderer into its correct draw position
 	BaseObject* iter = Renderables.FirstEnt();
+	bool FoundGroupBelow = false; //Have we found the correct position?
+	
 	if (Renderables.GetSize() > 0)
 	{
-		bool FoundPos = false; //Have we found the correct position?
-		bool FoundGroup = false;
 		do
 		{
 			//If we should be drawing after the current renderer
-			if (Ent->GetDrawOrder() > iter->GetDrawOrder())
+			if (Ent->GetDrawOrder() >= iter->GetDrawOrder())
 			{
 				iter = Renderables.NextEnt(); //Move on we want to draw after this one
 			}
-			else if (Ent->GetDrawOrder() <= iter->GetDrawOrder()) //We want to draw in this group
+			else
 			{
-				if (!FoundGroup)
-				{
-					FoundGroup = true;
-				}
-				else
-				{
-					//Loop through until we get to the next group then get the previous entity and we found pos
-					iter = Renderables.NextEnt();
-					FoundPos = true;
-				}
+				FoundGroupBelow = true;
 			}
 		} 
-		while (iter != NULL && !FoundPos);
+		while (iter != NULL && !FoundGroupBelow);
 	}
+	
+	// FoundGroupBelow means iterator is at the next group, so we need to move it back 1 step.
+	if (FoundGroupBelow)
+	{
+		--iter;
+	}
+	
 	Renderables.InsertAtCurrent(Ent);
 }
 
