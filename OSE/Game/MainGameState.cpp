@@ -161,25 +161,14 @@ NOTES	:
 */
 void MainGameState::OnMouseButtonPressed(sf::Mouse::Button Button, bool Pressed)
 {
-	/*if (Pressed && Button == sf::Mouse::Button::Right)
+	if (Pressed && Button == sf::Mouse::Button::Right)
 	{
-		QueryCallback result((InputHandler::GetMousePosWorld() / 64).B2());
-		b2AABB box;
-		float size = 0.01f;
-		box.lowerBound = (InputHandler::GetMousePosWorld() / 64 - Vector2(size,size)).B2();
-		box.upperBound = (InputHandler::GetMousePosWorld() / 64 + Vector2(size,size)).B2();
-		mWorld->QueryAABB(&result, box);
-		b2Body *body = result.m_object;
-		//std::cout << "Object: " << body << "\n";
-		if (body)
+		BaseObject* MouseEnt = mPhysicsWorld.QueryPoint(InputHandler::GetMousePosWorld());
+		if (MouseEnt)
 		{
-			BaseObject* ent = static_cast<BaseObject*>(body->GetUserData());
-			if (ent->GetClassName() == "ent_prop")
-			{
-				ent->Delete();
-			}
+			MouseEnt->Delete();
 		}
-	}*/
+	}
 	if (Pressed && Button == sf::Mouse::Button::Left)
 	{
 		BaseObject* crate = CreateEntity("ent_prop");

@@ -4,6 +4,7 @@
 #include "../Engine/PhysicsDef.h"
 #include "../Engine/BaseObject.h"
 #include "../Engine/GameGlobals.h"
+#include "../Engine/Vector2.h"
 
 #define VelIterations 8
 #define PosIterations 3
@@ -57,6 +58,8 @@ public:
 		mWorld->SetDebugDraw(gGlobals.PhysicsDebugDraw);
 		mWorld->DrawDebugData();
 	};
+
+	BaseObject* QueryPoint(Vector2 Point);
 
 	void BeginContact(b2Contact* contact)
 	{
