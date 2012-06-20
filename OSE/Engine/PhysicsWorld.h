@@ -43,18 +43,18 @@ class PhysicsWorld : public b2ContactListener
 {
 private:
 	b2World *mWorld;
+	std::vector<b2JointDef*> mJointQueue;
 public:
 	PhysicsWorld(void);
 	~PhysicsWorld(void);
 
-	void Step(float delta)
-	{
-		mWorld->Step(delta, VelIterations, PosIterations);
-	};
+	void AddJoint(b2JointDef* joint);
+
+	void Step(float delta);
 
 	void AddPhysicsDef(PhysicsDef* def);
 	void DrawDebug()
-	{	
+	{
 		mWorld->SetDebugDraw(gGlobals.PhysicsDebugDraw);
 		mWorld->DrawDebugData();
 	};
@@ -72,11 +72,9 @@ public:
 		//EntA->StartTouch(&info);
 		info.OtherEnt = EntA;
 		//EntB->StartTouch(&info);
-		b2WeldJointDef joint;
-		std::cout << "A: " << bodyA << " B: " << bodyB << "\n";
-		joint.Initialize(bodyA, bodyB, bodyA->GetPosition());
-		mWorld->CreateJoint(&joint);
-		std::cout << mWorld->GetJointCount() << "\n";
+		b2WeldJointDef* joint = new b2WeldJointDef();
+		joint->Initialize(bodyA, bodyB, bodyA->GetPosition());
+		AddJoint(joint);
 	}
 
 	void EndContact(b2Contact* contact)
