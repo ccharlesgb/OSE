@@ -20,6 +20,7 @@ void PhysicsWorld::AddJoint(b2JointDef* joint)
 
 void PhysicsWorld::Step(float delta)
 {
+	//Go through any constraints that need to be added and add them to the world
 	std::vector<b2JointDef*>::iterator iter;
 	iter = mJointQueue.begin();
 	while (iter != mJointQueue.end())
@@ -28,7 +29,7 @@ void PhysicsWorld::Step(float delta)
 		std::cout << "Creating Joint: " << &iter << "\n";
 		iter++;
 	}
-	mJointQueue.clear();
+	mJointQueue.clear(); //Clear the queue for next time
 	mWorld->Step(delta, VelIterations, PosIterations);
 }
 
