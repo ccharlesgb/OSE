@@ -76,6 +76,7 @@
     <ClCompile Include="Engine\Utilities\VariantMap.cpp" />
     <ClCompile Include="Engine\Utilities\Vector2.cpp" />
     <ClCompile Include="Game\Decal.cpp" />
+    <ClCompile Include="Game\weapon_pistol.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\InputHandler.h">
@@ -143,6 +144,7 @@
     <ClInclude Include="engine\utilities\variantmap.h" />
     <ClInclude Include="engine\utilities\vector2.h" />
     <ClInclude Include="Game\Decal.h" />
+    <ClInclude Include="Game\weapon_pistol.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="engine\utilities\matrix3.inl" />
