@@ -60,7 +60,8 @@ void Player::Think()
 	Vector2 MousePos = InputHandler::GetMousePosWorld();
 	Vector2 MouseDirHat = (MousePos - GetPos()).Normalize();
 	float TargetAngle = ig::RadToDeg(std::atan2(MouseDirHat.y, MouseDirHat.x)) - 90.f;
-	GetPhysObj()->ApplyTorque(1.f);
+	//GetPhysObj()->ApplyTorque(1.f);
+	//SetAngle(GetPhysObj()->GetAngle());
 	//SetAngle(TargetAngle);
 
 	Vector2 MoveVector;
