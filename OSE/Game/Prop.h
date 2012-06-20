@@ -13,5 +13,6 @@ public:
 	void Spawn();
 	void Think();
 	void StartTouch(CollisionInfo* info);
+	void OnDelete();
 };
 

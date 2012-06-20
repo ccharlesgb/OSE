@@ -38,12 +38,16 @@ void Prop::StartTouch(CollisionInfo* info)
 
 Prop::~Prop(void)
 {
-	BaseObject* scorch = CreateEntity("ent_decal");
-	scorch->SetModel("scorch", ig::Random(0.5,0.7));
-	scorch->SetPos(GetPos());
-	scorch->Spawn();
 }
 
 void Prop::Think()
 {
+}
+
+void Prop::OnDelete()
+{
+	BaseObject* scorch = CreateEntity("ent_decal");
+	scorch->SetModel("scorch", ig::Random(0.5,0.7));
+	scorch->SetPos(GetPos());
+	scorch->Spawn();
 }
