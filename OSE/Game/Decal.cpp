@@ -13,7 +13,6 @@ Decal::Decal(void)
 
 void Decal::Spawn()
 {
-	std::cout << "DECAL PHYS " << mIsPhysics << "\n";
 }
 
 Decal::~Decal(void)
