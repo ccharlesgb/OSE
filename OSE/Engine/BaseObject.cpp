@@ -7,6 +7,8 @@ BaseObject::BaseObject(void)
 {
 	mClassName = "ERROR";
 	mModel = "";
+	mSprite = NULL;
+	mPhysObj = NULL;
 	mIsRenderable = false;
 	mIsPhysics = false;
 	mNextThink = 0.f;
