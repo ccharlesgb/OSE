@@ -87,27 +87,38 @@ void Renderer::OnEntityAdded(BaseObject* ent)
 	//AddRenderer(render);
 }
 
-void Renderer::AddEntity(BaseObject* render)
+void Renderer::AddEntity(BaseObject* Ent)
 {
 	//Insert the renderer into its correct draw position
-	BaseObject* rend = Renderables.FirstEnt();
+	BaseObject* iter = Renderables.FirstEnt();
 	if (Renderables.GetSize() > 0)
 	{
-		bool FoundPos = false;
+		bool FoundPos = false; //Have we found the correct position?
+		bool FoundGroup = false;
 		do
 		{
-			if (render->GetDrawOrder() > rend->GetDrawOrder())
+			//If we should be drawing after the current renderer
+			if (Ent->GetDrawOrder() > iter->GetDrawOrder())
 			{
-				rend = Renderables.NextEnt();
+				iter = Renderables.NextEnt(); //Move on we want to draw after this one
 			}
-			else if (render->GetDrawOrder() <= rend->GetDrawOrder())
+			else if (Ent->GetDrawOrder() <= iter->GetDrawOrder()) //We want to draw in this group
 			{
-				FoundPos = true;
+				if (!FoundGroup)
+				{
+					FoundGroup = true;
+				}
+				else
+				{
+					//Loop through until we get to the next group then get the previous entity and we found pos
+					iter = Renderables.NextEnt();
+					FoundPos = true;
+				}
 			}
 		} 
-		while (rend != NULL && !FoundPos);
+		while (iter != NULL && !FoundPos);
 	}
-	Renderables.InsertAtCurrent(render);
+	Renderables.InsertAtCurrent(Ent);
 }
 
 void Renderer::OnEntityRemoved(BaseObject* ent)

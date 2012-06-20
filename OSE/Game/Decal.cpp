@@ -8,8 +8,7 @@ Decal::Decal(void)
 	SetPos(Vector2::Random(-80.f,80.f));
 	
 	RenderInit();
-	SetDrawOrder(RENDERGROUP_ENTITIES);
-	
+	SetDrawOrder(RENDERGROUP_BACKGROUND);
 }
 
 void Decal::Spawn()

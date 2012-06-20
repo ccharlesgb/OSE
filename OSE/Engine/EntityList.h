@@ -43,6 +43,7 @@ public:
 	T FirstEnt();
 	T CurrentEnt();
 	T NextEnt();
+	T PreviousEnt();
 };
 
 /*
@@ -233,6 +234,23 @@ T EntityList<T>::NextEnt()
 {
 	mIter++;
 	if (mIter >= mList.end())
+	{
+		mCurIsValid = false;
+		return NULL;
+	}
+	mCurIsValid = true;
+	return *mIter;
+}
+
+/*
+NAME	: PreviousEnt
+NOTES	: Get the previous entity unless there isnt one -> return null
+*/
+template<class T>
+T EntityList<T>::PreviousEnt()
+{
+	mIter--;
+	if (mIter <= mList.begin())
 	{
 		mCurIsValid = false;
 		return NULL;
