@@ -96,7 +96,6 @@ void MainGameState::Tick()
 	BaseObject* CurEnt = gGlobals.gEntList.FirstEnt();
 	while(CurEnt != NULL)
 	{
-		
 		CurEnt = gGlobals.gEntList.NextEnt();
 	}
 
@@ -153,13 +152,6 @@ NOTES	:
 */
 void MainGameState::OnKeyPressed(sf::Keyboard::Key Key, bool Pressed)
 {
-	if (Pressed && Key == sf::Keyboard::Space)
-	{
-		BaseObject* crate = CreateEntity("ent_prop");
-		crate->SetModel("crate", ig::Random(0.5,0.7));
-		crate->SetPos(InputHandler::GetMousePosWorld());
-		crate->Spawn();
-	}
 	if (Pressed && Key == sf::Keyboard::O)
 	{
 		sCamera::SetZoom(ig::Limit(sCamera::GetZoom() + 0.5, 1, 3));
@@ -170,10 +162,66 @@ void MainGameState::OnKeyPressed(sf::Keyboard::Key Key, bool Pressed)
 	}
 }
 
+class QueryCallback : public b2QueryCallback
+{
+public:
+    QueryCallback(const b2Vec2& point)
+    {
+        m_point = point;
+        m_object = NULL;
+    }
+
+    bool ReportFixture(b2Fixture* fixture)
+    {
+       // if (fixture->IsSensor()) return true; //ignore sensors
+
+		std::cout << "Fixture: " << fixture << "\n";
+        bool inside = fixture->TestPoint(m_point);
+        if (inside)
+        {
+             // We are done, terminate the query.
+             m_object = fixture->GetBody();
+                 return false;
+        }
+
+        // Continue the query.
+        return true;
+    }
+
+    b2Vec2  m_point;
+    b2Body* m_object;
+};
+
 /*
 NAME	: OnMouseButtonPressed
 NOTES	: 
 */
 void MainGameState::OnMouseButtonPressed(sf::Mouse::Button Button, bool Pressed)
 {
+	if (Pressed && Button == sf::Mouse::Button::Right)
+	{
+		QueryCallback result((InputHandler::GetMousePosWorld() / 64).B2());
+		b2AABB box;
+		float size = 0.01f;
+		box.lowerBound = (InputHandler::GetMousePosWorld() / 64 - Vector2(size,size)).B2();
+		box.upperBound = (InputHandler::GetMousePosWorld() / 64 + Vector2(size,size)).B2();
+		mWorld->QueryAABB(&result, box);
+		b2Body *body = result.m_object;
+		//std::cout << "Object: " << body << "\n";
+		if (body)
+		{
+			BaseObject* ent = static_cast<BaseObject*>(body->GetUserData());
+			if (ent->GetClassName() == "ent_prop")
+			{
+				ent->Delete();
+			}
+		}
+	}
+	if (Pressed && Button == sf::Mouse::Button::Left)
+	{
+		BaseObject* crate = CreateEntity("ent_prop");
+		crate->SetModel("crate", ig::Random(0.5,0.7));
+		crate->SetPos(InputHandler::GetMousePosWorld());
+		crate->Spawn();
+	}
 }

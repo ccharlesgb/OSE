@@ -50,7 +50,7 @@ void Player::Think()
 	//Player movement code
 	float rot = ig::NormalizeAngle(GetAngle());
 
-	float player_walk_speed = 50.f;
+	float player_walk_speed = 70.f;
 	float player_strafe_speed = 40.f;
 
 	double x,y;
@@ -72,13 +72,13 @@ void Player::Think()
 	}
 	if (InputHandler::IsKeyPressed(sf::Keyboard::A))
 	{
-		MoveVector.x = -0.8;
+		MoveVector.x = -0.7;
 	}
 	else if (InputHandler::IsKeyPressed(sf::Keyboard::D))
 	{
-		MoveVector.x = 0.8;
+		MoveVector.x = 0.7;
 	}
 	MoveVector = MoveVector.Normalize() * player_walk_speed;
 	MoveVector = ToGlobal(MoveVector) - GetPos();
-	ApplyForceCenter(MoveVector * 100.f);
+	ApplyForceCenter(MoveVector * GetPhysObj()->GetMass());
 }

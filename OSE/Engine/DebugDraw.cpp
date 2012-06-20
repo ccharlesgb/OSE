@@ -7,7 +7,7 @@
 DebugDraw::DebugDraw(sf::RenderWindow *r) 
 { 
 	pRender = r;
-   SetFlags(e_shapeBit | e_jointBit | e_centerOfMassBit /*| e_aabbBit*/); 
+   SetFlags(e_shapeBit | e_jointBit | e_centerOfMassBit | e_aabbBit); 
    //SetFlags(0xFFFF); 
 } 
 
@@ -21,7 +21,7 @@ void DebugDraw::DrawPolygon(const b2Vec2* vertices, int32 vertexCount, const b2C
 	  Vector2 pos = RENDERER->GameToSFML(Vector2(vertices[i]) * PIXELS_PER_METRE);
       Shape.setPoint(i, pos.SF());
    } 
-	pRender->draw(Shape); 
+	pRender->draw(Shape);
 } 
 void DebugDraw::DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color) 
 { 
@@ -95,6 +95,8 @@ void DebugDraw::DrawAABB(b2AABB* aabb, const b2Color& color)
 	sf::RectangleShape shape;
 	shape.setSize((upper - lower).SF());
 	shape.setPosition((lower + (shape.getSize() / 2.f)).SF());
+	shape.setOutlineThickness(2.f);
+	shape.setOutlineColor(sf::Color(color.r*255, color.g*255, color.b*255, 10));
 	shape.setFillColor(sf::Color(color.r*255, color.g*255, color.b*255));
 	pRender->draw(shape); 
 }
