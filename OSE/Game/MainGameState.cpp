@@ -161,7 +161,7 @@ NOTES	:
 */
 void MainGameState::OnMouseButtonPressed(sf::Mouse::Button Button, bool Pressed)
 {
-	if (Pressed && Button == sf::Mouse::Button::Right)
+	if (Pressed && Button == sf::Mouse::Right)
 	{
 		BaseObject* MouseEnt = mPhysicsWorld.QueryPoint(InputHandler::GetMousePosWorld());
 		if (MouseEnt)
@@ -170,7 +170,7 @@ void MainGameState::OnMouseButtonPressed(sf::Mouse::Button Button, bool Pressed)
 				MouseEnt->Delete();
 		}
 	}
-	if (Pressed && Button == sf::Mouse::Button::Left)
+	if (Pressed && Button == sf::Mouse::Left)
 	{
 		BaseObject* crate = CreateEntity("ent_prop");
 		crate->SetModel("crate", ig::Random(0.5,0.7));
