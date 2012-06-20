@@ -64,6 +64,13 @@ local.properties
 *.vspscc
 *.exe
 *.dll
+*.sln
+*.plist
+*.pbxproj
+*.xcworkspacedata
+*.xcuserstate
+*.xcbkptlist
+*.xcscheme
 .builds
 **/*.dotCover
 
