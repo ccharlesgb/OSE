@@ -10,6 +10,12 @@ Resource::Resource()
 
 Resource::~Resource()
 {
+	std::map<std::string, sf::Texture*>::iterator it;
+	for(it = ImageCache.begin(); it != ImageCache.end(); it++) {
+		std::cout << "DELETEING " << it->first << "\n";
+		delete ImageCache[it->first];
+	}
+	
 	//CLEAN UP YOUR TEXTURES HERE
 }
 
