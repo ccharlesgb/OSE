@@ -62,6 +62,8 @@ local.properties
 *.tlh
 *.tmp
 *.vspscc
+*.exe
+*.dll
 .builds
 **/*.dotCover
 
