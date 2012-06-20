@@ -12,6 +12,5 @@ public:
 	~Player(void);
 	void Spawn();
 	void Think();
-	void DefinePhysics();
 };
 
