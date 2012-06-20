@@ -7,9 +7,6 @@
 #include "../Engine/GameGlobals.h"
 #include "../Engine/InputHandler.h"
 
-#define VelIterations 8
-#define PosIterations 3
-
 #define GRAVITY_STRENGTH 500
 
 REGISTERSTATE("game", MainGameState);
@@ -32,7 +29,6 @@ NOTES	: Free the box 2d world, entities are freed up in IGameState's
 MainGameState::~MainGameState(void)
 {
 	std::cout << "DELETING GAME STATE " << gGlobals.gEntList.GetSize() << "\n";
-	delete mWorld;
 }
 
 /*
@@ -42,8 +38,7 @@ NOTES	: Draw the B2D world debug draw
 */
 void MainGameState::DrawDebugData()
 {
-	mWorld->SetDebugDraw(gGlobals.PhysicsDebugDraw);
-	mWorld->DrawDebugData();
+	mPhysicsWorld.DrawDebug();
 }
 
 /*
@@ -55,8 +50,6 @@ void MainGameState::Initialize()
 	Map = CreateEntity("world");
 	Map->Spawn();
 	
-	mWorld = new b2World(b2Vec2(0.f,0.f));
-	mWorld->SetContactListener(this);
 	Player = CreateEntity("player");
 	Player->Spawn();
 	gGlobals.Player = Player;
@@ -104,7 +97,7 @@ void MainGameState::Tick()
 	if (mLastPhysics + GetDelta() < gGlobals.RealTime)
 	{
 		float delta = gGlobals.RealTime - mLastPhysics;
-		mWorld->Step(gGlobals.RealTime - mLastPhysics, VelIterations, PosIterations);
+		mPhysicsWorld.Step(delta);
 		mLastPhysics = gGlobals.RealTime;
 	}
 }
@@ -142,7 +135,7 @@ void MainGameState::OnEntityCreated(BaseObject* ent)
 	if (ent->IsPhysicsEnabled())
 	{
 		BasePhysics* physent = dynamic_cast<BasePhysics*>(ent);
-		physent->GetPhysObj()->CreatePhysics(mWorld);
+		mPhysicsWorld.AddPhysicsDef(physent->GetPhysObj());
 	}
 }
 
@@ -162,43 +155,13 @@ void MainGameState::OnKeyPressed(sf::Keyboard::Key Key, bool Pressed)
 	}
 }
 
-class QueryCallback : public b2QueryCallback
-{
-public:
-    QueryCallback(const b2Vec2& point)
-    {
-        m_point = point;
-        m_object = NULL;
-    }
-
-    bool ReportFixture(b2Fixture* fixture)
-    {
-       // if (fixture->IsSensor()) return true; //ignore sensors
-
-		std::cout << "Fixture: " << fixture << "\n";
-        bool inside = fixture->TestPoint(m_point);
-        if (inside)
-        {
-             // We are done, terminate the query.
-             m_object = fixture->GetBody();
-                 return false;
-        }
-
-        // Continue the query.
-        return true;
-    }
-
-    b2Vec2  m_point;
-    b2Body* m_object;
-};
-
 /*
 NAME	: OnMouseButtonPressed
 NOTES	: 
 */
 void MainGameState::OnMouseButtonPressed(sf::Mouse::Button Button, bool Pressed)
 {
-	if (Pressed && Button == sf::Mouse::Button::Right)
+	/*if (Pressed && Button == sf::Mouse::Button::Right)
 	{
 		QueryCallback result((InputHandler::GetMousePosWorld() / 64).B2());
 		b2AABB box;
@@ -216,7 +179,7 @@ void MainGameState::OnMouseButtonPressed(sf::Mouse::Button Button, bool Pressed)
 				ent->Delete();
 			}
 		}
-	}
+	}*/
 	if (Pressed && Button == sf::Mouse::Button::Left)
 	{
 		BaseObject* crate = CreateEntity("ent_prop");

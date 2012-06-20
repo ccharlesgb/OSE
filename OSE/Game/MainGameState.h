@@ -2,14 +2,14 @@
 
 #include "../Engine/IGameState.h"
 #include <Box2d.h>
-#include "../Engine/PhysicsDef.h"
+#include "../Engine/PhysicsWorld.h"
 
-class MainGameState : public IGameState , public b2ContactListener
+class MainGameState : public IGameState
 {
 private:
 	BaseObject* Player;
 	BaseObject* Map;
-	b2World *mWorld;
+	PhysicsWorld mPhysicsWorld;
 	double mLastPhysics;
 	double mPhysAcc;
 	std::vector<BaseObject*> mPlanets;
@@ -30,37 +30,6 @@ public:
 	void AdjustZoom(float zoom_target);
 
 	void CreatePlanetarySystem(Vector2 Origin);
-
-	void BeginContact(b2Contact* contact)
-	{
-		b2Body *bodyA = contact->GetFixtureA()->GetBody();
-		b2Body *bodyB = contact->GetFixtureB()->GetBody();
-		BaseObject* EntA = static_cast<BaseObject*>(bodyA->GetUserData()); //GetUserData() returns a pointer to the owner!
-		BaseObject* EntB = static_cast<BaseObject*>(bodyB->GetUserData());
-		CollisionInfo info;
-		info.OtherEnt = EntB;
-		EntA->StartTouch(&info);
-		info.OtherEnt = EntA;
-		EntB->StartTouch(&info);
-		//std::cout << "Collsion between: " << EntA->GetClassName() << " and : " << EntB->GetClassName() << "\n";
-	}
-
- 
-
-  void EndContact(b2Contact* contact)
-
-  { /* handle end event */ }
-
- 
-
-  void PreSolve(b2Contact* contact, const b2Manifold* oldManifold)
-  { /* handle pre-solve event */ }
-
- 
-
-  void PostSolve(b2Contact* contact, const b2ContactImpulse* impulse)
-
-  { /* handle post-solve event */ }
 
 };
 

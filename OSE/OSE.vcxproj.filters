@@ -87,6 +87,7 @@
     </ClCompile>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Engine\Resource.cpp" />
+    <ClCompile Include="Engine\PhysicsWorld.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\InputHandler.h">
@@ -162,6 +163,7 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="engine\resource.h" />
+    <ClInclude Include="Engine\PhysicsWorld.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Matrix3.inl">

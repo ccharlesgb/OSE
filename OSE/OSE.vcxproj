@@ -105,6 +105,7 @@
     <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="Game\Prop.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Engine\PhysicsWorld.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BaseDrawable.h" />
@@ -132,6 +133,7 @@
     <ClInclude Include="Game\MainGameState.h" />
     <ClInclude Include="Game\Player.h" />
     <ClInclude Include="Game\Prop.h" />
+    <ClInclude Include="Engine\PhysicsWorld.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Matrix3.inl" />
