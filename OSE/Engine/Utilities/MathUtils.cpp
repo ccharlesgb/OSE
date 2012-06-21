@@ -3,6 +3,8 @@
 #include <iostream>
 #include <time.h>
 #include <cmath>
+#include "Vector2.h"
+#include "../GameGlobals.h"
 
 namespace ig
 {
@@ -73,6 +75,22 @@ float Limit(float var, float min, float max)
 	if (var > max)
 		var = max;
 	return var;
+}
+
+Vector2 GameToSFML(Vector2 Pos)
+{
+	sf::Vector2<double> dPos;
+	dPos.x = Pos.x;
+	dPos.y = Pos.y;
+	dPos.y *= -1;
+	sf::Vector2<double> ScreenCentre = sf::Vector2<double>(gGlobals.GameWidth / 2, gGlobals.GameHeight / 2);
+
+	dPos = dPos + ScreenCentre;
+
+	Pos.x = dPos.x;
+	Pos.y = dPos.y;
+
+	return Pos.SF();
 }
 
 }

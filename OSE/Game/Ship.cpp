@@ -25,7 +25,7 @@ void Ship::Spawn()
 	GetPhysObj()->SetAngularDamping(25);
 	GetPhysObj()->SetLinearDamping(10);
 	
-	SetModel("Ship", 0.3);
+	SetModel("car", 1);
 	//SetOrigin(Vector2(0,15));
 	PhysicsHullFromModel();
 	
