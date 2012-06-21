@@ -44,8 +44,10 @@ void PhysicsWorld::AddPhysicsDef(PhysicsDef* def)
 
 BaseObject* PhysicsWorld::TraceLine(TraceInfo& info)
 {
-	b2RayCastCallback* callback;
+	TraceQueryCallback* callback;
 	mWorld->RayCast(callback, info.mStartPoint.B2(), info.mEndPoint.B2());
+	BaseObject* ent = static_cast<BaseObject*>(callback->mBody->GetUserData());
+	return ent;
 }
 
 BaseObject* PhysicsWorld::QueryPoint(Vector2 Point)
@@ -63,4 +65,32 @@ BaseObject* PhysicsWorld::QueryPoint(Vector2 Point)
 		return static_cast<BaseObject*>(body->GetUserData());
 	}
 	return NULL;
+}
+
+void PhysicsWorld::BeginContact(b2Contact* contact)
+{
+	b2Body *bodyA = contact->GetFixtureA()->GetBody();
+	b2Body *bodyB = contact->GetFixtureB()->GetBody();
+	BaseObject* EntA = static_cast<BaseObject*>(bodyA->GetUserData()); //GetUserData() returns a pointer to the owner!
+	BaseObject* EntB = static_cast<BaseObject*>(bodyB->GetUserData());
+	CollisionInfo info;
+	info.OtherEnt = EntB;
+	EntA->StartTouch(&info);
+	info.OtherEnt = EntA;
+	EntB->StartTouch(&info);
+	//b2WeldJointDef* joint = new b2WeldJointDef();
+	//joint->Initialize(bodyA, bodyB, bodyA->GetPosition());
+	//AddJoint(joint);
+}
+
+void PhysicsWorld::EndContact(b2Contact* contact)
+{
+}
+
+void PhysicsWorld::PreSolve(b2Contact* contact, const b2Manifold* oldManifold)
+{
+}
+
+void PhysicsWorld::PostSolve(b2Contact* contact, const b2ContactImpulse* impulse)
+{ 
 }
