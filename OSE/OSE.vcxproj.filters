@@ -78,6 +78,7 @@
     <ClCompile Include="Game\Decal.cpp" />
     <ClCompile Include="Game\weapon_pistol.cpp" />
     <ClCompile Include="Game\Ship.cpp" />
+    <ClCompile Include="Engine\PhysicsQueries.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\InputHandler.h">
@@ -147,6 +148,7 @@
     <ClInclude Include="Game\Decal.h" />
     <ClInclude Include="Game\weapon_pistol.h" />
     <ClInclude Include="Game\Ship.h" />
+    <ClInclude Include="Engine\PhysicsQueries.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="engine\utilities\matrix3.inl" />

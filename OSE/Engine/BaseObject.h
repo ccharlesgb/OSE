@@ -8,8 +8,6 @@
 #include "Utilities/Matrix3.hpp"
 #include "Sprite.h"
 
-
-class PhysicsWorld;
 class PhysicsDef;
 class BaseObject;
 class CollisionInfo;
@@ -53,8 +51,6 @@ private:
 	bool mNoDraw;
 	BaseObject* mOwner;
 protected:
-	friend class MainGameState;
-	PhysicsWorld *mPhysicsWorld; //Physics world, reference here so we can do tracelines and queries no the B2D world
 	PhysicsDef *mPhysObj; //Pointer to the physics object for this entity (NOT NECCESSARILY VALID)
 	Matrix3 mMatrix; //Transformation matrix used by ToGlobal and ToLocal
 	bool mMatrixNeedsUpdate; //If the matrix needs to be updated (Position/rotation etc has changed)

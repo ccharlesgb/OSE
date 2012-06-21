@@ -1,5 +1,5 @@
 #include "weapon_pistol.h"
-#include "../Engine/PhysicsWorld.h"
+#include "../Engine/PhysicsQueries.h"
 
 LINKCLASSTONAME("weapon_pistol", weapon_pistol)
 
@@ -18,6 +18,6 @@ void weapon_pistol::PrimaryFire(BaseObject* ent, VariantMap &Data)
 	TraceInfo info;
 	info.mStartPoint = me->GetPos();
 	info.mEndPoint = me->GetPos() + (me->GetForward() * 1000);
-	//BaseObject* hit_target = me->mPhysicsWorld->TraceLine(info);
-	//hit_target->Delete();
+	BaseObject* hit_target = PhysicsQueries::TraceLine(info);
+	hit_target->Delete();
 }

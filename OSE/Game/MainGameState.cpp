@@ -6,6 +6,7 @@
 #include "../Engine/PhysicsDef.h"
 #include "../Engine/GameGlobals.h"
 #include "../Engine/InputHandler.h"
+#include "../Engine/PhysicsQueries.h"
 
 #define GRAVITY_STRENGTH 500
 
@@ -136,7 +137,6 @@ NOTES	: If the entity is a physics entity add it to the Box2D world
 */
 void MainGameState::OnEntityCreated(BaseObject* ent)
 {
-	ent->mPhysicsWorld = &mPhysicsWorld;
 	if (ent->IsPhysicsEnabled())
 	{
 		BasePhysics* physent = dynamic_cast<BasePhysics*>(ent);
@@ -168,7 +168,7 @@ void MainGameState::OnMouseButtonPressed(sf::Mouse::Button Button, bool Pressed)
 {
 	if (Pressed && Button == sf::Mouse::Right)
 	{
-		BaseObject* MouseEnt = mPhysicsWorld.QueryPoint(InputHandler::GetMousePosWorld());
+		BaseObject* MouseEnt = PhysicsQueries::QueryPoint(InputHandler::GetMousePosWorld());
 		if (MouseEnt)
 		{
 			if (MouseEnt->GetClassName() != "player")
