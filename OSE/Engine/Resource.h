@@ -16,6 +16,7 @@ private:
 	
 	// Sound
 	static std::map<std::string, sf::SoundBuffer*> SoundCache;
+	static std::string GetSoundPath(const char* path);
 public:
 	static void Cleanup();
 	
@@ -25,5 +26,5 @@ public:
 	
 	// Sound
 	static void PrecacheSound(const char* path);
-	static sf::Sound* RequestSoundBuffer(const char* path);
+	static sf::Sound* RequestSound(const char* path);
 };
