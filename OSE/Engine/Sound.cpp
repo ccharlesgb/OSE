@@ -4,6 +4,7 @@
 Sound::Sound(const char* path)
 {
 	mSound = *Resource::RequestSound(path);
+	mHeight = 0;
 }
 
 Sound::~Sound(void)

@@ -91,6 +91,7 @@
     <ClCompile Include="Engine\IGameState.cpp" />
     <ClCompile Include="Engine\InputHandler.cpp" />
     <ClCompile Include="Engine\Resource.cpp" />
+    <ClCompile Include="Engine\Sound.cpp" />
     <ClCompile Include="Engine\Utilities\MathUtils.cpp" />
     <ClCompile Include="Engine\Utilities\Matrix3.cpp" />
     <ClCompile Include="Engine\Utilities\Randomiser.cpp" />
@@ -124,6 +125,7 @@
     <ClInclude Include="Engine\IGameState.h" />
     <ClInclude Include="Engine\InputHandler.h" />
     <ClInclude Include="engine\resource.h" />
+    <ClInclude Include="engine\sound.h" />
     <ClInclude Include="engine\utilities\mathutils.h" />
     <ClInclude Include="engine\utilities\matrix3.hpp" />
     <ClInclude Include="Engine\Utilities\Randomiser.h" />

@@ -104,7 +104,7 @@ void Ship::Think()
 	Vector2 BackFric;
 	BackFric.x = ToLocal(GetVelocity() + GetPos()).x;
 	BackFric = ToGlobal(BackFric) - GetPos();
-	ApplyForce(BackFric * -500.f, GetPos() + GetForward() * -70.f);
+	//ApplyForce(BackFric * -50.f, GetPos() + GetForward() * -70.f);
 
 	if (GetPhysObj()->GetLinearVelocity().Length() > 200.f)
 	{

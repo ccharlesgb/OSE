@@ -1,12 +1,12 @@
 #pragma once
 
 #include <SFML/Audio.hpp>
-#include "Vector2.h"
+#include "Utilities/Vector2.h"
 
 class Sound
 {
 private:
-	int mHeight = 0;
+	int mHeight;
 	sf::Sound mSound;
 public:
 	Sound(const char* path);
