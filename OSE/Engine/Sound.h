@@ -14,5 +14,7 @@ public:
 	
 	void Play();
 	void SetPosition(Vector2 position);
+	void SetMinDistance(float distance);
+	void SetAttenuation(float attenuation);
 };
 
