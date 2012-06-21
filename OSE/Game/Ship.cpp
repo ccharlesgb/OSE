@@ -8,8 +8,8 @@
 //"player" is the classname. Player is the coded classname
 LINKCLASSTONAME("ship", Ship)
 
-#define MAX_ANGLE 25.f
-#define MAX_THROTTLE 75.f
+#define MAX_ANGLE 20.f
+#define MAX_THROTTLE 50.f
 
 Ship::Ship(void)
 {
@@ -18,6 +18,7 @@ Ship::Ship(void)
 	SetDrawOrder(RENDERGROUP_PLAYER);
 	PhysicsInit(DYNAMIC_BODY);
 	mWheelAngle = 0.f;
+	mThrottle = 0.f;
 }
 
 Ship::~Ship(void)
@@ -26,8 +27,8 @@ Ship::~Ship(void)
 
 void Ship::Spawn()
 {
-	GetPhysObj()->SetAngularDamping(25);
-	GetPhysObj()->SetLinearDamping(6);
+	GetPhysObj()->SetAngularDamping(10);
+	GetPhysObj()->SetLinearDamping(3);
 	
 	SetModel("car", 1.f);
 	//SetOrigin(Vector2(0,15));
@@ -45,14 +46,17 @@ void Ship::OnDelete()
 
 void Ship::StartTouch(CollisionInfo* info)
 {
-	if (info->OtherEnt->GetClassName() == "player")
-	{
-		std::cout << "clicked";
-		sCamera::FollowEntity(this);
-		mDriver = info->OtherEnt;
-		mDriver->SetNoDraw(true);
-	}
+
 }
+
+void Ship::Use(BaseObject *ply)
+{
+	sCamera::FollowEntity(this);
+	mDriver = ply;
+	mDriver->SetNoDraw(true);
+	mEnterTime = gGlobals.CurTime;
+}
+
 
 void Ship::Exit(Vector2 position)
 {
@@ -64,47 +68,60 @@ void Ship::Exit(Vector2 position)
 
 void Ship::Think()
 {
-	if (!InUse()) { return; }
-	
-	if (InputHandler::IsKeyPressed(sf::Keyboard::E))
-	{
-		Exit(GetPos() + Vector2(-20, 0));
-	}
-	
-	//Player movement code
+	//Car Movement
 	float player_walk_speed = 150.f;
 	float steer_factor = GetPhysObj()->GetLinearVelocity().Length() / 1000.f;
 	Vector2 MoveVector;
-	if (InputHandler::IsKeyPressed(sf::Keyboard::W))
+
+	if (InUse()) //What is our driver pressing?
 	{
-		mThrottle = ig::Approach(mThrottle, MAX_THROTTLE, 1);
-	}
-	else if (InputHandler::IsKeyPressed(sf::Keyboard::S))
-	{
-		mThrottle = ig::Approach(mThrottle, -MAX_THROTTLE / 3.f, 1.5);
+		if (InputHandler::IsKeyPressed(sf::Keyboard::E) && mEnterTime + 0.5f < gGlobals.CurTime)
+		{
+			Exit(GetPos() + Vector2(-20, 0));
+			return;
+		}
+		mDriver->SetPos(GetPos() + GetForward() * -160.f);
+		mDriver->SetAngle(GetAngle());
+	
+		if (InputHandler::IsKeyPressed(sf::Keyboard::W))
+		{
+			mThrottle = ig::Approach(mThrottle, MAX_THROTTLE, 1);
+		}
+		else if (InputHandler::IsKeyPressed(sf::Keyboard::S))
+		{
+			mThrottle = ig::Approach(mThrottle, -MAX_THROTTLE / 3.f, 1.5);
+		}
+		else
+			mThrottle = ig::Approach(mThrottle, 0, 0.3);
+
+		if (InputHandler::IsKeyPressed(sf::Keyboard::A))
+		{
+			mWheelAngle = ig::Approach(mWheelAngle, -MAX_ANGLE, 1);
+		}
+		else if (InputHandler::IsKeyPressed(sf::Keyboard::D))
+		{
+			mWheelAngle = ig::Approach(mWheelAngle, MAX_ANGLE, 1);
+		}
+		else
+			mWheelAngle = ig::Approach(mWheelAngle, 0, steer_factor);
 	}
 	else
-		mThrottle = ig::Approach(mThrottle, 0, 0.3);
-	if (InputHandler::IsKeyPressed(sf::Keyboard::A))
 	{
-		mWheelAngle = ig::Approach(mWheelAngle, -MAX_ANGLE, 1);
-	}
-	else if (InputHandler::IsKeyPressed(sf::Keyboard::D))
-	{
-		mWheelAngle = ig::Approach(mWheelAngle, MAX_ANGLE, 1);
-	}
-	else
+		mThrottle = ig::Approach(mThrottle, 0, 5);
 		mWheelAngle = ig::Approach(mWheelAngle, 0, steer_factor);
+	}
+
+	//Physically simular wheels
 	MoveVector.y = mThrottle;
-	//MoveVector.x = mWheelAngle * mThrottle;
 	MoveVector = MoveVector.Rotate(-mWheelAngle);
 	MoveVector = ToGlobal(MoveVector) - GetPos();
 	ApplyForce(MoveVector * GetPhysObj()->GetMass(), GetPos() + GetForward() * 70.f);
 
 	Vector2 BackFric;
 	BackFric.x = ToLocal(GetVelocity() + GetPos()).x;
+	//BackFric.x = BackFric.x + (GetAngularVelocity() * -70.f);
 	BackFric = ToGlobal(BackFric) - GetPos();
-	//ApplyForce(BackFric * -50.f, GetPos() + GetForward() * -70.f);
+	ApplyForce(BackFric * -200.f, GetPos() + GetForward() * -70.f);
 
 	if (GetPhysObj()->GetLinearVelocity().Length() > 200.f)
 	{

@@ -4,7 +4,7 @@
 #include "../Engine/GameGlobals.h"
 #include "../Engine/PhysicsQueries.h"
 
-#define USE_RANGE 5.f
+#define USE_RANGE 50.f
 
 //This function registers the entity to the EntityCreator.
 //"player" is the classname. Player is the coded classname
@@ -21,6 +21,7 @@ Player::Player(void)
 	mWeapon->SetPos(GetPos());
 	mWeapon->SetAngle(GetAngle());
 	mWeapon->Spawn();
+	mNextUse = 0.f;
 }
 
 void Player::Spawn()
@@ -76,7 +77,7 @@ void Player::Think()
 		mWeapon->Fire("fire1", dat);
 	}
 
-	if (InputHandler::IsKeyPressed(sf::Keyboard::E))
+	if (InputHandler::IsKeyPressed(sf::Keyboard::E) && mNextUse < gGlobals.CurTime)
 	{
 		TraceInfo info;
 		info.mStartPoint = GetPos();
@@ -86,5 +87,6 @@ void Player::Think()
 		{
 			UseEnt->Use(this);
 		}
+		mNextUse = gGlobals.CurTime + USE_DELAY;
 	}
 }

@@ -10,6 +10,7 @@ private:
 	bool InUse() { return mDriver != NULL; };
 	float mWheelAngle;
 	float mThrottle;
+	float mEnterTime;
 public:
 	Ship(void);
 	~Ship(void);
@@ -18,4 +19,5 @@ public:
 	void Think();
 	void StartTouch(CollisionInfo* info);
 	void Exit(Vector2 position);
+	void Use(BaseObject *ply);
 };
