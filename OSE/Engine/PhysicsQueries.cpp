@@ -5,15 +5,14 @@ b2World* PhysicsQueries::mWorld = NULL;
 
 BaseObject* PhysicsQueries::TraceLine(TraceInfo& info)
 {
-	std::cout << " TRACING\n";
-	TraceQueryCallback* callback;
-	std::cout << " TRACING\n";
-	mWorld->RayCast(callback, info.mStartPoint.B2(), info.mEndPoint.B2());
-	std::cout << " TRACING\n";
+	TraceQueryCallback callback(info);
+	mWorld->RayCast(&callback, info.mStartPoint.B2(), info.mEndPoint.B2());
 	BaseObject* ent = NULL;
-	if (callback->mBody != NULL)
-		ent = static_cast<BaseObject*>(callback->mBody->GetUserData());
-	std::cout << " TRACING\n";
+	std::cout << callback.mBody << "\n";
+	if (callback.mBody != NULL)
+	{
+		ent = static_cast<BaseObject*>(callback.mBody->GetUserData());
+	}
 	return ent;
 }
 

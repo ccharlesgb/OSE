@@ -67,6 +67,8 @@ void Player::Think()
 
 	if (InputHandler::IsMouseButtonPressed(sf::Mouse::Left))
 	{
+		mWeapon->SetPos(GetPos());
+		mWeapon->SetAngle(GetAngle());
 		VariantMap dat;
 		mWeapon->Fire("fire1", dat);
 	}

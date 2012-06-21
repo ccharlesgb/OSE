@@ -47,6 +47,7 @@ public:
     TraceQueryCallback(const TraceInfo info)
     {
 		mInfo = info;
+		mBody = NULL;
     }
 
 	float32 ReportFixture(b2Fixture* fixture,

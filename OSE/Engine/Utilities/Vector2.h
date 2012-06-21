@@ -4,6 +4,7 @@
 #include "SFML/System.hpp"
 #include "MathUtils.h"
 #include "Box2D.h"
+#include <sstream>
 
 class Vector2
 {
@@ -38,5 +39,11 @@ public:
 	Vector2 Approach(Vector2 &targ, float rate);
 	Vector2 Normalize();
 	Vector2 Normal();
+	std::string ToString()
+	{
+		std::stringstream ss;
+		ss << "X: " << x << " Y: " << y << " ";
+		return ss.str();
+	};
 };
 
