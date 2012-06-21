@@ -7,6 +7,7 @@
 #include "SFML/Graphics.hpp"
 #include "Utilities/Matrix3.hpp"
 #include "Sprite.h"
+#include "Sound.h"
 
 class PhysicsDef;
 class BaseObject;
@@ -55,7 +56,9 @@ protected:
 	Matrix3 mMatrix; //Transformation matrix used by ToGlobal and ToLocal
 	bool mMatrixNeedsUpdate; //If the matrix needs to be updated (Position/rotation etc has changed)
 	const char* mModel; //Model path (Sprite image)
-
+	
+	std::map<char, Sound*> mSounds;
+	
 	Vector2 mPosition;
 	Vector2 mOrigin;
 	Vector2 mScale;
@@ -112,6 +115,10 @@ public:
 	void SetModel(const char* path, float scale);
 	const char* GetModel() {return mModel;};
 
+	//Sound
+	void CreateSound(const char *name, const char *path);
+	void EmitSound(const char *name);
+	
 	//MetaData (UNFINISHED)
 	void SetMetaData(const char* ID, float dat);
 	void SetMetaData(const char* ID, int dat);

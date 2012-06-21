@@ -99,6 +99,19 @@ void BaseObject::DrawModel()
 	mSprite->Draw();
 }
 
+void BaseObject::CreateSound(const char *name, const char *path)
+{
+	mSounds[*name] = new Sound(path);
+}
+
+void BaseObject::EmitSound(const char *name)
+{
+	if (mSounds[*name] != NULL)
+	{
+		mSounds[*name]->Play();
+	}
+}
+
 //Tick: An INTERNAL function called by the game state every frame, only actually Thinks if NextThink < CurTime
 void BaseObject::Tick()
 {
