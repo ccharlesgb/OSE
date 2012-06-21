@@ -1,6 +1,7 @@
 #include "IGameState.h"
 #include "DebugDraw.h"
 #include "GameGlobals.h"
+#include "AudioEnvironment.h"
 
 /*
 NAME	: OnEntityAdded
@@ -70,6 +71,8 @@ void IGameState::_Tick()
 	gGlobals.CurTime = gGlobals.RealTime - mStartTime; //Update CurTime
 	Tick(); //Tick the current derived game state
 
+	sAudioEnvironment::Update();
+	
 	BaseObject* CurEnt = gGlobals.gEntList.FirstEnt();
 	while(gGlobals.gEntList.CurrentIsValid())
 	{

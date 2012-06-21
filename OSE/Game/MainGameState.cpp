@@ -7,6 +7,7 @@
 #include "../Engine/GameGlobals.h"
 #include "../Engine/InputHandler.h"
 #include "../Engine/PhysicsQueries.h"
+#include "../Engine/AudioEnvironment.h"
 
 #define GRAVITY_STRENGTH 500
 
@@ -58,6 +59,8 @@ void MainGameState::Initialize()
 	sCamera::SetDamping(0);
 	sCamera::SetZoom(1.5);
 	sCamera::SetZoomDamping(0.2);
+	
+	sAudioEnvironment::SetListener(Player);
 	
 	BaseObject* Ship = CreateEntity("ship");
 	Ship->SetPos(Vector2(100, 0));
