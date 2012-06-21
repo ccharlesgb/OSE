@@ -143,8 +143,8 @@ void Renderer::Draw(IGameState *State)
 		if (!CurEnt->GetNoDraw())
 		{
 			CurEnt->Draw();
-			CurEnt = Renderables.NextEnt();
 		}
+		CurEnt = Renderables.NextEnt();
 	}
 	if (InputHandler::IsKeyPressed(sf::Keyboard::F3))
 		State->DrawDebugData();
