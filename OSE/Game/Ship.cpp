@@ -34,6 +34,7 @@ void Ship::Spawn()
 	//SetOrigin(Vector2(0,15));
 	PhysicsHullFromModel();
 	mDriver = NULL;
+	CreateSound("enter", "Ship");
 }
 
 void Ship::OnDelete()
@@ -54,6 +55,7 @@ void Ship::Use(BaseObject *ply)
 	mDriver = ply;
 	mDriver->SetNoDraw(true);
 	mEnterTime = gGlobals.CurTime;
+	EmitSound("enter");
 }
 
 
@@ -117,7 +119,8 @@ void Ship::Think()
 	ApplyForce(MoveVector * GetPhysObj()->GetMass(), GetPos() + GetForward() * 70.f);
 
 	Vector2 BackFric;
-	BackFric.x = ToLocal(GetVelocity() + GetPos()).x;
+	Vector2 pos = GetVelocity() + GetPos();
+	BackFric.x = ToLocal(pos).x;
 	//BackFric.x = BackFric.x + (GetAngularVelocity() * -70.f);
 	BackFric = ToGlobal(BackFric) - GetPos();
 	ApplyForce(BackFric * -200.f, GetPos() + GetForward() * -70.f);

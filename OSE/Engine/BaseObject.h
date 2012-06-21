@@ -46,6 +46,8 @@ private:
 	float mLastThink;
 	std::string mClassName; //The class name of the entity eg "player"
 
+	std::map<char, Sound*> mSounds;
+	
 	//Rendering
 	Colour mColour;
 	Sprite* mSprite;
@@ -56,8 +58,6 @@ protected:
 	Matrix3 mMatrix; //Transformation matrix used by ToGlobal and ToLocal
 	bool mMatrixNeedsUpdate; //If the matrix needs to be updated (Position/rotation etc has changed)
 	const char* mModel; //Model path (Sprite image)
-
-	std::map<char, Sound*> mSounds;
 
 	Vector2 mPosition;
 	Vector2 mOrigin;

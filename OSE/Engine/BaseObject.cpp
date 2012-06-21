@@ -121,6 +121,12 @@ void BaseObject::Tick()
 	}
 	if (mNextThink < gGlobals.CurTime)
 	{
+		std::map<char, Sound*>::iterator i;
+		
+		for(i = mSounds.begin(); i != mSounds.end(); i++) {
+			i->second->SetPosition(GetPos());
+		}
+		
 		mLastThink = gGlobals.CurTime;
 		mNextThink = mLastThink + (1.f/60.f); //By default think at 60HZ but child classes can override this
 		this->Think();
