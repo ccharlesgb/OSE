@@ -17,12 +17,6 @@ BaseDrawable::~BaseDrawable(void)
 
 }
 
-std::string BaseDrawable::GetImagePath(const char* path)
-{
-	return ("images/" + std::string(path) + ".png").c_str();
-}
-
-
 Vector2 BaseDrawable::GameToSFML(Vector2 Pos)
 {
 	if (mRenderWindow == NULL)
