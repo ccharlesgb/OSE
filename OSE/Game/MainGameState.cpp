@@ -166,20 +166,23 @@ NOTES	:
 */
 void MainGameState::OnMouseButtonPressed(sf::Mouse::Button Button, bool Pressed)
 {
-	if (Pressed && Button == sf::Mouse::Right)
+	if (InputHandler::IsKeyPressed(sf::Keyboard::LShift))
 	{
-		BaseObject* MouseEnt = PhysicsQueries::QueryPoint(InputHandler::GetMousePosWorld());
-		if (MouseEnt)
+		if (Pressed && Button == sf::Mouse::Right)
 		{
-			if (MouseEnt->GetClassName() != "player")
-				MouseEnt->Delete();
+			BaseObject* MouseEnt = PhysicsQueries::QueryPoint(InputHandler::GetMousePosWorld());
+			if (MouseEnt)
+			{
+				if (MouseEnt->GetClassName() != "player")
+					MouseEnt->Delete();
+			}
 		}
-	}
-	if (Pressed && Button == sf::Mouse::Left)
-	{
-		BaseObject* crate = CreateEntity("ent_prop");
-		crate->SetModel("crate", ig::Random(0.5,0.7));
-		crate->SetPos(InputHandler::GetMousePosWorld());
-		crate->Spawn();
+		if (Pressed && Button == sf::Mouse::Left)
+		{
+			BaseObject* crate = CreateEntity("ent_prop");
+			crate->SetModel("crate", ig::Random(0.5,0.7));
+			crate->SetPos(InputHandler::GetMousePosWorld());
+			crate->Spawn();
+		}
 	}
 }

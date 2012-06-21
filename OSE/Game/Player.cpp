@@ -65,7 +65,7 @@ void Player::Think()
 	MoveVector = ToGlobal(MoveVector) - GetPos();
 	ApplyForceCenter(MoveVector * GetPhysObj()->GetMass());
 
-	if (InputHandler::IsMouseButtonPressed(sf::Mouse::Left))
+	if (InputHandler::IsMouseButtonPressed(sf::Mouse::Left) && !InputHandler::IsKeyPressed(sf::Keyboard::LShift))
 	{
 		mWeapon->SetPos(GetPos());
 		mWeapon->SetAngle(GetAngle());

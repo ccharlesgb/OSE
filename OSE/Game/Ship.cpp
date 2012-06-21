@@ -35,7 +35,8 @@ void Ship::Spawn()
 void Ship::OnDelete()
 {
 	std::cout << "OnDelete" << "\n";
-	Exit(GetPos());
+	if (InUse())
+		Exit(GetPos());
 }
 
 void Ship::StartTouch(CollisionInfo* info)
@@ -73,9 +74,7 @@ void Ship::Think()
 	Vector2 MouseDirHat = (MousePos - GetPos()).Normalize();
 	float TargetAngle = ig::RadToDeg(std::atan2(MouseDirHat.y, MouseDirHat.x)) - 90.f;
 	GetPhysObj()->ApplyTorque(ig::NormalizeAngle(TargetAngle - GetAngle()) * GetPhysObj()->GetMass());
-	//SetAngle(GetPhysObj()->GetAngle());
-	//SetAngle(TargetAngle);
-	
+
 	Vector2 MoveVector;
 	if (InputHandler::IsKeyPressed(sf::Keyboard::W))
 	{

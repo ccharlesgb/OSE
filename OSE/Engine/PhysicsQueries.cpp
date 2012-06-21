@@ -6,7 +6,7 @@ b2World* PhysicsQueries::mWorld = NULL;
 BaseObject* PhysicsQueries::TraceLine(TraceInfo& info)
 {
 	TraceQueryCallback callback(info);
-	mWorld->RayCast(&callback, info.mStartPoint.B2(), info.mEndPoint.B2());
+	mWorld->RayCast(&callback, (info.mStartPoint / PIXELS_PER_METRE).B2(), (info.mEndPoint / PIXELS_PER_METRE).B2());
 	BaseObject* ent = NULL;
 	std::cout << callback.mBody << "\n";
 	if (callback.mBody != NULL)
