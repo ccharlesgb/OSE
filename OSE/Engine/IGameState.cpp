@@ -75,9 +75,11 @@ void IGameState::_Tick()
 	{
 		if (CurEnt->FlaggedForDeletion() == true)
 		{
+			//std::cout << "Deleting: " << CurEnt->GetClassName() << "\n";
 			_OnEntityDeleted(CurEnt);
 			gGlobals.gEntList.DeleteCurrent();
 			CurEnt = gGlobals.gEntList.CurrentEnt();
+			//std::cout << "CurEnt: " << &CurEnt << "\n";
 			continue;
 		}
 		CurEnt->Tick();

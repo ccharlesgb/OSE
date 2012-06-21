@@ -19,17 +19,13 @@ void weapon_pistol::PrimaryFire(BaseObject* ent, VariantMap &Data)
 	if (me->GetNextPrimaryFire() < gGlobals.CurTime)
 	{
 		TraceInfo info;
-		std::cout << "Weapon Firing\n";
 		info.mStartPoint = me->GetPos();
-		std::cout << "FORWARD: " << me->GetForward().ToString() << "\n";
 		info.mEndPoint = me->GetPos() + (me->GetForward() * 1000);
-		std::cout << info.mStartPoint.ToString() << info.mEndPoint.ToString() << "\n";
 		BaseObject* hit_target = PhysicsQueries::TraceLine(info);
 		if (hit_target != NULL)
 		{
-			std::cout << "Shot: " << hit_target->GetClassName() << "\n";
 			hit_target->Delete();
 		}
-		me->SetNextPrimaryFire(gGlobals.CurTime + 0.3f);
+		me->SetNextPrimaryFire(gGlobals.CurTime + 0.05f);
 	}
 }

@@ -23,7 +23,7 @@ StateManager::StateManager(void)
 	int height = 768;
 	gGlobals.GameWidth = width;
 	gGlobals.GameHeight = height;
-	std::string title = "Intergalactic";
+	std::string title = "Onslaught";
 	Window.create(sf::VideoMode(width, height, 32), title);
 	Window.setFramerateLimit(120);
 	gGlobals.RenderWindow = &Window;

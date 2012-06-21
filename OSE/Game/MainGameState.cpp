@@ -183,6 +183,30 @@ void MainGameState::OnMouseButtonPressed(sf::Mouse::Button Button, bool Pressed)
 			crate->SetModel("crate", ig::Random(0.5,0.7));
 			crate->SetPos(InputHandler::GetMousePosWorld());
 			crate->Spawn();
+			crate = CreateEntity("ent_prop");
+			crate->SetModel("crate", ig::Random(0.5,0.7));
+			crate->SetPos(InputHandler::GetMousePosWorld());
+			crate->Spawn();
+			crate = CreateEntity("ent_prop");
+			crate->SetModel("crate", ig::Random(0.5,0.7));
+			crate->SetPos(InputHandler::GetMousePosWorld());
+			crate->Spawn();
+			crate = CreateEntity("ent_prop");
+			crate->SetModel("crate", ig::Random(0.5,0.7));
+			crate->SetPos(InputHandler::GetMousePosWorld());
+			crate->Spawn();
+			crate = CreateEntity("ent_prop");
+			crate->SetModel("crate", ig::Random(0.5,0.7));
+			crate->SetPos(InputHandler::GetMousePosWorld());
+			crate->Spawn();
+			crate = CreateEntity("ent_prop");
+			crate->SetModel("crate", ig::Random(0.5,0.7));
+			crate->SetPos(InputHandler::GetMousePosWorld());
+			crate->Spawn();
+			crate = CreateEntity("ent_prop");
+			crate->SetModel("crate", ig::Random(0.5,0.7));
+			crate->SetPos(InputHandler::GetMousePosWorld());
+			crate->Spawn();
 		}
 	}
 }
