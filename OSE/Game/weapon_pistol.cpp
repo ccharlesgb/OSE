@@ -26,6 +26,6 @@ void weapon_pistol::PrimaryFire(BaseObject* ent, VariantMap &Data)
 		{
 			hit_target->Delete();
 		}
-		me->SetNextPrimaryFire(gGlobals.CurTime + 0.05f);
+		me->SetNextPrimaryFire(gGlobals.CurTime + 0.1f);
 	}
 }

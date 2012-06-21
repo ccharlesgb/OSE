@@ -56,7 +56,7 @@ public:
         if (fixture->IsSensor()) return -1; //ignore sensors
         // We are done, terminate the query.
         mBody = fixture->GetBody();
-        return 0;
+        return fraction;
     }
 
 	b2Body *mBody;
