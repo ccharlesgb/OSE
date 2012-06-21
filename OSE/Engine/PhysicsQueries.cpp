@@ -26,7 +26,6 @@ BaseObject* PhysicsQueries::QueryPoint(Vector2 Point)
 	box.upperBound = (Point / PIXELS_PER_METRE + Vector2(size,size)).B2();
 	mWorld->QueryAABB(&result, box);
 	b2Body *body = result.m_object;
-	//std::cout << "Object: " << body << "\n";
 	if (body)
 	{
 		return static_cast<BaseObject*>(body->GetUserData());

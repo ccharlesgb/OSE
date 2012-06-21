@@ -28,6 +28,11 @@ NOTES	: Allows game states to create entities. Returns BaseObject pointer
 BaseObject* IGameState::CreateEntity(const char* ID)
 {
 	BaseObject* ent = ENTITYCREATOR->CreateEntity(ID);
+	if (ent == NULL)
+	{
+		std::cout << "Invalid Entity: " << ID << "\n";
+		return NULL;
+	}
 	gGlobals.gEntList.Append(ent);
 	_OnEntityCreated(ent);
 	return ent;

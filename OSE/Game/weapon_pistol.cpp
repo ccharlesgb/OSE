@@ -19,5 +19,6 @@ void weapon_pistol::PrimaryFire(BaseObject* ent, VariantMap &Data)
 	info.mStartPoint = me->GetPos();
 	info.mEndPoint = me->GetPos() + (me->GetForward() * 1000);
 	BaseObject* hit_target = PhysicsQueries::TraceLine(info);
-	hit_target->Delete();
+	if (hit_target != NULL)
+		hit_target->Delete();
 }
