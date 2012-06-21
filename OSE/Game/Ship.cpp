@@ -123,7 +123,7 @@ void Ship::Think()
 	BackFric.x = ToLocal(pos).x;
 	//BackFric.x = BackFric.x + (GetAngularVelocity() * -70.f);
 	BackFric = ToGlobal(BackFric) - GetPos();
-	ApplyForce(BackFric * -200.f, GetPos() + GetForward() * -70.f);
+	//ApplyForce(BackFric * -200.f, GetPos() + GetForward() * -70.f);
 
 	if (GetPhysObj()->GetLinearVelocity().Length() > 200.f)
 	{
