@@ -8,6 +8,8 @@ class Ship : public BasePhysics
 private:
 	BaseObject* mDriver;
 	bool InUse() { return mDriver != NULL; };
+	float mWheelAngle;
+	float mThrottle;
 public:
 	Ship(void);
 	~Ship(void);

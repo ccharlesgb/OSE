@@ -1,7 +1,7 @@
 //Box2D Physics Information for Car
 //Wind coordinates anticlockwise
 //Seperate vertices with new lines
-60 55
--60 55
--60 -55
-60 -55
+55 110
+-55 110
+-55 -110
+55 -110

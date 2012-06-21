@@ -2,6 +2,9 @@
 #include <iostream>
 #include "../Engine/InputHandler.h"
 #include "../Engine/GameGlobals.h"
+#include "../Engine/PhysicsQueries.h"
+
+#define USE_RANGE 5.f
 
 //This function registers the entity to the EntityCreator.
 //"player" is the classname. Player is the coded classname
@@ -71,5 +74,17 @@ void Player::Think()
 		mWeapon->SetAngle(GetAngle());
 		VariantMap dat;
 		mWeapon->Fire("fire1", dat);
+	}
+
+	if (InputHandler::IsKeyPressed(sf::Keyboard::E))
+	{
+		TraceInfo info;
+		info.mStartPoint = GetPos();
+		info.mEndPoint = GetPos() + (GetForward() * USE_RANGE);
+		BaseObject* UseEnt = PhysicsQueries::TraceLine(info);
+		if (UseEnt != NULL && UseEnt != this)
+		{
+			UseEnt->Use(this);
+		}
 	}
 }

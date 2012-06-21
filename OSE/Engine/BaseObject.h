@@ -156,8 +156,9 @@ public:
 	virtual void Tick();
 	virtual void Think() {};
 	virtual void OnDelete() {}; //Called before the entity is deleted
-	virtual void Draw();
-	virtual void StartTouch(CollisionInfo* info) {};
+	virtual void Draw(); //Draw your sprites/Drawables here
+	virtual void StartTouch(CollisionInfo* info) {}; //When another entity begins to touch us
+	virtual void Use(BaseObject* ply) {}; //Player has pressed E on us!
 
 };
 

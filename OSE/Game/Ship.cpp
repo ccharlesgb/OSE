@@ -8,12 +8,16 @@
 //"player" is the classname. Player is the coded classname
 LINKCLASSTONAME("ship", Ship)
 
+#define MAX_ANGLE 25.f
+#define MAX_THROTTLE 75.f
+
 Ship::Ship(void)
 {
 	SetPos(Vector2(0,0));
 	RenderInit();
 	SetDrawOrder(RENDERGROUP_PLAYER);
 	PhysicsInit(DYNAMIC_BODY);
+	mWheelAngle = 0.f;
 }
 
 Ship::~Ship(void)
@@ -23,9 +27,9 @@ Ship::~Ship(void)
 void Ship::Spawn()
 {
 	GetPhysObj()->SetAngularDamping(25);
-	GetPhysObj()->SetLinearDamping(10);
+	GetPhysObj()->SetLinearDamping(6);
 	
-	SetModel("car", 1);
+	SetModel("car", 1.f);
 	//SetOrigin(Vector2(0,15));
 	PhysicsHullFromModel();
 	
@@ -69,22 +73,44 @@ void Ship::Think()
 	
 	//Player movement code
 	float player_walk_speed = 150.f;
-	
-	Vector2 MousePos = InputHandler::GetMousePosWorld();
-	Vector2 MouseDirHat = (MousePos - GetPos()).Normalize();
-	float TargetAngle = ig::RadToDeg(std::atan2(MouseDirHat.y, MouseDirHat.x)) - 90.f;
-	GetPhysObj()->ApplyTorque(ig::NormalizeAngle(TargetAngle - GetAngle()) * GetPhysObj()->GetMass());
-
+	float steer_factor = GetPhysObj()->GetLinearVelocity().Length() / 1000.f;
 	Vector2 MoveVector;
 	if (InputHandler::IsKeyPressed(sf::Keyboard::W))
 	{
-		MoveVector.y = 1;
+		mThrottle = ig::Approach(mThrottle, MAX_THROTTLE, 1);
 	}
 	else if (InputHandler::IsKeyPressed(sf::Keyboard::S))
 	{
-		MoveVector.y = -1;
+		mThrottle = ig::Approach(mThrottle, -MAX_THROTTLE / 3.f, 1.5);
 	}
-	MoveVector = MoveVector.Normalize() * player_walk_speed;
+	else
+		mThrottle = ig::Approach(mThrottle, 0, 0.3);
+	if (InputHandler::IsKeyPressed(sf::Keyboard::A))
+	{
+		mWheelAngle = ig::Approach(mWheelAngle, -MAX_ANGLE, 1);
+	}
+	else if (InputHandler::IsKeyPressed(sf::Keyboard::D))
+	{
+		mWheelAngle = ig::Approach(mWheelAngle, MAX_ANGLE, 1);
+	}
+	else
+		mWheelAngle = ig::Approach(mWheelAngle, 0, steer_factor);
+	MoveVector.y = mThrottle;
+	//MoveVector.x = mWheelAngle * mThrottle;
+	MoveVector = MoveVector.Rotate(-mWheelAngle);
 	MoveVector = ToGlobal(MoveVector) - GetPos();
-	ApplyForceCenter(MoveVector * GetPhysObj()->GetMass());
+	ApplyForce(MoveVector * GetPhysObj()->GetMass(), GetPos() + GetForward() * 70.f);
+
+	Vector2 BackFric;
+	BackFric.x = ToLocal(GetVelocity() + GetPos()).x;
+	BackFric = ToGlobal(BackFric) - GetPos();
+	ApplyForce(BackFric * -500.f, GetPos() + GetForward() * -70.f);
+
+	if (GetPhysObj()->GetLinearVelocity().Length() > 200.f)
+	{
+		//BaseObject* scorch = CreateEntity("ent_decal");
+		//scorch->SetModel("scorch", ig::Random(0.5,0.7));
+		//scorch->SetPos(GetPos());
+		//scorch->Spawn();
+	}
 }
