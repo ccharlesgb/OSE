@@ -6,7 +6,8 @@
 class Ship : public BasePhysics
 {
 private:
-	bool InUse;
+	BaseObject* mDriver;
+	bool InUse() { return mDriver != NULL; };
 public:
 	Ship(void);
 	~Ship(void);
@@ -14,4 +15,5 @@ public:
 	void OnDelete();
 	void Think();
 	void StartTouch(CollisionInfo* info);
+	void Exit(Vector2 position);
 };

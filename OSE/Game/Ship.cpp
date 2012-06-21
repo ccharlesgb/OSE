@@ -29,32 +29,42 @@ void Ship::Spawn()
 	//SetOrigin(Vector2(0,15));
 	PhysicsHullFromModel();
 	
-	InUse = false;
+	mDriver = NULL;
 }
 
 void Ship::OnDelete()
 {
 	std::cout << "OnDelete" << "\n";
-	BaseObject* Player = CreateEntity("player");
-	Player->SetPos(GetPos());
-	Player->Spawn();
-	gGlobals.Player = Player;
-	sCamera::FollowEntity(Player);
+	Exit(GetPos());
 }
 
 void Ship::StartTouch(CollisionInfo* info)
 {
 	if (info->OtherEnt->GetClassName() == "player")
 	{
+		std::cout << "clicked";
 		sCamera::FollowEntity(this);
-		info->OtherEnt->Delete();
-		InUse = true;
+		mDriver = info->OtherEnt;
+		mDriver->SetNoDraw(true);
 	}
+}
+
+void Ship::Exit(Vector2 position)
+{
+	mDriver->SetPos(position);
+	mDriver->SetNoDraw(false);
+	sCamera::FollowEntity(mDriver);
+	mDriver = NULL;
 }
 
 void Ship::Think()
 {
-	if (!InUse) { return; }
+	if (!InUse()) { return; }
+	
+	if (InputHandler::IsKeyPressed(sf::Keyboard::E))
+	{
+		Exit(GetPos() + Vector2(-20, 0));
+	}
 	
 	//Player movement code
 	float player_walk_speed = 150.f;
