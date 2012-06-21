@@ -6,7 +6,7 @@
 class Player : public BasePhysics
 {
 private:
-
+	BaseObject *mWeapon;
 public:
 	Player(void);
 	~Player(void);

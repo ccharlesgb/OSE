@@ -136,6 +136,7 @@ NOTES	: If the entity is a physics entity add it to the Box2D world
 */
 void MainGameState::OnEntityCreated(BaseObject* ent)
 {
+	ent->mPhysicsWorld = &mPhysicsWorld;
 	if (ent->IsPhysicsEnabled())
 	{
 		BasePhysics* physent = dynamic_cast<BasePhysics*>(ent);

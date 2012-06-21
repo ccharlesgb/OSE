@@ -51,7 +51,9 @@ private:
 	Colour mColour;
 	Sprite* mSprite;
 	bool mNoDraw;
+	BaseObject* mOwner;
 protected:
+	friend class MainGameState;
 	PhysicsWorld *mPhysicsWorld; //Physics world, reference here so we can do tracelines and queries no the B2D world
 	PhysicsDef *mPhysObj; //Pointer to the physics object for this entity (NOT NECCESSARILY VALID)
 	Matrix3 mMatrix; //Transformation matrix used by ToGlobal and ToLocal
@@ -80,7 +82,7 @@ public:
 	Matrix3 GetMatrix();
 	Vector2 ToGlobal(Vector2 &point);
 	Vector2 ToLocal(Vector2 &point);
-	Vector2 GetFoward() {return ToGlobal(Vector2(0,1)) - GetPos();}; //Get the unit vector pointing in the forward dir of the entity
+	Vector2 GetForward() {return ToGlobal(Vector2(0,1)) - GetPos();}; //Get the unit vector pointing in the forward dir of the entity
 
 	virtual void SetPos(Vector2 p) {mPosition = p; mMatrixNeedsUpdate = true;};
 	void SetPos(float x, float y) {SetPos(Vector2(x,y)); mMatrixNeedsUpdate = true;};
@@ -95,6 +97,8 @@ public:
 	Vector2 GetSize() {return mSprite->GetSize();};
 
 	BaseObject* CreateEntity(const char* classname);
+	void SetOwner(BaseObject* own) {mOwner = own;};
+	BaseObject* GetOwner() {return mOwner;};
 
 	//Model
 	void SetModel(const char* path);
@@ -124,7 +128,7 @@ public:
 	RenderGroup GetDrawOrder() {return mDrawOrder;};
 	void SetColor(Colour col) {mColour = col;};
 	Colour GetColor() {return mColour;};
-	void SetNoDraw(static bool nodraw) {mNoDraw = nodraw;};
+	void SetNoDraw(bool nodraw) {mNoDraw = nodraw;};
 	bool GetNoDraw() {return mNoDraw;};
 
 	//IO

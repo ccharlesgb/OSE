@@ -13,6 +13,11 @@ Player::Player(void)
 	RenderInit();
 	SetDrawOrder(RENDERGROUP_PLAYER);
 	PhysicsInit(DYNAMIC_BODY);
+	mWeapon = CreateEntity("weapon_pistol");
+	mWeapon->SetOwner(this);
+	mWeapon->SetPos(GetPos());
+	mWeapon->SetAngle(GetAngle());
+	mWeapon->Spawn();
 }
 
 void Player::Spawn()
@@ -27,7 +32,6 @@ void Player::Spawn()
 
 Player::~Player(void)
 {
-
 }
 
 void Player::Think()
@@ -60,4 +64,10 @@ void Player::Think()
 	MoveVector = MoveVector.Normalize() * player_walk_speed;
 	MoveVector = ToGlobal(MoveVector) - GetPos();
 	ApplyForceCenter(MoveVector * GetPhysObj()->GetMass());
+
+	if (InputHandler::IsMouseButtonPressed(sf::Mouse::Left))
+	{
+		VariantMap dat;
+		mWeapon->Fire("fire1", dat);
+	}
 }

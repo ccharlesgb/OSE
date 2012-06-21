@@ -1,6 +1,8 @@
 #include "weapon_pistol.h"
 #include "../Engine/PhysicsWorld.h"
 
+LINKCLASSTONAME("weapon_pistol", weapon_pistol)
+
 weapon_pistol::weapon_pistol(void)
 {
 	RegisterInput("fire1", PrimaryFire);
@@ -16,6 +18,6 @@ void weapon_pistol::PrimaryFire(BaseObject* ent, VariantMap &Data)
 	TraceInfo info;
 	info.mStartPoint = me->GetPos();
 	info.mEndPoint = me->GetPos() + (me->GetForward() * 1000);
-	me->mPhysicsWorld->TraceLine(info);
-	
+	//BaseObject* hit_target = me->mPhysicsWorld->TraceLine(info);
+	//hit_target->Delete();
 }
