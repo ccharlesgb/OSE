@@ -105,6 +105,7 @@
     <ClCompile Include="Game\MainGameState.cpp" />
     <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="Game\Prop.cpp" />
+    <ClCompile Include="Game\Ship.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Engine\PhysicsWorld.cpp" />
     <ClCompile Include="Game\weapon_pistol.cpp" />
@@ -137,6 +138,7 @@
     <ClInclude Include="Game\Player.h" />
     <ClInclude Include="Game\Prop.h" />
     <ClInclude Include="Engine\PhysicsWorld.h" />
+    <ClInclude Include="Game\Ship.h" />
     <ClInclude Include="Game\weapon_pistol.h" />
   </ItemGroup>
   <ItemGroup>

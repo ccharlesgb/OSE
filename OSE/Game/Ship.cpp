@@ -25,7 +25,7 @@ void Ship::Spawn()
 	GetPhysObj()->SetAngularDamping(25);
 	GetPhysObj()->SetLinearDamping(10);
 	
-	SetModel("Ship", 0.4);
+	SetModel("Ship", 0.3);
 	//SetOrigin(Vector2(0,15));
 	PhysicsHullFromModel();
 	
@@ -34,6 +34,7 @@ void Ship::Spawn()
 
 void Ship::OnDelete()
 {
+	std::cout << "OnDelete" << "\n";
 	BaseObject* Player = CreateEntity("player");
 	Player->SetPos(GetPos());
 	Player->Spawn();
@@ -56,7 +57,7 @@ void Ship::Think()
 	if (!InUse) { return; }
 	
 	//Player movement code
-	float player_walk_speed = 70.f;
+	float player_walk_speed = 150.f;
 	
 	Vector2 MousePos = InputHandler::GetMousePosWorld();
 	Vector2 MouseDirHat = (MousePos - GetPos()).Normalize();
@@ -73,14 +74,6 @@ void Ship::Think()
 	else if (InputHandler::IsKeyPressed(sf::Keyboard::S))
 	{
 		MoveVector.y = -1;
-	}
-	if (InputHandler::IsKeyPressed(sf::Keyboard::A))
-	{
-		MoveVector.x = -0.7;
-	}
-	else if (InputHandler::IsKeyPressed(sf::Keyboard::D))
-	{
-		MoveVector.x = 0.7;
 	}
 	MoveVector = MoveVector.Normalize() * player_walk_speed;
 	MoveVector = ToGlobal(MoveVector) - GetPos();

@@ -32,7 +32,7 @@ void Prop::StartTouch(CollisionInfo* info)
 {
 	if (info->OtherEnt->GetClassName() == "player")
 	{
-		GetPhysObj()->SetAngularVelocity(10000);
+		
 	}
 }
 

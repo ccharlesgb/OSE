@@ -44,8 +44,11 @@ private:
 	float mNextThink;
 	float mLastThink;
 	std::string mClassName; //The class name of the entity eg "player"
+
+	//Rendering
 	Colour mColour;
 	Sprite* mSprite;
+	bool mNoDraw;
 protected:
 	PhysicsDef *mPhysObj; //Pointer to the physics object for this entity (NOT NECCESSARILY VALID)
 	Matrix3 mMatrix; //Transformation matrix used by ToGlobal and ToLocal
@@ -117,6 +120,8 @@ public:
 	RenderGroup GetDrawOrder() {return mDrawOrder;};
 	void SetColor(Colour col) {mColour = col;};
 	Colour GetColor() {return mColour;};
+	void SetNoDraw(static bool nodraw) {mNoDraw = nodraw;};
+	bool GetNoDraw() {return mNoDraw;};
 
 	//IO
 	void Fire(const char* Name, VariantMap &Data);

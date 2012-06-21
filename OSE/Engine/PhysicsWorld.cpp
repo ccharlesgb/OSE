@@ -1,6 +1,10 @@
+
 #include "PhysicsWorld.h"
 #include "InputHandler.h"
 
+//Redeclare static members
+b2World *mWorld;
+std::vector<b2JointDef*> mJointQueue;
 
 PhysicsWorld::PhysicsWorld(void)
 {
@@ -26,7 +30,7 @@ void PhysicsWorld::Step(float delta)
 	while (iter != mJointQueue.end())
 	{
 		mWorld->CreateJoint(*iter);
-		std::cout << "Creating Joint: " << &iter << "\n";
+		delete *iter;
 		iter++;
 	}
 	mJointQueue.clear(); //Clear the queue for next time
@@ -38,9 +42,15 @@ void PhysicsWorld::AddPhysicsDef(PhysicsDef* def)
 	def->CreatePhysics(mWorld);
 }
 
+BaseObject* PhysicsWorld::TraceLine(TraceInfo& info)
+{
+	b2RayCastCallback* callback;
+	mWorld->RayCast(callback, info.mStartPoint.B2(), info.mEndPoint.B2());
+}
+
 BaseObject* PhysicsWorld::QueryPoint(Vector2 Point)
 {
-	QueryCallback result((InputHandler::GetMousePosWorld() / PIXELS_PER_METRE).B2());
+	PointQueryCallback result((InputHandler::GetMousePosWorld() / PIXELS_PER_METRE).B2());
 	b2AABB box;
 	float size = 0.01f;
 	box.lowerBound = (InputHandler::GetMousePosWorld() / PIXELS_PER_METRE - Vector2(size,size)).B2();

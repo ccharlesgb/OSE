@@ -10,6 +10,35 @@
 #define PosIterations 3
 
 //Callback class to return the first body in a AABB Query
+class PointQueryCallback : public b2QueryCallback
+{
+public:
+    PointQueryCallback(const b2Vec2& point)
+    {
+        m_point = point;
+        m_object = NULL;
+    }
+
+    bool ReportFixture(b2Fixture* fixture)
+    {
+        if (fixture->IsSensor()) return true; //ignore sensors
+        bool inside = fixture->TestPoint(m_point);
+        if (inside)
+        {
+             // We are done, terminate the query.
+             m_object = fixture->GetBody();
+                 return false;
+        }
+
+        // Continue the query.
+        return true;
+    }
+
+    b2Vec2  m_point;
+    b2Body* m_object;
+};
+
+//Callback class to return the first body in a AABB Query
 class QueryCallback : public b2QueryCallback
 {
 public:
@@ -38,6 +67,13 @@ public:
     b2Body* m_object;
 };
 
+class TraceInfo
+{
+public:
+	Vector2 mStartPoint;
+	Vector2 mEndPoint;
+};
+
 //Wrapper Class for b2World. Put ALL physics related stuff here
 class PhysicsWorld : public b2ContactListener
 {
@@ -60,6 +96,7 @@ public:
 	};
 
 	BaseObject* QueryPoint(Vector2 Point);
+	BaseObject* TraceLine(TraceInfo& info);
 
 	void BeginContact(b2Contact* contact)
 	{
@@ -69,12 +106,12 @@ public:
 		BaseObject* EntB = static_cast<BaseObject*>(bodyB->GetUserData());
 		CollisionInfo info;
 		info.OtherEnt = EntB;
-		//EntA->StartTouch(&info);
+		EntA->StartTouch(&info);
 		info.OtherEnt = EntA;
-		//EntB->StartTouch(&info);
-		b2WeldJointDef* joint = new b2WeldJointDef();
-		joint->Initialize(bodyA, bodyB, bodyA->GetPosition());
-		AddJoint(joint);
+		EntB->StartTouch(&info);
+		//b2WeldJointDef* joint = new b2WeldJointDef();
+		//joint->Initialize(bodyA, bodyB, bodyA->GetPosition());
+		//AddJoint(joint);
 	}
 
 	void EndContact(b2Contact* contact)

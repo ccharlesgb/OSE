@@ -11,6 +11,7 @@ BaseObject::BaseObject(void)
 	mPhysObj = NULL;
 	mIsRenderable = false;
 	mIsPhysics = false;
+	mNoDraw = false;
 	mNextThink = 0.f;
 	mLastThink = 0.f;
 	mDeleteMe = false;
