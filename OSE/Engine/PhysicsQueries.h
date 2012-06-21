@@ -1,6 +1,8 @@
 #pragma once
 
 #include <Box2D.h>
+#include "../Engine/Utilities/Vector2.h"
+#include "../Engine/BaseObject.h"
 
 //Callback class to return the first body in a AABB Query
 class PointQueryCallback : public b2QueryCallback
@@ -65,6 +67,7 @@ class PhysicsQueries
 private:
 	static b2World* mWorld;
 public:
+	static void SetWorld(b2World* world) {if (mWorld == NULL) mWorld = world;};
 	static BaseObject* QueryPoint(Vector2 Point);
 	static BaseObject* TraceLine(TraceInfo& info);
 };

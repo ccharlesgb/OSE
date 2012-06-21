@@ -1,13 +1,13 @@
 
 #include "PhysicsWorld.h"
 #include "InputHandler.h"
-//#include "PhysicsQueries.h"
+#include "PhysicsQueries.h"
 
 PhysicsWorld::PhysicsWorld(void)
 {
 	mWorld = new b2World(b2Vec2(0.f,0.f));
 	mWorld->SetContactListener(this);
-	//PhysicsQueries.mWorld = mWorld;
+	PhysicsQueries::SetWorld(mWorld);
 }
 
 PhysicsWorld::~PhysicsWorld(void)
