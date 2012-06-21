@@ -82,7 +82,11 @@ public:
 	Matrix3 GetMatrix();
 	Vector2 ToGlobal(Vector2 &point);
 	Vector2 ToLocal(Vector2 &point);
-	Vector2 GetForward() {return ToGlobal(Vector2(0,1)) - GetPos();}; //Get the unit vector pointing in the forward dir of the entity
+	//Get the unit vector pointing in the forward dir of the entity
+	Vector2 GetForward() {
+		Vector2 vec = Vector2(0, 1);
+		return ToGlobal(vec) - GetPos();
+	};
 
 	virtual void SetPos(Vector2 p) {mPosition = p; mMatrixNeedsUpdate = true;};
 	void SetPos(float x, float y) {SetPos(Vector2(x,y)); mMatrixNeedsUpdate = true;};
