@@ -15,9 +15,9 @@ private:
 	static std::string GetImagePath(const char* path);
 	
 	// Sound
+	static std::map<std::string, sf::SoundBuffer*> SoundCache;
 public:
-	Resource();
-	~Resource();
+	static void Cleanup();
 	
 	// Textures
 	static void PrecacheTexture(const char* path);

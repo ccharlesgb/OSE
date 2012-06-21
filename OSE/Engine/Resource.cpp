@@ -4,20 +4,15 @@
 std::map<std::string, sf::Texture*> Resource::TextureCache;
 sf::Texture* Resource::ErrorTex = NULL;
 
-Resource::Resource()
+void Resource::Cleanup()
 {
-
-}
-
-Resource::~Resource()
-{
+	std::cout << "CLEANING UP RESOURCES \n";
+	
 	std::map<std::string, sf::Texture*>::iterator it;
 	for(it = TextureCache.begin(); it != TextureCache.end(); it++) {
-		std::cout << "DELETEING " << it->first << "\n";
+		std::cout << "DELETING " << it->first << "\n";
 		delete TextureCache[it->first];
 	}
-	
-	//CLEAN UP YOUR TEXTURES HERE
 }
 
 std::string Resource::GetImagePath(const char* path)
