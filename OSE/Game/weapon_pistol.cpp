@@ -20,7 +20,9 @@ void weapon_pistol::PrimaryFire(BaseObject* ent, VariantMap &Data)
 	{
 		TraceInfo info;
 		info.mStartPoint = me->GetPos();
-		info.mEndPoint = me->GetPos() + (me->GetForward() * 1000);
+		float range = 1000;
+		float spread = 0.3; //In radians
+		info.mEndPoint = me->GetPos() + (me->GetForward() * range) + (me->GetRight() * ig::Random(-spread,spread) * range);
 		BaseObject* hit_target = PhysicsQueries::TraceLine(info);
 		if (hit_target != NULL)
 		{
