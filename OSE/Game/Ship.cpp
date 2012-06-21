@@ -33,7 +33,6 @@ void Ship::Spawn()
 	SetModel("car", 1.f);
 	//SetOrigin(Vector2(0,15));
 	PhysicsHullFromModel();
-	
 	mDriver = NULL;
 }
 

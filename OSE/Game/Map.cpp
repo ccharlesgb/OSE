@@ -5,8 +5,6 @@
 
 LINKCLASSTONAME("world", Map)
 
-#define METEOR_SPEED 20
-
 Map::Map(void)
 {
 	RenderInit();
@@ -33,7 +31,7 @@ void Map::Spawn()
 
 void Map::Draw()
 {
-	int arr_size = 2;
+	int arr_size = 5;
 	for (int x=-arr_size;x <= arr_size; x++)
 	{
 		for (int y=-arr_size;y <= arr_size; y++)

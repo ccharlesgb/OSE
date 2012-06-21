@@ -62,6 +62,21 @@ void MainGameState::Initialize()
 	BaseObject* Ship = CreateEntity("ship");
 	Ship->SetPos(Vector2(100, 0));
 	Ship->Spawn();
+
+	BaseObject* crate;
+	int crate_count = 200;
+	int map_size = 8000;
+	for (int i=0; i < crate_count; i++)
+	{
+		Vector2 pos = Vector2::Random(-map_size,map_size);
+		for (int i=0; i < 4; i++)
+		{
+			crate = CreateEntity("ent_prop");
+			crate->SetModel("crate", ig::Random(0.5,0.7));
+			crate->SetPos(pos + Vector2::Random(-20,20));
+			crate->Spawn();
+		}
+	}
 }
 
 /*
@@ -179,34 +194,14 @@ void MainGameState::OnMouseButtonPressed(sf::Mouse::Button Button, bool Pressed)
 		}
 		if (Pressed && Button == sf::Mouse::Left)
 		{
-			BaseObject* crate = CreateEntity("ent_prop");
-			crate->SetModel("crate", ig::Random(0.5,0.7));
-			crate->SetPos(InputHandler::GetMousePosWorld());
-			crate->Spawn();
-			crate = CreateEntity("ent_prop");
-			crate->SetModel("crate", ig::Random(0.5,0.7));
-			crate->SetPos(InputHandler::GetMousePosWorld());
-			crate->Spawn();
-			crate = CreateEntity("ent_prop");
-			crate->SetModel("crate", ig::Random(0.5,0.7));
-			crate->SetPos(InputHandler::GetMousePosWorld());
-			crate->Spawn();
-			crate = CreateEntity("ent_prop");
-			crate->SetModel("crate", ig::Random(0.5,0.7));
-			crate->SetPos(InputHandler::GetMousePosWorld());
-			crate->Spawn();
-			crate = CreateEntity("ent_prop");
-			crate->SetModel("crate", ig::Random(0.5,0.7));
-			crate->SetPos(InputHandler::GetMousePosWorld());
-			crate->Spawn();
-			crate = CreateEntity("ent_prop");
-			crate->SetModel("crate", ig::Random(0.5,0.7));
-			crate->SetPos(InputHandler::GetMousePosWorld());
-			crate->Spawn();
-			crate = CreateEntity("ent_prop");
-			crate->SetModel("crate", ig::Random(0.5,0.7));
-			crate->SetPos(InputHandler::GetMousePosWorld());
-			crate->Spawn();
+			BaseObject* crate;
+			for (int i=0; i<4; i++)
+			{
+				crate = CreateEntity("ent_prop");
+				crate->SetModel("crate", ig::Random(0.5,0.7));
+				crate->SetPos(InputHandler::GetMousePosWorld());
+				crate->Spawn();
+			}
 		}
 	}
 }
