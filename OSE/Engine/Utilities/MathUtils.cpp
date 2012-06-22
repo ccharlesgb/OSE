@@ -79,18 +79,22 @@ namespace ig
 	
 	Vector2 GameToSFML(Vector2 Pos)
 	{
-		sf::Vector2<double> dPos;
-		dPos.x = Pos.x;
-		dPos.y = Pos.y;
-		dPos.y *= -1;
-		sf::Vector2<double> ScreenCentre = sf::Vector2<double>(gGlobals.GameWidth / 2, gGlobals.GameHeight / 2);
+		Pos.y *= -1;
+		Vector2 ScreenCentre = Vector2(gGlobals.GameWidth / 2, gGlobals.GameHeight / 2);
 		
-		dPos = dPos + ScreenCentre;
+		Pos = Pos + ScreenCentre;
 		
-		Pos.x = dPos.x;
-		Pos.y = dPos.y;
+		return Pos;
+	}
+
+	Vector2 SFMLToGame(Vector2 Pos)
+	{
+		Pos.y *= -1;
+		Vector2 ScreenCentre = Vector2(gGlobals.GameWidth / 2, gGlobals.GameHeight / 2);
 		
-		return Pos.SF();
+		Pos = Pos - ScreenCentre;
+		
+		return Pos;
 	}
 	
 	Vector2 AngleToVector(float angle)

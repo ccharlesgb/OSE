@@ -22,5 +22,6 @@ namespace ig
 	float Limit(float var, float min, float max);
 	
 	Vector2 GameToSFML(Vector2 Pos);
+	Vector2 SFMLToGame(Vector2 Pos);
 	Vector2 AngleToVector(float angle);
 }
