@@ -41,12 +41,16 @@ Player::~Player(void)
 void Player::Think()
 {	
 	//Player movement code
-	float player_walk_speed = 70.f;
+	float player_walk_speed = 60.f;
 
-	Vector2 MousePos = InputHandler::GetMousePosWorld();
-	Vector2 MouseDirHat = (MousePos - GetPos()).Normalize();
-	float TargetAngle = ig::RadToDeg(std::atan2(MouseDirHat.y, MouseDirHat.x)) - 90.f;
-	GetPhysObj()->ApplyTorque(ig::NormalizeAngle(TargetAngle - GetAngle()) * GetPhysObj()->GetMass());
+	//Point player towards mouse
+	if (!InputHandler::IsKeyPressed(sf::Keyboard::LShift))
+	{
+		Vector2 MousePos = InputHandler::GetMousePosWorld();
+		Vector2 MouseDirHat = (MousePos - GetPos()).Normalize();
+		float TargetAngle = ig::RadToDeg(std::atan2(MouseDirHat.y, MouseDirHat.x)) - 90.f;
+		GetPhysObj()->ApplyTorque(ig::NormalizeAngle(TargetAngle - GetAngle()) * GetPhysObj()->GetMass());
+	}
 
 	Vector2 MoveVector;
 	if (InputHandler::IsKeyPressed(sf::Keyboard::W))
@@ -71,7 +75,7 @@ void Player::Think()
 
 	if (InputHandler::IsMouseButtonPressed(sf::Mouse::Left) && !InputHandler::IsKeyPressed(sf::Keyboard::LShift))
 	{
-		mWeapon->SetPos(GetPos());
+		mWeapon->SetPos(GetPos() + GetForward() * 55.f);
 		mWeapon->SetAngle(GetAngle());
 		VariantMap dat;
 		mWeapon->Fire("fire1", dat);

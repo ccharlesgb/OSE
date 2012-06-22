@@ -43,11 +43,14 @@ void Prop::Spawn()
 
 void Prop::StartTouch(CollisionInfo* info)
 {
-	DamageInfo d_info;
-	d_info.Inflictor = info->OtherEnt;
-	d_info.Amount = info->Speed / 10;
-	d_info.type = DAMAGETYPE_PHYSICS;
-	TakeDamage(d_info);
+	if (info->Speed > 500)
+	{
+		DamageInfo d_info;
+		d_info.Inflictor = info->OtherEnt;
+		d_info.Amount = info->Speed / 10;
+		d_info.type = DAMAGETYPE_PHYSICS;
+		TakeDamage(d_info);
+	}
 	if (info->Speed > 750)
 	{
 		BaseObject* scorch = CreateEntity("ent_decal");

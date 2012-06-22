@@ -122,14 +122,18 @@ void Ship::Think()
 	MoveVector.y = mThrottle;
 	MoveVector = MoveVector.Rotate(-mWheelAngle);
 	MoveVector = ToGlobal(MoveVector) - GetPos();
-	ApplyForce(MoveVector * GetPhysObj()->GetMass(), GetPos() + GetForward() * 70.f);
+	ApplyForce(MoveVector * GetPhysObj()->GetMass(), GetPos() + GetForward() * 90.f);
 
 	Vector2 BackFric;
 	Vector2 pos = GetVelocity() + GetPos();
 	BackFric.x = ToLocal(pos).x;
 	BackFric.x = BackFric.x + (GetAngularVelocity() * -1.f);
 	BackFric = ToGlobal(BackFric) - GetPos();
-	ApplyForce(BackFric * -200.f, GetPos() + GetForward() * -70.f);
+	if (InputHandler::IsKeyPressed(sf::Keyboard::Space))
+	{
+		BackFric.x = BackFric.x * -0.15;
+	}
+	ApplyForce(BackFric * -200.f, GetPos() + GetForward() * -90.f);
 
 	if (GetPhysObj()->GetLinearVelocity().Length() > 200.f)
 	{

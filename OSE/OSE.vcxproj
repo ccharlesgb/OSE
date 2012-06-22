@@ -44,7 +44,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\Connor\Documents\Programming\SFML-2.0-rc\include;C:\Users\Connor\Documents\Programming\Box2D\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\Connor\Documents\Programming\LTBL;C:\Users\Connor\Documents\Programming\SFML-2.0-rc\include;C:\Users\Connor\Documents\Programming\Box2D\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\Connor\Documents\Programming\SFML-2.0-rc\lib;C:\Users\Connor\Documents\Programming\Box2D\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

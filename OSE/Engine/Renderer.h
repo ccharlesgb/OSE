@@ -8,6 +8,7 @@
 #include "DebugDraw.h"
 #include "GameGlobals.h"
 #include "EntityList.h"
+#include <LTBL/Light/LightSystem.h>
 
 class Camera;
 class IGameState;
@@ -18,6 +19,7 @@ class Renderer : public IEntityListener<BaseObject*>
 {
 private:
 	sf::RenderWindow *mRender;
+	ltbl::LightSystem *mLightSystem;
 	sf::View mView;
 	DebugDraw* mPhysDebug;
 	EntityList<BaseObject*> Renderables;
