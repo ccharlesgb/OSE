@@ -42,14 +42,14 @@ void weapon_pistol::PrimaryFire(BaseObject* ent, VariantMap &Data)
 		TraceInfo info;
 		info.mStartPoint = me->GetPos();
 		float range = 1000;
-		float spread = 0.15; //In radians
+		float spread = 0.1; //In radians
 		info.mEndPoint = me->GetPos() + (me->GetForward() * range) + (me->GetRight() * ig::Random(-spread,spread) * range);
 		TraceResult TraceRes;
-		PhysicsQueries::TraceLine(info, TraceRes);
+		PhysicsQueries::TraceLine(info, &TraceRes);
 
 		//Tracer Effect
 		me->mLine->mVerts[0] = info.mStartPoint;
-		me->mLine->mVerts[1] = info.mEndPoint;
+		me->mLine->mVerts[1] = TraceRes.mHitPos;
 
 		if (TraceRes.mHitEnt != NULL)
 		{

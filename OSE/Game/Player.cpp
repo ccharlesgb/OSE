@@ -87,7 +87,7 @@ void Player::Think()
 		info.mStartPoint = GetPos();
 		info.mEndPoint = GetPos() + (GetForward() * USE_RANGE);
 		TraceResult TraceRes;
-		PhysicsQueries::TraceLine(info, TraceRes);
+		PhysicsQueries::TraceLine(info, &TraceRes);
 		if (TraceRes.mHitEnt != NULL && TraceRes.mHitEnt != this)
 		{
 			TraceRes.mHitEnt->Use(this);

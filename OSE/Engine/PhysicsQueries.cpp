@@ -3,12 +3,14 @@
 
 b2World* PhysicsQueries::mWorld = NULL;
 
-void PhysicsQueries::TraceLine(TraceInfo& info, TraceResult &result)
+void PhysicsQueries::TraceLine(TraceInfo& info, TraceResult *result)
 {
-	TraceQueryCallback callback(info, &result);
+	TraceQueryCallback callback(info, result);
+	result->mHitPos = info.mEndPoint / PIXELS_PER_METRE;
 	mWorld->RayCast(&callback, (info.mStartPoint / PIXELS_PER_METRE).B2(), (info.mEndPoint / PIXELS_PER_METRE).B2());
 	std::cout << callback.mResult->mHitEnt << "\n";
-	result = *callback.mResult;
+	result = callback.mResult;
+	result->mHitPos = result->mHitPos * PIXELS_PER_METRE;
 }
 
 BaseObject* PhysicsQueries::QueryPoint(Vector2 Point)

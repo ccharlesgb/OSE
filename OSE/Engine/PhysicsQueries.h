@@ -71,16 +71,13 @@ public:
         if (fixture->IsSensor()) return -1; //ignore sensors
         // We are done, terminate the query.
         mBody = fixture->GetBody();
-		if (fraction == 0)
+		if (mBody)
 		{
-			if (mBody)
-			{
-				mResult->mHitEnt = static_cast<BaseObject*>(mBody->GetUserData());
-			}
-			mResult->mHitNormal = normal;
-			mResult->mHitPos = point;
-
+			mResult->mHitEnt = static_cast<BaseObject*>(mBody->GetUserData());
 		}
+		mResult->mHitNormal = normal;
+		mResult->mHitPos = point;
+
         return fraction;
     }
 
@@ -96,6 +93,6 @@ private:
 public:
 	static void SetWorld(b2World* world) {if (mWorld == NULL) mWorld = world;};
 	static BaseObject* QueryPoint(Vector2 Point);
-	static void TraceLine(TraceInfo& info, TraceResult &result);
+	static void TraceLine(TraceInfo& info, TraceResult *result);
 };
 
