@@ -20,6 +20,10 @@ Ship::Ship(void)
 	PhysicsInit(DYNAMIC_BODY);
 	mWheelAngle = 0.f;
 	mThrottle = 0.f;
+	mWheelSprite = new Sprite(gGlobals.RenderWindow);
+	mWheelSprite->SetTexture("car_wheel");
+	mWheelSprite->SetOrigin(Vector2());
+	mWheelSprite->SetScale(0.4f);
 }
 
 Ship::~Ship(void)
@@ -32,11 +36,26 @@ void Ship::Spawn()
 	GetPhysObj()->SetLinearDamping(3);
 	
 	SetModel("car", 1.f);
-	//SetOrigin(Vector2(0,15));
 	PhysicsHullFromModel();
 	mDriver = NULL;
 	CreateSound("enter", "engine_start");
 	CreateSound("idle", "engine_idle");
+}
+
+void Ship::Draw()
+{
+
+	mWheelSprite->SetAngle(GetAngle() - mWheelAngle);
+	Vector2 FL_Pos, FR_Pos;
+	FL_Pos = (GetForward() * 80.f) + (GetRight() * -43.f);
+	FR_Pos = (GetForward() * 80.f) + (GetRight() * 43.f);
+	mWheelSprite->SetPosition(GetPos() + FL_Pos);
+	mWheelSprite->Draw();
+
+	mWheelSprite->SetPosition(GetPos() + FR_Pos);
+	mWheelSprite->Draw();
+
+		DrawModel();
 }
 
 void Ship::OnDelete()

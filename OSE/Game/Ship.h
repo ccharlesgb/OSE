@@ -11,6 +11,7 @@ private:
 	float mWheelAngle;
 	float mThrottle;
 	float mEnterTime;
+	Sprite* mWheelSprite;
 public:
 	Ship(void);
 	~Ship(void);
@@ -20,4 +21,5 @@ public:
 	void StartTouch(CollisionInfo* info);
 	void Exit(Vector2 position);
 	void Use(BaseObject *ply);
+	void Draw();
 };

@@ -12,7 +12,7 @@ weapon_pistol::weapon_pistol(void)
 	GetSound("shot")->SetVolume(20.f);
 	SetDrawOrder(RENDERGROUP_ENTITIES);
 	mLine = new Line(gGlobals.RenderWindow);
-	mLine->SetColour(Colour(255,215,0));
+	mLine->SetColour(Colour(255, 236, 139));
 }
 
 weapon_pistol::~weapon_pistol(void)
@@ -49,7 +49,7 @@ void weapon_pistol::PrimaryFire(BaseObject* ent, VariantMap &Data)
 
 		//Tracer Effect
 		me->mLine->mVerts[0] = info.mStartPoint;
-		me->mLine->mVerts[1] = TraceRes.mHitPos;
+		me->mLine->mVerts[1] = TraceRes.mHitPos + (me->GetForward() * 5.f); // Add some slop to prevent line stopping before sprite
 
 		if (TraceRes.mHitEnt != NULL)
 		{
@@ -60,6 +60,6 @@ void weapon_pistol::PrimaryFire(BaseObject* ent, VariantMap &Data)
 			TraceRes.mHitEnt->TakeDamage(info);
 		}
 		me->mLastShot = gGlobals.CurTime;
-		me->SetNextPrimaryFire(gGlobals.CurTime + 0.25f);
+		me->SetNextPrimaryFire(gGlobals.CurTime + 0.1f);
 	}
 }
