@@ -3,6 +3,7 @@
 #include "../Engine/InputHandler.h"
 #include "../Engine/GameGlobals.h"
 #include "../Engine/Camera.h"
+#include "../Engine/Sound.h"
 
 //This function registers the entity to the EntityCreator.
 //"player" is the classname. Player is the coded classname
@@ -56,7 +57,9 @@ void Ship::Use(BaseObject *ply)
 	mDriver = ply;
 	mDriver->SetNoDraw(true);
 	mEnterTime = gGlobals.CurTime;
-	EmitSound("enter");
+	//EmitSound("enter");
+	GetSound("idle")->SetLoop(true);
+	GetSound("idle")->Play();
 }
 
 
@@ -66,6 +69,7 @@ void Ship::Exit(Vector2 position)
 	mDriver->SetNoDraw(false);
 	sCamera::FollowEntity(mDriver);
 	mDriver = NULL;
+	GetSound("idle")->Stop();
 }
 
 void Ship::Think()
@@ -88,7 +92,6 @@ void Ship::Think()
 		if (InputHandler::IsKeyPressed(sf::Keyboard::W))
 		{
 			mThrottle = ig::Approach(mThrottle, MAX_THROTTLE, 1);
-			EmitSound("idle");
 		}
 		else if (InputHandler::IsKeyPressed(sf::Keyboard::S))
 		{
@@ -96,6 +99,7 @@ void Ship::Think()
 		}
 		else
 			mThrottle = ig::Approach(mThrottle, 0, 0.3);
+		GetSound("idle")->SetPitch(0.7 + (std::fabs(mThrottle / MAX_THROTTLE) / 2.f));
 
 		if (InputHandler::IsKeyPressed(sf::Keyboard::A))
 		{

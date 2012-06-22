@@ -130,6 +130,7 @@ public:
 	//Sound
 	void CreateSound(const char *name, const char *path);
 	void EmitSound(const char *name);
+	Sound* GetSound(const char *name);
 
 	//Health
 	void SetHealth(const float hlt) {mHealth = hlt;};

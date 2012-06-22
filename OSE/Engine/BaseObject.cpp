@@ -115,6 +115,14 @@ void BaseObject::EmitSound(const char *name)
 	}
 }
 
+Sound* BaseObject::GetSound(const char *name)
+{
+	if (mSounds[*name] != NULL)
+	{
+		return mSounds[*name];
+	}
+}
+
 void BaseObject::TakeDamage(const DamageInfo &info)
 {
 	SetHealth(GetHealth() - info.Amount);

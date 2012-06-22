@@ -7,6 +7,8 @@ LINKCLASSTONAME("weapon_pistol", weapon_pistol)
 weapon_pistol::weapon_pistol(void)
 {
 	RegisterInput("fire1", PrimaryFire);
+	CreateSound("shot", "gunshot");
+	GetSound("shot")->SetVolume(20.f);
 }
 
 weapon_pistol::~weapon_pistol(void)
@@ -18,20 +20,21 @@ void weapon_pistol::PrimaryFire(BaseObject* ent, VariantMap &Data)
 	weapon_pistol* me = dynamic_cast<weapon_pistol*>(ent);
 	if (me->GetNextPrimaryFire() < gGlobals.CurTime)
 	{
+		me->EmitSound("shot");
 		TraceInfo info;
 		info.mStartPoint = me->GetPos();
 		float range = 1000;
-		float spread = 0.3; //In radians
+		float spread = 0.25; //In radians
 		info.mEndPoint = me->GetPos() + (me->GetForward() * range) + (me->GetRight() * ig::Random(-spread,spread) * range);
 		BaseObject* hit_target = PhysicsQueries::TraceLine(info);
 		if (hit_target != NULL)
 		{
 			DamageInfo info;
-			info.Amount = ig::Random(3,8);
+			info.Amount = ig::Random(15,25);
 			info.type = DAMAGETYPE_BULLET;
 			info.Inflictor = me->GetOwner();
 			hit_target->TakeDamage(info);
 		}
-		me->SetNextPrimaryFire(gGlobals.CurTime + 0.1f);
+		me->SetNextPrimaryFire(gGlobals.CurTime + 0.25f);
 	}
 }

@@ -135,7 +135,6 @@ void MainGameState::OnEvent(sf::Event &Event)
 	if (Event.type == sf::Event::MouseWheelMoved)
 	{
 		float del = Event.mouseWheel.delta;
-		std::cout << del << "\n";
 		float fac = 1.f;
 		fac = 1.f + (del / 5.f);
 		float zoom = sCamera::GetZoom() * fac;
