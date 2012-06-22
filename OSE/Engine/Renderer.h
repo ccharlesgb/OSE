@@ -8,7 +8,6 @@
 #include "DebugDraw.h"
 #include "GameGlobals.h"
 #include "EntityList.h"
-#include <LTBL/Light/LightSystem.h>
 
 class Camera;
 class IGameState;
