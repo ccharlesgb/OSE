@@ -81,6 +81,7 @@
     <ClCompile Include="Engine\PhysicsQueries.cpp" />
     <ClCompile Include="Engine\Line.cpp" />
     <ClCompile Include="Engine\Sound.cpp" />
+    <ClCompile Include="Engine\AudioEnvironment.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\InputHandler.h">
@@ -153,6 +154,7 @@
     <ClInclude Include="Engine\PhysicsQueries.h" />
     <ClInclude Include="Engine\Line.h" />
     <ClInclude Include="engine\sound.h" />
+    <ClInclude Include="Engine\AudioEnvironment.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="engine\utilities\matrix3.inl" />

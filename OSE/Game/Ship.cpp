@@ -34,7 +34,8 @@ void Ship::Spawn()
 	//SetOrigin(Vector2(0,15));
 	PhysicsHullFromModel();
 	mDriver = NULL;
-	CreateSound("enter", "Ship");
+	CreateSound("enter", "engine_start");
+	CreateSound("idle", "engine_idle");
 }
 
 void Ship::OnDelete()
@@ -87,6 +88,7 @@ void Ship::Think()
 		if (InputHandler::IsKeyPressed(sf::Keyboard::W))
 		{
 			mThrottle = ig::Approach(mThrottle, MAX_THROTTLE, 1);
+			EmitSound("idle");
 		}
 		else if (InputHandler::IsKeyPressed(sf::Keyboard::S))
 		{

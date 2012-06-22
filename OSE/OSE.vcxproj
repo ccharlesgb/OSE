@@ -80,6 +80,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\AudioEnvironment.cpp" />
     <ClCompile Include="Engine\BaseDrawable.cpp" />
     <ClCompile Include="Engine\Camera.cpp" />
     <ClCompile Include="Engine\BaseObject.cpp" />
@@ -114,6 +115,7 @@
     <ClCompile Include="Engine\PhysicsQueries.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\AudioEnvironment.h" />
     <ClInclude Include="Engine\BaseDrawable.h" />
     <ClInclude Include="Engine\Camera.h" />
     <ClInclude Include="Engine\BaseObject.h" />
