@@ -13,6 +13,7 @@ var annotated =
     [ "CircleShape", "class_circle_shape.html", "class_circle_shape" ],
     [ "CollisionInfo", "class_collision_info.html", "class_collision_info" ],
     [ "Colour", "class_colour.html", "class_colour" ],
+    [ "DamageInfo", "class_damage_info.html", "class_damage_info" ],
     [ "DebugDraw", "class_debug_draw.html", "class_debug_draw" ],
     [ "Decal", "class_decal.html", "class_decal" ],
     [ "EntityCreator", "class_entity_creator.html", "class_entity_creator" ],

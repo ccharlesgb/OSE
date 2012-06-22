@@ -26,6 +26,7 @@ var hierarchy =
     ] ],
     [ "CollisionInfo", "class_collision_info.html", null ],
     [ "Colour", "class_colour.html", null ],
+    [ "DamageInfo", "class_damage_info.html", null ],
     [ "DebugDraw", "class_debug_draw.html", null ],
     [ "EntityCreator", "class_entity_creator.html", null ],
     [ "EntityList< T >", "class_entity_list.html", null ],

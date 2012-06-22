@@ -120,65 +120,67 @@ $(document).ready(function(){initNavTree('_i_game_state_8h.html','');});
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordtype">double</span> mFrameTime;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordtype">double</span> mLastFrame;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordtype">double</span> mStartTime;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_state_manager.html">StateManager</a>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        sf::Clock mClock;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <a class="code" href="class_i_game_state.html">IGameState</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="class_i_game_state.html">IGameState</a>();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordtype">void</span> Pause() {mPaused = <span class="keyword">true</span>;};</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordtype">void</span> UnPause() {mPaused = <span class="keyword">false</span>;};</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordtype">bool</span> GetPaused() {<span class="keywordflow">return</span> mPaused;};</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordtype">void</span> SetPausable(<span class="keywordtype">bool</span> p) {mPausable = p;};</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordtype">bool</span> GetPausable() {<span class="keywordflow">return</span> mPausable;};</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">void</span> SetDelta(<span class="keywordtype">float</span> d) {mDelta = d;};</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">double</span> GetDelta() {<span class="keywordflow">return</span> mDelta;};</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">void</span> OnEntityAdded(<a class="code" href="class_base_object.html">BaseObject</a>* ent);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">void</span> OnEntityRemoved(<a class="code" href="class_base_object.html">BaseObject</a>* ent);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="class_base_object.html">BaseObject</a>* CreateEntity(<span class="keyword">const</span> <span class="keywordtype">char</span>* ID);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordtype">bool</span> GetStarted() {<span class="keywordflow">return</span> mStarted;};</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordtype">double</span> mStartPause;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">double</span> mTimePaused;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_state_manager.html">StateManager</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        sf::Clock mClock;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="class_i_game_state.html">IGameState</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="class_i_game_state.html">IGameState</a>();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordtype">void</span> Pause();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordtype">void</span> UnPause();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordtype">bool</span> GetPaused() {<span class="keywordflow">return</span> mPaused;};</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">void</span> SetPausable(<span class="keywordtype">bool</span> p) {mPausable = p;};</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">bool</span> GetPausable() {<span class="keywordflow">return</span> mPausable;};</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">void</span> SetDelta(<span class="keywordtype">float</span> d) {mDelta = d;};</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">double</span> GetDelta() {<span class="keywordflow">return</span> mDelta;};</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">void</span> OnEntityAdded(<a class="code" href="class_base_object.html">BaseObject</a>* ent);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordtype">void</span> OnEntityRemoved(<a class="code" href="class_base_object.html">BaseObject</a>* ent);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="class_base_object.html">BaseObject</a>* CreateEntity(<span class="keyword">const</span> <span class="keywordtype">char</span>* ID);</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> Initialize() {};</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> ShutDown() {};</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> OnEntityCreated(<a class="code" href="class_base_object.html">BaseObject</a>* ent) {};</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> OnEntityDeleted(<a class="code" href="class_base_object.html">BaseObject</a>* ent) {};</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> Tick() {};</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> OnEvent(sf::Event &amp;Event) {};</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> OnKeyPressed(sf::Keyboard::Key Key, <span class="keywordtype">bool</span> Pressed) {};</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> OnMouseButtonPressed(sf::Mouse::Button Button, <span class="keywordtype">bool</span> Pressed) {};</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> DrawDebugData() {};</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordtype">void</span> _Initialize();</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordtype">void</span> _ShutDown();</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordtype">void</span> _OnEntityCreated(<a class="code" href="class_base_object.html">BaseObject</a>* ent) {OnEntityCreated(ent);};</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordtype">void</span> _OnEntityDeleted(<a class="code" href="class_base_object.html">BaseObject</a>* ent) {};</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordtype">void</span> _Tick(); <span class="comment">//Declared in cpp</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordtype">void</span> _OnEvent(sf::Event &amp;Event);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordtype">void</span> _OnKeyPressed(sf::Keyboard::Key Key, <span class="keywordtype">bool</span> Pressed) {OnKeyPressed(Key, Pressed);};</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordtype">void</span> _OnMouseButtonPressed(sf::Mouse::Button Button, <span class="keywordtype">bool</span> Pressed) {OnMouseButtonPressed(Button, Pressed);};</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;};</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="code" href="struct_register_state.html">   62</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_register_state.html">RegisterState</a></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;{</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <a class="code" href="struct_register_state.html">RegisterState</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* name)</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <a class="code" href="class_base_state_factory.html">BaseStateFactory</a>* F = <span class="keyword">new</span> <a class="code" href="class_state_factory.html">StateFactory&lt;T&gt;</a>;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                STATEMANAGER-&gt;RegisterState(std::string(name), F);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;};</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#define REGISTERSTATE(name, t) \</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">        static RegisterState&lt;t&gt; Regi(name);</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordtype">bool</span> GetStarted() {<span class="keywordflow">return</span> mStarted;};</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> Initialize() {};</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> ShutDown() {};</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> OnEntityCreated(<a class="code" href="class_base_object.html">BaseObject</a>* ent) {};</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> OnEntityDeleted(<a class="code" href="class_base_object.html">BaseObject</a>* ent) {};</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> Tick() {};</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> OnEvent(sf::Event &amp;Event) {};</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> OnKeyPressed(sf::Keyboard::Key Key, <span class="keywordtype">bool</span> Pressed) {};</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> OnMouseButtonPressed(sf::Mouse::Button Button, <span class="keywordtype">bool</span> Pressed) {};</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> DrawDebugData() {};</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordtype">void</span> _Initialize();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordtype">void</span> _ShutDown();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordtype">void</span> _OnEntityCreated(<a class="code" href="class_base_object.html">BaseObject</a>* ent) {OnEntityCreated(ent);};</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordtype">void</span> _OnEntityDeleted(<a class="code" href="class_base_object.html">BaseObject</a>* ent) {};</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordtype">void</span> _Tick(); <span class="comment">//Declared in cpp</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordtype">void</span> _OnEvent(sf::Event &amp;Event);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordtype">void</span> _OnKeyPressed(sf::Keyboard::Key Key, <span class="keywordtype">bool</span> Pressed) {OnKeyPressed(Key, Pressed);};</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordtype">void</span> _OnMouseButtonPressed(sf::Mouse::Button Button, <span class="keywordtype">bool</span> Pressed) {OnMouseButtonPressed(Button, Pressed);};</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;};</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="code" href="struct_register_state.html">   64</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_register_state.html">RegisterState</a></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;{</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <a class="code" href="struct_register_state.html">RegisterState</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* name)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <a class="code" href="class_base_state_factory.html">BaseStateFactory</a>* F = <span class="keyword">new</span> <a class="code" href="class_state_factory.html">StateFactory&lt;T&gt;</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                STATEMANAGER-&gt;RegisterState(std::string(name), F);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;};</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#define REGISTERSTATE(name, t) \</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">        static RegisterState&lt;t&gt; Regi(name);</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_c9573c26b31bdadbaf42093c81dfcb23.html">OSE</a></li><li class="navelem"><a class="el" href="dir_fbcf171215a99c72cbd8617030b138fc.html">Engine</a></li><li class="navelem"><b>IGameState.h</b></li>
-    <li class="footer">Generated on Fri Jun 22 2012 01:54:08 for OSE by
+    <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.1 </li>
   </ul>

@@ -14,22 +14,36 @@ Sound::~Sound(void)
 	
 }
 
+/**
+ * Play the sound.
+ */
 void Sound::Play()
 {
 	mSound.play();
 }
 
+/**
+ * Set the sound origion.
+ */
 void Sound::SetPosition(Vector2 position)
 {
 	position = ig::GameToSFML(position);
 	mSound.setPosition(position.x, position.y, mHeight);
 }
 
+/**
+ * Set the distance before the sound starts "fading" out.
+ */
 void Sound::SetMinDistance(float distance)
 {
 	mSound.setMinDistance(distance);
 }
 
+/**
+ * Set the Attenuation (rate it fades).
+ *
+ * Range between 0 and 100. 0 means it dosn't fade.
+ */
 void Sound::SetAttenuation(float attenuation)
 {
 	mSound.setAttenuation(attenuation);

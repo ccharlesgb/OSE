@@ -23,6 +23,7 @@ var class_physics_def =
     [ "SetOwner", "class_physics_def.html#ac2c4bdfa45ee79453d36344121e58720", null ],
     [ "SetPos", "class_physics_def.html#a2109ead9cad89b0bc04a506f8b1eb09b", null ],
     [ "SetPos", "class_physics_def.html#a9522325d750eaf22e008ea57b01b0d01", null ],
+    [ "SetRestitution", "class_physics_def.html#afe6b967485cd953b5c12bbc7ced2df3c", null ],
     [ "SetType", "class_physics_def.html#afae1399331586474eb95fa9603bdcb9a", null ],
     [ "mVertices", "class_physics_def.html#a5243516702c88a5cbf0248a3ea9bb85c", null ]
 ];

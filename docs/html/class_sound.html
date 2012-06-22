@@ -66,7 +66,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -112,15 +112,80 @@ $(document).ready(function(){initNavTree('class_sound.html','');});
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a603182c458f1a0bb46c97d81fae8b5f3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a603182c458f1a0bb46c97d81fae8b5f3"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Sound</b> (const char *path)</td></tr>
-<tr class="memitem:a8106f65989f5cd4490c6cfe7032cf2b1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8106f65989f5cd4490c6cfe7032cf2b1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Play</b> ()</td></tr>
-<tr class="memitem:ade27d113a719436c55fcf4e365aef172"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ade27d113a719436c55fcf4e365aef172"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetPosition</b> (<a class="el" href="class_vector2.html">Vector2</a> position)</td></tr>
-<tr class="memitem:ac59b5e12844c7f2e536643c7e44f8b01"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac59b5e12844c7f2e536643c7e44f8b01"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetMinDistance</b> (float distance)</td></tr>
-<tr class="memitem:a4306b665fe168d76b47f28d37c44d092"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4306b665fe168d76b47f28d37c44d092"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetAttenuation</b> (float attenuation)</td></tr>
+<tr class="memitem:a8106f65989f5cd4490c6cfe7032cf2b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sound.html#a8106f65989f5cd4490c6cfe7032cf2b1">Play</a> ()</td></tr>
+<tr class="memitem:ade27d113a719436c55fcf4e365aef172"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sound.html#ade27d113a719436c55fcf4e365aef172">SetPosition</a> (<a class="el" href="class_vector2.html">Vector2</a> position)</td></tr>
+<tr class="memitem:ac59b5e12844c7f2e536643c7e44f8b01"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sound.html#ac59b5e12844c7f2e536643c7e44f8b01">SetMinDistance</a> (float distance)</td></tr>
+<tr class="memitem:a4306b665fe168d76b47f28d37c44d092"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sound.html#a4306b665fe168d76b47f28d37c44d092">SetAttenuation</a> (float attenuation)</td></tr>
 </table>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a8106f65989f5cd4490c6cfe7032cf2b1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sound::Play </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Play the sound. </p>
+
+</div>
+</div>
+<a class="anchor" id="a4306b665fe168d76b47f28d37c44d092"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sound::SetAttenuation </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>attenuation</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set the Attenuation (rate it fades).</p>
+<p>Range between 0 and 100. 0 means it dosn't fade. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac59b5e12844c7f2e536643c7e44f8b01"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sound::SetMinDistance </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>distance</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set the distance before the sound starts "fading" out. </p>
+
+</div>
+</div>
+<a class="anchor" id="ade27d113a719436c55fcf4e365aef172"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sound::SetPosition </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>position</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set the sound origion. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/Users/Oscar/Documents/OSE/OSE/Engine/<a class="el" href="_sound_8h_source.html">Sound.h</a></li>
 <li>/Users/Oscar/Documents/OSE/OSE/Engine/Sound.cpp</li>
@@ -131,7 +196,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SetAttenuation</b> (f
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_sound.html">Sound</a></li>
-    <li class="footer">Generated on Fri Jun 22 2012 01:54:09 for OSE by
+    <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.1 </li>
   </ul>

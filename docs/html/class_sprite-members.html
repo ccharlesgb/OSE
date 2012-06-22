@@ -66,7 +66,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -123,20 +123,21 @@ $(document).ready(function(){initNavTree('class_sprite.html','');});
   <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>mRenderWindow</b> (defined in <a class="el" href="class_base_drawable.html">BaseDrawable</a>)</td><td class="entry"><a class="el" href="class_base_drawable.html">BaseDrawable</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>mScale</b> (defined in <a class="el" href="class_base_drawable.html">BaseDrawable</a>)</td><td class="entry"><a class="el" href="class_base_drawable.html">BaseDrawable</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>SetAngle</b>(float a) (defined in <a class="el" href="class_base_drawable.html">BaseDrawable</a>)</td><td class="entry"><a class="el" href="class_base_drawable.html">BaseDrawable</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>SetOrigin</b>(Vector2 orig) (defined in <a class="el" href="class_base_drawable.html">BaseDrawable</a>)</td><td class="entry"><a class="el" href="class_base_drawable.html">BaseDrawable</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>SetPosition</b>(Vector2 pos) (defined in <a class="el" href="class_base_drawable.html">BaseDrawable</a>)</td><td class="entry"><a class="el" href="class_base_drawable.html">BaseDrawable</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>SetRenderWindow</b>(sf::RenderWindow *pRend) (defined in <a class="el" href="class_base_drawable.html">BaseDrawable</a>)</td><td class="entry"><a class="el" href="class_base_drawable.html">BaseDrawable</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>SetScale</b>(float s) (defined in <a class="el" href="class_base_drawable.html">BaseDrawable</a>)</td><td class="entry"><a class="el" href="class_base_drawable.html">BaseDrawable</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>SetTexture</b>(const char *path) (defined in <a class="el" href="class_sprite.html">Sprite</a>)</td><td class="entry"><a class="el" href="class_sprite.html">Sprite</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>Sprite</b>(sf::RenderWindow *rend) (defined in <a class="el" href="class_sprite.html">Sprite</a>)</td><td class="entry"><a class="el" href="class_sprite.html">Sprite</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>~BaseDrawable</b>(void) (defined in <a class="el" href="class_base_drawable.html">BaseDrawable</a>)</td><td class="entry"><a class="el" href="class_base_drawable.html">BaseDrawable</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>~Sprite</b>(void) (defined in <a class="el" href="class_sprite.html">Sprite</a>)</td><td class="entry"><a class="el" href="class_sprite.html">Sprite</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>SetColour</b>(Colour col) (defined in <a class="el" href="class_sprite.html">Sprite</a>)</td><td class="entry"><a class="el" href="class_sprite.html">Sprite</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>SetOrigin</b>(Vector2 orig) (defined in <a class="el" href="class_base_drawable.html">BaseDrawable</a>)</td><td class="entry"><a class="el" href="class_base_drawable.html">BaseDrawable</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>SetPosition</b>(Vector2 pos) (defined in <a class="el" href="class_base_drawable.html">BaseDrawable</a>)</td><td class="entry"><a class="el" href="class_base_drawable.html">BaseDrawable</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>SetRenderWindow</b>(sf::RenderWindow *pRend) (defined in <a class="el" href="class_base_drawable.html">BaseDrawable</a>)</td><td class="entry"><a class="el" href="class_base_drawable.html">BaseDrawable</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>SetScale</b>(float s) (defined in <a class="el" href="class_base_drawable.html">BaseDrawable</a>)</td><td class="entry"><a class="el" href="class_base_drawable.html">BaseDrawable</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>SetTexture</b>(const char *path) (defined in <a class="el" href="class_sprite.html">Sprite</a>)</td><td class="entry"><a class="el" href="class_sprite.html">Sprite</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>Sprite</b>(sf::RenderWindow *rend) (defined in <a class="el" href="class_sprite.html">Sprite</a>)</td><td class="entry"><a class="el" href="class_sprite.html">Sprite</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>~BaseDrawable</b>(void) (defined in <a class="el" href="class_base_drawable.html">BaseDrawable</a>)</td><td class="entry"><a class="el" href="class_base_drawable.html">BaseDrawable</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>~Sprite</b>(void) (defined in <a class="el" href="class_sprite.html">Sprite</a>)</td><td class="entry"><a class="el" href="class_sprite.html">Sprite</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Jun 22 2012 01:54:09 for OSE by
+    <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.1 </li>
   </ul>

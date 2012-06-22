@@ -117,173 +117,190 @@ $(document).ready(function(){initNavTree('_base_object_8h.html','');});
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">typedef</span> void (*InputFunc)(<a class="code" href="class_base_object.html">BaseObject</a>* ent, <a class="code" href="class_variant_map.html">VariantMap</a> &amp;Data);</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="code" href="class_colour.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_colour.html">Colour</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">enum</span> DamageType</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordtype">int</span> r;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">int</span> g;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">int</span> b;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">int</span> a;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <a class="code" href="class_colour.html">Colour</a>() {r=g=b=a=255;};</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <a class="code" href="class_colour.html">Colour</a>(<span class="keywordtype">int</span> R, <span class="keywordtype">int</span> G, <span class="keywordtype">int</span> B) {r=R; g = G; b = B; a = 255;};</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="class_colour.html">Colour</a>(<span class="keywordtype">int</span> R, <span class="keywordtype">int</span> G, <span class="keywordtype">int</span> B, <span class="keywordtype">int</span> A) {r=R; g = G; b = B; a = A;};</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <a class="code" href="class_colour.html">Colour</a>(<span class="keyword">const</span> <a class="code" href="class_colour.html">Colour</a>&amp; col) {r = col.r; g = col.g; b = col.b; a = col.a;};</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;};</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">enum</span> RenderGroup</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        RENDERGROUP_BACKGROUND, <span class="comment">//Draw first</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        RENDERGROUP_ENTITIES,</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        RENDERGROUP_PLAYER,</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        RENDERGROUP_HUD <span class="comment">//Draw Last</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        DAMAGETYPE_GENERIC,</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        DAMAGETYPE_BULLET,</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        DAMAGETYPE_BURNING,</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        DAMAGETYPE_DROWNING,</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        DAMAGETYPE_PHYSICS,</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        DAMAGETYPE_ENVIRONMENT</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;};</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">class </span><a class="code" href="class_base_object.html">BaseObject</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="code" href="class_damage_info.html">   30</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_damage_info.html">DamageInfo</a></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <a class="code" href="class_damage_info.html">DamageInfo</a>() {Amount = 0.f; Inflictor = NULL; type = DAMAGETYPE_GENERIC;};</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="class_base_object.html">BaseObject</a>* Inflictor;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">float</span> Amount;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        DamageType type;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;};</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="class_base_object.html">   39</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_base_object.html">BaseObject</a></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">enum</span> RenderGroup</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        std::map&lt;std::string, InputFunc&gt; Inputs; <span class="comment">//Entity IO function pointers</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="class_variant_map.html">VariantMap</a> mMetaData; <span class="comment">//Variables that other entities can access</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">bool</span> mDeleteMe; <span class="comment">//Should the entity be deleted on the next entity purge?</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordtype">float</span> mNextThink;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordtype">float</span> mLastThink;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        std::string mClassName; <span class="comment">//The class name of the entity eg &quot;player&quot;</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        std::map&lt;char, Sound*&gt; mSounds;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="comment">//Rendering</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <a class="code" href="class_colour.html">Colour</a> mColour;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="class_sprite.html">Sprite</a>* mSprite;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordtype">bool</span> mNoDraw;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <a class="code" href="class_base_object.html">BaseObject</a>* mOwner;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <a class="code" href="class_physics_def.html">PhysicsDef</a> *mPhysObj; <span class="comment">//Pointer to the physics object for this entity (NOT NECCESSARILY VALID)</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <a class="code" href="class_matrix3.html" title="Utility class to manipulate 3x3 matrices of floats.">Matrix3</a> mMatrix; <span class="comment">//Transformation matrix used by ToGlobal and ToLocal</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordtype">bool</span> mMatrixNeedsUpdate; <span class="comment">//If the matrix needs to be updated (Position/rotation etc has changed)</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">char</span>* mModel; <span class="comment">//Model path (Sprite image)</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <a class="code" href="class_vector2.html">Vector2</a> mPosition;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <a class="code" href="class_vector2.html">Vector2</a> mOrigin;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <a class="code" href="class_vector2.html">Vector2</a> mScale;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordtype">float</span> mAngle;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        RenderGroup mDrawOrder;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordtype">bool</span> mIsRenderable; <span class="comment">//Do we have a renderer?</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordtype">bool</span> mIsPhysics; <span class="comment">//Do we have a physics object?</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <a class="code" href="class_base_object.html">BaseObject</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="class_base_object.html">BaseObject</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordtype">void</span> SetClassName(<span class="keyword">const</span> <span class="keywordtype">char</span>* ID)</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                <span class="keywordflow">if</span> (mClassName == <span class="stringliteral">&quot;ERROR&quot;</span>) <span class="comment">//Only do this once!</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                        mClassName = ID;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        };</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        std::string GetClassName() {<span class="keywordflow">return</span> mClassName;};</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <a class="code" href="class_matrix3.html" title="Utility class to manipulate 3x3 matrices of floats.">Matrix3</a> GetMatrix();</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <a class="code" href="class_vector2.html">Vector2</a> ToGlobal(<a class="code" href="class_vector2.html">Vector2</a> &amp;point);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <a class="code" href="class_vector2.html">Vector2</a> ToLocal(<a class="code" href="class_vector2.html">Vector2</a> &amp;point);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="comment">//Get the unit vector pointing in the forward dir of the entity</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <a class="code" href="class_vector2.html">Vector2</a> GetForward()</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        {</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <a class="code" href="class_vector2.html">Vector2</a> vec = <a class="code" href="class_vector2.html">Vector2</a>(0, 1);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                <span class="keywordflow">return</span> ToGlobal(vec) - GetPos();</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        };</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="comment">//Unit Vector pointing in the right dir of the entity</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <a class="code" href="class_vector2.html">Vector2</a> GetRight()</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <a class="code" href="class_vector2.html">Vector2</a> vec = <a class="code" href="class_vector2.html">Vector2</a>(1, 0);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                <span class="keywordflow">return</span> ToGlobal(vec) - GetPos();</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> SetPos(<a class="code" href="class_vector2.html">Vector2</a> p) {mPosition = p; mMatrixNeedsUpdate = <span class="keyword">true</span>;};</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordtype">void</span> SetPos(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y) {SetPos(<a class="code" href="class_vector2.html">Vector2</a>(x,y)); mMatrixNeedsUpdate = <span class="keyword">true</span>;};</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <a class="code" href="class_vector2.html">Vector2</a> GetPos() {<span class="keywordflow">return</span> mPosition;};</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordtype">void</span> SetOrigin(<a class="code" href="class_vector2.html">Vector2</a> Or) {mOrigin = Or; mMatrixNeedsUpdate = <span class="keyword">true</span>;};</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <a class="code" href="class_vector2.html">Vector2</a> GetOrigin() {<span class="keywordflow">return</span> mOrigin;};</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> SetAngle(<span class="keywordtype">float</span> a) {mAngle = a; mMatrixNeedsUpdate = <span class="keyword">true</span>;};</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordtype">float</span> GetAngle() {<span class="keywordflow">return</span> mAngle;};</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <a class="code" href="class_vector2.html">Vector2</a> GetSize() {<span class="keywordflow">return</span> mSprite-&gt;GetSize();};</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        RENDERGROUP_BACKGROUND, <span class="comment">//Draw first</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        RENDERGROUP_ENTITIES,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        RENDERGROUP_PLAYER,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        RENDERGROUP_HUD <span class="comment">//Draw Last</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;};</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="code" href="class_base_object.html">   47</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_base_object.html">BaseObject</a></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        std::map&lt;std::string, InputFunc&gt; Inputs; <span class="comment">//Entity IO function pointers</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <a class="code" href="class_variant_map.html">VariantMap</a> mMetaData; <span class="comment">//Variables that other entities can access</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordtype">bool</span> mDeleteMe; <span class="comment">//Should the entity be deleted on the next entity purge?</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordtype">float</span> mNextThink;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordtype">float</span> mLastThink;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        std::string mClassName; <span class="comment">//The class name of the entity eg &quot;player&quot;</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        std::map&lt;char, Sound*&gt; mSounds;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="comment">//Rendering</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <a class="code" href="class_colour.html">Colour</a> mColour;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <a class="code" href="class_sprite.html">Sprite</a>* mSprite;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">bool</span> mNoDraw;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <a class="code" href="class_base_object.html">BaseObject</a>* mOwner;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <a class="code" href="class_physics_def.html">PhysicsDef</a> *mPhysObj; <span class="comment">//Pointer to the physics object for this entity (NOT NECCESSARILY VALID)</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <a class="code" href="class_matrix3.html" title="Utility class to manipulate 3x3 matrices of floats.">Matrix3</a> mMatrix; <span class="comment">//Transformation matrix used by ToGlobal and ToLocal</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordtype">bool</span> mMatrixNeedsUpdate; <span class="comment">//If the matrix needs to be updated (Position/rotation etc has changed)</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">char</span>* mModel; <span class="comment">//Model path (Sprite image)</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <a class="code" href="class_vector2.html">Vector2</a> mPosition;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <a class="code" href="class_vector2.html">Vector2</a> mOrigin;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <a class="code" href="class_vector2.html">Vector2</a> mScale;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordtype">float</span> mAngle;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="comment">//Health</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordtype">float</span> mHealth;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordtype">float</span> mMaxHealth;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        RenderGroup mDrawOrder;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordtype">bool</span> mIsRenderable; <span class="comment">//Do we have a renderer?</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordtype">bool</span> mIsPhysics; <span class="comment">//Do we have a physics object?</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <a class="code" href="class_base_object.html">BaseObject</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="class_base_object.html">BaseObject</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordtype">void</span> SetClassName(<span class="keyword">const</span> <span class="keywordtype">char</span>* ID)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                <span class="keywordflow">if</span> (mClassName == <span class="stringliteral">&quot;ERROR&quot;</span>) <span class="comment">//Only do this once!</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                        mClassName = ID;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        };</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        std::string GetClassName() {<span class="keywordflow">return</span> mClassName;};</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <a class="code" href="class_matrix3.html" title="Utility class to manipulate 3x3 matrices of floats.">Matrix3</a> GetMatrix();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <a class="code" href="class_vector2.html">Vector2</a> ToGlobal(<a class="code" href="class_vector2.html">Vector2</a> &amp;point);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <a class="code" href="class_vector2.html">Vector2</a> ToLocal(<a class="code" href="class_vector2.html">Vector2</a> &amp;point);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="comment">//Get the unit vector pointing in the forward dir of the entity</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <a class="code" href="class_vector2.html">Vector2</a> GetForward()</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                <a class="code" href="class_vector2.html">Vector2</a> vec = <a class="code" href="class_vector2.html">Vector2</a>(0, 1);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                <span class="keywordflow">return</span> ToGlobal(vec) - GetPos();</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        };</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="comment">//Unit Vector pointing in the right dir of the entity</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <a class="code" href="class_vector2.html">Vector2</a> GetRight()</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                <a class="code" href="class_vector2.html">Vector2</a> vec = <a class="code" href="class_vector2.html">Vector2</a>(1, 0);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                <span class="keywordflow">return</span> ToGlobal(vec) - GetPos();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        }</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <a class="code" href="class_base_object.html">BaseObject</a>* CreateEntity(<span class="keyword">const</span> <span class="keywordtype">char</span>* classname);</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordtype">void</span> SetOwner(<a class="code" href="class_base_object.html">BaseObject</a>* own) {mOwner = own;};</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <a class="code" href="class_base_object.html">BaseObject</a>* GetOwner() {<span class="keywordflow">return</span> mOwner;};</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> SetPos(<a class="code" href="class_vector2.html">Vector2</a> p) {mPosition = p; mMatrixNeedsUpdate = <span class="keyword">true</span>;};</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordtype">void</span> SetPos(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y) {SetPos(<a class="code" href="class_vector2.html">Vector2</a>(x,y)); mMatrixNeedsUpdate = <span class="keyword">true</span>;};</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <a class="code" href="class_vector2.html">Vector2</a> GetPos() {<span class="keywordflow">return</span> mPosition;};</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="comment">//Model</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordtype">void</span> SetModel(<span class="keyword">const</span> <span class="keywordtype">char</span>* path);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordtype">void</span> SetModel(<span class="keyword">const</span> <span class="keywordtype">char</span>* path, <span class="keywordtype">float</span> scale);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">char</span>* GetModel() {<span class="keywordflow">return</span> mModel;};</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="comment">//Sound</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordtype">void</span> CreateSound(<span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keyword">const</span> <span class="keywordtype">char</span> *path);</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordtype">void</span> EmitSound(<span class="keyword">const</span> <span class="keywordtype">char</span> *name);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="comment">//MetaData (UNFINISHED)</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordtype">void</span> SetMetaData(<span class="keyword">const</span> <span class="keywordtype">char</span>* ID, <span class="keywordtype">float</span> dat);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordtype">void</span> SetMetaData(<span class="keyword">const</span> <span class="keywordtype">char</span>* ID, <span class="keywordtype">int</span> dat);</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordtype">void</span> SetMetaData(<span class="keyword">const</span> <span class="keywordtype">char</span>* ID, <a class="code" href="class_base_object.html">BaseObject</a>* dat);</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="comment">//Deletion</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keywordtype">void</span> Delete() {</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                mDeleteMe = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                OnDelete();</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        };</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keywordtype">bool</span> FlaggedForDeletion() {<span class="keywordflow">return</span> mDeleteMe;};</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="comment">//Physics</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordtype">bool</span> IsPhysicsEnabled() {<span class="keywordflow">return</span> mIsPhysics;};</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <a class="code" href="class_physics_def.html">PhysicsDef</a>* GetPhysObj() {<span class="keywordflow">return</span> mPhysObj;};</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <span class="comment">//Rendering</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="keywordtype">void</span> RenderInit() {mIsRenderable = <span class="keyword">true</span>;};</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <span class="keywordtype">bool</span> IsRenderable() {<span class="keywordflow">return</span> mIsRenderable;};</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <span class="keywordtype">void</span> SetDrawOrder(RenderGroup o) {mDrawOrder = o;};</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        RenderGroup GetDrawOrder() {<span class="keywordflow">return</span> mDrawOrder;};</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keywordtype">void</span> SetColor(<a class="code" href="class_colour.html">Colour</a> col) {mColour = col;};</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <a class="code" href="class_colour.html">Colour</a> GetColor() {<span class="keywordflow">return</span> mColour;};</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="keywordtype">void</span> SetNoDraw(<span class="keywordtype">bool</span> nodraw) {mNoDraw = nodraw;};</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="keywordtype">bool</span> GetNoDraw() {<span class="keywordflow">return</span> mNoDraw;};</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="comment">//IO</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordtype">void</span> Fire(<span class="keyword">const</span> <span class="keywordtype">char</span>* Name, <a class="code" href="class_variant_map.html">VariantMap</a> &amp;Data);</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="keywordtype">void</span> RegisterInput(<span class="keyword">const</span> <span class="keywordtype">char</span>* Name, InputFunc Func);</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keywordtype">void</span> DrawModel();</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="comment">//Hooks</span></div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> Spawn() {};</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> Tick();</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> Think() {};</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> OnDelete() {}; <span class="comment">//Called before the entity is deleted</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> Draw(); <span class="comment">//Draw your sprites/Drawables here</span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> StartTouch(<a class="code" href="class_collision_info.html">CollisionInfo</a>* info) {}; <span class="comment">//When another entity begins to touch us</span></div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> Use(<a class="code" href="class_base_object.html">BaseObject</a>* ply) {}; <span class="comment">//Player has pressed E on us!</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;};</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keywordtype">void</span> SetOrigin(<a class="code" href="class_vector2.html">Vector2</a> Or) {mOrigin = Or; mMatrixNeedsUpdate = <span class="keyword">true</span>;};</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <a class="code" href="class_vector2.html">Vector2</a> GetOrigin() {<span class="keywordflow">return</span> mOrigin;};</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> SetAngle(<span class="keywordtype">float</span> a) {mAngle = a; mMatrixNeedsUpdate = <span class="keyword">true</span>;};</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordtype">float</span> GetAngle() {<span class="keywordflow">return</span> mAngle;};</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <a class="code" href="class_vector2.html">Vector2</a> GetSize() {<span class="keywordflow">return</span> mSprite-&gt;GetSize();};</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <a class="code" href="class_base_object.html">BaseObject</a>* CreateEntity(<span class="keyword">const</span> <span class="keywordtype">char</span>* classname);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordtype">void</span> SetOwner(<a class="code" href="class_base_object.html">BaseObject</a>* own) {mOwner = own;};</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <a class="code" href="class_base_object.html">BaseObject</a>* GetOwner() {<span class="keywordflow">return</span> mOwner;};</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="comment">//Model</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordtype">void</span> SetModel(<span class="keyword">const</span> <span class="keywordtype">char</span>* path);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keywordtype">void</span> SetModel(<span class="keyword">const</span> <span class="keywordtype">char</span>* path, <span class="keywordtype">float</span> scale);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">char</span>* GetModel() {<span class="keywordflow">return</span> mModel;};</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="comment">//Sound</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="keywordtype">void</span> CreateSound(<span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keyword">const</span> <span class="keywordtype">char</span> *path);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordtype">void</span> EmitSound(<span class="keyword">const</span> <span class="keywordtype">char</span> *name);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="comment">//Health</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="keywordtype">void</span> SetHealth(<span class="keyword">const</span> <span class="keywordtype">float</span> hlt) {mHealth = hlt;};</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordtype">float</span> GetHealth() {<span class="keywordflow">return</span> mHealth;};</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keywordtype">void</span> SetMaxHealth(<span class="keyword">const</span> <span class="keywordtype">float</span> mhlt) {mMaxHealth = mhlt;};</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordtype">float</span> GetMaxHealth() {<span class="keywordflow">return</span> mMaxHealth;};</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="comment">//MetaData (UNFINISHED)</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <span class="keywordtype">void</span> SetMetaData(<span class="keyword">const</span> <span class="keywordtype">char</span>* ID, <span class="keywordtype">float</span> dat);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <span class="keywordtype">void</span> SetMetaData(<span class="keyword">const</span> <span class="keywordtype">char</span>* ID, <span class="keywordtype">int</span> dat);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <span class="keywordtype">void</span> SetMetaData(<span class="keyword">const</span> <span class="keywordtype">char</span>* ID, <a class="code" href="class_base_object.html">BaseObject</a>* dat);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="comment">//Deletion</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="keywordtype">void</span> Delete() {</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                mDeleteMe = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                OnDelete();</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        };</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordtype">bool</span> FlaggedForDeletion() {<span class="keywordflow">return</span> mDeleteMe;};</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="comment">//Physics</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keywordtype">bool</span> IsPhysicsEnabled() {<span class="keywordflow">return</span> mIsPhysics;};</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <a class="code" href="class_physics_def.html">PhysicsDef</a>* GetPhysObj() {<span class="keywordflow">return</span> mPhysObj;};</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="comment">//Rendering</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keywordtype">void</span> RenderInit() {mIsRenderable = <span class="keyword">true</span>;};</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="keywordtype">bool</span> IsRenderable() {<span class="keywordflow">return</span> mIsRenderable;};</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keywordtype">void</span> SetDrawOrder(RenderGroup o) {mDrawOrder = o;};</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        RenderGroup GetDrawOrder() {<span class="keywordflow">return</span> mDrawOrder;};</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keywordtype">void</span> SetColour(<a class="code" href="class_colour.html">Colour</a> col) {mColour = col;};</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <a class="code" href="class_colour.html">Colour</a> GetColour() {<span class="keywordflow">return</span> mColour;};</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="keywordtype">void</span> SetNoDraw(<span class="keywordtype">bool</span> nodraw) {mNoDraw = nodraw;};</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <span class="keywordtype">bool</span> GetNoDraw() {<span class="keywordflow">return</span> mNoDraw;};</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div>
-<div class="line"><a name="l00167"></a><span class="lineno"><a class="code" href="struct_register_ent.html">  167</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_register_ent.html">RegisterEnt</a></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;{</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <a class="code" href="struct_register_ent.html">RegisterEnt</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* name)</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        {</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                <a class="code" href="class_base_renderable_factory.html">BaseRenderableFactory</a>* F = <span class="keyword">new</span> <a class="code" href="class_entity_factory.html">EntityFactory&lt;T&gt;</a>;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                ENTITYCREATOR-&gt;RegisterEntity(name, F);</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        }</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;};</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="preprocessor">#define LINKCLASSTONAME(name, t) \</span></div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">        static RegisterEnt&lt;t&gt; Regi(name);</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="comment">//IO</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keywordtype">void</span> Fire(<span class="keyword">const</span> <span class="keywordtype">char</span>* Name, <a class="code" href="class_variant_map.html">VariantMap</a> &amp;Data);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="keywordtype">void</span> RegisterInput(<span class="keyword">const</span> <span class="keywordtype">char</span>* Name, InputFunc Func);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="keywordtype">void</span> DrawModel();</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="comment">//Hooks</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> Spawn() {};</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> Tick();</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> Think() {};</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> OnDelete() {}; <span class="comment">//Called before the entity is deleted</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> Draw(); <span class="comment">//Draw your sprites/Drawables here</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> StartTouch(<a class="code" href="class_collision_info.html">CollisionInfo</a>* info) {}; <span class="comment">//When another entity begins to touch us</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> Use(<a class="code" href="class_base_object.html">BaseObject</a>* ply) {}; <span class="comment">//Player has pressed E on us!</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> TakeDamage(<span class="keyword">const</span> <a class="code" href="class_damage_info.html">DamageInfo</a> &amp;info);</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;};</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00184"></a><span class="lineno"><a class="code" href="struct_register_ent.html">  184</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_register_ent.html">RegisterEnt</a></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;{</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <a class="code" href="struct_register_ent.html">RegisterEnt</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* name)</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        {</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                <a class="code" href="class_base_renderable_factory.html">BaseRenderableFactory</a>* F = <span class="keyword">new</span> <a class="code" href="class_entity_factory.html">EntityFactory&lt;T&gt;</a>;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                ENTITYCREATOR-&gt;RegisterEntity(name, F);</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;};</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="preprocessor">#define LINKCLASSTONAME(name, t) \</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="preprocessor">        static RegisterEnt&lt;t&gt; Regi(name);</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_c9573c26b31bdadbaf42093c81dfcb23.html">OSE</a></li><li class="navelem"><a class="el" href="dir_fbcf171215a99c72cbd8617030b138fc.html">Engine</a></li><li class="navelem"><b>BaseObject.h</b></li>
-    <li class="footer">Generated on Fri Jun 22 2012 01:54:08 for OSE by
+    <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.1 </li>
   </ul>

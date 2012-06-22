@@ -6,5 +6,6 @@ var class_prop =
     [ "SetSprite", "class_prop.html#a3314c7f3a819176f5d8f2451615ed638", null ],
     [ "Spawn", "class_prop.html#af6bf7fd07439bca39ecb3e08640a776b", null ],
     [ "StartTouch", "class_prop.html#aef628a1b9c8ffa4d43ad340e1b3d0e21", null ],
+    [ "TakeDamage", "class_prop.html#abec38cae8d4d0ed6c32231c2c9f80c0d", null ],
     [ "Think", "class_prop.html#a8e6a40ce35e387b76f9da8609489f312", null ]
 ];

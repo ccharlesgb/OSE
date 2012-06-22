@@ -5,5 +5,6 @@ var class_sprite =
     [ "Draw", "class_sprite.html#a054a4c340c14c3d218b99e484bf83d21", null ],
     [ "GetSize", "class_sprite.html#a1d59a32642506b9475f3373d275d863f", null ],
     [ "GetTextureCentre", "class_sprite.html#a848d90b8b515fe3d9dbdaff1cb805cd6", null ],
+    [ "SetColour", "class_sprite.html#a060a55f5cf38c181094f6895a7a6624e", null ],
     [ "SetTexture", "class_sprite.html#af1bda10621eae56daa7fe3349e741669", null ]
 ];

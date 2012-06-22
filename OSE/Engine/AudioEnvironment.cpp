@@ -2,6 +2,9 @@
 
 BaseObject* sAudioEnvironment::mListener = NULL;
 
+/**
+ * Set the Audio Listener to the current listeners postion.
+ */
 void sAudioEnvironment::Update()
 {
 	if (mListener == NULL) return;

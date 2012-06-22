@@ -66,7 +66,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -108,17 +108,13 @@ $(document).ready(function(){initNavTree('class_ship.html','');});
 <div class="dynheader">
 Inheritance diagram for Ship:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_ship__inherit__graph.png" border="0" usemap="#_ship_inherit__map" alt="Inheritance graph"/></div>
-<map name="_ship_inherit__map" id="_ship_inherit__map">
+ <div class="center">
+  <img src="class_ship.png" usemap="#Ship_map" alt=""/>
+  <map id="Ship_map" name="Ship_map">
+<area href="class_base_physics.html" alt="BasePhysics" shape="rect" coords="0,56,84,80"/>
+<area href="class_base_object.html" alt="BaseObject" shape="rect" coords="0,0,84,24"/>
 </map>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
-<div class="dynheader">
-Collaboration diagram for Ship:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_ship__coll__graph.png" border="0" usemap="#_ship_coll__map" alt="Collaboration graph"/></div>
-<map name="_ship_coll__map" id="_ship_coll__map">
-</map>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+ </div></div>
 
 <p><a href="class_ship-members.html">List of all members.</a></p>
 <table class="memberdecls">
@@ -206,6 +202,14 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>GetModel</b> 
 void&#160;</td><td class="memItemRight" valign="bottom"><b>CreateSound</b> (const char *name, const char *path)</td></tr>
 <tr class="memitem:a1de5cc3f89d26d567a44872a2d9bfe2a inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1de5cc3f89d26d567a44872a2d9bfe2a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>EmitSound</b> (const char *name)</td></tr>
+<tr class="memitem:a2a4bc64857e71e6f68e207dba8be8240 inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2a4bc64857e71e6f68e207dba8be8240"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetHealth</b> (const float hlt)</td></tr>
+<tr class="memitem:ad6fc4d74d9d0e74da0ae59273e8d4d0d inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad6fc4d74d9d0e74da0ae59273e8d4d0d"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>GetHealth</b> ()</td></tr>
+<tr class="memitem:abec5a2c0c544c0abf8f9af435c8825c4 inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abec5a2c0c544c0abf8f9af435c8825c4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetMaxHealth</b> (const float mhlt)</td></tr>
+<tr class="memitem:a553406c4136d784be3d85b4d2e39a66d inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a553406c4136d784be3d85b4d2e39a66d"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>GetMaxHealth</b> ()</td></tr>
 <tr class="memitem:af3961c0d3a59623c11d0a2f59ae32ccd inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af3961c0d3a59623c11d0a2f59ae32ccd"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SetMetaData</b> (const char *ID, float dat)</td></tr>
 <tr class="memitem:a83f8d799b1f69d6ada889b89a722f5e4 inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a83f8d799b1f69d6ada889b89a722f5e4"></a>
@@ -228,10 +232,10 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsRenderable</b> ()</
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SetDrawOrder</b> (RenderGroup o)</td></tr>
 <tr class="memitem:a5218c5f50c34d7298d24e3e9add04d71 inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5218c5f50c34d7298d24e3e9add04d71"></a>
 RenderGroup&#160;</td><td class="memItemRight" valign="bottom"><b>GetDrawOrder</b> ()</td></tr>
-<tr class="memitem:adb4d56f949e106d97c197aa7444b5023 inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adb4d56f949e106d97c197aa7444b5023"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetColor</b> (<a class="el" href="class_colour.html">Colour</a> col)</td></tr>
-<tr class="memitem:a73c01ea73abee33fd2d5335418af5ecf inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a73c01ea73abee33fd2d5335418af5ecf"></a>
-<a class="el" href="class_colour.html">Colour</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GetColor</b> ()</td></tr>
+<tr class="memitem:ac5045ebf10f20b44d243be22ff117c8c inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac5045ebf10f20b44d243be22ff117c8c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetColour</b> (<a class="el" href="class_colour.html">Colour</a> col)</td></tr>
+<tr class="memitem:af010b578d5490657ba823ad122a7b722 inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af010b578d5490657ba823ad122a7b722"></a>
+<a class="el" href="class_colour.html">Colour</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GetColour</b> ()</td></tr>
 <tr class="memitem:a0ee6100f5d7ca09abaefefda2e142831 inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0ee6100f5d7ca09abaefefda2e142831"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SetNoDraw</b> (bool nodraw)</td></tr>
 <tr class="memitem:ab5015130199dde651dee8b6516c59357 inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab5015130199dde651dee8b6516c59357"></a>
@@ -244,6 +248,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>RegisterInput</b> (co
 void&#160;</td><td class="memItemRight" valign="bottom"><b>DrawModel</b> ()</td></tr>
 <tr class="memitem:abd2053bc6ace00f4ea42e2f4a5b54a9d inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abd2053bc6ace00f4ea42e2f4a5b54a9d"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>Draw</b> ()</td></tr>
+<tr class="memitem:a2e9ea0f0fcbd830582267b0b547ee369 inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e9ea0f0fcbd830582267b0b547ee369"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>TakeDamage</b> (const <a class="el" href="class_damage_info.html">DamageInfo</a> &amp;info)</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/Users/Oscar/Documents/OSE/OSE/Game/<a class="el" href="_ship_8h_source.html">Ship.h</a></li>
@@ -255,7 +261,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>Draw</b> ()</
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_ship.html">Ship</a></li>
-    <li class="footer">Generated on Fri Jun 22 2012 01:54:09 for OSE by
+    <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.1 </li>
   </ul>
