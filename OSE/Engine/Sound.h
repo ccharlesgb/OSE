@@ -13,6 +13,12 @@ public:
 	~Sound(void);
 	
 	void Play();
+	void Pause();
+	void Stop();
+	
+	void SetLoop(bool loop);
+	bool GetLoop() { return mSound.getLoop(); }; 
+	
 	void SetPosition(Vector2 position);
 	void SetMinDistance(float distance);
 	void SetAttenuation(float attenuation);

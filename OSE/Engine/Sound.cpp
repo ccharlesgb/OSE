@@ -23,6 +23,30 @@ void Sound::Play()
 }
 
 /**
+ * Pause the sound.
+ */
+void Sound::Pause()
+{
+	mSound.pause();
+}
+
+/**
+ * Stop the sound.
+ */
+void Sound::Stop()
+{
+	mSound.stop();
+}
+
+/**
+ * Set if the sound should loop.
+ */
+void Sound::SetLoop(bool loop)
+{
+	mSound.setLoop(loop);
+}
+
+/**
  * Set the sound origion.
  */
 void Sound::SetPosition(Vector2 position)
