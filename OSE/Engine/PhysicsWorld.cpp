@@ -47,6 +47,8 @@ void PhysicsWorld::BeginContact(b2Contact* contact)
 	BaseObject* EntA = static_cast<BaseObject*>(bodyA->GetUserData()); //GetUserData() returns a pointer to the owner!
 	BaseObject* EntB = static_cast<BaseObject*>(bodyB->GetUserData());
 	CollisionInfo info;
+
+	info.Speed = (EntA->GetPhysObj()->GetLinearVelocity() - EntB->GetPhysObj()->GetLinearVelocity()).Length();
 	info.OtherEnt = EntB;
 	EntA->StartTouch(&info);
 	info.OtherEnt = EntA;

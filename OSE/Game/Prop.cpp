@@ -20,8 +20,21 @@ void Prop::SetSprite(BaseObject* ent, VariantMap &Data)
 	me->mPath = Data.ReadString("path");
 }
 
+void Prop::TakeDamage(const DamageInfo &info)
+{
+	SetHealth(GetHealth() - info.Amount);
+	Colour mCol = GetColour();
+	mCol.r = (GetHealth() / GetMaxHealth()) * 210.f + 45.f;
+	mCol.g = (GetHealth() / GetMaxHealth()) * 210.f + 45.f;
+	mCol.b = (GetHealth() / GetMaxHealth()) * 210.f + 45.f;
+	SetColour(mCol);
+	if (GetHealth() <= 0)
+		Delete();
+}
+
 void Prop::Spawn()
 {
+	GetPhysObj()->SetRestitution(1.f);
 	GetPhysObj()->SetAngularDamping(7);
 	GetPhysObj()->SetLinearDamping(10);
 
@@ -30,9 +43,18 @@ void Prop::Spawn()
 
 void Prop::StartTouch(CollisionInfo* info)
 {
-	if (info->OtherEnt->GetClassName() == "player")
+	DamageInfo d_info;
+	d_info.Inflictor = info->OtherEnt;
+	d_info.Amount = info->Speed / 10;
+	d_info.type = DAMAGETYPE_PHYSICS;
+	TakeDamage(d_info);
+	if (info->Speed > 750)
 	{
-		
+		BaseObject* scorch = CreateEntity("ent_decal");
+		scorch->SetModel("scorch", ig::Random(0.5,0.7));
+		scorch->SetPos(GetPos());
+		scorch->Spawn();
+		Delete();
 	}
 }
 
@@ -46,8 +68,4 @@ void Prop::Think()
 
 void Prop::OnDelete()
 {
-	BaseObject* scorch = CreateEntity("ent_decal");
-	scorch->SetModel("scorch", ig::Random(0.5,0.7));
-	scorch->SetPos(GetPos());
-	scorch->Spawn();
 }

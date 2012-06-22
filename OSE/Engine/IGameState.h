@@ -18,6 +18,8 @@ private:
 	double mFrameTime;
 	double mLastFrame;
 	double mStartTime;
+	double mStartPause;
+	double mTimePaused;
 	friend class StateManager;
 protected:
 	sf::Clock mClock;
@@ -25,8 +27,8 @@ public:
 	IGameState(void);
 	virtual ~IGameState();
 
-	void Pause() {mPaused = true;};
-	void UnPause() {mPaused = false;};
+	void Pause();
+	void UnPause();
 	bool GetPaused() {return mPaused;};
 	void SetPausable(bool p) {mPausable = p;};
 	bool GetPausable() {return mPausable;};

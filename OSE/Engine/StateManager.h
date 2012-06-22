@@ -41,6 +41,7 @@ public:
 	double GetRealTime() {return double(mClock.getElapsedTime().asSeconds());};
 	void Begin();
 	void Run();
+	void HandleEvents();
 	void SetState(std::string ID);
 	void RegisterState(std::string ID, BaseStateFactory* F);
 };

@@ -14,6 +14,7 @@ class CollisionInfo
 {
 public:
 	BaseObject* OtherEnt;
+	float Speed;
 };
 
 //What kind of Box2D body are we?
@@ -100,6 +101,8 @@ public:
 	BaseObject* GetOwner() {return mOwner;};
 
 	float GetMass() {return mPhysObj->GetMass() * PIXELS_PER_METRE;};
+
+	void SetRestitution(float r) {};
 
 	void AddPhysicsShape(PolygonShape* hull);
 	void AddPhysicsShape(CircleShape* hull);

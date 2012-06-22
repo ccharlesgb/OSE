@@ -26,7 +26,11 @@ void weapon_pistol::PrimaryFire(BaseObject* ent, VariantMap &Data)
 		BaseObject* hit_target = PhysicsQueries::TraceLine(info);
 		if (hit_target != NULL)
 		{
-			hit_target->Delete();
+			DamageInfo info;
+			info.Amount = ig::Random(3,8);
+			info.type = DAMAGETYPE_BULLET;
+			info.Inflictor = me->GetOwner();
+			hit_target->TakeDamage(info);
 		}
 		me->SetNextPrimaryFire(gGlobals.CurTime + 0.1f);
 	}

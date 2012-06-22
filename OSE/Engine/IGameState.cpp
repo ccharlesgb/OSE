@@ -60,6 +60,19 @@ void IGameState::_ShutDown()
 	ShutDown();
 }
 
+void IGameState::Pause() 
+{
+	mPaused = true;
+	mStartPause = gGlobals.RealTime;
+}
+
+void IGameState::UnPause() 
+{
+	mPaused = false;
+	mTimePaused += gGlobals.RealTime - mStartPause;
+	std::cout << "TIME PAUSED: " << mTimePaused << "\n";
+}
+
 /*
 NAME	: _Tick()
 NOTES	: Internal tick function. Called every frame by statemanager
@@ -68,7 +81,7 @@ NOTES	: Internal tick function. Called every frame by statemanager
 */
 void IGameState::_Tick()
 {
-	gGlobals.CurTime = gGlobals.RealTime - mStartTime; //Update CurTime
+	gGlobals.CurTime = gGlobals.RealTime - mStartTime - mTimePaused; //Update CurTime
 	Tick(); //Tick the current derived game state
 
 	sAudioEnvironment::Update();
@@ -106,6 +119,7 @@ NOTES	:
 */
 IGameState::IGameState()
 {
+	mTimePaused = 0.0;
 	mPaused = true;
 	mStarted = false;
 	mPausable = true;

@@ -14,5 +14,6 @@ public:
 	void Think();
 	void StartTouch(CollisionInfo* info);
 	void OnDelete();
+	void TakeDamage(const DamageInfo &info);
 };
 

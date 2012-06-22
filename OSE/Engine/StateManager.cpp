@@ -74,57 +74,60 @@ void StateManager::Run()
 			{
 				mCurrentState->_Tick();
 			}
-			sf::Event Event;
-			while(Window.pollEvent(Event))
-			{
-				if (Event.type == sf::Event::LostFocus)
-				{
-					mCurrentState->Pause();
-					gGlobals.InFocus = false;
-					std::cout << "pause\n";
-				}
-				else if (Event.type == sf::Event::GainedFocus)
-				{
-					mCurrentState->UnPause();
-					gGlobals.InFocus = true;
-					std::cout << "un pause\n";
-				}
-				else if (Event.type == sf::Event::Closed)
-				{
-					mCurrentState->_ShutDown();
-					bRunning = false;
-				}
-				if (!mCurrentState->GetPaused())
-				{
-					if (Event.type == sf::Event::KeyPressed)
-					{
-						mCurrentState->_OnKeyPressed(Event.key.code, true);
-					}
-					else if (Event.type == sf::Event::KeyReleased)
-					{
-						mCurrentState->_OnKeyPressed(Event.key.code, false);
-					}
-					else if (Event.type == sf::Event::MouseButtonPressed)
-					{
-						mCurrentState->_OnMouseButtonPressed(Event.mouseButton.button, true);
-					}
-					else if (Event.type == sf::Event::MouseButtonReleased)
-					{
-						mCurrentState->_OnMouseButtonPressed(Event.mouseButton.button, false);
-					}
-					else
-					{
-						if (Event.type == sf::Event::Resized)
-						{
-							RENDERER->OnResize();
-						}
-						mCurrentState->_OnEvent(Event);
-					}
-				}
-			}
+			HandleEvents();
 			RENDERER->Draw(mCurrentState);
 			RENDERER->Display();
 			mLastFrame = GetRealTime();
+		}
+	}
+}
+
+void StateManager::HandleEvents()
+{
+	sf::Event Event;
+	while(Window.pollEvent(Event))
+	{
+		if (Event.type == sf::Event::LostFocus)
+		{
+			mCurrentState->Pause();
+			gGlobals.InFocus = false;
+			std::cout << "pause\n";
+		}
+		else if (Event.type == sf::Event::GainedFocus)
+		{
+			mCurrentState->UnPause();
+			gGlobals.InFocus = true;
+			std::cout << "un pause\n";
+		}
+		else if (Event.type == sf::Event::Closed)
+		{
+			mCurrentState->_ShutDown();
+			bRunning = false;
+		}
+		if (!mCurrentState->GetPaused())
+		{
+			if (Event.type == sf::Event::KeyPressed)
+			{
+				mCurrentState->_OnKeyPressed(Event.key.code, true);
+			}
+			else if (Event.type == sf::Event::KeyReleased)
+			{
+				mCurrentState->_OnKeyPressed(Event.key.code, false);
+			}
+			else if (Event.type == sf::Event::MouseButtonPressed)
+			{
+				mCurrentState->_OnMouseButtonPressed(Event.mouseButton.button, true);
+			}
+			else if (Event.type == sf::Event::MouseButtonReleased)
+			{
+				mCurrentState->_OnMouseButtonPressed(Event.mouseButton.button, false);
+			}
+			else if (Event.type == sf::Event::Resized)
+			{
+					RENDERER->OnResize();
+			}
+			else
+				mCurrentState->_OnEvent(Event);
 		}
 	}
 }

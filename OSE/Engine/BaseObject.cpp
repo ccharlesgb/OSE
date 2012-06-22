@@ -16,6 +16,8 @@ BaseObject::BaseObject(void)
 	mLastThink = 0.f;
 	mDeleteMe = false;
 	mScale = Vector2(1.f,1.f);
+	SetHealth(100.f);
+	SetMaxHealth(100.f);
 }
 
 BaseObject::~BaseObject(void)
@@ -96,6 +98,7 @@ void BaseObject::DrawModel()
 	mSprite->SetPosition(GetPos().SF());
 	mSprite->SetAngle(GetAngle());
 	mSprite->SetOrigin(GetOrigin());
+	mSprite->SetColour(GetColour());
 	mSprite->Draw();
 }
 
@@ -110,6 +113,11 @@ void BaseObject::EmitSound(const char *name)
 	{
 		mSounds[*name]->Play();
 	}
+}
+
+void BaseObject::TakeDamage(const DamageInfo &info)
+{
+	SetHealth(GetHealth() - info.Amount);
 }
 
 //Tick: An INTERNAL function called by the game state every frame, only actually Thinks if NextThink < CurTime

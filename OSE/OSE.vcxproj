@@ -148,6 +148,7 @@
     <ClInclude Include="Engine\Line.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="engine\utilities\matrix3.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

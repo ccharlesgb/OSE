@@ -15,17 +15,25 @@ class CollisionInfo;
 
 typedef void (*InputFunc)(BaseObject* ent, VariantMap &Data);
 
-class Colour
+enum DamageType
+{
+	DAMAGETYPE_GENERIC,
+	DAMAGETYPE_BULLET,
+	DAMAGETYPE_BURNING,
+	DAMAGETYPE_DROWNING,
+	DAMAGETYPE_PHYSICS,
+	DAMAGETYPE_ENVIRONMENT
+};
+
+class BaseObject;
+
+class DamageInfo
 {
 public:
-	int r;
-	int g;
-	int b;
-	int a;
-	Colour() {r=g=b=a=255;};
-	Colour(int R, int G, int B) {r=R; g = G; b = B; a = 255;};
-	Colour(int R, int G, int B, int A) {r=R; g = G; b = B; a = A;};
-	Colour(const Colour& col) {r = col.r; g = col.g; b = col.b; a = col.a;};
+	DamageInfo() {Amount = 0.f; Inflictor = NULL; type = DAMAGETYPE_GENERIC;};
+	BaseObject* Inflictor;
+	float Amount;
+	DamageType type;
 };
 
 enum RenderGroup
@@ -63,6 +71,10 @@ protected:
 	Vector2 mOrigin;
 	Vector2 mScale;
 	float mAngle;
+
+	//Health
+	float mHealth;
+	float mMaxHealth;
 
 	RenderGroup mDrawOrder;
 	bool mIsRenderable; //Do we have a renderer?
@@ -119,6 +131,11 @@ public:
 	void CreateSound(const char *name, const char *path);
 	void EmitSound(const char *name);
 
+	//Health
+	void SetHealth(const float hlt) {mHealth = hlt;};
+	float GetHealth() {return mHealth;};
+	void SetMaxHealth(const float mhlt) {mMaxHealth = mhlt;};
+	float GetMaxHealth() {return mMaxHealth;};
 
 	//MetaData (UNFINISHED)
 	void SetMetaData(const char* ID, float dat);
@@ -141,8 +158,8 @@ public:
 	bool IsRenderable() {return mIsRenderable;};
 	void SetDrawOrder(RenderGroup o) {mDrawOrder = o;};
 	RenderGroup GetDrawOrder() {return mDrawOrder;};
-	void SetColor(Colour col) {mColour = col;};
-	Colour GetColor() {return mColour;};
+	void SetColour(Colour col) {mColour = col;};
+	Colour GetColour() {return mColour;};
 	void SetNoDraw(bool nodraw) {mNoDraw = nodraw;};
 	bool GetNoDraw() {return mNoDraw;};
 
@@ -160,7 +177,7 @@ public:
 	virtual void Draw(); //Draw your sprites/Drawables here
 	virtual void StartTouch(CollisionInfo* info) {}; //When another entity begins to touch us
 	virtual void Use(BaseObject* ply) {}; //Player has pressed E on us!
-
+	virtual void TakeDamage(const DamageInfo &info);
 };
 
 template<class T>
