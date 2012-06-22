@@ -20,7 +20,7 @@ Renderer* Renderer::Instance()
 
 Renderer::Renderer(void)
 {
-	mLightSystem = new ltbl::LightSystem();
+	//mLightSystem = new ltbl::LightSystem();
 	gGlobals.gEntList.RegisterListener(this);
 }
 
@@ -147,8 +147,8 @@ void Renderer::Draw(IGameState *State)
 		}
 		CurEnt = Renderables.NextEnt();
 	}
-	mLightSystem->RenderLights();
-	mLightSystem->RenderLightTexture();
+	//mLightSystem->RenderLights();
+	//mLightSystem->RenderLightTexture();
 	if (InputHandler::IsKeyPressed(sf::Keyboard::F3))
 		State->DrawDebugData();
 	mRender->setView(mRender->getDefaultView());

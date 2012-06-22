@@ -17,8 +17,10 @@ void Line::Draw()
 	{
 		
 	}
-	(*mLine)[0].position = mVerts[0].SF();
-	(*mLine)[1].position = mVerts[1].SF();
+	(*mLine)[0].color = GetColour().SF();
+	(*mLine)[1].color = GetColour().SF();
+	(*mLine)[0].position = ig::GameToSFML(mVerts[0]).SF();
+	(*mLine)[1].position = ig::GameToSFML(mVerts[1]).SF();
 	mRenderWindow->draw(*mLine);
 }
 

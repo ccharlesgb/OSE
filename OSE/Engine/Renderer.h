@@ -19,7 +19,7 @@ class Renderer : public IEntityListener<BaseObject*>
 {
 private:
 	sf::RenderWindow *mRender;
-	ltbl::LightSystem *mLightSystem;
+	//ltbl::LightSystem *mLightSystem;
 	sf::View mView;
 	DebugDraw* mPhysDebug;
 	EntityList<BaseObject*> Renderables;
@@ -39,4 +39,3 @@ public:
 	void Draw(IGameState *State);
 	void SetWindow(sf::RenderWindow *wind);
 };
-

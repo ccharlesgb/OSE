@@ -86,10 +86,11 @@ void Player::Think()
 		TraceInfo info;
 		info.mStartPoint = GetPos();
 		info.mEndPoint = GetPos() + (GetForward() * USE_RANGE);
-		BaseObject* UseEnt = PhysicsQueries::TraceLine(info);
-		if (UseEnt != NULL && UseEnt != this)
+		TraceResult TraceRes;
+		PhysicsQueries::TraceLine(info, TraceRes);
+		if (TraceRes.mHitEnt != NULL && TraceRes.mHitEnt != this)
 		{
-			UseEnt->Use(this);
+			TraceRes.mHitEnt->Use(this);
 		}
 		mNextUse = gGlobals.CurTime + USE_DELAY;
 	}

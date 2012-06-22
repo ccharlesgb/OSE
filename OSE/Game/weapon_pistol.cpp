@@ -11,6 +11,8 @@ weapon_pistol::weapon_pistol(void)
 	RenderInit();
 	GetSound("shot")->SetVolume(20.f);
 	SetDrawOrder(RENDERGROUP_ENTITIES);
+	mLine = new Line(gGlobals.RenderWindow);
+	mLine->SetColour(Colour(255,215,0));
 }
 
 weapon_pistol::~weapon_pistol(void)
@@ -26,6 +28,7 @@ void weapon_pistol::Draw()
 {
 	if (mLastShot + 0.05 > gGlobals.CurTime)
 	{
+		mLine->Draw();
 		DrawModel();
 	}
 }
@@ -41,14 +44,20 @@ void weapon_pistol::PrimaryFire(BaseObject* ent, VariantMap &Data)
 		float range = 1000;
 		float spread = 0.15; //In radians
 		info.mEndPoint = me->GetPos() + (me->GetForward() * range) + (me->GetRight() * ig::Random(-spread,spread) * range);
-		BaseObject* hit_target = PhysicsQueries::TraceLine(info);
-		if (hit_target != NULL)
+		TraceResult TraceRes;
+		PhysicsQueries::TraceLine(info, TraceRes);
+
+		//Tracer Effect
+		me->mLine->mVerts[0] = info.mStartPoint;
+		me->mLine->mVerts[1] = info.mEndPoint;
+
+		if (TraceRes.mHitEnt != NULL)
 		{
 			DamageInfo info;
 			info.Amount = ig::Random(15,25);
 			info.type = DAMAGETYPE_BULLET;
 			info.Inflictor = me->GetOwner();
-			hit_target->TakeDamage(info);
+			TraceRes.mHitEnt->TakeDamage(info);
 		}
 		me->mLastShot = gGlobals.CurTime;
 		me->SetNextPrimaryFire(gGlobals.CurTime + 0.25f);

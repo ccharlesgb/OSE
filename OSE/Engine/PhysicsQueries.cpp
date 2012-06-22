@@ -3,16 +3,11 @@
 
 b2World* PhysicsQueries::mWorld = NULL;
 
-BaseObject* PhysicsQueries::TraceLine(TraceInfo& info)
+void PhysicsQueries::TraceLine(TraceInfo& info, TraceResult &result)
 {
-	TraceQueryCallback callback(info);
+	TraceQueryCallback callback(info, &result);
 	mWorld->RayCast(&callback, (info.mStartPoint / PIXELS_PER_METRE).B2(), (info.mEndPoint / PIXELS_PER_METRE).B2());
-	BaseObject* ent = NULL;
-	if (callback.mBody != NULL)
-	{
-		ent = static_cast<BaseObject*>(callback.mBody->GetUserData());
-	}
-	return ent;
+	result = *callback.mResult;
 }
 
 BaseObject* PhysicsQueries::QueryPoint(Vector2 Point)

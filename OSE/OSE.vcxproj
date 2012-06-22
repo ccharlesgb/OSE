@@ -44,8 +44,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\Connor\Documents\Programming\LTBL;C:\Users\Connor\Documents\Programming\SFML-2.0-rc\include;C:\Users\Connor\Documents\Programming\Box2D\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Connor\Documents\Programming\SFML-2.0-rc\lib;C:\Users\Connor\Documents\Programming\Box2D\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Connor\Documents\Programming\mxml1\include;C:\Users\Connor\Documents\Programming\LTBL;C:\Users\Connor\Documents\Programming\SFML-2.0-rc\include;C:\Users\Connor\Documents\Programming\Box2D\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Connor\Documents\Programming\mxml1\lib;C:\Users\Connor\Documents\Programming\SFML-2.0-rc\lib;C:\Users\Connor\Documents\Programming\Box2D\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -150,7 +150,6 @@
     <ClInclude Include="Engine\Line.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
     <None Include="engine\utilities\matrix3.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

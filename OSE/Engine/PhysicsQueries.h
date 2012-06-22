@@ -33,6 +33,14 @@ public:
     b2Body* m_object;
 };
 
+class TraceResult
+{
+public:
+	BaseObject* mHitEnt;
+	Vector2 mHitPos;
+	Vector2 mHitNormal;
+};
+
 class TraceInfo
 {
 public:
@@ -44,10 +52,14 @@ public:
 class TraceQueryCallback : public b2RayCastCallback
 {
 public:
-    TraceQueryCallback(const TraceInfo info)
+    TraceQueryCallback(const TraceInfo info, TraceResult *result)
     {
 		mInfo = info;
 		mBody = NULL;
+		mResult = result;
+		mResult->mHitEnt = NULL;
+		mResult->mHitNormal = Vector2();
+		mResult->mHitPos = Vector2();
     }
 
 	float32 ReportFixture(b2Fixture* fixture,
@@ -56,11 +68,22 @@ public:
         if (fixture->IsSensor()) return -1; //ignore sensors
         // We are done, terminate the query.
         mBody = fixture->GetBody();
+		if (fraction == 0)
+		{
+			if (mBody)
+			{
+				mResult->mHitEnt = static_cast<BaseObject*>(mBody->GetUserData());
+			}
+			mResult->mHitNormal = normal;
+			mResult->mHitPos = point;
+
+		}
         return fraction;
     }
 
 	b2Body *mBody;
     TraceInfo mInfo;
+	TraceResult *mResult;
 };
 
 class PhysicsQueries
@@ -70,6 +93,6 @@ private:
 public:
 	static void SetWorld(b2World* world) {if (mWorld == NULL) mWorld = world;};
 	static BaseObject* QueryPoint(Vector2 Point);
-	static BaseObject* TraceLine(TraceInfo& info);
+	static void TraceLine(TraceInfo& info, TraceResult &result);
 };
 
