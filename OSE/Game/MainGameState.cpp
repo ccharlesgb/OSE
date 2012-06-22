@@ -8,6 +8,7 @@
 #include "../Engine/InputHandler.h"
 #include "../Engine/PhysicsQueries.h"
 #include "../Engine/AudioEnvironment.h"
+#include "../Engine/Utilities/XMLParser.h"
 
 #define GRAVITY_STRENGTH 500
 
@@ -19,6 +20,7 @@ NOTES	:
 */
 MainGameState::MainGameState(void)
 {
+	XMLParser::LoadFile("test.xml");
 	mLastPhysics = -1;
 	mPhysAcc = 0;
 }

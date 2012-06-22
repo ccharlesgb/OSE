@@ -13,6 +13,8 @@ weapon_pistol::weapon_pistol(void)
 	SetDrawOrder(RENDERGROUP_ENTITIES);
 	mLine = new Line(gGlobals.RenderWindow);
 	mLine->SetColour(Colour(255, 236, 139));
+	mNextPrimaryFire = 0.f;
+	mLastShot = 0.f;
 }
 
 weapon_pistol::~weapon_pistol(void)

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<model>
+  <texture>images/crate</texture>
+  <physics_hull>
+    <density>4</density>
+    <vertex_count>4</vertex_count>
+    <vertices>
+      <vertex>50 50</vertex>
+      <vertex>-50 50</vertex>
+      <vertex>-50 -50</vertex>
+      <vertex>50 -50</vertex>
+    </vertices>
+  </physics_hull>
+  
+</model>

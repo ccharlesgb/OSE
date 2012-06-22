@@ -82,6 +82,7 @@
     <ClCompile Include="Engine\Line.cpp" />
     <ClCompile Include="Engine\Sound.cpp" />
     <ClCompile Include="Engine\AudioEnvironment.cpp" />
+    <ClCompile Include="Engine\Utilities\XMLParser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\InputHandler.h">
@@ -155,8 +156,10 @@
     <ClInclude Include="Engine\Line.h" />
     <ClInclude Include="engine\sound.h" />
     <ClInclude Include="Engine\AudioEnvironment.h" />
+    <ClInclude Include="Engine\Utilities\XMLParser.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="engine\utilities\matrix3.inl" />
+    <None Include="test.xml" />
   </ItemGroup>
 </Project>
