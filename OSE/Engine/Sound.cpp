@@ -56,6 +56,23 @@ void Sound::SetPosition(Vector2 position)
 }
 
 /**
+ * Return the position, converted to our cord system.
+ */
+Vector2 Sound::GetPosition()
+{
+	sf::Vector3f pos = mSound.getPosition();
+	return ig::SFMLToGame(*new Vector2(pos.x, pos.y));
+}
+
+/**
+ * Set if the sound should be relative to player or absolute.
+ */
+void Sound::SetRelativeToListener(bool relative)
+{
+	mSound.setRelativeToListener(relative);
+}
+
+/**
  * Set the distance before the sound starts "fading" out.
  */
 void Sound::SetMinDistance(float distance)
