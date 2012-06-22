@@ -95,6 +95,7 @@
     <ClCompile Include="Engine\Sound.cpp" />
     <ClCompile Include="Engine\Utilities\MathUtils.cpp" />
     <ClCompile Include="Engine\Utilities\Matrix3.cpp" />
+    <ClCompile Include="Engine\Utilities\pugixml.cpp" />
     <ClCompile Include="Engine\Utilities\Randomiser.cpp" />
     <ClCompile Include="Engine\Utilities\VariantMap.cpp" />
     <ClCompile Include="Engine\Utilities\Vector2.cpp" />
@@ -131,6 +132,8 @@
     <ClInclude Include="engine\sound.h" />
     <ClInclude Include="engine\utilities\mathutils.h" />
     <ClInclude Include="engine\utilities\matrix3.hpp" />
+    <ClInclude Include="Engine\Utilities\pugiconfig.hpp" />
+    <ClInclude Include="Engine\Utilities\pugixml.hpp" />
     <ClInclude Include="Engine\Utilities\Randomiser.h" />
     <ClInclude Include="engine\utilities\variantmap.h" />
     <ClInclude Include="engine\utilities\vector2.h" />

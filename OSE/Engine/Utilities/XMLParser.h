@@ -1,6 +1,6 @@
 #pragma once
 
-#include <mxml.h>
+#include "pugixml.hpp"
 #include <iostream>
 #include "Vector2.h"
 
@@ -17,11 +17,8 @@ public:
 class XMLParser
 {
 private:
-	static FILE *mFile;
-	static mxml_node_t *mTree;
-	static ModelData CurrentModel;
+
 public:
-	static mxml_type_t LoadCallBack(mxml_node_t *node);
 	static void LoadFile(const char *path);
 };
 

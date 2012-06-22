@@ -83,6 +83,7 @@
     <ClCompile Include="Engine\Sound.cpp" />
     <ClCompile Include="Engine\AudioEnvironment.cpp" />
     <ClCompile Include="Engine\Utilities\XMLParser.cpp" />
+    <ClCompile Include="Engine\Utilities\pugixml.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\InputHandler.h">
@@ -157,6 +158,8 @@
     <ClInclude Include="engine\sound.h" />
     <ClInclude Include="Engine\AudioEnvironment.h" />
     <ClInclude Include="Engine\Utilities\XMLParser.h" />
+    <ClInclude Include="Engine\Utilities\pugiconfig.hpp" />
+    <ClInclude Include="Engine\Utilities\pugixml.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="engine\utilities\matrix3.inl" />
