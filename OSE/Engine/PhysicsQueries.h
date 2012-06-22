@@ -36,6 +36,12 @@ public:
 class TraceResult
 {
 public:
+	TraceResult()
+	{
+		mHitEnt = NULL;
+		mHitNormal = Vector2();
+		mHitPos = Vector2();
+	}
 	BaseObject* mHitEnt;
 	Vector2 mHitPos;
 	Vector2 mHitNormal;
@@ -57,9 +63,6 @@ public:
 		mInfo = info;
 		mBody = NULL;
 		mResult = result;
-		mResult->mHitEnt = NULL;
-		mResult->mHitNormal = Vector2();
-		mResult->mHitPos = Vector2();
     }
 
 	float32 ReportFixture(b2Fixture* fixture,

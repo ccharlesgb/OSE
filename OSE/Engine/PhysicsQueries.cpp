@@ -7,6 +7,7 @@ void PhysicsQueries::TraceLine(TraceInfo& info, TraceResult &result)
 {
 	TraceQueryCallback callback(info, &result);
 	mWorld->RayCast(&callback, (info.mStartPoint / PIXELS_PER_METRE).B2(), (info.mEndPoint / PIXELS_PER_METRE).B2());
+	std::cout << callback.mResult->mHitEnt << "\n";
 	result = *callback.mResult;
 }
 
