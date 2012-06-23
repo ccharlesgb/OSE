@@ -11,5 +11,6 @@ private:
 public:
 	static void SetListener(BaseObject* listener) { mListener = listener; };
 	static void Update();
+	static void SetMasterVolume(float vol) {sf::Listener::setGlobalVolume(vol);};
 };
 

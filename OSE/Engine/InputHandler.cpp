@@ -1,6 +1,5 @@
 #include "InputHandler.h"
 #include "GameGlobals.h"
-#include <iostream>
 #include "Camera.h"
 
 Vector2 InputHandler::LKPMouse = Vector2(0.f,0.f);
