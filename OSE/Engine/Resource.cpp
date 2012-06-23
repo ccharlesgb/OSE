@@ -28,6 +28,49 @@ void Resource::Cleanup()
 	}
 }
 
+// Models
+
+std::string Resource::GetModelPath(const char* path)
+{
+	return ("images/" + std::string(path) + ".png").c_str();
+}
+
+/**
+ * Precache model.
+ *
+ * Load the model and parse it. Also request the textures to be precached.
+ */
+void Resource::PrecacheModel(const char *path)
+{
+	std::string FILE_PATH = GetModelPath(path);
+	std::cout << "LOADING: " << FILE_PATH << "\n";
+	ModelData* Model = new ModelData();
+	
+	//if (!Buffer->loadFromFile(FILE_PATH)) {
+		// TODO: Some error managment
+	//}
+	
+	ModelCache[path] = Model;
+}
+
+/**
+ * Get the model file.
+ *
+ * If the model is not already precached, precache it.
+ */
+ModelData* Resource::RequestModel(const char* path)
+{
+	if (ModelCache[path] == NULL)
+	{
+		PrecacheModel(path);
+	}
+	
+	return ModelCache[path];
+}
+
+
+
+
 // Texture
 std::string Resource::GetImagePath(const char* path)
 {
@@ -64,6 +107,8 @@ sf::Texture* Resource::RequestImage(const char* path)
 	return TextureCache[path];
 }
 
+
+
 // Sound
 std::map<std::string, sf::SoundBuffer*> Resource::SoundCache;
 
@@ -91,10 +136,9 @@ void Resource::PrecacheSound(const char* path)
 }
 
 /**
- * Get a sound file.
+ * Get the sound file.
  *
- * If the sound is not already precached, precache it and then serve it,
- * otherwise use the precached value.
+ * If the sound is not already precached, precache it.
  */
 sf::Sound* Resource::RequestSound(const char* path)
 {
