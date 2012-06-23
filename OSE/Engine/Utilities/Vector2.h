@@ -3,7 +3,7 @@
 #include <iostream>
 #include "SFML/System.hpp"
 #include "MathUtils.h"
-#include "Box2D.h"
+#include <Box2D/Common/b2Math.h>
 #include <sstream>
 
 class Vector2

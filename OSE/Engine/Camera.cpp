@@ -1,5 +1,6 @@
 #include "Camera.h"
 #include "GameGlobals.h"
+#include "Bases/BaseObject.h"
 
 BaseObject* sCamera::mTarget;
 Vector2 sCamera::mTargetPos;

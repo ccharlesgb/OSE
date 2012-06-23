@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Bases/BaseObject.h"
+class BaseObject;
 
 class sCamera
 {
