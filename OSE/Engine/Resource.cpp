@@ -1,6 +1,7 @@
 #include "Resource.h"
 #include "GameGlobals.h"
 
+std::map<std::string, ModelData*> Resource::ModelCache;
 std::map<std::string, sf::Texture*> Resource::TextureCache;
 sf::Texture* Resource::ErrorTex = NULL;
 
@@ -11,7 +12,12 @@ sf::Texture* Resource::ErrorTex = NULL;
  */
 void Resource::Cleanup()
 {
-	std::cout << "CLEANING UP RESOURCES \n";
+	std::cout << "CLEANING UP MODELS \n";
+	std::map<std::string, ModelData*>::iterator ModelIterator;
+	for(ModelIterator = ModelCache.begin(); ModelIterator != ModelCache.end(); ModelIterator++) {
+		std::cout << "DELETING " << ModelIterator->first << "\n";
+		delete ModelCache[ModelIterator->first];
+	}
 	
 	std::cout << "CLEANING UP TEXTURES \n";
 	std::map<std::string, sf::Texture*>::iterator it;
@@ -22,7 +28,7 @@ void Resource::Cleanup()
 	
 	std::cout << "CLEANING UP SOUNDS \n";
 	std::map<std::string, sf::SoundBuffer*>::iterator SoundIterator;
-	for(SoundIterator = SoundCache.begin(); SoundIterator != SoundCache.end(); it++) {
+	for(SoundIterator = SoundCache.begin(); SoundIterator != SoundCache.end(); SoundIterator++) {
 		std::cout << "DELETING " << SoundIterator->first << "\n";
 		delete SoundCache[SoundIterator->first];
 	}
