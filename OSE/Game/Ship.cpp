@@ -142,7 +142,8 @@ void Ship::Think()
 		mWheelAngle = ig::Approach(mWheelAngle, 0, steer_factor);
 	}
 
-	Vector2 LocalVel = ToLocal(GetVelocity() + GetPos());
+	Vector2 Vel = GetVelocity() + GetPos();
+	Vector2 LocalVel = ToLocal(Vel);
 
 	//Physically simular wheels
 	MoveVector.x = LocalVel.y * mWheelAngle * 0.002f; //Times traction?
