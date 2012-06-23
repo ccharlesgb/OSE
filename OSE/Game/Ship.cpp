@@ -173,9 +173,9 @@ void Ship::Think()
 
 	if (GetPhysObj()->GetLinearVelocity().Length() > 200.f)
 	{
-		//BaseObject* scorch = CreateEntity("ent_decal");
-		//scorch->SetModel("scorch", ig::Random(0.5,0.7));
-		//scorch->SetPos(GetPos());
-		//scorch->Spawn();
+		BaseObject* scorch = CreateEntity("ent_decal");
+		scorch->SetModel("scorch", ig::Random(0.5,0.7));
+		scorch->SetPos(GetPos());
+		scorch->Spawn();
 	}
 }

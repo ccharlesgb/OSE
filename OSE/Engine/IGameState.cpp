@@ -87,8 +87,10 @@ void IGameState::_Tick()
 	sAudioEnvironment::Update();
 	
 	BaseObject* CurEnt = gGlobals.gEntList.FirstEnt();
+	std::cout << "Tick\n";
 	while(gGlobals.gEntList.CurrentIsValid())
 	{
+		std::cout << CurEnt << " : " << CurEnt->GetClassName() << "\n";
 		if (CurEnt->FlaggedForDeletion() == true)
 		{
 			//std::cout << "Deleting: " << CurEnt->GetClassName() << "\n";
@@ -100,6 +102,7 @@ void IGameState::_Tick()
 		}
 		CurEnt->Tick();
 		CurEnt = gGlobals.gEntList.NextEnt();
+		std::cout << "Next: " << CurEnt << "\n";
 	}
 }
 

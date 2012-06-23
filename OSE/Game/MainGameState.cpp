@@ -70,7 +70,7 @@ void MainGameState::Initialize()
 	Ship->Spawn();
 
 	BaseObject* crate;
-	int crate_count = 200;
+	int crate_count = 0;
 	float map_size = 8000.f;
 	for (int i=0; i < crate_count; i++)
 	{
