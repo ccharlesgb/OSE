@@ -1,5 +1,4 @@
 #include "Prop.h"
-#include <iostream>
 
 LINKCLASSTONAME("ent_prop", Prop)
 #define GRAVITY_STRENGTH 150

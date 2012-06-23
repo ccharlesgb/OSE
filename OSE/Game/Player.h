@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../Engine/Bases/BasePhysics.h"
-#include <iostream>
 
 #define USE_DELAY 0.5f
 

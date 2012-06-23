@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../Engine/Bases/BasePhysics.h"
-#include <iostream>
 
 class Ship : public BasePhysics
 {

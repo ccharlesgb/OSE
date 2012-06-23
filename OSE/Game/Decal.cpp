@@ -1,5 +1,4 @@
 #include "Decal.h"
-#include <iostream>
 
 LINKCLASSTONAME("ent_decal", Decal);
 

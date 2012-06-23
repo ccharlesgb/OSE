@@ -1,6 +1,6 @@
 #pragma once
+
 #include "../Engine/Bases/BasePhysics.h"
-#include <iostream>
 
 class Prop : public BasePhysics
 {

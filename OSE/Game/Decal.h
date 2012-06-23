@@ -1,4 +1,5 @@
 #pragma once
+
 #include "../Engine/Bases/BaseObject.h"
 
 class Decal : public BaseObject

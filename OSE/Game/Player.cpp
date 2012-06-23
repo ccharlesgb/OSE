@@ -1,5 +1,4 @@
 #include "Player.h"
-#include <iostream>
 #include "../Engine/InputHandler.h"
 #include "../Engine/GameGlobals.h"
 #include "../Engine/PhysicsQueries.h"
