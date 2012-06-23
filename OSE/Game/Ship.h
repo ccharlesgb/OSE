@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Engine/Bases/BasePhysics.h"
+#include "../Engine/Render/Line.h"
 
 class Ship : public BasePhysics
 {
@@ -11,6 +12,7 @@ private:
 	float mThrottle;
 	float mEnterTime;
 	Sprite* mWheelSprite;
+	Line* mLine;
 public:
 	Ship(void);
 	~Ship(void);

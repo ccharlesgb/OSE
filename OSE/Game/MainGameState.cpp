@@ -9,6 +9,7 @@
 #include "../Engine/PhysicsQueries.h"
 #include "../Engine/AudioEnvironment.h"
 #include "../Engine/Utilities/XMLParser.h"
+#include "../Engine/AudioEnvironment.h"
 
 #define GRAVITY_STRENGTH 500
 
@@ -171,11 +172,11 @@ void MainGameState::OnKeyPressed(sf::Keyboard::Key Key, bool Pressed)
 {
 	if (Pressed && Key == sf::Keyboard::O)
 	{
-		sCamera::SetZoom(ig::Limit(sCamera::GetZoom() + 0.5f, 1, 3));
+		sAudioEnvironment::SetMasterVolume(sAudioEnvironment::GetMasterVolume() + 10.f);
 	}
 	if (Pressed && Key == sf::Keyboard::L)
 	{
-		sCamera::SetZoom(ig::Limit(sCamera::GetZoom() - 0.5f, 1, 3));
+		sAudioEnvironment::SetMasterVolume(sAudioEnvironment::GetMasterVolume() - 10.f);
 	}
 }
 

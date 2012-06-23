@@ -24,6 +24,9 @@ Ship::Ship(void)
 	mWheelSprite->SetTexture("car_wheel");
 	mWheelSprite->SetOrigin(Vector2());
 	mWheelSprite->SetScale(0.4f);
+
+	mLine = new Line(gGlobals.RenderWindow);
+	mLine->SetColour(Colour(255, 236, 139));
 }
 
 Ship::~Ship(void)
@@ -55,7 +58,9 @@ void Ship::Draw()
 	mWheelSprite->SetPosition(GetPos() + FR_Pos);
 	mWheelSprite->Draw();
 
-		DrawModel();
+	DrawModel();
+
+	mLine->Draw();
 }
 
 void Ship::OnDelete()
@@ -137,22 +142,34 @@ void Ship::Think()
 		mWheelAngle = ig::Approach(mWheelAngle, 0, steer_factor);
 	}
 
+	Vector2 LocalVel = ToLocal(GetVelocity() + GetPos());
+
 	//Physically simular wheels
-	MoveVector.y = mThrottle;
+	MoveVector.x = LocalVel.y * mWheelAngle * 0.002f; //Times traction?
 	MoveVector = MoveVector.Rotate(-mWheelAngle);
 	MoveVector = ToGlobal(MoveVector) - GetPos();
 	ApplyForce(MoveVector * GetPhysObj()->GetMass(), GetPos() + GetForward() * 90.f);
 
+	mLine->mVerts[0] = GetPos() + GetForward() * 90.f;
+	mLine->mVerts[1] = (GetPos() + GetForward() * 90.f) + (MoveVector * 10.f);
+
 	Vector2 BackFric;
 	Vector2 pos = GetVelocity() + GetPos();
-	BackFric.x = ToLocal(pos).x;
-	BackFric.x = BackFric.x + (GetAngularVelocity() * -1.f);
-	BackFric = ToGlobal(BackFric) - GetPos();
+	BackFric.y = mThrottle;
+	BackFric.x = -LocalVel.x;
+	BackFric.x = BackFric.x + (ig::DegToRad(GetAngularVelocity()) * 45.f);
+	BackFric.x *= 0.04f;
+	//mLine->mVerts[0] = GetPos() + GetForward() * -90.f;
+	//mLine->mVerts[1] = (GetPos() + GetForward() * -90.f) + ((ToGlobal(Vector2(BackFric.x,0.f)) - GetPos()) * 10.f);
+
 	if (InputHandler::IsKeyPressed(sf::Keyboard::Space))
 	{
-		BackFric.x = BackFric.x * -0.15f;
+		BackFric.x = 0.f;
 	}
-	ApplyForce(BackFric * -200.f, GetPos() + GetForward() * -90.f);
+	BackFric = ToGlobal(BackFric) - GetPos();
+
+
+	ApplyForce(BackFric * GetPhysObj()->GetMass(), GetPos() + GetForward() * -90.f);
 
 	if (GetPhysObj()->GetLinearVelocity().Length() > 200.f)
 	{

@@ -19,6 +19,7 @@ void PhysicsDef::SetPos(Vector2 p)
 	if (mPhysObj)
 		mPhysObj->SetTransform((p * METRES_PER_PIXEL).B2(), ig::DegToRad(GetAngle()));
 	mPosition = p * METRES_PER_PIXEL;
+	b2MassData dat;
 }
 
 Vector2 PhysicsDef::GetPos()
@@ -49,6 +50,28 @@ float PhysicsDef::GetAngle()
 	return mAngle;
 }
 
+void PhysicsDef::SetMass(float mass)
+{
+	mMassData.mass = mass;
+	mPhysObj->SetMassData(&mMassData);
+}
+
+float PhysicsDef::GetMass()
+{
+	return mPhysObj->GetMass() * PIXELS_PER_METRE;
+}
+
+void PhysicsDef::SetCOM(Vector2 COM)
+{
+	mMassData.center = COM.B2();
+	mPhysObj->SetMassData(&mMassData);
+}
+
+Vector2 PhysicsDef::GetCOM()
+{
+	return mMassData.center;
+}
+
 void PhysicsDef::CreatePhysics(b2World *World)
 {
 	mWorld = World;
@@ -69,7 +92,7 @@ void PhysicsDef::CreatePhysics(b2World *World)
 	def.linearDamping = 0;
 	mPhysObj = World->CreateBody(&def);
 	mPhysObj->SetUserData(mOwner);
-
+	mPhysObj->GetMassData(&mMassData);
 }
 
 void PhysicsDef::AddPhysicsShape(PolygonShape* hull) 

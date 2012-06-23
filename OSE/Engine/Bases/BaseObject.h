@@ -169,6 +169,9 @@ public:
 
 	void DrawModel();
 
+	//DEBUG DRAWS (SLOW METHODS DONT USE THEM FOR RELEASE STUFF)
+	void DebugDrawLine(Vector2 p1, Vector2 p2, const Colour &col);
+
 	//Hooks
 	virtual void Spawn() {};
 	virtual void Tick();

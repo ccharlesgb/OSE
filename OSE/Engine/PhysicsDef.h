@@ -69,6 +69,7 @@ class PhysicsDef
 private:
 	b2Body *mPhysObj;
 	b2World *mWorld;
+	b2MassData mMassData;
 
 	Vector2 mPosition;
 	float mAngle;
@@ -100,7 +101,10 @@ public:
 	void SetOwner(BaseObject* own) {mOwner = own;};
 	BaseObject* GetOwner() {return mOwner;};
 
-	float GetMass() {return mPhysObj->GetMass() * PIXELS_PER_METRE;};
+	void SetMass(float mass);
+	float GetMass();
+	void SetCOM(Vector2 COM);
+	Vector2 GetCOM();
 
 	void SetRestitution(float r) {};
 

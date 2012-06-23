@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\Render\DebugOverlay.cpp" />
     <ClCompile Include="Engine\AudioEnvironment.cpp" />
     <ClCompile Include="Engine\Bases\BaseObject.cpp" />
     <ClCompile Include="Engine\Bases\BasePhysics.cpp" />
@@ -48,6 +49,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\Render\DebugOverlay.h" />
     <ClInclude Include="Engine\AudioEnvironment.h" />
     <ClInclude Include="Engine\Bases\BaseObject.h" />
     <ClInclude Include="Engine\Bases\BasePhysics.h" />

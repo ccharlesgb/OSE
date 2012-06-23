@@ -42,6 +42,7 @@
     <ClCompile Include="Engine\Utilities\Vector2.cpp" />
     <ClCompile Include="Engine\Utilities\XMLParser.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Engine\Render\DebugOverlay.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Bases\BaseObject.h" />
@@ -80,6 +81,7 @@
     <ClInclude Include="Engine\Utilities\VariantMap.h" />
     <ClInclude Include="Engine\Utilities\Vector2.h" />
     <ClInclude Include="Engine\Utilities\XMLParser.h" />
+    <ClInclude Include="Engine\Render\DebugOverlay.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Utilities\Matrix3.inl" />

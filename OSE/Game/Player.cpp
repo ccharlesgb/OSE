@@ -74,7 +74,7 @@ void Player::Think()
 
 	if (InputHandler::IsMouseButtonPressed(sf::Mouse::Left) && !InputHandler::IsKeyPressed(sf::Keyboard::LShift))
 	{
-		mWeapon->SetPos(GetPos() + GetForward() * 55.f);
+		mWeapon->SetPos(GetPos() + GetForward() * 50.f);
 		mWeapon->SetAngle(GetAngle());
 		VariantMap dat;
 		mWeapon->Fire("fire1", dat);

@@ -2,6 +2,7 @@
 #include "../EntityCreator.h"
 #include "../GameGlobals.h"
 #include "../Render/Renderer.h"
+#include "../Render/Line.h"
 
 BaseObject::BaseObject(void)
 {
@@ -100,6 +101,15 @@ void BaseObject::DrawModel()
 	mSprite->SetOrigin(GetOrigin());
 	mSprite->SetColour(GetColour());
 	mSprite->Draw();
+}
+
+void BaseObject::DebugDrawLine(Vector2 p1, Vector2 p2, const Colour &col)
+{
+	Line line(gGlobals.RenderWindow);
+	line.mVerts[0] = p1;
+	line.mVerts[1] = p2;
+	line.SetColour(col);
+	line.Draw();
 }
 
 void BaseObject::CreateSound(const char *name, const char *path)

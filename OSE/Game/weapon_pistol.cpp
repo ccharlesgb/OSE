@@ -42,7 +42,7 @@ void weapon_pistol::PrimaryFire(BaseObject* ent, VariantMap &Data)
 	{
 		me->EmitSound("shot");
 		TraceInfo info;
-		info.mStartPoint = me->GetPos();
+		info.mStartPoint = me->GetPos() + (me->GetForward() * -10.f);
 		float range = 2000;
 		float spread = 0.1f; //In radians
 		info.mEndPoint = me->GetPos() + (me->GetForward() * range) + (me->GetRight() * ig::Random(-spread,spread) * range);
@@ -51,7 +51,7 @@ void weapon_pistol::PrimaryFire(BaseObject* ent, VariantMap &Data)
 
 		//Tracer Effect
 		me->mLine->mVerts[0] = info.mStartPoint;
-		me->mLine->mVerts[1] = TraceRes.mHitPos + (me->GetForward() * 5.f); // Add some slop to prevent line stopping before sprite
+		me->mLine->mVerts[1] = TraceRes.mHitPos + (me->GetForward() * 10.f); // Add some slop to prevent line stopping before sprite
 
 		if (TraceRes.mHitEnt != NULL)
 		{
