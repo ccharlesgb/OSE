@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../Engine/BaseObject.h"
-#include "../Engine/Line.h"
+#include "../Engine/Bases/BaseObject.h"
+#include "../Engine/Render/Line.h"
 
 class weapon_pistol : public BaseObject
 {

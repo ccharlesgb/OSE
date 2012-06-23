@@ -1,8 +1,8 @@
 #pragma once
 
 #include <Box2D.h>
-#include "../Engine/Utilities/Vector2.h"
-#include "../Engine/BaseObject.h"
+#include "Utilities/Vector2.h"
+#include "Bases/BaseObject.h"
 
 //Callback class to return the first body in a AABB Query
 class PointQueryCallback : public b2QueryCallback

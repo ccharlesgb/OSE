@@ -1,6 +1,6 @@
 #include "StateManager.h"
 #include "IGameState.h"
-#include "Renderer.h"
+#include "Render/Renderer.h"
 #include "GameGlobals.h"
 #include "Utilities/MathUtils.h"
 #include "InputHandler.h"

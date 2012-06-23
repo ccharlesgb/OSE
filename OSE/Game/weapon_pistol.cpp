@@ -23,7 +23,7 @@ weapon_pistol::~weapon_pistol(void)
 
 void weapon_pistol::Spawn()
 {
-	SetModel("muzzle_flash", 0.2);
+	SetModel("muzzle_flash", 0.2f);
 }
 
 void weapon_pistol::Draw()
@@ -43,8 +43,8 @@ void weapon_pistol::PrimaryFire(BaseObject* ent, VariantMap &Data)
 		me->EmitSound("shot");
 		TraceInfo info;
 		info.mStartPoint = me->GetPos();
-		float range = 1000;
-		float spread = 0.1; //In radians
+		float range = 2000;
+		float spread = 0.1f; //In radians
 		info.mEndPoint = me->GetPos() + (me->GetForward() * range) + (me->GetRight() * ig::Random(-spread,spread) * range);
 		TraceResult TraceRes;
 		PhysicsQueries::TraceLine(info, &TraceRes);
@@ -61,7 +61,7 @@ void weapon_pistol::PrimaryFire(BaseObject* ent, VariantMap &Data)
 			info.Inflictor = me->GetOwner();
 			TraceRes.mHitEnt->TakeDamage(info);
 		}
-		me->mLastShot = gGlobals.CurTime;
-		me->SetNextPrimaryFire(gGlobals.CurTime + 0.1f);
+		me->mLastShot = (float)gGlobals.CurTime;
+		me->SetNextPrimaryFire((float)gGlobals.CurTime + 0.1f);
 	}
 }

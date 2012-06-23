@@ -12,6 +12,18 @@ Vector2::Vector2(float One, float Two)
 	y = Two;
 }
 
+Vector2::Vector2(int One, int Two)
+{
+	x = (float)One;
+	y = (float)Two;
+}
+
+Vector2::Vector2(unsigned int one, unsigned int two)
+{
+	x = (float)one;
+	y = (float)two;
+}
+
 Vector2::Vector2(const Vector2& vec)
 {
 	x = vec.x;

@@ -1,6 +1,6 @@
 #include "DebugDraw.h" 
 #include "Renderer.h"
-#include "BasePhysics.h"
+#include "../Bases/BasePhysics.h"
 
 #pragma warning(disable:4244) //float to SF::Uint8
 

@@ -7,7 +7,7 @@
 class InputHandler
 {
 private:
-	static sf::Vector2f LKPMouse;
+	static Vector2 LKPMouse;
 	static sf::RenderWindow *App;
 public:
 	static void SetWindow(sf::RenderWindow *wind) {App = wind;};

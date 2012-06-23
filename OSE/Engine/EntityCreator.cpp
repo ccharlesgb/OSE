@@ -1,6 +1,6 @@
 #include "EntityCreator.h"
 #include <iostream>
-#include "BaseObject.h"
+#include "Bases/BaseObject.h"
 
 EntityCreator* Inst2 = NULL;
 

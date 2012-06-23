@@ -54,7 +54,7 @@ void Prop::StartTouch(CollisionInfo* info)
 	if (info->Speed > 750)
 	{
 		BaseObject* scorch = CreateEntity("ent_decal");
-		scorch->SetModel("scorch", ig::Random(0.5,0.7));
+		scorch->SetModel("scorch", ig::Random(0.5f,0.7f));
 		scorch->SetPos(GetPos());
 		scorch->Spawn();
 		Delete();

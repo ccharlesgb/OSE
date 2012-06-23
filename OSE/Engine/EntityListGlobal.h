@@ -1,7 +1,7 @@
 #pragma once
 
 #include "entitylist.h"
-#include "BaseObject.h"
+#include "Bases/BaseObject.h"
 
 typedef EntityList<BaseObject*> ObjList;
 

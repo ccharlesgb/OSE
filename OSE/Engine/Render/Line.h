@@ -1,7 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "../Engine/BaseDrawable.h"
+#include "BaseDrawable.h"
 
 class Line : public BaseDrawable
 {

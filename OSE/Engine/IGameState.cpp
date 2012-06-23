@@ -1,5 +1,5 @@
 #include "IGameState.h"
-#include "DebugDraw.h"
+#include "Render/DebugDraw.h"
 #include "GameGlobals.h"
 #include "AudioEnvironment.h"
 

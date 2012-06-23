@@ -29,10 +29,10 @@ public:
 	bool GetLoop() { return mSound.getLoop(); };
 	
 	void SetVolume(float volume) {mSound.setVolume(volume);};
-	bool GetVolume() { return mSound.getVolume(); };
+	float GetVolume() { return mSound.getVolume(); };
 	
 	void SetPitch(float pitch) {mSound.setPitch(pitch);};
-	bool GetPitch() { return mSound.getPitch(); };
+	float GetPitch() { return mSound.getPitch(); };
 	
 	void SetPosition(Vector2 position);
 	Vector2 GetPosition();

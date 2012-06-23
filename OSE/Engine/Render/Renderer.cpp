@@ -1,9 +1,9 @@
 #include "Renderer.h"
-#include "IGameState.h"
-#include "InputHandler.h"
-#include "Camera.h"
+#include "../IGameState.h"
+#include "../InputHandler.h"
+#include "../Camera.h"
 #include <Box2D/Collision/b2Collision.h>
-#include "BaseObject.h"
+#include "../Bases/BaseObject.h"
 
 Renderer* Inst = NULL;
 
@@ -32,7 +32,7 @@ Renderer::~Renderer(void)
 void Renderer::SetWindow(sf::RenderWindow *wind)
 {
 	mRender = wind;
-	mView.setSize(gGlobals.GameWidth, gGlobals.GameHeight);
+	mView.setSize((float)gGlobals.GameWidth, (float)gGlobals.GameHeight);
 	//mView.Zoom(1/RENDER_SCALE);
 	mPhysDebug = new DebugDraw(wind);
 	gGlobals.PhysicsDebugDraw = mPhysDebug;
@@ -45,26 +45,12 @@ void Renderer::Cleanup()
 
 Vector2 Renderer::GameToSFML(Vector2 Pos)
 {
-	if (mRender == NULL)
-	{
-		return sf::Vector2f(0,0);
-	}
-	sf::Vector2<double> dPos;
-	dPos.x = Pos.x;
-	dPos.y = Pos.y;
-	dPos.y *= -1;
-	sf::Vector2<double> ScreenCentre = sf::Vector2<double>(gGlobals.GameWidth / 2.f, gGlobals.GameHeight/ 2.f);
-	dPos = dPos + ScreenCentre;
-
-	Pos.x = dPos.x;
-	Pos.y = dPos.y;
-
-	return Pos;
+	return ig::GameToSFML(Pos);
 }
 
 Vector2 Renderer::ToScreen(Vector2 pos)
 {
-	Vector2 ScreenCentre = sf::Vector2f(mRender->getSize().x, mRender->getSize().y);
+	Vector2 ScreenCentre = sf::Vector2f((float)mRender->getSize().x, (float)mRender->getSize().y);
 	pos.y *= -1.f;
 	pos = pos + ScreenCentre - mView.getCenter();
 	return pos;

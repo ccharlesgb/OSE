@@ -1,7 +1,7 @@
 #include "BaseObject.h"
-#include "EntityCreator.h"
-#include "GameGlobals.h"
-#include "Renderer.h"
+#include "../EntityCreator.h"
+#include "../GameGlobals.h"
+#include "../Render/Renderer.h"
 
 BaseObject::BaseObject(void)
 {
@@ -121,6 +121,7 @@ Sound* BaseObject::GetSound(const char *name)
 	{
 		return mSounds[*name];
 	}
+	return NULL;
 }
 
 void BaseObject::TakeDamage(const DamageInfo &info)
@@ -143,7 +144,7 @@ void BaseObject::Tick()
 			i->second->SetPosition(GetPos());
 		}
 		
-		mLastThink = gGlobals.CurTime;
+		mLastThink = (float)gGlobals.CurTime;
 		mNextThink = mLastThink + (1.f/60.f); //By default think at 60HZ but child classes can override this
 		this->Think();
 	}

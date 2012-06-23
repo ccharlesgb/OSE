@@ -1,5 +1,5 @@
 #include "Sprite.h"
-#include "Resource.h"
+#include "../Resource.h"
 
 Sprite::Sprite(sf::RenderWindow *rend) : BaseDrawable(rend)
 {

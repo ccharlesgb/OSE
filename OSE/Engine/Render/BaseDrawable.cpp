@@ -1,5 +1,5 @@
 #include "BaseDrawable.h"
-#include "GameGlobals.h"
+#include "../GameGlobals.h"
 
 
 BaseDrawable::BaseDrawable(sf::RenderWindow *rend)

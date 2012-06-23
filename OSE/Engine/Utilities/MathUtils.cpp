@@ -18,13 +18,13 @@ namespace ig
 	
 	float Random(float min, float max)
 	{
-		float frac = Rand();
+		float frac = (float)Rand();
 		return (frac * (max-min)) + min;
 	}
 	
 	int RandomInt(int min, int max)
 	{
-		float frac = Rand();
+		float frac = (float)Rand();
 		return std::floor(((frac * (max-min)) + min) + 0.5f);
 	}
 	
@@ -80,7 +80,7 @@ namespace ig
 	Vector2 GameToSFML(Vector2 Pos)
 	{
 		Pos.y *= -1;
-		Vector2 ScreenCentre = Vector2(gGlobals.GameWidth / 2, gGlobals.GameHeight / 2);
+		Vector2 ScreenCentre = Vector2(gGlobals.GameWidth / 2.f, gGlobals.GameHeight / 2.f);
 		
 		Pos = Pos + ScreenCentre;
 		

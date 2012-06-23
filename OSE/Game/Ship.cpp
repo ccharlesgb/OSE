@@ -75,7 +75,7 @@ void Ship::Use(BaseObject *ply)
 	sCamera::FollowEntity(this);
 	mDriver = ply;
 	mDriver->SetNoDraw(true);
-	mEnterTime = gGlobals.CurTime;
+	mEnterTime = (float)gGlobals.CurTime;
 	//EmitSound("enter");
 	GetSound("idle")->SetLoop(true);
 	GetSound("idle")->Play();
@@ -117,8 +117,8 @@ void Ship::Think()
 			mThrottle = ig::Approach(mThrottle, -MAX_THROTTLE / 3.f, 1.5);
 		}
 		else
-			mThrottle = ig::Approach(mThrottle, 0, 0.3);
-		GetSound("idle")->SetPitch(0.7 + (std::fabs(mThrottle / MAX_THROTTLE) / 2.f));
+			mThrottle = ig::Approach(mThrottle, 0.f, 0.3f);
+		GetSound("idle")->SetPitch(0.7f + (std::fabs(mThrottle / MAX_THROTTLE) / 2.f));
 
 		if (InputHandler::IsKeyPressed(sf::Keyboard::A))
 		{
@@ -150,7 +150,7 @@ void Ship::Think()
 	BackFric = ToGlobal(BackFric) - GetPos();
 	if (InputHandler::IsKeyPressed(sf::Keyboard::Space))
 	{
-		BackFric.x = BackFric.x * -0.15;
+		BackFric.x = BackFric.x * -0.15f;
 	}
 	ApplyForce(BackFric * -200.f, GetPos() + GetForward() * -90.f);
 

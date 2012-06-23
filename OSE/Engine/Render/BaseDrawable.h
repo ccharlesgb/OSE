@@ -1,7 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "Utilities/Vector2.h"
+#include "../Utilities/Vector2.h"
 
 class Colour
 {

@@ -63,11 +63,11 @@ void Player::Think()
 	}
 	if (InputHandler::IsKeyPressed(sf::Keyboard::A))
 	{
-		MoveVector.x = -0.7;
+		MoveVector.x = -0.7f;
 	}
 	else if (InputHandler::IsKeyPressed(sf::Keyboard::D))
 	{
-		MoveVector.x = 0.7;
+		MoveVector.x = 0.7f;
 	}
 	MoveVector = MoveVector.Normalize() * player_walk_speed;
 	MoveVector = ToGlobal(MoveVector) - GetPos();

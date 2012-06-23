@@ -1,8 +1,8 @@
 #include "MainGameState.h"
-#include "../Engine/BaseObject.h"
+#include "../Engine/Bases/BaseObject.h"
 #include "../Engine/Utilities/VariantMap.h"
 #include "../Engine/Camera.h"
-#include "../Engine/BasePhysics.h"
+#include "../Engine/Bases/BasePhysics.h"
 #include "../Engine/PhysicsDef.h"
 #include "../Engine/GameGlobals.h"
 #include "../Engine/InputHandler.h"
@@ -58,9 +58,9 @@ void MainGameState::Initialize()
 	Player->Spawn();
 	gGlobals.Player = Player;
 	sCamera::FollowEntity(Player);
-	sCamera::SetDamping(0);
-	sCamera::SetZoom(1.5);
-	sCamera::SetZoomDamping(0.2);
+	sCamera::SetDamping(0.f);
+	sCamera::SetZoom(1.5f);
+	sCamera::SetZoomDamping(0.2f);
 	
 	sAudioEnvironment::SetListener(Player);
 	
@@ -70,15 +70,15 @@ void MainGameState::Initialize()
 
 	BaseObject* crate;
 	int crate_count = 200;
-	int map_size = 8000;
+	float map_size = 8000.f;
 	for (int i=0; i < crate_count; i++)
 	{
 		Vector2 pos = Vector2::Random(-map_size,map_size);
 		for (int i=0; i < 4; i++)
 		{
 			crate = CreateEntity("ent_prop");
-			crate->SetModel("crate", ig::Random(0.5,0.7));
-			crate->SetPos(pos + Vector2::Random(-20,20));
+			crate->SetModel("crate", ig::Random(0.5f,0.7f));
+			crate->SetPos(pos + Vector2::Random(-20.f,20.f));
 			crate->Spawn();
 		}
 	}
@@ -121,7 +121,7 @@ void MainGameState::Tick()
 		mLastPhysics = gGlobals.RealTime;
 	if (mLastPhysics + GetDelta() < gGlobals.CurTime)
 	{
-		float delta = gGlobals.CurTime - mLastPhysics;
+		float delta = (float)gGlobals.CurTime - mLastPhysics;
 		mPhysicsWorld.Step(delta);
 		mLastPhysics = gGlobals.CurTime;
 	}
@@ -136,7 +136,7 @@ void MainGameState::OnEvent(sf::Event &Event)
 {
 	if (Event.type == sf::Event::MouseWheelMoved)
 	{
-		float del = Event.mouseWheel.delta;
+		float del = (int)Event.mouseWheel.delta;
 		float fac = 1.f;
 		fac = 1.f + (del / 5.f);
 		float zoom = sCamera::GetZoom() * fac;
@@ -171,11 +171,11 @@ void MainGameState::OnKeyPressed(sf::Keyboard::Key Key, bool Pressed)
 {
 	if (Pressed && Key == sf::Keyboard::O)
 	{
-		sCamera::SetZoom(ig::Limit(sCamera::GetZoom() + 0.5, 1, 3));
+		sCamera::SetZoom(ig::Limit(sCamera::GetZoom() + 0.5f, 1, 3));
 	}
 	if (Pressed && Key == sf::Keyboard::L)
 	{
-		sCamera::SetZoom(ig::Limit(sCamera::GetZoom() - 0.5, 1, 3));
+		sCamera::SetZoom(ig::Limit(sCamera::GetZoom() - 0.5f, 1, 3));
 	}
 }
 
@@ -202,7 +202,7 @@ void MainGameState::OnMouseButtonPressed(sf::Mouse::Button Button, bool Pressed)
 			for (int i=0; i<4; i++)
 			{
 				crate = CreateEntity("ent_prop");
-				crate->SetModel("crate", ig::Random(0.5,0.7));
+				crate->SetModel("crate", ig::Random(0.5f,0.7f));
 				crate->SetPos(InputHandler::GetMousePosWorld());
 				crate->Spawn();
 			}

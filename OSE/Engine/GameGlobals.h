@@ -1,6 +1,6 @@
 #pragma once
 
-#include "DebugDraw.h"
+#include "Render/DebugDraw.h"
 #include "EntityListGlobal.h"
 
 class BaseObject;

@@ -2,7 +2,7 @@
 
 #include <Box2D.h>
 #include "../Engine/PhysicsDef.h"
-#include "../Engine/BaseObject.h"
+#include "../Engine/Bases/BaseObject.h"
 #include "../Engine/GameGlobals.h"
 #include "../Engine/Utilities/Vector2.h"
 

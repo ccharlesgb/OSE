@@ -3,11 +3,10 @@
 #include <stdlib.h>
 #include <vector>
 #include "SFML/Graphics.hpp"
-#include "Utilities/Vector2.h"
-#include <vector>
-#include "DebugDraw.h"
-#include "GameGlobals.h"
-#include "EntityList.h"
+#include "../Utilities/Vector2.h"
+#include "../Render/DebugDraw.h"
+#include "../GameGlobals.h"
+#include "../EntityList.h"
 
 class Camera;
 class IGameState;

@@ -3,7 +3,7 @@
 #include <iostream>
 #include "Camera.h"
 
-sf::Vector2f InputHandler::LKPMouse = sf::Vector2f(0.f,0.f);
+Vector2 InputHandler::LKPMouse = Vector2(0.f,0.f);
 sf::RenderWindow *InputHandler::App = NULL;
 
 bool InputHandler::IsKeyPressed(sf::Keyboard::Key Key)
@@ -36,10 +36,9 @@ Vector2 InputHandler::GetMousePos()
 		return LKPMouse;
 	sf::Vector2f Pos;
 	sf::Vector2i iPos = sf::Mouse::getPosition(*App);
-	Pos.x = float(iPos.x);
-	Pos.y = float(iPos.y);
-	Pos = App->convertCoords(sf::Vector2i(Pos.x, Pos.y));
-	LKPMouse = Pos;
 
-	return Vector2(Pos);
+	Pos = App->convertCoords(iPos);
+	LKPMouse = Vector2(Pos.x, Pos.y);
+
+	return Vector2(Pos.x, Pos.y);
 }

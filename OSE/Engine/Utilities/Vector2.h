@@ -13,6 +13,8 @@ public:
 	float y;
 	Vector2(void);
 	Vector2(float one, float two);
+	Vector2(int one, int two);
+	Vector2(unsigned int one, unsigned int two);
 	Vector2(sf::Vector2f vec);
 	Vector2(const Vector2& vec);
 	Vector2(const b2Vec2& vec);

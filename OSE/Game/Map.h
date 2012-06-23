@@ -1,6 +1,6 @@
 #pragma once
-#include "../Engine/BaseObject.h"
-#include "../Engine/Sprite.h"
+#include "../Engine/Bases/BaseObject.h"
+#include "../Engine/Render/Sprite.h"
 
 #define TEXTURE_SIZE 1024
 #define TEXTURE_SCALE 2.f

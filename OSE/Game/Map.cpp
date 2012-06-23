@@ -1,6 +1,6 @@
 #include "Map.h"
 #include "../Engine/GameGlobals.h"
-#include "../Engine/Sprite.h"
+#include "../Engine/Render/Sprite.h"
 
 
 LINKCLASSTONAME("world", Map)

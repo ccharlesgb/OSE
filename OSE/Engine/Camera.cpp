@@ -25,11 +25,11 @@ void sCamera::UpdateView()
 	else
 	{
 		float speed = fabs(mZoom - mTargetZoom);
-		mZoom = ig::Approach(mZoom, mTargetZoom, speed * gGlobals.FrameTime * 8.f);
+		mZoom = ig::Approach(mZoom, mTargetZoom, speed * (float)gGlobals.FrameTime * 8.f);
 	}
 	if (mDamping > 0)
 	{
-		double Rate = (GetCentre()-mTargetPos).Length() * 0.1f;
+		float Rate = (GetCentre()-mTargetPos).Length() * 0.1f;
 		Vector2 NewCentre = GetCentre().Approach(mTargetPos, Rate);
 		//std::cout << gGlobals.FrameTime << "\n";
 		SetCentre(NewCentre);

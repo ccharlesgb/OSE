@@ -6,7 +6,7 @@ Sound::Sound(const char* path)
 	mSound = *Resource::RequestSound(path);
 	mHeight = 0;
 	mSound.setMinDistance(10);
-	mSound.setAttenuation(0.1);
+	mSound.setAttenuation(0.1f);
 }
 
 Sound::~Sound(void)
@@ -52,7 +52,7 @@ void Sound::SetLoop(bool loop)
 void Sound::SetPosition(Vector2 position)
 {
 	position = ig::GameToSFML(position);
-	mSound.setPosition(position.x, position.y, mHeight);
+	mSound.setPosition(position.x, position.y, (float)mHeight);
 }
 
 /**

@@ -1,6 +1,6 @@
 #pragma once
 #include "BaseObject.h"
-#include "PhysicsDef.h"
+#include "../PhysicsDef.h"
 
 class BasePhysics : public BaseObject
 {

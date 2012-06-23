@@ -2,7 +2,7 @@
 
 #include <SFML/Audio.hpp>
 #include "Utilities/Vector2.h"
-#include "BaseObject.h"
+#include "Bases/BaseObject.h"
 
 class sAudioEnvironment
 {

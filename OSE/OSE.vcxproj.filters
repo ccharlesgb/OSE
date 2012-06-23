@@ -6,4 +6,83 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Engine\Bases\BaseObject.cpp" />
+    <ClCompile Include="Engine\Bases\BasePhysics.cpp" />
+    <ClCompile Include="Engine\Render\BaseDrawable.cpp" />
+    <ClCompile Include="Engine\Render\DebugDraw.cpp" />
+    <ClCompile Include="Engine\Render\Line.cpp" />
+    <ClCompile Include="Engine\Render\Renderer.cpp" />
+    <ClCompile Include="Engine\Render\Sprite.cpp" />
+    <ClCompile Include="Engine\AudioEnvironment.cpp" />
+    <ClCompile Include="Engine\Camera.cpp" />
+    <ClCompile Include="Engine\EntityCreator.cpp" />
+    <ClCompile Include="Engine\EntityListGlobal.cpp" />
+    <ClCompile Include="Engine\GameGlobals.cpp" />
+    <ClCompile Include="Engine\IGameState.cpp" />
+    <ClCompile Include="Engine\InputHandler.cpp" />
+    <ClCompile Include="Engine\PhysicsDef.cpp" />
+    <ClCompile Include="Engine\PhysicsQueries.cpp" />
+    <ClCompile Include="Engine\PhysicsWorld.cpp" />
+    <ClCompile Include="Engine\Resource.cpp" />
+    <ClCompile Include="Engine\Sound.cpp" />
+    <ClCompile Include="Engine\StateManager.cpp" />
+    <ClCompile Include="Game\Decal.cpp" />
+    <ClCompile Include="Game\MainGameState.cpp" />
+    <ClCompile Include="Game\Map.cpp" />
+    <ClCompile Include="Game\Player.cpp" />
+    <ClCompile Include="Game\Prop.cpp" />
+    <ClCompile Include="Game\Ship.cpp" />
+    <ClCompile Include="Game\weapon_pistol.cpp" />
+    <ClCompile Include="Engine\Utilities\MathUtils.cpp" />
+    <ClCompile Include="Engine\Utilities\Matrix3.cpp" />
+    <ClCompile Include="Engine\Utilities\pugixml.cpp" />
+    <ClCompile Include="Engine\Utilities\Randomiser.cpp" />
+    <ClCompile Include="Engine\Utilities\VariantMap.cpp" />
+    <ClCompile Include="Engine\Utilities\Vector2.cpp" />
+    <ClCompile Include="Engine\Utilities\XMLParser.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine\Bases\BaseObject.h" />
+    <ClInclude Include="Engine\Bases\BasePhysics.h" />
+    <ClInclude Include="Engine\Render\BaseDrawable.h" />
+    <ClInclude Include="Engine\Render\DebugDraw.h" />
+    <ClInclude Include="Engine\Render\Line.h" />
+    <ClInclude Include="Engine\Render\Renderer.h" />
+    <ClInclude Include="Engine\Render\Sprite.h" />
+    <ClInclude Include="Engine\AudioEnvironment.h" />
+    <ClInclude Include="Engine\Camera.h" />
+    <ClInclude Include="Engine\EntityCreator.h" />
+    <ClInclude Include="Engine\EntityList.h" />
+    <ClInclude Include="Engine\EntityListGlobal.h" />
+    <ClInclude Include="Engine\GameGlobals.h" />
+    <ClInclude Include="Engine\IGameState.h" />
+    <ClInclude Include="Engine\InputHandler.h" />
+    <ClInclude Include="Engine\PhysicsDef.h" />
+    <ClInclude Include="Engine\PhysicsQueries.h" />
+    <ClInclude Include="Engine\PhysicsWorld.h" />
+    <ClInclude Include="Engine\Resource.h" />
+    <ClInclude Include="Engine\Sound.h" />
+    <ClInclude Include="Engine\StateManager.h" />
+    <ClInclude Include="Game\Decal.h" />
+    <ClInclude Include="Game\MainGameState.h" />
+    <ClInclude Include="Game\Map.h" />
+    <ClInclude Include="Game\Player.h" />
+    <ClInclude Include="Game\Prop.h" />
+    <ClInclude Include="Game\Ship.h" />
+    <ClInclude Include="Game\weapon_pistol.h" />
+    <ClInclude Include="Engine\Utilities\MathUtils.h" />
+    <ClInclude Include="Engine\Utilities\Matrix3.hpp" />
+    <ClInclude Include="Engine\Utilities\pugiconfig.hpp" />
+    <ClInclude Include="Engine\Utilities\pugixml.hpp" />
+    <ClInclude Include="Engine\Utilities\Randomiser.h" />
+    <ClInclude Include="Engine\Utilities\VariantMap.h" />
+    <ClInclude Include="Engine\Utilities\Vector2.h" />
+    <ClInclude Include="Engine\Utilities\XMLParser.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Engine\Utilities\Matrix3.inl" />
+    <None Include="test.xml" />
+  </ItemGroup>
 </Project>
