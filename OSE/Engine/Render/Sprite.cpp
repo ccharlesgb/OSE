@@ -30,7 +30,7 @@ void Sprite::Draw()
 
 void Sprite::SetTexture(const char* path)
 {
-	mSprite.setTexture(*Resource::RequestImage(path));
+	mSprite.setTexture(*TextureResource::GetTexture(path));
 	SetPosition(Vector2(0,0));
 	SetOrigin(GetTextureCentre()); //By default origin at middle of texture
 }

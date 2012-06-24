@@ -3,7 +3,7 @@
 
 Sound::Sound(const char* path)
 {
-	mSound = *Resource::RequestSound(path);
+	mSound = *SoundResource::GetSound(path);
 	mHeight = 0;
 	mSound.setMinDistance(10);
 	mSound.setAttenuation(0.1f);

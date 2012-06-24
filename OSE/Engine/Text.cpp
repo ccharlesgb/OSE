@@ -4,7 +4,7 @@
 
 Font::Font(const char *path)
 {
-	mFont = *Resource::RequestFont(path);
+	//mFont = *Resource::RequestFont(path);
 };
 
 Font::~Font()
