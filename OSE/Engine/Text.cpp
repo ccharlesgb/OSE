@@ -7,11 +7,6 @@ Font::Font(const char *path)
 	mFont = *Resource::RequestFont(path);
 };
 
-Font::Font(sf::Font font)
-{
-	mFont = font;
-};
-
 Font::~Font()
 {
 	// TODO: We might have to destroy mFont in case we created it.
