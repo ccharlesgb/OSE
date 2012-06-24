@@ -15,7 +15,7 @@ void Sprite::Draw()
 {
 	sf::RenderStates state;
 	state.shader = mShader;
-	mShader->setParameter("pixel_threshold", 0.04f);
+	mShader->setParameter("pixel_threshold", 0.02f);
 	if (mDirtyTransform)
 	{
 		mSprite.setPosition(GameToSFML(GetPosition()).SF());
