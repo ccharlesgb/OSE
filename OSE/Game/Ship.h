@@ -13,6 +13,7 @@ private:
 	float mEnterTime;
 	Sprite* mWheelSprite;
 	Line* mLine;
+	float mLastTrailDrop;
 public:
 	Ship(void);
 	~Ship(void);

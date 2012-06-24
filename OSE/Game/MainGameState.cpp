@@ -53,10 +53,10 @@ NOTES	: Create default entities, generate the map (eg solar systems)
 void MainGameState::Initialize()
 {
 	Map = CreateEntity("world");
-	Map->Spawn();
+	//Map->Spawn();
 	
 	Player = CreateEntity("player");
-	Player->Spawn();
+	//Player->Spawn();
 	gGlobals.Player = Player;
 	sCamera::FollowEntity(Player);
 	sCamera::SetDamping(0.f);
@@ -67,7 +67,7 @@ void MainGameState::Initialize()
 	
 	BaseObject* Ship = CreateEntity("ship");
 	Ship->SetPos(Vector2(100, 0));
-	Ship->Spawn();
+	//Ship->Spawn();
 
 	BaseObject* crate;
 	int crate_count = 0;
@@ -80,7 +80,7 @@ void MainGameState::Initialize()
 			crate = CreateEntity("ent_prop");
 			crate->SetModel("crate", ig::Random(0.5f,0.7f));
 			crate->SetPos(pos + Vector2::Random(-20.f,20.f));
-			crate->Spawn();
+			//crate->Spawn();
 		}
 	}
 }
@@ -157,12 +157,12 @@ NOTES	: If the entity is a physics entity add it to the Box2D world
 */
 void MainGameState::OnEntityCreated(BaseObject* ent)
 {
-	std::cout << "LISTENER TOLDA: " << ent->GetClassName() << "\n";
 	if (ent->IsPhysicsEnabled())
 	{
 		BasePhysics* physent = dynamic_cast<BasePhysics*>(ent);
 		mPhysicsWorld.AddPhysicsDef(physent->GetPhysObj());
 	}
+	ent->Spawn();
 }
 
 /*
@@ -206,7 +206,6 @@ void MainGameState::OnMouseButtonPressed(sf::Mouse::Button Button, bool Pressed)
 				crate = CreateEntity("ent_prop");
 				crate->SetModel("crate", ig::Random(0.5f,0.7f));
 				crate->SetPos(InputHandler::GetMousePosWorld());
-				crate->Spawn();
 			}
 		}
 	}

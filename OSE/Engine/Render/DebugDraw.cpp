@@ -56,7 +56,7 @@ void DebugDraw::DrawSegment(const b2Vec2& p1, const b2Vec2& p2, const b2Color& c
 { 
 	Vector2 pos1 = RENDERER->GameToSFML(p1);
 	Vector2 pos2 = RENDERER->GameToSFML(p2);
-	std::cout << "pos1: " << pos1.ToString() << "\n";
+	//std::cout << "pos1: " << pos1.ToString() << "\n";
 	sf::VertexArray lines(sf::LinesStrip, 2);
 	lines[0].position = pos1.SF();
 	lines[1].position = pos2.SF();

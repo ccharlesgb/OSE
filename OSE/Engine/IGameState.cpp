@@ -9,7 +9,6 @@ NOTES	: IEntityListener implementation
 */
 void IGameState::OnEntityAdded(BaseObject* ent)
 {
-	std::cout << "LISTENER TOLD\n";
 	_OnEntityCreated(ent);
 }
 
@@ -35,7 +34,7 @@ BaseObject* IGameState::CreateEntity(const char* ID)
 		std::cout << "Invalid Entity: " << ID << "\n";
 		return NULL;
 	}
-	_OnEntityCreated(ent);
+	//_OnEntityCreated(ent);
 	return ent;
 }
 
@@ -70,7 +69,6 @@ void IGameState::UnPause()
 {
 	mPaused = false;
 	mTimePaused += gGlobals.RealTime - mStartPause;
-	std::cout << "TIME PAUSED: " << mTimePaused << "\n";
 }
 
 /*

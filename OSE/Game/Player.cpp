@@ -19,7 +19,7 @@ Player::Player(void)
 	mWeapon->SetOwner(this);
 	mWeapon->SetPos(GetPos());
 	mWeapon->SetAngle(GetAngle());
-	mWeapon->Spawn();
+	//mWeapon->Spawn();
 	mNextUse = 0.f;
 }
 
@@ -27,7 +27,6 @@ void Player::Spawn()
 {
 	GetPhysObj()->SetAngularDamping(25);
 	GetPhysObj()->SetLinearDamping(10);
-	std::cout << "SPAWN\n";
 	SetModel("player");
 	SetOrigin(Vector2(0,15));
 	PhysicsHullFromModel();

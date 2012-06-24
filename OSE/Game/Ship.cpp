@@ -11,6 +11,7 @@ LINKCLASSTONAME("ship", Ship)
 
 #define MAX_ANGLE 20.f
 #define MAX_THROTTLE 50.f
+#define TRAIL_LIFETIME 10.f
 
 Ship::Ship(void)
 {
@@ -24,6 +25,8 @@ Ship::Ship(void)
 	mWheelSprite->SetTexture("car_wheel");
 	mWheelSprite->SetOrigin(Vector2());
 	mWheelSprite->SetScale(0.4f);
+
+	mLastTrailDrop = gGlobals.CurTime;
 
 	mLine = new Line(gGlobals.RenderWindow);
 	mLine->SetColour(Colour(255, 236, 139));
@@ -65,7 +68,6 @@ void Ship::Draw()
 
 void Ship::OnDelete()
 {
-	std::cout << "OnDelete" << "\n";
 	if (InUse())
 		Exit(GetPos());
 }
@@ -146,7 +148,7 @@ void Ship::Think()
 	Vector2 LocalVel = ToLocal(Vel);
 
 	//Physically simular wheels
-	MoveVector.x = LocalVel.y * mWheelAngle * 0.002f; //Times traction?
+	MoveVector.x = LocalVel.y * mWheelAngle * 0.001f; //Times traction?
 	MoveVector = MoveVector.Rotate(-mWheelAngle);
 	MoveVector = ToGlobal(MoveVector) - GetPos();
 	ApplyForce(MoveVector * GetPhysObj()->GetMass(), GetPos() + GetForward() * 90.f);
@@ -159,7 +161,7 @@ void Ship::Think()
 	BackFric.y = mThrottle;
 	BackFric.x = -LocalVel.x;
 	BackFric.x = BackFric.x + (ig::DegToRad(GetAngularVelocity()) * 45.f);
-	BackFric.x *= 0.04f;
+	BackFric.x *= 0.03f;
 	//mLine->mVerts[0] = GetPos() + GetForward() * -90.f;
 	//mLine->mVerts[1] = (GetPos() + GetForward() * -90.f) + ((ToGlobal(Vector2(BackFric.x,0.f)) - GetPos()) * 10.f);
 
@@ -172,11 +174,28 @@ void Ship::Think()
 
 	ApplyForce(BackFric * GetPhysObj()->GetMass(), GetPos() + GetForward() * -90.f);
 
-	if (GetPhysObj()->GetLinearVelocity().Length() > 200.f)
+	if (GetPhysObj()->GetLinearVelocity().Length() > 500.f && mLastTrailDrop + 0.1 < gGlobals.CurTime)
 	{
+		VariantMap data;
+		data.AddData("time", (float)gGlobals.CurTime + TRAIL_LIFETIME);
+
+		/*
+		BaseObject* scorch = CreateEntity("ent_decal"); //DEBUGGING VEHICLE PHYSICS
+		scorch->SetModel("scorch", 0.2f);
+		scorch->SetColour(Colour(255,0,0));
+		scorch->SetPos(GetPos() + GetForward() * 90.f);
+		scorch->Fire("dietime", data);
+
+		scorch = CreateEntity("ent_decal");
+		scorch->SetModel("scorch", 0.2f);
+		scorch->SetPos(GetPos() + GetForward() * -90.f);
+		scorch->Fire("dietime", data);
+		*/
+
 		BaseObject* scorch = CreateEntity("ent_decal");
-		scorch->SetModel("scorch", ig::Random(0.5,0.7));
-		scorch->SetPos(GetPos());
-		scorch->Spawn();
+		scorch->SetModel("scorch", ig::Random(0.8f,1.f));
+		scorch->SetPos(GetPos() + GetForward() * -90.f);
+		scorch->Fire("dietime", data);
+		mLastTrailDrop = gGlobals.CurTime;
 	}
 }
