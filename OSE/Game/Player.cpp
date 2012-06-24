@@ -18,7 +18,7 @@ Player::Player(void)
 	GiveWeapon(CreateEntity("weapon_pistol"));
 	mNextUse = 0.f;
 	mText = new Text(gGlobals.RenderWindow);
-	//mText->SetText("Test");
+	mText->SetText("Test");
 	mText->SetPosition(GetPos());
 }
 

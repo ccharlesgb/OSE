@@ -160,7 +160,7 @@ private :
 
 
 ////////////////////////////////////////////////////////////
-/// \class sf::Matrix3
+/// \class Matrix3
 /// \ingroup graphics
 ///
 /// Matrix3 is only meant for internal use, its interface is

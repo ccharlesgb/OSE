@@ -42,6 +42,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -89,7 +90,7 @@ $(document).ready(function(){initNavTree('class_sound.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -100,6 +101,7 @@ $(document).ready(function(){initNavTree('class_sound.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Sound Class Reference</div>  </div>
@@ -108,32 +110,63 @@ $(document).ready(function(){initNavTree('class_sound.html','');});
 
 <p><a href="class_sound-members.html">List of all members.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a20972952bd42eba13b84c033237b912a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>Status</b> { <b>Stopped</b>, 
+<b>Paused</b>, 
+<b>Playing</b>
+ }</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a603182c458f1a0bb46c97d81fae8b5f3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a603182c458f1a0bb46c97d81fae8b5f3"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Sound</b> (const char *path)</td></tr>
-<tr class="memitem:a8106f65989f5cd4490c6cfe7032cf2b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sound.html#a8106f65989f5cd4490c6cfe7032cf2b1">Play</a> ()</td></tr>
-<tr class="memitem:ade27d113a719436c55fcf4e365aef172"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sound.html#ade27d113a719436c55fcf4e365aef172">SetPosition</a> (<a class="el" href="class_vector2.html">Vector2</a> position)</td></tr>
-<tr class="memitem:ac59b5e12844c7f2e536643c7e44f8b01"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sound.html#ac59b5e12844c7f2e536643c7e44f8b01">SetMinDistance</a> (float distance)</td></tr>
+<tr class="memitem:a8106f65989f5cd4490c6cfe7032cf2b1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8106f65989f5cd4490c6cfe7032cf2b1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sound.html#a8106f65989f5cd4490c6cfe7032cf2b1">Play</a> ()</td></tr>
+<tr class="memdesc:a8106f65989f5cd4490c6cfe7032cf2b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Play the sound. <br/></td></tr>
+<tr class="memitem:a4e199b4346519a4977fe94998c4a77e7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4e199b4346519a4977fe94998c4a77e7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sound.html#a4e199b4346519a4977fe94998c4a77e7">Pause</a> ()</td></tr>
+<tr class="memdesc:a4e199b4346519a4977fe94998c4a77e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pause the sound. <br/></td></tr>
+<tr class="memitem:a188de6836d531813da378464e392e813"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a188de6836d531813da378464e392e813"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sound.html#a188de6836d531813da378464e392e813">Stop</a> ()</td></tr>
+<tr class="memdesc:a188de6836d531813da378464e392e813"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop the sound. <br/></td></tr>
+<tr class="memitem:a2179f24e97c5735a98017861a2d7c635"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2179f24e97c5735a98017861a2d7c635"></a>
+Status&#160;</td><td class="memItemRight" valign="bottom"><b>GetStatus</b> ()</td></tr>
+<tr class="memitem:afdb41bdd3418c2f5db7d8e7a3ab55e70"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afdb41bdd3418c2f5db7d8e7a3ab55e70"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sound.html#afdb41bdd3418c2f5db7d8e7a3ab55e70">SetLoop</a> (bool loop)</td></tr>
+<tr class="memdesc:afdb41bdd3418c2f5db7d8e7a3ab55e70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set if the sound should loop. <br/></td></tr>
+<tr class="memitem:a13fd27c0d19181c23e56bb86ff0d1b4a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a13fd27c0d19181c23e56bb86ff0d1b4a"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>GetLoop</b> ()</td></tr>
+<tr class="memitem:a78ddb5e632ad7ae2179327c93f4766f2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a78ddb5e632ad7ae2179327c93f4766f2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetVolume</b> (float volume)</td></tr>
+<tr class="memitem:a8379cba5fbae9c4c3c7a3906c065b280"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8379cba5fbae9c4c3c7a3906c065b280"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>GetVolume</b> ()</td></tr>
+<tr class="memitem:ab985207561edad1a2e6ad1613927a1e0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab985207561edad1a2e6ad1613927a1e0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetPitch</b> (float pitch)</td></tr>
+<tr class="memitem:a819855cbdee2e30003788971fdddd699"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a819855cbdee2e30003788971fdddd699"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>GetPitch</b> ()</td></tr>
+<tr class="memitem:ade27d113a719436c55fcf4e365aef172"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ade27d113a719436c55fcf4e365aef172"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sound.html#ade27d113a719436c55fcf4e365aef172">SetPosition</a> (<a class="el" href="class_vector2.html">Vector2</a> position)</td></tr>
+<tr class="memdesc:ade27d113a719436c55fcf4e365aef172"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the sound origion. <br/></td></tr>
+<tr class="memitem:af1df3740acfb875cb22e181049618788"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af1df3740acfb875cb22e181049618788"></a>
+<a class="el" href="class_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sound.html#af1df3740acfb875cb22e181049618788">GetPosition</a> ()</td></tr>
+<tr class="memdesc:af1df3740acfb875cb22e181049618788"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the position, converted to our cord system. <br/></td></tr>
+<tr class="memitem:ab7b73b4072878e84221c33d3417757ce"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab7b73b4072878e84221c33d3417757ce"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sound.html#ab7b73b4072878e84221c33d3417757ce">SetRelativeToListener</a> (bool relative)</td></tr>
+<tr class="memdesc:ab7b73b4072878e84221c33d3417757ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set if the sound should be relative to player or absolute. <br/></td></tr>
+<tr class="memitem:a87d1a33b84e04e8a684df14a7717d751"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a87d1a33b84e04e8a684df14a7717d751"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsRelativeToListener</b> ()</td></tr>
+<tr class="memitem:ac59b5e12844c7f2e536643c7e44f8b01"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac59b5e12844c7f2e536643c7e44f8b01"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sound.html#ac59b5e12844c7f2e536643c7e44f8b01">SetMinDistance</a> (float distance)</td></tr>
+<tr class="memdesc:ac59b5e12844c7f2e536643c7e44f8b01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the distance before the sound starts "fading" out. <br/></td></tr>
+<tr class="memitem:a819c7d1184a84ca4f9a4d6bf7c24d83e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a819c7d1184a84ca4f9a4d6bf7c24d83e"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>GetMinDistance</b> ()</td></tr>
 <tr class="memitem:a4306b665fe168d76b47f28d37c44d092"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sound.html#a4306b665fe168d76b47f28d37c44d092">SetAttenuation</a> (float attenuation)</td></tr>
+<tr class="memdesc:a4306b665fe168d76b47f28d37c44d092"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Attenuation (rate it fades).  <a href="#a4306b665fe168d76b47f28d37c44d092"></a><br/></td></tr>
+<tr class="memitem:a2ed9c96a1fef808f3a124fbd0c5c38aa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2ed9c96a1fef808f3a124fbd0c5c38aa"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>GetAttenuation</b> ()</td></tr>
 </table>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a8106f65989f5cd4490c6cfe7032cf2b1"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Sound::Play </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Play the sound. </p>
-
-</div>
-</div>
 <a class="anchor" id="a4306b665fe168d76b47f28d37c44d092"></a>
 <div class="memitem">
 <div class="memproto">
@@ -147,42 +180,9 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set the Attenuation (rate it fades).</p>
+
+<p>Set the Attenuation (rate it fades). </p>
 <p>Range between 0 and 100. 0 means it dosn't fade. </p>
-
-</div>
-</div>
-<a class="anchor" id="ac59b5e12844c7f2e536643c7e44f8b01"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Sound::SetMinDistance </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>distance</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Set the distance before the sound starts "fading" out. </p>
-
-</div>
-</div>
-<a class="anchor" id="ade27d113a719436c55fcf4e365aef172"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Sound::SetPosition </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_vector2.html">Vector2</a>&#160;</td>
-          <td class="paramname"><em>position</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Set the sound origion. </p>
 
 </div>
 </div>

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['gameglobals',['GameGlobals',['../class_game_globals.html',1,'']]]
+  ['gameglobals',['GameGlobals',['../class_game_globals.html',1,'']]],
+  ['gap',['gap',['../structgap.html',1,'']]]
 ];

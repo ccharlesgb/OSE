@@ -14,7 +14,8 @@ Font::Font(sf::Font font)
 
 Font::~Font()
 {
-
+	// TODO: We might have to destroy mFont in case we created it.
+	// Not sure of a good way to do this, we don't want to destroy it if we loaded it.
 }
 
 Font Font::GetDefaultFont()
@@ -23,22 +24,20 @@ Font Font::GetDefaultFont()
 }
 
 
-
 Text::Text(sf::RenderWindow *rend) : BaseDrawable(rend)
 {
-	mText = sf::Text("test");
+	mText = sf::Text();
 	// mText.setFont(Font::GetDefaultFont().mFont);
 	mText.setCharacterSize(30);
 }
 
-/**
- * Set the font position on screen, convert Engine position to SF.
- */
+
 void Text::SetPosition(const Vector2 position)
 {
 	Vector2 pos = ig::GameToSFML(position);
 	mText.setPosition(pos.SF());
 }
+
 
 void Text::Draw()
 {
