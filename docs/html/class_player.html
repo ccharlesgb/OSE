@@ -42,6 +42,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -89,7 +90,7 @@ $(document).ready(function(){initNavTree('class_player.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -124,6 +125,14 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Spawn</b> ()</td></tr>
 <tr class="memitem:afc988d8de558c5fe664dd74d793d9800"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afc988d8de558c5fe664dd74d793d9800"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Think</b> ()</td></tr>
+<tr class="memitem:a00ae3ebe88af8f9cfabd819176516a73"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a00ae3ebe88af8f9cfabd819176516a73"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Draw</b> ()</td></tr>
+<tr class="memitem:add1523bde647a1b916b8f25142b5bcda"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="add1523bde647a1b916b8f25142b5bcda"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>GiveWeapon</b> (<a class="el" href="class_base_object.html">BaseObject</a> *wep)</td></tr>
+<tr class="memitem:abb2996532c6ab5936d8f6642201cf579"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abb2996532c6ab5936d8f6642201cf579"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ChooseWeapon</b> (const char *name)</td></tr>
+<tr class="memitem:aaf6f07304c686b077970fdbb0c77afe0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaf6f07304c686b077970fdbb0c77afe0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicsSimulate</b> (float delta)</td></tr>
 <tr class="inherit_header pub_methods_class_base_physics"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_base_physics')"><img src="closed.png" alt="-"/>&nbsp;Public Member Functions inherited from <a class="el" href="class_base_physics.html">BasePhysics</a></td></tr>
 <tr class="memitem:ac767b5b7cc475916db44741ffdfbfe1d inherit pub_methods_class_base_physics"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac767b5b7cc475916db44741ffdfbfe1d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicsInit</b> (BODY_TYPE typ)</td></tr>
@@ -184,6 +193,10 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>GetAngle</b> ()</td>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SetOwner</b> (<a class="el" href="class_base_object.html">BaseObject</a> *own)</td></tr>
 <tr class="memitem:a0e60199eca11fc08b896bcaae16024aa inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0e60199eca11fc08b896bcaae16024aa"></a>
 <a class="el" href="class_base_object.html">BaseObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>GetOwner</b> ()</td></tr>
+<tr class="memitem:a4da8d4b5cbdb74a4b1df059aff40fd37 inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4da8d4b5cbdb74a4b1df059aff40fd37"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetParent</b> (<a class="el" href="class_base_object.html">BaseObject</a> *parent)</td></tr>
+<tr class="memitem:a0099498da068413c1091b81f80afeadc inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0099498da068413c1091b81f80afeadc"></a>
+<a class="el" href="class_base_object.html">BaseObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>GetParent</b> ()</td></tr>
 <tr class="memitem:addec77be5320471efc6aaf48e731fd0e inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="addec77be5320471efc6aaf48e731fd0e"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SetModel</b> (const char *path)</td></tr>
 <tr class="memitem:af5606861ee5528e40aaff6fad0d3ff97 inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af5606861ee5528e40aaff6fad0d3ff97"></a>
@@ -194,6 +207,8 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><b>GetModel</b> 
 void&#160;</td><td class="memItemRight" valign="bottom"><b>CreateSound</b> (const char *name, const char *path)</td></tr>
 <tr class="memitem:a1de5cc3f89d26d567a44872a2d9bfe2a inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1de5cc3f89d26d567a44872a2d9bfe2a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>EmitSound</b> (const char *name)</td></tr>
+<tr class="memitem:a67d69649372b9acdfbd6dec8f4eea8a4 inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a67d69649372b9acdfbd6dec8f4eea8a4"></a>
+<a class="el" href="class_sound.html">Sound</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>GetSound</b> (const char *name)</td></tr>
 <tr class="memitem:a2a4bc64857e71e6f68e207dba8be8240 inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2a4bc64857e71e6f68e207dba8be8240"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SetHealth</b> (const float hlt)</td></tr>
 <tr class="memitem:ad6fc4d74d9d0e74da0ae59273e8d4d0d inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad6fc4d74d9d0e74da0ae59273e8d4d0d"></a>
@@ -212,6 +227,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SetMetaData</b> (cons
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Delete</b> ()</td></tr>
 <tr class="memitem:a528cb399b7c4c90498a6f1ac5427ed4d inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a528cb399b7c4c90498a6f1ac5427ed4d"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>FlaggedForDeletion</b> ()</td></tr>
+<tr class="memitem:a95df09745accee1445f3c78f6558f5bb inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a95df09745accee1445f3c78f6558f5bb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetNextThink</b> (float time)</td></tr>
+<tr class="memitem:a46e30bbac33ff15843a0a8e8beb8fb04 inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a46e30bbac33ff15843a0a8e8beb8fb04"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>GetNextThink</b> ()</td></tr>
+<tr class="memitem:a96a5ca057a8572696776905c7c0d9e85 inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a96a5ca057a8572696776905c7c0d9e85"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ShouldThink</b> (bool think)</td></tr>
+<tr class="memitem:a7c3654077025fe09441b83bf0eed412f inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7c3654077025fe09441b83bf0eed412f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsThinking</b> ()</td></tr>
 <tr class="memitem:a5b5ee44c0517945331ca40a08dd9b86a inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b5ee44c0517945331ca40a08dd9b86a"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsPhysicsEnabled</b> ()</td></tr>
 <tr class="memitem:afdc021e24d6349aa435bbf4a225a274c inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afdc021e24d6349aa435bbf4a225a274c"></a>
@@ -238,10 +261,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Fire</b> (const char 
 void&#160;</td><td class="memItemRight" valign="bottom"><b>RegisterInput</b> (const char *Name, InputFunc Func)</td></tr>
 <tr class="memitem:ae1570a9c11fab2cb35321b50d491ba2c inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae1570a9c11fab2cb35321b50d491ba2c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>DrawModel</b> ()</td></tr>
+<tr class="memitem:a25ecf379fb9aad24f8eff2fb63b10270 inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a25ecf379fb9aad24f8eff2fb63b10270"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>DebugDrawLine</b> (<a class="el" href="class_vector2.html">Vector2</a> p1, <a class="el" href="class_vector2.html">Vector2</a> p2, const <a class="el" href="class_colour.html">Colour</a> &amp;col)</td></tr>
 <tr class="memitem:afe2aee5aa88894183d23981f722d274b inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afe2aee5aa88894183d23981f722d274b"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>OnDelete</b> ()</td></tr>
-<tr class="memitem:abd2053bc6ace00f4ea42e2f4a5b54a9d inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abd2053bc6ace00f4ea42e2f4a5b54a9d"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>Draw</b> ()</td></tr>
 <tr class="memitem:ac8528460de5d02ebb1b77ae5f08baddb inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac8528460de5d02ebb1b77ae5f08baddb"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>StartTouch</b> (<a class="el" href="class_collision_info.html">CollisionInfo</a> *info)</td></tr>
 <tr class="memitem:a5aa69bbd88b1af50274006ab9f28e404 inherit pub_methods_class_base_object"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5aa69bbd88b1af50274006ab9f28e404"></a>

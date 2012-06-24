@@ -42,6 +42,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -86,7 +87,7 @@ $(document).ready(function(){initNavTree('_prop_8h.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,22 +102,22 @@ $(document).ready(function(){initNavTree('_prop_8h.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;../Engine/BasePhysics.h&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;../Engine/Bases/BasePhysics.h&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00005"></a><span class="lineno"><a class="code" href="class_prop.html">    5</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_prop.html">Prop</a> : <span class="keyword">public</span> <a class="code" href="class_base_physics.html">BasePhysics</a></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        std::string mPath;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;         std::string mPath;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> SetSprite(<a class="code" href="class_base_object.html">BaseObject</a>* ent, <a class="code" href="class_variant_map.html">VariantMap</a> &amp;Data);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <a class="code" href="class_prop.html">Prop</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        ~<a class="code" href="class_prop.html">Prop</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keywordtype">void</span> Spawn();</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordtype">void</span> Think();</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordtype">void</span> StartTouch(<a class="code" href="class_collision_info.html">CollisionInfo</a>* info);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordtype">void</span> OnDelete();</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordtype">void</span> TakeDamage(<span class="keyword">const</span> <a class="code" href="class_damage_info.html">DamageInfo</a> &amp;info);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;         <span class="keyword">static</span> <span class="keywordtype">void</span> SetSprite(<a class="code" href="class_base_object.html">BaseObject</a>* ent, <a class="code" href="class_variant_map.html">VariantMap</a> &amp;Data);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;         <a class="code" href="class_prop.html">Prop</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;         ~<a class="code" href="class_prop.html">Prop</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;         <span class="keywordtype">void</span> Spawn();</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;         <span class="keywordtype">void</span> Think();</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;         <span class="keywordtype">void</span> StartTouch(<a class="code" href="class_collision_info.html">CollisionInfo</a>* info);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;         <span class="keywordtype">void</span> OnDelete();</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;         <span class="keywordtype">void</span> TakeDamage(<span class="keyword">const</span> <a class="code" href="class_damage_info.html">DamageInfo</a> &amp;info);</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;};</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
 </div><!-- fragment --></div><!-- contents -->

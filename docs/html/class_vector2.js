@@ -2,6 +2,8 @@ var class_vector2 =
 [
     [ "Vector2", "class_vector2.html#a90387a46b53d8cbcef993134c2d03245", null ],
     [ "Vector2", "class_vector2.html#ab7d60319cfc2fc90ea8dd802cee2c189", null ],
+    [ "Vector2", "class_vector2.html#af58cbd95181f2511a1a6915aa38d9fc0", null ],
+    [ "Vector2", "class_vector2.html#ad280f65892ab3754ee3c2a32cce4fbf6", null ],
     [ "Vector2", "class_vector2.html#accad9a24f4ff162131ffbc0344fe7476", null ],
     [ "Vector2", "class_vector2.html#a45c1aa27f5ef9845c963f61b09634d8f", null ],
     [ "Vector2", "class_vector2.html#a3485af2091bbfe6c8b9b40df02ec846d", null ],

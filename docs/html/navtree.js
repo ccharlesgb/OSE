@@ -1,6 +1,7 @@
 var NAVTREE =
 [
   [ "OSE", "index.html", [
+    [ "Modules", "modules.html", "modules" ],
     [ "Classes", null, [
       [ "Class List", "annotated.html", "annotated" ],
       [ "Class Index", "classes.html", null ],
@@ -8,7 +9,9 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "Variables", "functions_vars.html", null ],
+        [ "Enumerations", "functions_enum.html", null ],
+        [ "Enumerator", "functions_eval.html", null ]
       ] ]
     ] ],
     [ "Files", null, [
@@ -20,8 +23,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"class_m_t_rand53.html#ab6657cb5349f39bc4553d3a970458b45",
-"classs_camera.html#a18b50d7e927d13356c82950e6d239447",
+"class_i_game_state.html#ab5fbb2281ab22384f81d7159af03e6dc",
+"class_text.html#af4bb084ff0f66ad827ef6b006f9b0ebd",
+"classpugi_1_1xml__node__iterator.html#a5e8d05f7bf71bfc99b8d438dc480658c",
+"dir_74b4df46812073acef7aa1b43566caf6.html",
+"structxpath__stack__data.html",
 ];
 
 var navTreeSubIndices = new Array();

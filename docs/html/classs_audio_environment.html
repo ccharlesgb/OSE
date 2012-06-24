@@ -42,6 +42,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -89,7 +90,7 @@ $(document).ready(function(){initNavTree('classs_audio_environment.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -112,33 +113,14 @@ $(document).ready(function(){initNavTree('classs_audio_environment.html','');});
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a41b25d1596a5a704214a876b960d0e06"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a41b25d1596a5a704214a876b960d0e06"></a>
 static void&#160;</td><td class="memItemRight" valign="bottom"><b>SetListener</b> (<a class="el" href="class_base_object.html">BaseObject</a> *listener)</td></tr>
-<tr class="memitem:a214b4c8fa46deb4e38913da84a1cf37f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classs_audio_environment.html#a214b4c8fa46deb4e38913da84a1cf37f">Update</a> ()</td></tr>
+<tr class="memitem:a214b4c8fa46deb4e38913da84a1cf37f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a214b4c8fa46deb4e38913da84a1cf37f"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classs_audio_environment.html#a214b4c8fa46deb4e38913da84a1cf37f">Update</a> ()</td></tr>
+<tr class="memdesc:a214b4c8fa46deb4e38913da84a1cf37f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Audio Listener to the current listeners postion. <br/></td></tr>
+<tr class="memitem:aa0889a4a81d94df69a2ee7dfc3feb4df"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa0889a4a81d94df69a2ee7dfc3feb4df"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>SetMasterVolume</b> (float vol)</td></tr>
+<tr class="memitem:a1c5d2d5530bb5db70a41288e3bb1906f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1c5d2d5530bb5db70a41288e3bb1906f"></a>
+static float&#160;</td><td class="memItemRight" valign="bottom"><b>GetMasterVolume</b> ()</td></tr>
 </table>
-<hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a214b4c8fa46deb4e38913da84a1cf37f"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void sAudioEnvironment::Update </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Set the Audio Listener to the current listeners postion. </p>
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/Users/Oscar/Documents/OSE/OSE/Engine/<a class="el" href="_audio_environment_8h_source.html">AudioEnvironment.h</a></li>
 <li>/Users/Oscar/Documents/OSE/OSE/Engine/AudioEnvironment.cpp</li>

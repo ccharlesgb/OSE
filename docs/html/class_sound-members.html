@@ -42,6 +42,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -89,7 +90,7 @@ $(document).ready(function(){initNavTree('class_sound.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,11 +107,29 @@ $(document).ready(function(){initNavTree('class_sound.html','');});
 
 <p>This is the complete list of members for <a class="el" href="class_sound.html">Sound</a>, including all inherited members.</p>
 <table class="directory">
+  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>GetAttenuation</b>() (defined in <a class="el" href="class_sound.html">Sound</a>)</td><td class="entry"><a class="el" href="class_sound.html">Sound</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>GetLoop</b>() (defined in <a class="el" href="class_sound.html">Sound</a>)</td><td class="entry"><a class="el" href="class_sound.html">Sound</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>GetMinDistance</b>() (defined in <a class="el" href="class_sound.html">Sound</a>)</td><td class="entry"><a class="el" href="class_sound.html">Sound</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>GetPitch</b>() (defined in <a class="el" href="class_sound.html">Sound</a>)</td><td class="entry"><a class="el" href="class_sound.html">Sound</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_sound.html#af1df3740acfb875cb22e181049618788">GetPosition</a>()</td><td class="entry"><a class="el" href="class_sound.html">Sound</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>GetStatus</b>() (defined in <a class="el" href="class_sound.html">Sound</a>)</td><td class="entry"><a class="el" href="class_sound.html">Sound</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>GetVolume</b>() (defined in <a class="el" href="class_sound.html">Sound</a>)</td><td class="entry"><a class="el" href="class_sound.html">Sound</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>IsRelativeToListener</b>() (defined in <a class="el" href="class_sound.html">Sound</a>)</td><td class="entry"><a class="el" href="class_sound.html">Sound</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_sound.html#a4e199b4346519a4977fe94998c4a77e7">Pause</a>()</td><td class="entry"><a class="el" href="class_sound.html">Sound</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>Paused</b> enum value (defined in <a class="el" href="class_sound.html">Sound</a>)</td><td class="entry"><a class="el" href="class_sound.html">Sound</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_sound.html#a8106f65989f5cd4490c6cfe7032cf2b1">Play</a>()</td><td class="entry"><a class="el" href="class_sound.html">Sound</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_sound.html#a4306b665fe168d76b47f28d37c44d092">SetAttenuation</a>(float attenuation)</td><td class="entry"><a class="el" href="class_sound.html">Sound</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>Playing</b> enum value (defined in <a class="el" href="class_sound.html">Sound</a>)</td><td class="entry"><a class="el" href="class_sound.html">Sound</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_sound.html#a4306b665fe168d76b47f28d37c44d092">SetAttenuation</a>(float attenuation)</td><td class="entry"><a class="el" href="class_sound.html">Sound</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_sound.html#afdb41bdd3418c2f5db7d8e7a3ab55e70">SetLoop</a>(bool loop)</td><td class="entry"><a class="el" href="class_sound.html">Sound</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_sound.html#ac59b5e12844c7f2e536643c7e44f8b01">SetMinDistance</a>(float distance)</td><td class="entry"><a class="el" href="class_sound.html">Sound</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_sound.html#ade27d113a719436c55fcf4e365aef172">SetPosition</a>(Vector2 position)</td><td class="entry"><a class="el" href="class_sound.html">Sound</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>Sound</b>(const char *path) (defined in <a class="el" href="class_sound.html">Sound</a>)</td><td class="entry"><a class="el" href="class_sound.html">Sound</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>SetPitch</b>(float pitch) (defined in <a class="el" href="class_sound.html">Sound</a>)</td><td class="entry"><a class="el" href="class_sound.html">Sound</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_sound.html#ade27d113a719436c55fcf4e365aef172">SetPosition</a>(Vector2 position)</td><td class="entry"><a class="el" href="class_sound.html">Sound</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_sound.html#ab7b73b4072878e84221c33d3417757ce">SetRelativeToListener</a>(bool relative)</td><td class="entry"><a class="el" href="class_sound.html">Sound</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>SetVolume</b>(float volume) (defined in <a class="el" href="class_sound.html">Sound</a>)</td><td class="entry"><a class="el" href="class_sound.html">Sound</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>Sound</b>(const char *path) (defined in <a class="el" href="class_sound.html">Sound</a>)</td><td class="entry"><a class="el" href="class_sound.html">Sound</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>Status</b> enum name (defined in <a class="el" href="class_sound.html">Sound</a>)</td><td class="entry"><a class="el" href="class_sound.html">Sound</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_sound.html#a188de6836d531813da378464e392e813">Stop</a>()</td><td class="entry"><a class="el" href="class_sound.html">Sound</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0"class="even"><td class="entry"><b>Stopped</b> enum value (defined in <a class="el" href="class_sound.html">Sound</a>)</td><td class="entry"><a class="el" href="class_sound.html">Sound</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>~Sound</b>(void) (defined in <a class="el" href="class_sound.html">Sound</a>)</td><td class="entry"><a class="el" href="class_sound.html">Sound</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->

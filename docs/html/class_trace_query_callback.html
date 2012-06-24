@@ -42,6 +42,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -89,7 +90,7 @@ $(document).ready(function(){initNavTree('class_trace_query_callback.html','');}
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -111,8 +112,8 @@ $(document).ready(function(){initNavTree('class_trace_query_callback.html','');}
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8f88d5224fe2631f8bb92f0108236d04"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f88d5224fe2631f8bb92f0108236d04"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>TraceQueryCallback</b> (const <a class="el" href="class_trace_info.html">TraceInfo</a> info)</td></tr>
+<tr class="memitem:a603872cdc7064731532f4663b77adbdb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a603872cdc7064731532f4663b77adbdb"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>TraceQueryCallback</b> (const <a class="el" href="class_trace_info.html">TraceInfo</a> info, <a class="el" href="class_trace_result.html">TraceResult</a> *result)</td></tr>
 <tr class="memitem:a71bc6da217fc17447615ca042a9c137f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a71bc6da217fc17447615ca042a9c137f"></a>
 float32&#160;</td><td class="memItemRight" valign="bottom"><b>ReportFixture</b> (b2Fixture *fixture, const b2Vec2 &amp;point, const b2Vec2 &amp;normal, float32 fraction)</td></tr>
 </table><table class="memberdecls">
@@ -122,6 +123,8 @@ Public Attributes</h2></td></tr>
 b2Body *&#160;</td><td class="memItemRight" valign="bottom"><b>mBody</b></td></tr>
 <tr class="memitem:aee11035d24d9c2fb4c58929f60689f32"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aee11035d24d9c2fb4c58929f60689f32"></a>
 <a class="el" href="class_trace_info.html">TraceInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><b>mInfo</b></td></tr>
+<tr class="memitem:a23df5f586e5edb274e191a03dfb81d3b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a23df5f586e5edb274e191a03dfb81d3b"></a>
+<a class="el" href="class_trace_result.html">TraceResult</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>mResult</b></td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/Users/Oscar/Documents/OSE/OSE/Engine/<a class="el" href="_physics_queries_8h_source.html">PhysicsQueries.h</a></li>

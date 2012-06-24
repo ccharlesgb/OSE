@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>OSE: /Users/Oscar/Documents/OSE/OSE/Engine/BaseDrawable.h Source File</title>
+<title>OSE: /Users/Oscar/Documents/OSE/OSE/Engine/Render/BaseDrawable.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -42,6 +42,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -86,7 +87,7 @@ $(document).ready(function(){initNavTree('_base_drawable_8h.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -103,47 +104,61 @@ $(document).ready(function(){initNavTree('_base_drawable_8h.html','');});
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;SFML/Graphics.hpp&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;Utilities/Vector2.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../Utilities/Vector2.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="code" href="class_base_drawable.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_base_drawable.html">BaseDrawable</a></div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="code" href="class_colour.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_colour.html">Colour</a></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <a class="code" href="class_vector2.html">Vector2</a> mPos;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <a class="code" href="class_vector2.html">Vector2</a> mOrigin;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keywordtype">float</span> mAngle;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keywordtype">float</span> mScale;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        sf::RenderWindow* mRenderWindow;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordtype">bool</span> mDirtyTransform;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <a class="code" href="class_base_drawable.html">BaseDrawable</a>(sf::RenderWindow *rend);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        ~<a class="code" href="class_base_drawable.html">BaseDrawable</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="class_vector2.html">Vector2</a> GameToSFML(<a class="code" href="class_vector2.html">Vector2</a> pos);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        std::string GetImagePath(<span class="keyword">const</span> <span class="keywordtype">char</span>* path);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">void</span> SetPosition(<a class="code" href="class_vector2.html">Vector2</a> pos) {mPos = pos; mDirtyTransform = <span class="keyword">true</span>;};</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="class_vector2.html">Vector2</a> GetPosition() {<span class="keywordflow">return</span> mPos;};</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordtype">void</span> SetOrigin(<a class="code" href="class_vector2.html">Vector2</a> orig) {mOrigin = orig; mDirtyTransform = <span class="keyword">true</span>;};</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="class_vector2.html">Vector2</a> GetOrigin() {<span class="keywordflow">return</span> mOrigin;};</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordtype">void</span> SetAngle(<span class="keywordtype">float</span> a) {mAngle = a; mDirtyTransform = <span class="keyword">true</span>;};</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordtype">float</span> GetAngle() {<span class="keywordflow">return</span> mAngle;};</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordtype">void</span> SetScale(<span class="keywordtype">float</span> s) {mScale = s; mDirtyTransform = <span class="keyword">true</span>;};</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">float</span> GetScale() {<span class="keywordflow">return</span> mScale;};</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;         <span class="keywordtype">int</span> r;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;         <span class="keywordtype">int</span> g;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;         <span class="keywordtype">int</span> b;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;         <span class="keywordtype">int</span> a;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;         <a class="code" href="class_colour.html">Colour</a>() {r=g=b=a=255;};</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;         <a class="code" href="class_colour.html">Colour</a>(<span class="keywordtype">int</span> R, <span class="keywordtype">int</span> G, <span class="keywordtype">int</span> B) {r=R; g = G; b = B; a = 255;};</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;         <a class="code" href="class_colour.html">Colour</a>(<span class="keywordtype">int</span> R, <span class="keywordtype">int</span> G, <span class="keywordtype">int</span> B, <span class="keywordtype">int</span> A) {r=R; g = G; b = B; a = A;};</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;         <a class="code" href="class_colour.html">Colour</a>(<span class="keyword">const</span> <a class="code" href="class_colour.html">Colour</a>&amp; col) {r = col.r; g = col.g; b = col.b; a = col.a;};</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;         sf::Color SF() {<span class="keywordflow">return</span> sf::Color(r, g, b, a);};</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;};</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="code" href="class_base_drawable.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_base_drawable.html">BaseDrawable</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;         <a class="code" href="class_vector2.html">Vector2</a> mPos;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;         <a class="code" href="class_vector2.html">Vector2</a> mOrigin;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;         <span class="keywordtype">float</span> mAngle;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;         <span class="keywordtype">float</span> mScale;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;         sf::RenderWindow* mRenderWindow;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;         <span class="keywordtype">bool</span> mDirtyTransform;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;         <a class="code" href="class_base_drawable.html">BaseDrawable</a>(sf::RenderWindow *rend);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;         ~<a class="code" href="class_base_drawable.html">BaseDrawable</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;         <a class="code" href="class_vector2.html">Vector2</a> GameToSFML(<a class="code" href="class_vector2.html">Vector2</a> pos);</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">void</span> SetRenderWindow(sf::RenderWindow* pRend) {mRenderWindow = pRend;};</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> Draw() = 0;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;};</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;         std::string GetImagePath(<span class="keyword">const</span> <span class="keywordtype">char</span>* path);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;         <span class="keywordtype">void</span> SetPosition(<a class="code" href="class_vector2.html">Vector2</a> pos) {mPos = pos; mDirtyTransform = <span class="keyword">true</span>;};</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;         <a class="code" href="class_vector2.html">Vector2</a> GetPosition() {<span class="keywordflow">return</span> mPos;};</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;         <span class="keywordtype">void</span> SetOrigin(<a class="code" href="class_vector2.html">Vector2</a> orig) {mOrigin = orig; mDirtyTransform = <span class="keyword">true</span>;};</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;         <a class="code" href="class_vector2.html">Vector2</a> GetOrigin() {<span class="keywordflow">return</span> mOrigin;};</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;         <span class="keywordtype">void</span> SetAngle(<span class="keywordtype">float</span> a) {mAngle = a; mDirtyTransform = <span class="keyword">true</span>;};</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;         <span class="keywordtype">float</span> GetAngle() {<span class="keywordflow">return</span> mAngle;};</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;         <span class="keywordtype">void</span> SetScale(<span class="keywordtype">float</span> s) {mScale = s; mDirtyTransform = <span class="keyword">true</span>;};</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;         <span class="keywordtype">float</span> GetScale() {<span class="keywordflow">return</span> mScale;};</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;         <span class="keywordtype">void</span> SetRenderWindow(sf::RenderWindow* pRend) {mRenderWindow = pRend;};</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;         <span class="keyword">virtual</span> <span class="keywordtype">void</span> Draw() = 0;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;};</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_c9573c26b31bdadbaf42093c81dfcb23.html">OSE</a></li><li class="navelem"><a class="el" href="dir_fbcf171215a99c72cbd8617030b138fc.html">Engine</a></li><li class="navelem"><b>BaseDrawable.h</b></li>
+    <li class="navelem"><a class="el" href="dir_c9573c26b31bdadbaf42093c81dfcb23.html">OSE</a></li><li class="navelem"><a class="el" href="dir_fbcf171215a99c72cbd8617030b138fc.html">Engine</a></li><li class="navelem"><a class="el" href="dir_250b67f5b6563d7564478e2941e4e99f.html">Render</a></li><li class="navelem"><b>BaseDrawable.h</b></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.1.1 </li>

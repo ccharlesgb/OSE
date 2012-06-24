@@ -42,6 +42,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -86,7 +87,7 @@ $(document).ready(function(){initNavTree('_sound_8h.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -108,18 +109,47 @@ $(document).ready(function(){initNavTree('_sound_8h.html','');});
 <div class="line"><a name="l00006"></a><span class="lineno"><a class="code" href="class_sound.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_sound.html">Sound</a></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <span class="keywordtype">int</span> mHeight;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        sf::Sound mSound;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;         <span class="keywordtype">int</span> mHeight;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;         sf::Sound mSound;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <a class="code" href="class_sound.html">Sound</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* path);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        ~<a class="code" href="class_sound.html">Sound</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_sound.html#a8106f65989f5cd4490c6cfe7032cf2b1">Play</a>();</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_sound.html#ade27d113a719436c55fcf4e365aef172">SetPosition</a>(<a class="code" href="class_vector2.html">Vector2</a> position);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_sound.html#ac59b5e12844c7f2e536643c7e44f8b01">SetMinDistance</a>(<span class="keywordtype">float</span> distance);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_sound.html#a4306b665fe168d76b47f28d37c44d092">SetAttenuation</a>(<span class="keywordtype">float</span> attenuation);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;};</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;         </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;         <span class="keyword">enum</span> Status {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                  Stopped,</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                  Paused,</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                  Playing</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;         };</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;         </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;         <a class="code" href="class_sound.html">Sound</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* path);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;         ~<a class="code" href="class_sound.html">Sound</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;         </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;         <span class="keywordtype">void</span> <a class="code" href="class_sound.html#a8106f65989f5cd4490c6cfe7032cf2b1" title="Play the sound.">Play</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;         <span class="keywordtype">void</span> <a class="code" href="class_sound.html#a4e199b4346519a4977fe94998c4a77e7" title="Pause the sound.">Pause</a>();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;         <span class="keywordtype">void</span> <a class="code" href="class_sound.html#a188de6836d531813da378464e392e813" title="Stop the sound.">Stop</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;         </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;         Status GetStatus() { <span class="keywordflow">return</span> (Status) mSound.getStatus(); };</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;         </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;         <span class="keywordtype">void</span> <a class="code" href="class_sound.html#afdb41bdd3418c2f5db7d8e7a3ab55e70" title="Set if the sound should loop.">SetLoop</a>(<span class="keywordtype">bool</span> loop);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;         <span class="keywordtype">bool</span> GetLoop() { <span class="keywordflow">return</span> mSound.getLoop(); };</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;         </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;         <span class="keywordtype">void</span> SetVolume(<span class="keywordtype">float</span> volume) {mSound.setVolume(volume);};</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;         <span class="keywordtype">float</span> GetVolume() { <span class="keywordflow">return</span> mSound.getVolume(); };</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;         </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;         <span class="keywordtype">void</span> SetPitch(<span class="keywordtype">float</span> pitch) {mSound.setPitch(pitch);};</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;         <span class="keywordtype">float</span> GetPitch() { <span class="keywordflow">return</span> mSound.getPitch(); };</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;         </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;         <span class="keywordtype">void</span> <a class="code" href="class_sound.html#ade27d113a719436c55fcf4e365aef172" title="Set the sound origion.">SetPosition</a>(<a class="code" href="class_vector2.html">Vector2</a> position);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;         <a class="code" href="class_vector2.html">Vector2</a> <a class="code" href="class_sound.html#af1df3740acfb875cb22e181049618788" title="Return the position, converted to our cord system.">GetPosition</a>();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;         </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;         <span class="keywordtype">void</span> <a class="code" href="class_sound.html#ab7b73b4072878e84221c33d3417757ce" title="Set if the sound should be relative to player or absolute.">SetRelativeToListener</a>(<span class="keywordtype">bool</span> relative);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;         <span class="keywordtype">bool</span> IsRelativeToListener() { <span class="keywordflow">return</span> mSound.isRelativeToListener(); };</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;         </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;         <span class="keywordtype">void</span> <a class="code" href="class_sound.html#ac59b5e12844c7f2e536643c7e44f8b01" title="Set the distance before the sound starts &quot;fading&quot; out.">SetMinDistance</a>(<span class="keywordtype">float</span> distance);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;         <span class="keywordtype">float</span> GetMinDistance() { <span class="keywordflow">return</span> mSound.getMinDistance(); };</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;         </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;         <span class="keywordtype">void</span> <a class="code" href="class_sound.html#a4306b665fe168d76b47f28d37c44d092" title="Set the Attenuation (rate it fades).">SetAttenuation</a>(<span class="keywordtype">float</span> attenuation);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;         <span class="keywordtype">float</span> GetAttenuation() { <span class="keywordflow">return</span> mSound.getAttenuation(); };</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;};</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

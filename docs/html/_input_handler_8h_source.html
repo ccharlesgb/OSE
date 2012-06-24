@@ -42,6 +42,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -86,7 +87,7 @@ $(document).ready(function(){initNavTree('_input_handler_8h.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -109,14 +110,14 @@ $(document).ready(function(){initNavTree('_input_handler_8h.html','');});
 <div class="line"><a name="l00007"></a><span class="lineno"><a class="code" href="class_input_handler.html">    7</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_input_handler.html">InputHandler</a></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keyword">static</span> sf::Vector2f LKPMouse;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keyword">static</span> sf::RenderWindow *App;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;         <span class="keyword">static</span> <a class="code" href="class_vector2.html">Vector2</a> LKPMouse;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;         <span class="keyword">static</span> sf::RenderWindow *App;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> SetWindow(sf::RenderWindow *wind) {App = wind;};</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> IsKeyPressed(sf::Keyboard::Key Key);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> IsMouseButtonPressed(sf::Mouse::Button Button);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">static</span> <a class="code" href="class_vector2.html">Vector2</a> GetMousePos();</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">static</span> <a class="code" href="class_vector2.html">Vector2</a> GetMousePosWorld();</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;         <span class="keyword">static</span> <span class="keywordtype">void</span> SetWindow(sf::RenderWindow *wind) {App = wind;};</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;         <span class="keyword">static</span> <span class="keywordtype">bool</span> IsKeyPressed(sf::Keyboard::Key Key);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;         <span class="keyword">static</span> <span class="keywordtype">bool</span> IsMouseButtonPressed(sf::Mouse::Button Button);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;         <span class="keyword">static</span> <a class="code" href="class_vector2.html">Vector2</a> GetMousePos();</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;         <span class="keyword">static</span> <a class="code" href="class_vector2.html">Vector2</a> GetMousePosWorld();</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
