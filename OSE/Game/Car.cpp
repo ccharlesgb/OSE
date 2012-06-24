@@ -10,8 +10,8 @@
 LINKCLASSTONAME("car", Car)
 
 #define MAX_ANGLE 34.f
-#define MAX_THROTTLE 120.f
-#define THROTTLE_SPEED 0.8f
+#define MAX_THROTTLE 100.f
+#define THROTTLE_SPEED 0.3f
 #define TRAIL_LIFETIME 10.f
 
 #define DEFAULT_BACK_TRACTION 0.1f
@@ -140,7 +140,7 @@ void Car::Think()
 			mThrottle = ig::Approach(mThrottle, -MAX_THROTTLE / 3.f, 1.5);
 		}
 		else
-			mThrottle = ig::Approach(mThrottle, 0.f, 0.3f);
+			mThrottle = ig::Approach(mThrottle, 0.f, 0.1f);
 		GetSound("idle")->SetPitch(0.7f + (std::fabs(mThrottle / MAX_THROTTLE) / 2.f));
 
 		if (InputHandler::IsKeyPressed(sf::Keyboard::A))

@@ -3,6 +3,8 @@
 
 Sprite::Sprite(sf::RenderWindow *rend) : BaseDrawable(rend)
 {
+	mShader= new sf::Shader();
+	mShader->loadFromFile("shaders/blend.frag", sf::Shader::Fragment);
 }
 
 Sprite::~Sprite(void)
@@ -11,6 +13,9 @@ Sprite::~Sprite(void)
 
 void Sprite::Draw()
 {
+	sf::RenderStates state;
+	state.shader = mShader;
+	mShader->setParameter("pixel_threshold", 0.04f);
 	if (mDirtyTransform)
 	{
 		mSprite.setPosition(GameToSFML(GetPosition()).SF());
@@ -20,7 +25,7 @@ void Sprite::Draw()
 		mSprite.setScale(sf::Vector2f(GetScale(),GetScale()));
 		mDirtyTransform = false;
 	}
-	mRenderWindow->draw(mSprite);
+	mRenderWindow->draw(mSprite, state);
 }
 
 void Sprite::SetTexture(const char* path)
