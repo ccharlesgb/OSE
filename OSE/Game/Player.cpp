@@ -17,6 +17,9 @@ Player::Player(void)
 	PhysicsInit(DYNAMIC_BODY);
 	GiveWeapon(CreateEntity("weapon_pistol"));
 	mNextUse = 0.f;
+	mText = new Text(gGlobals.RenderWindow);
+	//mText->SetText("Test");
+	mText->SetPosition(GetPos());
 }
 
 void Player::Spawn()
@@ -30,6 +33,12 @@ void Player::Spawn()
 
 Player::~Player(void)
 {
+}
+
+void Player::Draw()
+{
+	DrawModel();
+	mText->Draw();
 }
 
 void Player::GiveWeapon(BaseObject* ent)
@@ -60,7 +69,7 @@ void Player::Think()
 {	
 	//Player movement code
 	float player_walk_speed = 60.f;
-
+	mText->SetPosition(GetPos());
 	//Point player towards mouse
 	if (!InputHandler::IsKeyPressed(sf::Keyboard::LShift))
 	{

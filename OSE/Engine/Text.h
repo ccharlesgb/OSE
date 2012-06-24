@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "Render/BaseDrawable.h"
 #include "Utilities/Vector2.h"
 
 /**
@@ -22,7 +23,7 @@ public:
 /**
  * Wrapper class for sf::Text
  */
-class Text
+class Text : public BaseDrawable
 {
 private:
 	sf::Text mText;
@@ -34,11 +35,15 @@ public:
 		Underlined = 1 << 2
 	};
 	
-	Text(const std::string text, Font font, unsigned int size);
+	Text(sf::RenderWindow *rend);
 	~Text();
 	
-	void SetText(const std::string text) { mText.setString(text); };
+	void Draw();
+	
+	void SetText(const std::string text) { mText.setString("lol"); };
 	std::string GetText() { return mText.getString().toAnsiString(); };
 	
 	void SetPosition(const Vector2 position);
+	
+	friend class Font;
 };

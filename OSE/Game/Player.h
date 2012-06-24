@@ -2,6 +2,7 @@
 
 #include "../Engine/Bases/BasePhysics.h"
 #include "../Engine/EntityList.h"
+#include "../Engine/Text.h"
 
 #define USE_DELAY 0.5f
 
@@ -11,11 +12,13 @@ private:
 	EntityList<BaseObject*> mWeapons;
 	BaseObject *mActiveWeapon;
 	float mNextUse;
+	Text *mText;
 public:
 	Player(void);
 	~Player(void);
 	void Spawn();
 	void Think();
+	void Draw();
 
 	void GiveWeapon(BaseObject *wep);
 	void ChooseWeapon(const char* name);
