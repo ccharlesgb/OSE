@@ -159,6 +159,7 @@ void MainGameState::OnEntityCreated(BaseObject* ent)
 {
 	if (ent->IsPhysicsEnabled())
 	{
+		std::cout << "LISTENER TOLD\n";
 		BasePhysics* physent = dynamic_cast<BasePhysics*>(ent);
 		mPhysicsWorld.AddPhysicsDef(physent->GetPhysObj());
 	}
