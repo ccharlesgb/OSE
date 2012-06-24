@@ -56,10 +56,15 @@ private:
 	std::map<char, Sound*> mSounds;
 	
 	//Rendering
-	Colour mColour;
-	Sprite* mSprite;
-	bool mNoDraw;
-	BaseObject* mOwner;
+	Colour mColour; //The colour of the entity, only affects Model automatically
+	Sprite* mSprite; //The sprite object used in DrawModel/SetModel etc
+	bool mNoDraw; //Enable disable calling of Draw();
+
+
+	BaseObject *mParent; //Move relative to this entity
+	Vector2 mParentRelativePos; //The position that we should force to maintain with parent
+
+	BaseObject* mOwner; //What entity 'owns' us? Doesn't actually do anything just a useful thing to have
 protected:
 	PhysicsDef *mPhysObj; //Pointer to the physics object for this entity (NOT NECCESSARILY VALID)
 	Matrix3 mMatrix; //Transformation matrix used by ToGlobal and ToLocal
@@ -120,6 +125,10 @@ public:
 	BaseObject* CreateEntity(const char* classname);
 	void SetOwner(BaseObject* own) {mOwner = own;};
 	BaseObject* GetOwner() {return mOwner;};
+
+	//Parent
+	void SetParent(BaseObject* parent);
+	BaseObject* GetParent() {return mParent;};
 
 	//Model
 	void SetModel(const char* path);

@@ -35,9 +35,25 @@ Player::~Player(void)
 void Player::GiveWeapon(BaseObject* ent)
 {
 	ent->SetOwner(this);
-	ent->SetPos(GetPos());
+	ent->SetPos(GetPos() + GetForward() * 50.f);
 	ent->SetAngle(GetAngle());
+	ent->SetParent(this);
 	mWeapons.Append(ent);
+	mActiveWeapon = ent;
+}
+
+void Player::ChooseWeapon(const char* name)
+{
+	BaseObject* CurEnt = mWeapons.FirstEnt();
+	while (mWeapons.CurrentIsValid())
+	{
+		if (CurEnt->GetClassName() == name)
+		{
+			mActiveWeapon = CurEnt;
+			break;
+		}
+		CurEnt = mWeapons.NextEnt();
+	}
 }
 
 void Player::Think()
@@ -77,10 +93,8 @@ void Player::Think()
 
 	if (InputHandler::IsMouseButtonPressed(sf::Mouse::Left) && !InputHandler::IsKeyPressed(sf::Keyboard::LShift))
 	{
-		mWeapon->SetPos(GetPos() + GetForward() * 50.f);
-		mWeapon->SetAngle(GetAngle());
 		VariantMap dat;
-		mWeapon->Fire("fire1", dat);
+		mActiveWeapon->Fire("fire1", dat);
 	}
 
 	if (InputHandler::IsKeyPressed(sf::Keyboard::E) && mNextUse < gGlobals.CurTime)

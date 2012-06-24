@@ -106,6 +106,8 @@ public:
 	void SetCOM(Vector2 COM);
 	Vector2 GetCOM();
 
+	void SetNoCollide(bool col) {mPhysObj->SetSensor(col);};
+
 	void SetRestitution(float r) {};
 
 	void AddPhysicsShape(PolygonShape* hull);

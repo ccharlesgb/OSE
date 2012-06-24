@@ -9,7 +9,7 @@ class Player : public BasePhysics
 {
 private:
 	EntityList<BaseObject*> mWeapons;
-	BaseObject *mWeapon;
+	BaseObject *mActiveWeapon;
 	float mNextUse;
 public:
 	Player(void);
@@ -18,5 +18,6 @@ public:
 	void Think();
 
 	void GiveWeapon(BaseObject *wep);
+	void ChooseWeapon(const char* name);
 };
 

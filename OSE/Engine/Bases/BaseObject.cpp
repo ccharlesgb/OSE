@@ -9,12 +9,16 @@ BaseObject::BaseObject(void)
 	mModel = "";
 	mSprite = NULL;
 	mPhysObj = NULL;
+	mParent = NULL;
+	mOwner = NULL;
 	mIsRenderable = false;
 	mIsPhysics = false;
 	mNoDraw = false;
 	mNextThink = 0.f;
 	mLastThink = 0.f;
 	mDeleteMe = false;
+	mAngle = 0.f;
+	mPosition = Vector2(0.f,0.f);
 	mScale = Vector2(1.f,1.f);
 	SetHealth(100.f);
 	SetMaxHealth(100.f);
@@ -53,6 +57,26 @@ Vector2 BaseObject::ToGlobal(Vector2 &point)
 Vector2 BaseObject::ToLocal(Vector2 &point)
 {
 	return GetMatrix().GetInverse().Transform(point.SF());
+}
+
+void BaseObject::SetParent(BaseObject* parent)
+{
+	if (parent == NULL || parent == this)
+	{
+		//if (mIsPhysics)
+		//{
+		//	GetPhysObj()->SetNoCollide(false);
+		//}
+		return;
+	}
+	if (mIsPhysics)
+	{
+		//GetPhysObj()->SetNoCollide(true);
+		//Disable physics object somehow?
+	}
+	mParent = parent;
+	mParentRelativePos = mParent->ToLocal(GetPos());
+	std::cout << "RELATIVE POSITION: " << mParentRelativePos.ToString() << "\n";
 }
 
 void BaseObject::Fire(const char* Name, VariantMap &Data)
@@ -143,6 +167,12 @@ void BaseObject::Tick()
 	if (mDeleteMe)
 	{
 		return;
+	}
+	if (mParent != NULL)
+	{
+		SetPos(mParent->ToGlobal(mParentRelativePos));
+		//std::cout << GetPos().ToString() << "\n";
+		SetAngle(mParent->GetAngle());
 	}
 	if (mNextThink < gGlobals.CurTime)
 	{
