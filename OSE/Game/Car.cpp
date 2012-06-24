@@ -1,4 +1,4 @@
-#include "Ship.h"
+#include "Car.h"
 
 #include "../Engine/InputHandler.h"
 #include "../Engine/GameGlobals.h"
@@ -7,13 +7,13 @@
 
 //This function registers the entity to the EntityCreator.
 //"player" is the classname. Player is the coded classname
-LINKCLASSTONAME("ship", Ship)
+LINKCLASSTONAME("car", Car)
 
 #define MAX_ANGLE 20.f
 #define MAX_THROTTLE 50.f
 #define TRAIL_LIFETIME 10.f
 
-Ship::Ship(void)
+Car::Car(void)
 {
 	SetPos(Vector2(0,0));
 	RenderInit();
@@ -32,11 +32,11 @@ Ship::Ship(void)
 	mLine->SetColour(Colour(255, 236, 139));
 }
 
-Ship::~Ship(void)
+Car::~Car(void)
 {	
 }
 
-void Ship::Spawn()
+void Car::Spawn()
 {
 	GetPhysObj()->SetAngularDamping(10);
 	GetPhysObj()->SetLinearDamping(3);
@@ -48,7 +48,7 @@ void Ship::Spawn()
 	CreateSound("idle", "engine_idle");
 }
 
-void Ship::Draw()
+void Car::Draw()
 {
 
 	mWheelSprite->SetAngle(GetAngle() - mWheelAngle);
@@ -64,20 +64,23 @@ void Ship::Draw()
 	DrawModel();
 
 	mLine->Draw();
+	mLine2->Draw();
+	mLine3->Draw();
+	mLine4->Draw();
 }
 
-void Ship::OnDelete()
+void Car::OnDelete()
 {
 	if (InUse())
 		Exit(GetPos());
 }
 
-void Ship::StartTouch(CollisionInfo* info)
+void Car::StartTouch(CollisionInfo* info)
 {
 
 }
 
-void Ship::Use(BaseObject *ply)
+void Car::Use(BaseObject *ply)
 {
 	sCamera::FollowEntity(this);
 	mDriver = ply;
@@ -89,7 +92,7 @@ void Ship::Use(BaseObject *ply)
 }
 
 
-void Ship::Exit(Vector2 position)
+void Car::Exit(Vector2 position)
 {
 	mDriver->SetPos(position);
 	mDriver->SetNoDraw(false);
@@ -98,12 +101,11 @@ void Ship::Exit(Vector2 position)
 	GetSound("idle")->Stop();
 }
 
-void Ship::Think()
+void Car::Think()
 {
 	//Car Movement
 	float player_walk_speed = 150.f;
 	float steer_factor = GetPhysObj()->GetLinearVelocity().Length() / 1000.f;
-	Vector2 MoveVector;
 
 	if (InUse()) //What is our driver pressing?
 	{
@@ -144,36 +146,6 @@ void Ship::Think()
 		mWheelAngle = ig::Approach(mWheelAngle, 0, steer_factor);
 	}
 
-	Vector2 Vel = GetVelocity() + GetPos();
-	Vector2 LocalVel = ToLocal(Vel);
-
-	//Physically simular wheels
-	MoveVector.x = LocalVel.y * mWheelAngle * 0.001f; //Times traction?
-	MoveVector = MoveVector.Rotate(-mWheelAngle);
-	MoveVector = ToGlobal(MoveVector) - GetPos();
-	ApplyForce(MoveVector * GetPhysObj()->GetMass(), GetPos() + GetForward() * 90.f);
-
-	mLine->mVerts[0] = GetPos() + GetForward() * 90.f;
-	mLine->mVerts[1] = (GetPos() + GetForward() * 90.f) + (MoveVector * 10.f);
-
-	Vector2 BackFric;
-	Vector2 pos = GetVelocity() + GetPos();
-	BackFric.y = mThrottle;
-	BackFric.x = -LocalVel.x;
-	BackFric.x = BackFric.x + (ig::DegToRad(GetAngularVelocity()) * 45.f);
-	BackFric.x *= 0.03f;
-	//mLine->mVerts[0] = GetPos() + GetForward() * -90.f;
-	//mLine->mVerts[1] = (GetPos() + GetForward() * -90.f) + ((ToGlobal(Vector2(BackFric.x,0.f)) - GetPos()) * 10.f);
-
-	if (InputHandler::IsKeyPressed(sf::Keyboard::Space))
-	{
-		BackFric.x = 0.f;
-	}
-	BackFric = ToGlobal(BackFric) - GetPos();
-
-
-	ApplyForce(BackFric * GetPhysObj()->GetMass(), GetPos() + GetForward() * -90.f);
-
 	if (GetPhysObj()->GetLinearVelocity().Length() > 500.f && mLastTrailDrop + 0.1 < gGlobals.CurTime)
 	{
 		VariantMap data;
@@ -198,4 +170,39 @@ void Ship::Think()
 		scorch->Fire("dietime", data);
 		mLastTrailDrop = gGlobals.CurTime;
 	}
+}
+
+void Car::PhysicsSimulate(float delta)
+{
+	Vector2 Vel = GetVelocity() + GetPos();
+	Vector2 LocalVel = ToLocal(Vel);
+
+	//Physically simulate front wheels
+	Vector2 FrontForce;
+	FrontForce.x = LocalVel.y * mWheelAngle * 0.001f; //Times traction?
+	FrontForce = FrontForce.Rotate(-mWheelAngle);
+	FrontForce = ToGlobal(FrontForce) - GetPos();
+	ApplyForce(FrontForce * GetPhysObj()->GetMass(), GetPos() + GetForward() * 90.f);
+
+	mLine->mVerts[0] = GetPos() + GetForward() * 90.f;
+	mLine->mVerts[1] = (GetPos() + GetForward() * 90.f) + (FrontForce * 10.f);
+
+	//Simulate back wheels
+	Vector2 BackForce;
+	Vector2 pos = GetVelocity() + GetPos();
+	BackForce.y = mThrottle;
+	BackForce.x = -LocalVel.x;
+	BackForce.x = BackForce.x + (ig::DegToRad(GetAngularVelocity()) * 45.f);
+	BackForce.x *= 0.03f;
+	//mLine->mVerts[0] = GetPos() + GetForward() * -90.f;
+	//mLine->mVerts[1] = (GetPos() + GetForward() * -90.f) + ((ToGlobal(Vector2(BackFric.x,0.f)) - GetPos()) * 10.f);
+
+	if (InputHandler::IsKeyPressed(sf::Keyboard::Space))
+	{
+		BackForce.x = 0.f;
+	}
+	BackForce = ToGlobal(BackForce) - GetPos();
+
+
+	ApplyForce(BackForce * GetPhysObj()->GetMass(), GetPos() + GetForward() * -90.f);
 }

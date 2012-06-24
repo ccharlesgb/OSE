@@ -171,6 +171,7 @@ public:
 	//Physics
 	bool IsPhysicsEnabled() {return mIsPhysics;};
 	PhysicsDef* GetPhysObj() {return mPhysObj;};
+	virtual void PhysicsSimulate(float delta) {};
 
 	//Rendering
 	void RenderInit() {mIsRenderable = true;};

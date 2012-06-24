@@ -19,5 +19,6 @@ public:
 
 	void GiveWeapon(BaseObject *wep);
 	void ChooseWeapon(const char* name);
+	void PhysicsSimulate(float delta);
 };
 
