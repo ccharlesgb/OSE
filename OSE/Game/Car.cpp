@@ -30,6 +30,12 @@ Car::Car(void)
 
 	mLine = new Line(gGlobals.RenderWindow);
 	mLine->SetColour(Colour(255, 236, 139));
+	mLine2 = new Line(gGlobals.RenderWindow);
+	mLine2->SetColour(Colour(255, 236, 139));
+	mLine3 = new Line(gGlobals.RenderWindow);
+	mLine3->SetColour(Colour(255, 236, 139));
+	mLine4 = new Line(gGlobals.RenderWindow);
+	mLine4->SetColour(Colour(255, 236, 139));
 }
 
 Car::~Car(void)
@@ -178,31 +184,30 @@ void Car::PhysicsSimulate(float delta)
 	Vector2 LocalVel = ToLocal(Vel);
 
 	//Physically simulate front wheels
+	Vector2 LocalVelFront = LocalVel + Vector2(ig::DegToRad(GetAngularVelocity()) * 90.f,0.f);
 	Vector2 FrontForce;
-	FrontForce.x = LocalVel.y * mWheelAngle * 0.001f; //Times traction?
-	FrontForce = FrontForce.Rotate(-mWheelAngle);
+
+	mLine->mVerts[0] = GetPos() + GetForward() * 90.f;
+	mLine->mVerts[1] = (GetPos() + GetForward() * 90.f) + (LocalVelFront * 10.f);
+
+
 	FrontForce = ToGlobal(FrontForce) - GetPos();
 	ApplyForce(FrontForce * GetPhysObj()->GetMass(), GetPos() + GetForward() * 90.f);
 
-	mLine->mVerts[0] = GetPos() + GetForward() * 90.f;
-	mLine->mVerts[1] = (GetPos() + GetForward() * 90.f) + (FrontForce * 10.f);
-
 	//Simulate back wheels
 	Vector2 BackForce;
-	Vector2 pos = GetVelocity() + GetPos();
-	BackForce.y = mThrottle;
-	BackForce.x = -LocalVel.x;
-	BackForce.x = BackForce.x + (ig::DegToRad(GetAngularVelocity()) * 45.f);
-	BackForce.x *= 0.03f;
-	//mLine->mVerts[0] = GetPos() + GetForward() * -90.f;
-	//mLine->mVerts[1] = (GetPos() + GetForward() * -90.f) + ((ToGlobal(Vector2(BackFric.x,0.f)) - GetPos()) * 10.f);
 
-	if (InputHandler::IsKeyPressed(sf::Keyboard::Space))
+	if (InputHandler::IsKeyPressed(sf::Keyboard::Space)) //HandBrake
 	{
 		BackForce.x = 0.f;
 	}
-	BackForce = ToGlobal(BackForce) - GetPos();
 
+	BackForce = ToGlobal(BackForce) - GetPos();
+	Vector2 LocalVelBack = LocalVel - Vector2(ig::DegToRad(GetAngularVelocity()) * 90.f,0.f);
+
+
+	mLine->mVerts[0] = GetPos() + GetForward() * -90.f;
+	mLine->mVerts[1] = (GetPos() + GetForward() * -90.f) + (LocalVelBack * 10.f);
 
 	ApplyForce(BackForce * GetPhysObj()->GetMass(), GetPos() + GetForward() * -90.f);
 }
