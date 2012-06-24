@@ -65,9 +65,8 @@ void MainGameState::Initialize()
 	
 	sAudioEnvironment::SetListener(Player);
 	
-	BaseObject* Ship = CreateEntity("ship");
-	Ship->SetPos(Vector2(100, 0));
-	//Ship->Spawn();
+	BaseObject* car = CreateEntity("car");
+	car->SetPos(Vector2(100, 0));
 
 	BaseObject* crate;
 	int crate_count = 0;

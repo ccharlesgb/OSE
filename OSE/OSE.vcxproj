@@ -40,12 +40,12 @@
     <ClCompile Include="Engine\Resource.cpp" />
     <ClCompile Include="Engine\Sound.cpp" />
     <ClCompile Include="Engine\StateManager.cpp" />
+    <ClCompile Include="Game\Car.cpp" />
     <ClCompile Include="Game\Decal.cpp" />
     <ClCompile Include="Game\MainGameState.cpp" />
     <ClCompile Include="Game\Map.cpp" />
     <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="Game\Prop.cpp" />
-    <ClCompile Include="Game\Ship.cpp" />
     <ClCompile Include="Game\weapon_pistol.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -81,12 +81,12 @@
     <ClInclude Include="Engine\Resource.h" />
     <ClInclude Include="Engine\Sound.h" />
     <ClInclude Include="Engine\StateManager.h" />
+    <ClInclude Include="Game\Car.h" />
     <ClInclude Include="Game\Decal.h" />
     <ClInclude Include="Game\MainGameState.h" />
     <ClInclude Include="Game\Map.h" />
     <ClInclude Include="Game\Player.h" />
     <ClInclude Include="Game\Prop.h" />
-    <ClInclude Include="Game\Ship.h" />
     <ClInclude Include="Game\weapon_pistol.h" />
   </ItemGroup>
   <ItemGroup>

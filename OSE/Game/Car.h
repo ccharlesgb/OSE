@@ -11,6 +11,12 @@ private:
 	float mWheelAngle;
 	float mThrottle;
 	float mEnterTime;
+	
+	bool mFrontWheelSkid;
+	bool mBackWheelSkid;
+	float mFrontWheelTraction;
+	float mBackWheelTraction;
+
 	Sprite* mWheelSprite;
 	Line* mLine;
 	Line* mLine2;
