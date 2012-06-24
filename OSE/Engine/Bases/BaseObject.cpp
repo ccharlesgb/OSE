@@ -78,7 +78,8 @@ void BaseObject::SetParent(BaseObject* parent)
 		//Disable physics object somehow?
 	}
 	mParent = parent;
-	mParentRelativePos = mParent->ToLocal(GetPos());
+	Vector2 position = GetPos();
+	mParentRelativePos = mParent->ToLocal(position);
 	std::cout << "RELATIVE POSITION: " << mParentRelativePos.ToString() << "\n";
 }
 

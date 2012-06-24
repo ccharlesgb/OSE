@@ -20,9 +20,27 @@ Font::~Font()
 Font Font::GetDefaultFont()
 {
 	return Font(sf::Font::getDefaultFont());
-};
+}
 
-Text::Text(const std::string text, Font font = Font::GetDefaultFont(), unsigned int size = 30)
+
+
+Text::Text(sf::RenderWindow *rend) : BaseDrawable(rend)
 {
-	mText = sf::Text(sf::String(text), font.mFont, size);
-};
+	mText = sf::Text("test");
+	// mText.setFont(Font::GetDefaultFont().mFont);
+	mText.setCharacterSize(30);
+}
+
+/**
+ * Set the font position on screen, convert Engine position to SF.
+ */
+void Text::SetPosition(const Vector2 position)
+{
+	Vector2 pos = ig::GameToSFML(position);
+	mText.setPosition(pos.SF());
+}
+
+void Text::Draw()
+{
+	mRenderWindow->draw(mText);
+}
