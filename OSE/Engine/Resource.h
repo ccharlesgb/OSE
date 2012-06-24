@@ -36,4 +36,8 @@ public:
 	// Sound
 	static void PrecacheSound(const char* path);
 	static sf::Sound* RequestSound(const char* path);
+	
+	// Fonts
+	static void PrecacheFont(const char *path);
+	static sf::Font* RequestFont(const char *path);
 };

@@ -155,3 +155,35 @@ sf::Sound* Resource::RequestSound(const char* path)
 	
 	return new sf::Sound(*SoundCache[path]);
 }
+
+
+// Fonts
+
+
+void Resource::PrecacheFont(const char* path)
+{
+	std::string FILE_PATH = GetSoundPath(path);
+	std::cout << "LOADING: " << FILE_PATH << "\n";
+	sf::SoundBuffer* Buffer = new sf::SoundBuffer();
+	
+	if (!Buffer->loadFromFile(FILE_PATH)) {
+		// TODO: Some error managment
+	}
+	
+	SoundCache[path] = Buffer;
+}
+
+/**
+ * Get the sound file.
+ *
+ * If the sound is not already precached, precache it.
+ */
+sf::Font* Resource::RequestFont(const char* path)
+{
+	if (SoundCache[path] == NULL)
+	{
+		PrecacheSound(path);
+	}
+	
+	//return new sf::Sound(*SoundCache[path]);
+}
