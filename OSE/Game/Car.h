@@ -3,7 +3,7 @@
 #include "../Engine/Bases/BasePhysics.h"
 #include "../Engine/Render/Line.h"
 
-class Ship : public BasePhysics
+class Car : public BasePhysics
 {
 private:
 	BaseObject* mDriver;
@@ -11,12 +11,21 @@ private:
 	float mWheelAngle;
 	float mThrottle;
 	float mEnterTime;
+	
+	bool mFrontWheelSkid;
+	bool mBackWheelSkid;
+	float mFrontWheelTraction;
+	float mBackWheelTraction;
+
 	Sprite* mWheelSprite;
 	Line* mLine;
+	Line* mLine2;
+	Line* mLine3;
+	Line* mLine4;
 	float mLastTrailDrop;
 public:
-	Ship(void);
-	~Ship(void);
+	Car(void);
+	~Car(void);
 	void Spawn();
 	void OnDelete();
 	void Think();
@@ -24,4 +33,5 @@ public:
 	void Exit(Vector2 position);
 	void Use(BaseObject *ply);
 	void Draw();
+	void PhysicsSimulate(float delta);
 };

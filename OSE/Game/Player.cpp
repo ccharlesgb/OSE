@@ -67,6 +67,29 @@ void Player::ChooseWeapon(const char* name)
 
 void Player::Think()
 {	
+	if (InputHandler::IsMouseButtonPressed(sf::Mouse::Left) && !InputHandler::IsKeyPressed(sf::Keyboard::LShift))
+	{
+		VariantMap dat;
+		mActiveWeapon->Fire("fire1", dat);
+	}
+
+	if (InputHandler::IsKeyPressed(sf::Keyboard::E) && mNextUse < gGlobals.CurTime)
+	{
+		TraceInfo info;
+		info.mStartPoint = GetPos();
+		info.mEndPoint = GetPos() + (GetForward() * USE_RANGE);
+		TraceResult TraceRes;
+		PhysicsQueries::TraceLine(info, &TraceRes);
+		if (TraceRes.mHitEnt != NULL && TraceRes.mHitEnt != this)
+		{
+			TraceRes.mHitEnt->Use(this);
+		}
+		mNextUse = gGlobals.CurTime + USE_DELAY;
+	}
+}
+
+void Player::PhysicsSimulate(float delta)
+{
 	//Player movement code
 	float player_walk_speed = 60.f;
 	mText->SetPosition(GetPos());
@@ -99,24 +122,4 @@ void Player::Think()
 	MoveVector = MoveVector.Normalize() * player_walk_speed;
 	MoveVector = ToGlobal(MoveVector) - GetPos();
 	ApplyForceCenter(MoveVector * GetPhysObj()->GetMass());
-
-	if (InputHandler::IsMouseButtonPressed(sf::Mouse::Left) && !InputHandler::IsKeyPressed(sf::Keyboard::LShift))
-	{
-		VariantMap dat;
-		mActiveWeapon->Fire("fire1", dat);
-	}
-
-	if (InputHandler::IsKeyPressed(sf::Keyboard::E) && mNextUse < gGlobals.CurTime)
-	{
-		TraceInfo info;
-		info.mStartPoint = GetPos();
-		info.mEndPoint = GetPos() + (GetForward() * USE_RANGE);
-		TraceResult TraceRes;
-		PhysicsQueries::TraceLine(info, &TraceRes);
-		if (TraceRes.mHitEnt != NULL && TraceRes.mHitEnt != this)
-		{
-			TraceRes.mHitEnt->Use(this);
-		}
-		mNextUse = gGlobals.CurTime + USE_DELAY;
-	}
 }

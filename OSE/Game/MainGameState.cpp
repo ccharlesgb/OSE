@@ -65,9 +65,8 @@ void MainGameState::Initialize()
 	
 	sAudioEnvironment::SetListener(Player);
 	
-	BaseObject* Ship = CreateEntity("ship");
-	Ship->SetPos(Vector2(100, 0));
-	//Ship->Spawn();
+	BaseObject* car = CreateEntity("car");
+	car->SetPos(Vector2(100, 0));
 
 	BaseObject* crate;
 	int crate_count = 0;
@@ -113,8 +112,13 @@ NOTES	: Loop through all physics entities and apply simulated gravity
 void MainGameState::Tick()
 {
 	BaseObject* CurEnt = gGlobals.gEntList.FirstEnt();
-	while(CurEnt != NULL)
+	while(gGlobals.gEntList.CurrentIsValid())
 	{
+		//std::cout << "CUR: " << CurEnt << "\n";
+		if (CurEnt->IsPhysicsEnabled() && mLastPhysics + GetDelta() < gGlobals.CurTime)
+		{
+			CurEnt->PhysicsSimulate((float)gGlobals.CurTime - mLastPhysics);
+		}
 		CurEnt = gGlobals.gEntList.NextEnt();
 	}
 
@@ -124,6 +128,7 @@ void MainGameState::Tick()
 	{
 		float delta = (float)gGlobals.CurTime - mLastPhysics;
 		mPhysicsWorld.Step(delta);
+
 		mLastPhysics = gGlobals.CurTime;
 	}
 }

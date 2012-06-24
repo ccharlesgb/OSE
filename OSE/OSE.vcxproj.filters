@@ -32,7 +32,6 @@
     <ClCompile Include="Game\Map.cpp" />
     <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="Game\Prop.cpp" />
-    <ClCompile Include="Game\Ship.cpp" />
     <ClCompile Include="Game\weapon_pistol.cpp" />
     <ClCompile Include="Engine\Utilities\MathUtils.cpp" />
     <ClCompile Include="Engine\Utilities\Matrix3.cpp" />
@@ -44,6 +43,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Engine\Render\DebugOverlay.cpp" />
     <ClCompile Include="Engine\Text.cpp" />
+    <ClCompile Include="Game\Car.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Bases\BaseObject.h" />
@@ -72,7 +72,6 @@
     <ClInclude Include="Game\Map.h" />
     <ClInclude Include="Game\Player.h" />
     <ClInclude Include="Game\Prop.h" />
-    <ClInclude Include="Game\Ship.h" />
     <ClInclude Include="Game\weapon_pistol.h" />
     <ClInclude Include="Engine\Utilities\MathUtils.h" />
     <ClInclude Include="Engine\Utilities\Matrix3.hpp" />
@@ -84,6 +83,7 @@
     <ClInclude Include="Engine\Utilities\XMLParser.h" />
     <ClInclude Include="Engine\Render\DebugOverlay.h" />
     <ClInclude Include="Engine\Text.h" />
+    <ClInclude Include="Game\Car.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Utilities\Matrix3.inl" />
