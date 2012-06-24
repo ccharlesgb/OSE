@@ -60,7 +60,7 @@ public:
 	/**
 	 * Set the text's string.
 	 *
-	 * @param string Text
+	 * @param string New text
 	 * @see GetText
 	 */
 	void SetText(const std::string text) { mText.setString(text); };
