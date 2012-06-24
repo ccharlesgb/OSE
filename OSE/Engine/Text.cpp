@@ -12,6 +12,11 @@ Font::Font(sf::Font font)
 	mFont = font;
 };
 
+Font::~Font()
+{
+
+}
+
 Font Font::GetDefaultFont()
 {
 	return Font(sf::Font::getDefaultFont());
@@ -19,5 +24,5 @@ Font Font::GetDefaultFont()
 
 Text::Text(const std::string text, Font font = Font::GetDefaultFont(), unsigned int size = 30)
 {
-	mText = sf::Text(sf::String(text), font, size);
+	mText = sf::Text(sf::String(text), font.mFont, size);
 };

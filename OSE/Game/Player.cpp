@@ -15,11 +15,7 @@ Player::Player(void)
 	RenderInit();
 	SetDrawOrder(RENDERGROUP_PLAYER);
 	PhysicsInit(DYNAMIC_BODY);
-	mWeapon = CreateEntity("weapon_pistol");
-	mWeapon->SetOwner(this);
-	mWeapon->SetPos(GetPos());
-	mWeapon->SetAngle(GetAngle());
-	//mWeapon->Spawn();
+	GiveWeapon(CreateEntity("weapon_pistol"));
 	mNextUse = 0.f;
 }
 
@@ -34,6 +30,14 @@ void Player::Spawn()
 
 Player::~Player(void)
 {
+}
+
+void Player::GiveWeapon(BaseObject* ent)
+{
+	ent->SetOwner(this);
+	ent->SetPos(GetPos());
+	ent->SetAngle(GetAngle());
+	mWeapons.Append(ent);
 }
 
 void Player::Think()

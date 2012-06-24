@@ -11,6 +11,7 @@ class Font
 private:
 	sf::Font mFont;
 public:
+	friend class Text;
 	Font(const char *path);
 	Font(sf::Font font);
 	~Font();

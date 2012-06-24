@@ -1,12 +1,14 @@
 #pragma once
 
 #include "../Engine/Bases/BasePhysics.h"
+#include "../Engine/EntityList.h"
 
 #define USE_DELAY 0.5f
 
 class Player : public BasePhysics
 {
 private:
+	EntityList<BaseObject*> mWeapons;
 	BaseObject *mWeapon;
 	float mNextUse;
 public:
@@ -14,5 +16,7 @@ public:
 	~Player(void);
 	void Spawn();
 	void Think();
+
+	void GiveWeapon(BaseObject *wep);
 };
 
