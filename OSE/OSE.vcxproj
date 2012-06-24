@@ -29,6 +29,7 @@
     <ClCompile Include="Engine\Render\Line.cpp" />
     <ClCompile Include="Engine\Render\Renderer.cpp" />
     <ClCompile Include="Engine\Render\Sprite.cpp" />
+    <ClCompile Include="Engine\Text.cpp" />
     <ClCompile Include="Engine\Utilities\MathUtils.cpp" />
     <ClCompile Include="Engine\Utilities\Matrix3.cpp" />
     <ClCompile Include="Engine\Utilities\pugixml.cpp" />
@@ -68,6 +69,7 @@
     <ClInclude Include="Engine\Render\Line.h" />
     <ClInclude Include="Engine\Render\Renderer.h" />
     <ClInclude Include="Engine\Render\Sprite.h" />
+    <ClInclude Include="Engine\Text.h" />
     <ClInclude Include="Engine\Utilities\MathUtils.h" />
     <ClInclude Include="Engine\Utilities\Matrix3.hpp" />
     <ClInclude Include="Engine\Utilities\pugiconfig.hpp" />
@@ -147,7 +149,7 @@
       <WarningLevel>Level3</WarningLevel>
       <PrecompiledHeader>
       </PrecompiledHeader>
-      <Optimization>Disabled</Optimization>
+      <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
