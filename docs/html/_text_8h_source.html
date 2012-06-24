@@ -110,41 +110,37 @@ $(document).ready(function(){initNavTree('_text_8h.html','');});
 <div class="line"><a name="l00012"></a><span class="lineno"><a class="code" href="class_font.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_font.html" title="Wrapper class for sf::Font.">Font</a></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;         sf::Font mFont;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;         sf::Font mFont; </div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;         <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_text.html" title="Wrapper class for sf::Text.">Text</a>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;         <a class="code" href="class_font.html" title="Wrapper class for sf::Font.">Font</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *path);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;         <a class="code" href="class_font.html" title="Wrapper class for sf::Font.">Font</a>(sf::Font font);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;         ~<a class="code" href="class_font.html" title="Wrapper class for sf::Font.">Font</a>();</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;         </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;         <span class="keyword">static</span> <a class="code" href="class_font.html" title="Wrapper class for sf::Font.">Font</a> GetDefaultFont();</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;};</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="code" href="class_text.html">   30</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_text.html" title="Wrapper class for sf::Text.">Text</a> : <span class="keyword">public</span> <a class="code" href="class_base_drawable.html">BaseDrawable</a></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;         sf::Text mText;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="class_text.html#ac82ae440952fc1c8e10a16f81a593ce1">   38</a></span>&#160;         <span class="keyword">enum</span> <a class="code" href="class_text.html#ac82ae440952fc1c8e10a16f81a593ce1" title="Drawing styles.">Style</a></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    {</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="class_text.html#ac82ae440952fc1c8e10a16f81a593ce1a9fdb1c4066e40822bd5a440c970755dd">   40</a></span>&#160;                  <a class="code" href="class_text.html#ac82ae440952fc1c8e10a16f81a593ce1a9fdb1c4066e40822bd5a440c970755dd" title="Regular characters, no style.">Regular</a>    = 0,      </div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="class_text.html#ac82ae440952fc1c8e10a16f81a593ce1ac23837cdbf2b0b1c1480d86b476335fb">   41</a></span>&#160;                  <a class="code" href="class_text.html#ac82ae440952fc1c8e10a16f81a593ce1ac23837cdbf2b0b1c1480d86b476335fb" title="Bold characters.">Bold</a>       = 1 &lt;&lt; 0, </div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="class_text.html#ac82ae440952fc1c8e10a16f81a593ce1a4ee7cb31309a18494c7897aff2673efd">   42</a></span>&#160;                  <a class="code" href="class_text.html#ac82ae440952fc1c8e10a16f81a593ce1a4ee7cb31309a18494c7897aff2673efd" title="Italic characters.">Italic</a>     = 1 &lt;&lt; 1, </div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="class_text.html#ac82ae440952fc1c8e10a16f81a593ce1a931a666d37cc1057647ef57800965a11">   43</a></span>&#160;                  <a class="code" href="class_text.html#ac82ae440952fc1c8e10a16f81a593ce1a931a666d37cc1057647ef57800965a11" title="Underlined characters.">Underlined</a> = 1 &lt;&lt; 2  </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    };</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;         </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;         <a class="code" href="class_text.html#a6b90ea7f15328241498bfed136d8b549" title="Default constructor.">Text</a>(sf::RenderWindow *rend);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;         ~<a class="code" href="class_text.html" title="Wrapper class for sf::Text.">Text</a>();</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;         </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;         <span class="keywordtype">void</span> <a class="code" href="class_text.html#af4bb084ff0f66ad827ef6b006f9b0ebd" title="Draw the text to render window.">Draw</a>();</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;         </div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="code" href="class_text.html#a4349ca1c400dd28ecf509ff2ef2a527f">   65</a></span>&#160;         <span class="keywordtype">void</span> <a class="code" href="class_text.html#a4349ca1c400dd28ecf509ff2ef2a527f" title="Set the text&#39;s string.">SetText</a>(<span class="keyword">const</span> std::string text) { mText.setString(text); };</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;         </div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="code" href="class_text.html#a46ebbe371a84ae41f910ba6492ed8b31">   72</a></span>&#160;         std::string <a class="code" href="class_text.html#a46ebbe371a84ae41f910ba6492ed8b31" title="Get the text&#39;s string.">GetText</a>() { <span class="keywordflow">return</span> mText.getString().toAnsiString(); };</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;         </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;         <span class="keywordtype">void</span> <a class="code" href="class_text.html#a38592452ec78d7c00ab257c5f4ce58f5" title="Set the text&#39;s position.">SetPosition</a>(<span class="keyword">const</span> <a class="code" href="class_vector2.html">Vector2</a> position);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;         </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;};</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;         <a class="code" href="class_font.html#a6a0c2e223cc1a18b155a59ce19346e45" title="Default constructor.">Font</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *path);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;         ~<a class="code" href="class_font.html" title="Wrapper class for sf::Font.">Font</a>();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="code" href="class_text.html">   31</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_text.html" title="Wrapper class for sf::Text.">Text</a> : <span class="keyword">public</span> <a class="code" href="class_base_drawable.html">BaseDrawable</a></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;         sf::Text mText; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="class_text.html#ac82ae440952fc1c8e10a16f81a593ce1">   39</a></span>&#160;         <span class="keyword">enum</span> <a class="code" href="class_text.html#ac82ae440952fc1c8e10a16f81a593ce1" title="Drawing styles.">Style</a></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    {</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="class_text.html#ac82ae440952fc1c8e10a16f81a593ce1a9fdb1c4066e40822bd5a440c970755dd">   41</a></span>&#160;                  <a class="code" href="class_text.html#ac82ae440952fc1c8e10a16f81a593ce1a9fdb1c4066e40822bd5a440c970755dd" title="Regular characters, no style.">Regular</a>    = 0,      </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="code" href="class_text.html#ac82ae440952fc1c8e10a16f81a593ce1ac23837cdbf2b0b1c1480d86b476335fb">   42</a></span>&#160;                  <a class="code" href="class_text.html#ac82ae440952fc1c8e10a16f81a593ce1ac23837cdbf2b0b1c1480d86b476335fb" title="Bold characters.">Bold</a>       = 1 &lt;&lt; 0, </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="class_text.html#ac82ae440952fc1c8e10a16f81a593ce1a4ee7cb31309a18494c7897aff2673efd">   43</a></span>&#160;                  <a class="code" href="class_text.html#ac82ae440952fc1c8e10a16f81a593ce1a4ee7cb31309a18494c7897aff2673efd" title="Italic characters.">Italic</a>     = 1 &lt;&lt; 1, </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="class_text.html#ac82ae440952fc1c8e10a16f81a593ce1a931a666d37cc1057647ef57800965a11">   44</a></span>&#160;                  <a class="code" href="class_text.html#ac82ae440952fc1c8e10a16f81a593ce1a931a666d37cc1057647ef57800965a11" title="Underlined characters.">Underlined</a> = 1 &lt;&lt; 2  </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    };</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;         </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;         <a class="code" href="class_text.html#a6b90ea7f15328241498bfed136d8b549" title="Default constructor.">Text</a>(sf::RenderWindow *rend);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;         ~<a class="code" href="class_text.html" title="Wrapper class for sf::Text.">Text</a>();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;         </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;         <span class="keywordtype">void</span> <a class="code" href="class_text.html#af4bb084ff0f66ad827ef6b006f9b0ebd" title="Draw the text to render window.">Draw</a>();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;         </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="code" href="class_text.html#a4349ca1c400dd28ecf509ff2ef2a527f">   66</a></span>&#160;         <span class="keywordtype">void</span> <a class="code" href="class_text.html#a4349ca1c400dd28ecf509ff2ef2a527f" title="Set the text&#39;s string.">SetText</a>(<span class="keyword">const</span> std::string text) { mText.setString(text); };</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;         </div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="code" href="class_text.html#a46ebbe371a84ae41f910ba6492ed8b31">   73</a></span>&#160;         std::string <a class="code" href="class_text.html#a46ebbe371a84ae41f910ba6492ed8b31" title="Get the text&#39;s string.">GetText</a>() { <span class="keywordflow">return</span> mText.getString().toAnsiString(); };</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;         </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;         <span class="keywordtype">void</span> <a class="code" href="class_text.html#a38592452ec78d7c00ab257c5f4ce58f5" title="Set the text&#39;s position.">SetPosition</a>(<span class="keyword">const</span> <a class="code" href="class_vector2.html">Vector2</a> position);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;         </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

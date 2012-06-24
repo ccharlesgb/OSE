@@ -4,12 +4,7 @@
 
 Font::Font(const char *path)
 {
-	mFont = *Resource::RequestFont(path);
-};
-
-Font::Font(sf::Font font)
-{
-	mFont = font;
+	//mFont = *Resource::RequestFont(path);
 };
 
 Font::~Font()
@@ -18,16 +13,9 @@ Font::~Font()
 	// Not sure of a good way to do this, we don't want to destroy it if we loaded it.
 }
 
-Font Font::GetDefaultFont()
-{
-	return Font(sf::Font::getDefaultFont());
-}
-
-
 Text::Text(sf::RenderWindow *rend) : BaseDrawable(rend)
 {
 	mText = sf::Text();
-	// mText.setFont(Font::GetDefaultFont().mFont);
 	mText.setCharacterSize(30);
 }
 

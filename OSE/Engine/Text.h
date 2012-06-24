@@ -12,14 +12,15 @@
 class Font
 {
 private:
-	sf::Font mFont;
+	sf::Font mFont; ///< sf::Font to use.
 public:
-	friend class Text;
+	/**
+	 * Default constructor.
+	 *
+	 * @param char Path to font
+	 */
 	Font(const char *path);
-	Font(sf::Font font);
 	~Font();
-	
-	static Font GetDefaultFont();
 };
 
 /**
@@ -30,7 +31,7 @@ public:
 class Text : public BaseDrawable
 {
 private:
-	sf::Text mText;
+	sf::Text mText; ///< sf::Text to use.
 public:
 	/**
 	 * Drawing styles.
@@ -59,7 +60,7 @@ public:
 	/**
 	 * Set the text's string.
 	 *
-	 * @param string Text
+	 * @param string New text
 	 * @see GetText
 	 */
 	void SetText(const std::string text) { mText.setString(text); };
