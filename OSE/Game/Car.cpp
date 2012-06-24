@@ -206,13 +206,13 @@ void Car::PhysicsSimulate(float delta)
 	Vector2 LocalVelFront = LocalVel + Vector2(ig::DegToRad(GetAngularVelocity()) * 90.f,0.f);
 
 	mLine->mVerts[0] = GetPos() + GetForward() * 90.f;
-	Vector2 vel = LocalVelFront / 5.f;
+	Vector2 vel = LocalVelFront / 10.f;
 	mLine->mVerts[1] = (GetPos() + GetForward() * 90.f) + (ToGlobal(vel) - GetPos());
 
 	LocalVelFront = LocalVelFront.Rotate(mWheelAngle); //Rotate the local vel according to the wheels
 	if (std::abs(LocalVelFront.x) > 500)
 	{
-		mFrontWheelTraction = ig::Approach(mFrontWheelTraction, 0.02f, 0.0003f);
+		mFrontWheelTraction = ig::Approach(mFrontWheelTraction, 0.03f, 0.002f);
 		mFrontWheelSkid = true;
 	}
 	else
@@ -225,11 +225,11 @@ void Car::PhysicsSimulate(float delta)
 	FrontForce.x = -LocalVelFront.x * mFrontWheelTraction;
 
 
-//	FrontForce = FrontForce.Rotate(mWheelAngle);
+	FrontForce = FrontForce.Rotate(-mWheelAngle);
 	FrontForce = ToGlobal(FrontForce) - GetPos();
 
 	mLine3->mVerts[0] = GetPos() + GetForward() * 90.f;
-	mLine3->mVerts[1] = (GetPos() + GetForward() * 90.f) + FrontForce;
+	mLine3->mVerts[1] = (GetPos() + GetForward() * 90.f) + FrontForce * 2.f;
 
 	ApplyForce(FrontForce * GetPhysObj()->GetMass(), GetPos() + GetForward() * 90.f);
 
@@ -239,27 +239,31 @@ void Car::PhysicsSimulate(float delta)
 
 
 	BackForce.x = -LocalVelBack.x * mBackWheelTraction;
-	BackForce.y = mThrottle * mBackWheelTraction * 2.f;
+	BackForce.y = mThrottle * mBackWheelTraction * 6.f;
 
 	if (InputHandler::IsKeyPressed(sf::Keyboard::Space) || std::fabs(LocalVelBack.x) > 300) //HandBrake
 	{
 		mBackWheelSkid = true;
-		mBackWheelTraction = ig::Approach(mBackWheelTraction, 0.02f, 0.003f);
+		mBackWheelTraction = ig::Approach(mBackWheelTraction, 0.03f, 0.003f);
 	}
 	else
 	{
 		mBackWheelSkid = false;
-		mBackWheelTraction = ig::Approach(mBackWheelTraction, DEFAULT_BACK_TRACTION, 0.02f);
+		mBackWheelTraction = ig::Approach(mBackWheelTraction, DEFAULT_BACK_TRACTION, 0.002f);
 	}
 
 	BackForce = ToGlobal(BackForce) - GetPos();
 
 	mLine4->mVerts[0] = GetPos() + GetForward() * -90.f;
-	mLine4->mVerts[1] = (GetPos() + GetForward() * -90.f) + BackForce;
+	mLine4->mVerts[1] = (GetPos() + GetForward() * -90.f) + BackForce * 2.f;
 
 	mLine2->mVerts[0] = GetPos() + GetForward() * -90.f;
-	Vector2 velBack = LocalVelBack / 5.f;
+	Vector2 velBack = LocalVelBack / 10.f;
 	mLine2->mVerts[1] = (GetPos() + GetForward() * -90.f) + (ToGlobal(velBack) - GetPos());
 
 	ApplyForce(BackForce * GetPhysObj()->GetMass(), GetPos() + GetForward() * -90.f);
+
+	//Air Resistance
+	float Drag = (LocalVel.y * LocalVel.y) * 0.00001f;
+	ApplyForceCenter((ToGlobal(Vector2(0.f,-Drag)) - GetPos()) * GetPhysObj()->GetMass());
 }
