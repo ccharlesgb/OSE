@@ -1,12 +1,6 @@
 #include "Text.h"
 #include "Resource.h"
-
-
-Text::Text(std::string text, Font font = Font::GetDefaultFont())
-{
-	
-};
-
+#include <SFML/System/String.hpp>
 
 Font::Font(const char *path)
 {
@@ -21,4 +15,9 @@ Font::Font(sf::Font font)
 Font Font::GetDefaultFont()
 {
 	return Font(sf::Font::getDefaultFont());
+};
+
+Text::Text(const std::string text, Font font = Font::GetDefaultFont(), unsigned int size = 30)
+{
+	mText = sf::Text(sf::String(text), font, size);
 };

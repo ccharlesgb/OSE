@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "Vector2.h"
 
 /**
  * Wrapper class for sf::Font.
@@ -32,6 +33,11 @@ public:
 		Underlined = 1 << 2
 	};
 	
-	Text(std::string text, Font font);
+	Text(const std::string text, Font font, unsigned int size);
 	~Text();
+	
+	void SetText(const std::string text) { mText.setString(text); };
+	std::string GetText() { return mText.getString().toAnsiString(); };
+	
+	void SetPosition(const Vector2 position);
 };
