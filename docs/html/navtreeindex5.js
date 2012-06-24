@@ -1,8 +1,5 @@
 var NAVTREEINDEX5 =
 {
-"structxpath__stack__data.html":[1,0,105],
-"structxpath__stack__data.html#a1df4e020ecc629b398336969c8490d98":[1,0,105,1],
-"structxpath__stack__data.html#a56e6bb486d52f4c5c2d02370e1b41058":[1,0,105,5],
 "structxpath__stack__data.html#a6821cc444dd65d997467fd3f757f4aff":[1,0,105,2],
 "structxpath__stack__data.html#ab073a685c66383ded44076993afe62d6":[1,0,105,3],
 "structxpath__stack__data.html#aba4a588075a5ec45a3aa661b97d62ca6":[1,0,105,0],
