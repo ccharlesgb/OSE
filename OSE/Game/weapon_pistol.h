@@ -17,6 +17,8 @@ public:
 	void SetNextPrimaryFire(float time) {mNextPrimaryFire = time;};
 	float GetNextPrimaryFire() {return mNextPrimaryFire;};
 
+	void ShootBullet();
+
 	void Spawn();
 	void Draw();
 };

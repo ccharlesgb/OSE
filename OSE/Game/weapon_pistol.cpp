@@ -35,32 +35,38 @@ void weapon_pistol::Draw()
 	}
 }
 
+void weapon_pistol::ShootBullet()
+{
+	TraceInfo info;
+	info.mStartPoint = GetPos() + (GetForward() * -10.f);
+	float range = 2000;
+	float spread = 0.1f; //In radians
+	info.mEndPoint = GetPos() + (GetForward() * range) + (GetRight() * ig::Random(-spread,spread) * range);
+	TraceResult TraceRes;
+	PhysicsQueries::TraceLine(info, &TraceRes);
+
+	//Tracer Effect
+	mLine->mVerts[0] = info.mStartPoint;
+	mLine->mVerts[1] = TraceRes.mHitPos + (GetForward() * 10.f); // Add some slop to prevent line stopping before sprite
+
+	if (TraceRes.mHitEnt != NULL)
+	{
+		DamageInfo info;
+		info.Amount = ig::Random(15,25);
+		info.type = DAMAGETYPE_BULLET;
+		info.Inflictor = GetOwner();
+		TraceRes.mHitEnt->TakeDamage(info);
+	}
+}
+
 void weapon_pistol::PrimaryFire(BaseObject* ent, VariantMap &Data)
 {
 	weapon_pistol* me = dynamic_cast<weapon_pistol*>(ent);
 	if (me->GetNextPrimaryFire() < gGlobals.CurTime)
 	{
 		me->EmitSound("shot");
-		TraceInfo info;
-		info.mStartPoint = me->GetPos() + (me->GetForward() * -10.f);
-		float range = 2000;
-		float spread = 0.1f; //In radians
-		info.mEndPoint = me->GetPos() + (me->GetForward() * range) + (me->GetRight() * ig::Random(-spread,spread) * range);
-		TraceResult TraceRes;
-		PhysicsQueries::TraceLine(info, &TraceRes);
-
-		//Tracer Effect
-		me->mLine->mVerts[0] = info.mStartPoint;
-		me->mLine->mVerts[1] = TraceRes.mHitPos + (me->GetForward() * 10.f); // Add some slop to prevent line stopping before sprite
-
-		if (TraceRes.mHitEnt != NULL)
-		{
-			DamageInfo info;
-			info.Amount = ig::Random(15,25);
-			info.type = DAMAGETYPE_BULLET;
-			info.Inflictor = me->GetOwner();
-			TraceRes.mHitEnt->TakeDamage(info);
-		}
+		me->ShootBullet();
+		me->ShootBullet();
 		me->mLastShot = (float)gGlobals.CurTime;
 		me->SetNextPrimaryFire((float)gGlobals.CurTime + 0.1f);
 	}
