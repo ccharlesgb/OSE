@@ -49,8 +49,12 @@ private:
 	std::map<std::string, InputFunc> Inputs; //Entity IO function pointers
 	VariantMap mMetaData; //Variables that other entities can access
 	bool mDeleteMe; //Should the entity be deleted on the next entity purge?
+
+	//Thinking
 	float mNextThink;
 	float mLastThink;
+	bool mShouldThink;
+
 	std::string mClassName; //The class name of the entity eg "player"
 
 	std::map<char, Sound*> mSounds;
@@ -157,6 +161,12 @@ public:
 		OnDelete();
 	};
 	bool FlaggedForDeletion() {return mDeleteMe;};
+
+	//Thinking
+	void SetNextThink(float time) {mNextThink = time;};
+	float GetNextThink() {return mNextThink;};
+	void ShouldThink(bool think) {mShouldThink = think;};
+	bool IsThinking() {return mShouldThink;};
 
 	//Physics
 	bool IsPhysicsEnabled() {return mIsPhysics;};

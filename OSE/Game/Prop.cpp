@@ -49,7 +49,6 @@ void Prop::StartTouch(CollisionInfo* info)
 		d_info.Amount = info->Speed / 10;
 		d_info.type = DAMAGETYPE_PHYSICS;
 		TakeDamage(d_info);
-		SetParent(info->OtherEnt);
 	}
 	if (info->Speed > 750)
 	{

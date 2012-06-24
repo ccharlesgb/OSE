@@ -22,6 +22,9 @@ BaseObject::BaseObject(void)
 	mScale = Vector2(1.f,1.f);
 	SetHealth(100.f);
 	SetMaxHealth(100.f);
+	mNextThink = gGlobals.CurTime;
+	mLastThink = gGlobals.CurTime;
+	mShouldThink = true;
 }
 
 BaseObject::~BaseObject(void)
@@ -174,7 +177,7 @@ void BaseObject::Tick()
 		//std::cout << GetPos().ToString() << "\n";
 		SetAngle(mParent->GetAngle());
 	}
-	if (mNextThink < gGlobals.CurTime)
+	if (IsThinking() && mNextThink < gGlobals.CurTime)
 	{
 		std::map<char, Sound*>::iterator i;
 		
@@ -183,7 +186,7 @@ void BaseObject::Tick()
 		}
 		
 		mLastThink = (float)gGlobals.CurTime;
-		mNextThink = mLastThink + (1.f/60.f); //By default think at 60HZ but child classes can override this
+		//mNextThink = mLastThink + (1.f/60.f); //By default think at 60HZ but child classes can override this
 		this->Think();
 	}
 }
