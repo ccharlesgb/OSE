@@ -49,7 +49,7 @@ std::string Resource::GetModelPath(const char* path)
 void Resource::PrecacheModel(const char *path)
 {
 	std::string FILE_PATH = GetModelPath(path);
-	std::cout << "LOADING: " << FILE_PATH << "\n";
+	//std::cout << "LOADING: " << FILE_PATH << "\n";
 	ModelData* Model = new ModelData();
 	
 	//if (!Buffer->loadFromFile(FILE_PATH)) {
@@ -86,7 +86,7 @@ std::string Resource::GetImagePath(const char* path)
 void Resource::PrecacheTexture(const char* path)
 {
 	std::string FILE_PATH = GetImagePath(path);
-	std::cout << "LOADING: " << FILE_PATH << "\n";
+	//std::cout << "LOADING: " << FILE_PATH << "\n";
 	sf::Texture* Texture = new sf::Texture();
 	
 	// Load the error texture if file was not found.

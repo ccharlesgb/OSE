@@ -9,6 +9,7 @@ NOTES	: IEntityListener implementation
 */
 void IGameState::OnEntityAdded(BaseObject* ent)
 {
+	std::cout << "LISTENER TOLD\n";
 	_OnEntityCreated(ent);
 }
 

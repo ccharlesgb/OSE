@@ -157,9 +157,9 @@ NOTES	: If the entity is a physics entity add it to the Box2D world
 */
 void MainGameState::OnEntityCreated(BaseObject* ent)
 {
+	std::cout << "LISTENER TOLDA: " << ent->GetClassName() << "\n";
 	if (ent->IsPhysicsEnabled())
 	{
-		std::cout << "LISTENER TOLD\n";
 		BasePhysics* physent = dynamic_cast<BasePhysics*>(ent);
 		mPhysicsWorld.AddPhysicsDef(physent->GetPhysObj());
 	}

@@ -34,7 +34,7 @@ void EntityCreator::ProcessAddQueue()
 	i = mAddQueue.begin();
 	while(i != mAddQueue.end())
 	{
-		gGlobals.gEntList.Append(*i);
+		//gGlobals.gEntList.Append(*i);
 		i++;
 	}
 	mAddQueue.clear();
@@ -52,6 +52,8 @@ BaseObject* EntityCreator::CreateEntity(const char* ID)
 	{
 		BaseObject* ent = F->Create();
 		ent->SetClassName(ID);
+		gGlobals.gEntList.Append(ent);
+		std::cout << "Create: " << ent->GetClassName() << "\n";
 		mAddQueue.push_back(ent);
 		return ent;
 	}
