@@ -80,7 +80,7 @@ sf::Sound* SoundResource::GetSound(const char* path)
 
 void SoundResource::Cleanup()
 {
-	std::cout << "CLEANING UP TEXTURES \n";
+	std::cout << "CLEANING UP SOUNDS \n";
 	std::map<std::string, sf::SoundBuffer*>::iterator it;
 	
 	for(it = mSounds.begin(); it != mSounds.end(); it++) {
