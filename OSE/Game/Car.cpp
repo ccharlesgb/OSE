@@ -206,7 +206,8 @@ void Car::PhysicsSimulate(float delta)
 	Vector2 LocalVelFront = LocalVel + Vector2(ig::DegToRad(GetAngularVelocity()) * 90.f,0.f);
 
 	mLine->mVerts[0] = GetPos() + GetForward() * 90.f;
-	mLine->mVerts[1] = (GetPos() + GetForward() * 90.f) + (ToGlobal(LocalVelFront / 5.f) - GetPos());
+	Vector2 vel = LocalVelFront / 5.f;
+	mLine->mVerts[1] = (GetPos() + GetForward() * 90.f) + (ToGlobal(vel) - GetPos());
 
 	LocalVelFront = LocalVelFront.Rotate(mWheelAngle); //Rotate the local vel according to the wheels
 	if (std::abs(LocalVelFront.x) > 500)
@@ -257,7 +258,8 @@ void Car::PhysicsSimulate(float delta)
 	mLine4->mVerts[1] = (GetPos() + GetForward() * -90.f) + BackForce;
 
 	mLine2->mVerts[0] = GetPos() + GetForward() * -90.f;
-	mLine2->mVerts[1] = (GetPos() + GetForward() * -90.f) + (ToGlobal(LocalVelBack / 5.f) - GetPos());
+	Vector2 velBack = LocalVelBack / 5.f;
+	mLine2->mVerts[1] = (GetPos() + GetForward() * -90.f) + (ToGlobal(velBack) - GetPos());
 
 	ApplyForce(BackForce * GetPhysObj()->GetMass(), GetPos() + GetForward() * -90.f);
 }
