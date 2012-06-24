@@ -89,14 +89,14 @@ void StateManager::HandleEvents()
 	{
 		if (Event.type == sf::Event::LostFocus)
 		{
-			mCurrentState->Pause();
-			gGlobals.InFocus = false;
+			//mCurrentState->Pause();
+			//gGlobals.InFocus = false;
 			std::cout << "pause\n";
 		}
 		else if (Event.type == sf::Event::GainedFocus)
 		{
-			mCurrentState->UnPause();
-			gGlobals.InFocus = true;
+			//mCurrentState->UnPause();
+			//gGlobals.InFocus = true;
 			std::cout << "un pause\n";
 		}
 		else if (Event.type == sf::Event::Closed)

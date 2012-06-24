@@ -34,7 +34,6 @@ BaseObject* IGameState::CreateEntity(const char* ID)
 		std::cout << "Invalid Entity: " << ID << "\n";
 		return NULL;
 	}
-	gGlobals.gEntList.Append(ent);
 	_OnEntityCreated(ent);
 	return ent;
 }
@@ -87,23 +86,20 @@ void IGameState::_Tick()
 	sAudioEnvironment::Update();
 	
 	BaseObject* CurEnt = gGlobals.gEntList.FirstEnt();
-	std::cout << "Tick\n";
 	while(gGlobals.gEntList.CurrentIsValid())
 	{
-		std::cout << CurEnt << " : " << CurEnt->GetClassName() << "\n";
+		std::cout << "CUR ENT: " << CurEnt->GetClassName() << "\n";
 		if (CurEnt->FlaggedForDeletion() == true)
 		{
-			//std::cout << "Deleting: " << CurEnt->GetClassName() << "\n";
 			_OnEntityDeleted(CurEnt);
 			gGlobals.gEntList.DeleteCurrent();
 			CurEnt = gGlobals.gEntList.CurrentEnt();
-			//std::cout << "CurEnt: " << &CurEnt << "\n";
 			continue;
 		}
 		CurEnt->Tick();
 		CurEnt = gGlobals.gEntList.NextEnt();
-		std::cout << "Next: " << CurEnt << "\n";
 	}
+	ENTITYCREATOR->ProcessAddQueue();
 }
 
 /*

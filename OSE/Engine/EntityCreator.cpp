@@ -1,6 +1,7 @@
 #include "EntityCreator.h"
 #include <iostream>
 #include "Bases/BaseObject.h"
+#include "GameGlobals.h"
 
 EntityCreator* Inst2 = NULL;
 
@@ -27,6 +28,18 @@ EntityCreator::~EntityCreator()
 	FactoryMap.clear();
 }
 
+void EntityCreator::ProcessAddQueue()
+{
+	std::vector<BaseObject*>::iterator i;
+	i = mAddQueue.begin();
+	while(i != mAddQueue.end())
+	{
+		gGlobals.gEntList.Append(*i);
+		i++;
+	}
+	mAddQueue.clear();
+}
+
 void EntityCreator::Cleanup()
 {
 	delete Inst2;
@@ -39,6 +52,7 @@ BaseObject* EntityCreator::CreateEntity(const char* ID)
 	{
 		BaseObject* ent = F->Create();
 		ent->SetClassName(ID);
+		mAddQueue.push_back(ent);
 		return ent;
 	}
 	return NULL;

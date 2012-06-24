@@ -102,7 +102,6 @@ void Renderer::AddEntity(BaseObject* Ent)
 	{
 		--iter;
 	}
-	
 	Renderables.InsertAtCurrent(Ent);
 }
 

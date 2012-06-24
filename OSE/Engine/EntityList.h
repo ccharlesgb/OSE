@@ -121,7 +121,6 @@ void EntityList<T>::Append(VType ent)
 		(*i)->OnEntityAdded(ent);
 		i++;
 	}
-	std::cout << "Entity Count : " << gGlobals.gEntList.GetSize() << "\n";
 }
 
 /*
@@ -233,10 +232,6 @@ NOTES	: Get the next entity unless there isnt one -> return null
 template<class T>
 T EntityList<T>::NextEnt()
 {
-	if (mIter == mList.end())
-	{
-		std::cout << "WARNGING WARNIGN AT END\n";
-	}
 	mIter++;
 	if (mIter >= mList.end())
 	{

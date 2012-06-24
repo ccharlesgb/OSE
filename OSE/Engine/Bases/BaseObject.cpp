@@ -1,7 +1,6 @@
 #include "BaseObject.h"
 #include "../EntityCreator.h"
 #include "../GameGlobals.h"
-#include "../Render/Renderer.h"
 #include "../Render/Line.h"
 
 BaseObject::BaseObject(void)
@@ -33,7 +32,6 @@ BaseObject* BaseObject::CreateEntity(const char* classname)
 {
 	//Create an entity and add it to the global entity list
 	BaseObject* ent = ENTITYCREATOR->CreateEntity(classname);
-	gGlobals.gEntList.Append(ent);
 	return ent;
 }
 
