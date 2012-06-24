@@ -26,7 +26,7 @@ Font Font::GetDefaultFont()
 
 Text::Text(sf::RenderWindow *rend) : BaseDrawable(rend)
 {
-	mText = sf::Text("test");
+	mText = sf::Text();
 	// mText.setFont(Font::GetDefaultFont().mFont);
 	mText.setCharacterSize(30);
 }

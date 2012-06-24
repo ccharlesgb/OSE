@@ -6,6 +6,8 @@
 
 /**
  * Wrapper class for sf::Font.
+ *
+ * @ingroup engine
  */
 class Font
 {
@@ -22,6 +24,8 @@ public:
 
 /**
  * Wrapper class for sf::Text
+ *
+ * @ingroup engine
  */
 class Text : public BaseDrawable
 {
@@ -40,7 +44,7 @@ public:
 	
 	void Draw();
 	
-	void SetText(const std::string text) { mText.setString("lol"); };
+	void SetText(const std::string text) { mText.setString(text); };
 	std::string GetText() { return mText.getString().toAnsiString(); };
 	
 	void SetPosition(const Vector2 position);

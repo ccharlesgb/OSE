@@ -10,8 +10,32 @@
 #include "Engine/Utilities/MathUtils.h"
 
 #ifdef __APPLE__
-#include "CoreFoundation/CoreFoundation.h"
+	#include "CoreFoundation/CoreFoundation.h"
 #endif
+
+/**
+ * @defgroup game Game
+ */
+
+
+/**
+ * @defgroup engine Engine
+ */
+
+/**
+ * @defgroup base Bases
+ * @ingroup engine
+ */
+
+/**
+ * @defgroup render Render
+ * @ingroup engine
+ */
+
+/**
+ * @defgroup utilities Utilities
+ * @ingroup engine
+ */
 
 int main()
 {
