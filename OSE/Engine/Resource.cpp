@@ -128,3 +128,43 @@ void FontResource::Cleanup()
 		delete mFonts[it->first];
 	}
 }
+
+/**
+ * ModelResource
+ */
+std::map<std::string, Model*> ModelResource::mModels;
+
+void ModelResource::Precache(const char *path)
+{
+	const char* FILE_PATH = ("images/" + std::string(path) + ".xml").c_str();
+	std::cout << "LOADING: " << FILE_PATH << "\n";
+	
+	Model *model = new Model();
+	
+	if (!model->LoadFromFile(FILE_PATH)) {
+		// TODO: Some error managment
+		std::cout << "ERROR! UNABLE TO FIND THE FONT: " + std::string(FILE_PATH) + "\n";
+	}
+	
+	mModels[path] = model;
+}
+
+Model* ModelResource::GetModel(const char* path)
+{
+	if (mModels[path] == NULL)
+	{
+		Precache(path);
+	}
+	return mModels[path];
+}
+
+void ModelResource::Cleanup()
+{
+	std::cout << "CLEANING UP FONTS \n";
+	std::map<std::string, Model*>::iterator it;
+	
+	for(it = mModels.begin(); it != mModels.end(); it++) {
+		std::cout << "DELETING " << it->first << "\n";
+		delete mModels[it->first];
+	}
+}

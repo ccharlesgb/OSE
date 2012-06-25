@@ -4,7 +4,7 @@
 #include <string>
 #include "SFML/Graphics.hpp"
 #include <SFML/Audio.hpp>
-#include "Utilities/XMLParser.h"
+#include "Model.h"
 
 /**
  * Texture resource loader.
@@ -97,6 +97,38 @@ public:
 	 * @param char Path to texture.
 	 */
 	static sf::Font* GetFont(const char *path);
+	
+	/**
+	 * Cleanup the sound buffers from memory.
+	 */
+	static void Cleanup();
+};
+
+/**
+ * Model resource loader
+ *
+ * @ingroup engine
+ */
+class ModelResource
+{
+private:
+	
+	static std::map<std::string, Model*> mModels;
+	
+public:
+	/**
+	 * Precache the resource.
+	 *
+	 * @param char Path to sound.
+	 */
+	static void Precache(const char *path);
+	
+	/**
+	 * Get a cached resource.
+	 *
+	 * @param char Path to texture.
+	 */
+	static Model* GetModel(const char *path);
 	
 	/**
 	 * Cleanup the sound buffers from memory.
