@@ -44,6 +44,7 @@
     <ClCompile Include="Engine\Render\DebugOverlay.cpp" />
     <ClCompile Include="Engine\Text.cpp" />
     <ClCompile Include="Game\Car.cpp" />
+    <ClCompile Include="Engine\Model.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Bases\BaseObject.h" />
@@ -84,6 +85,7 @@
     <ClInclude Include="Engine\Render\DebugOverlay.h" />
     <ClInclude Include="Engine\Text.h" />
     <ClInclude Include="Game\Car.h" />
+    <ClInclude Include="Engine\Model.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Utilities\Matrix3.inl" />
