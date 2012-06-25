@@ -4,6 +4,7 @@
 #include "../Camera.h"
 #include <Box2D/Collision/b2Collision.h>
 #include "../Bases/BaseObject.h"
+#include "../Profiler.h"
 
 Renderer* Inst = NULL;
 
@@ -113,6 +114,37 @@ void Renderer::OnEntityRemoved(BaseObject* ent)
 	}
 }
 
+#define GRID_SIZE 256
+
+void Renderer::UpdateOnScreenList()
+{
+	Profiler::StartRecord(PROFILE_RENDER_PURGE);
+	OnScreenEnts.ClearDontDelete();
+	BaseObject* CurEnt = Renderables.FirstEnt();
+	while(CurEnt != NULL)
+	{
+		if (!CurEnt->GetNoDraw())
+		{
+			Vector2 EntPos = CurEnt->GetPos();
+			Vector2 Quadrant; //Quantise the position a grid size TEXTURE_SIZE
+			Quadrant.x = std::floor((EntPos.x / GRID_SIZE) + 0.5f) - 0.5f;
+			Quadrant.y = std::floor((EntPos.y / GRID_SIZE) + 0.5f) - 0.5f;
+
+			Vector2 CamPos = sCamera::GetCentre();
+			Vector2 ScreenQuadrant;
+			ScreenQuadrant.x = std::floor((CamPos.x / GRID_SIZE) + 0.5f) - 0.5f;
+			ScreenQuadrant.y = std::floor((CamPos.y / GRID_SIZE) + 0.5f) - 0.5f;
+
+			if (std::abs(ScreenQuadrant.x - Quadrant.x) < 3 && std::abs(ScreenQuadrant.y - Quadrant.y) < 3)
+			{
+				OnScreenEnts.Append(CurEnt);
+			}
+		}
+		CurEnt = Renderables.NextEnt();
+	}
+	Profiler::StopRecord(PROFILE_RENDER_PURGE);
+}
+
 void Renderer::Draw(IGameState *State)
 {
 	Clear();
@@ -123,14 +155,16 @@ void Renderer::Draw(IGameState *State)
 
 	mRender->setView(mView);
 
-	BaseObject* CurEnt = Renderables.FirstEnt();
+	UpdateOnScreenList();//Update the OnScreenEntityList
+
+	BaseObject* CurEnt = OnScreenEnts.FirstEnt();
 	while(CurEnt != NULL)
 	{
 		if (!CurEnt->GetNoDraw())
 		{
 			CurEnt->Draw();
 		}
-		CurEnt = Renderables.NextEnt();
+		CurEnt = OnScreenEnts.NextEnt();
 	}
 	//mLightSystem->RenderLights();
 	//mLightSystem->RenderLightTexture();

@@ -49,3 +49,8 @@ public:
 	};
 };
 
+class Vector2_Rect
+{
+	Vector2 Position; //Top Left Corner
+	Vector2 Size; //How it extends to the right and below
+}

@@ -30,6 +30,7 @@ public:
 	void Append(VType ent);
 	void InsertAtCurrent(VType);
 	void Clear();
+	void ClearDontDelete();
 
 	bool CurrentIsValid();
 
@@ -93,6 +94,17 @@ void EntityList<T>::Clear()
 		CurEnt = CurrentEnt();
 	}
 	mList.clear();
+}
+
+/*
+NAME	: ClearDontDelete
+NOTES	: Delete all the entities from our list keep the objects
+*/
+template<class T>
+void EntityList<T>::ClearDontDelete()
+{
+	mList.clear();
+	mCurIsValid = false;
 }
 
 /*

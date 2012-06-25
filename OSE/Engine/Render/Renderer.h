@@ -21,6 +21,7 @@ private:
 	sf::View mView;
 	DebugDraw* mPhysDebug;
 	EntityList<BaseObject*> Renderables;
+	EntityList<BaseObject*> OnScreenEnts;
 public:
 	Vector2 GameToSFML(Vector2 Pos);
 	Vector2 ToScreen(Vector2 pos);
@@ -36,4 +37,6 @@ public:
 	void Display() {mRender->display();};
 	void Draw(IGameState *State);
 	void SetWindow(sf::RenderWindow *wind);
+
+	void UpdateOnScreenList();
 };

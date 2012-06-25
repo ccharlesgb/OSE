@@ -42,7 +42,10 @@ const char* Profiler::EnumName(ProfileType type)
 		name = "ENT CREATION";
 		break;
 	case PROFILE_RENDER_MAP:
-		name = "MAP RENDER";
+		name = "MAP RENDER  ";
+		break;
+	case PROFILE_RENDER_PURGE:
+		name = "RENDER CULL ";
 		break;
 	default:
 		name = "ERROR       ";

@@ -70,7 +70,6 @@ private:
 	Sprite* mSprite; //The sprite object used in DrawModel/SetModel etc
 	bool mNoDraw; //Enable disable calling of Draw();
 
-
 	BaseObject *mParent; //Move relative to this entity
 	Vector2 mParentRelativePos; //The position that we should force to maintain with parent
 
