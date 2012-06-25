@@ -59,7 +59,8 @@ void Car::Spawn()
 	SetModel("car", 1.f);
 	PhysicsHullFromModel();
 	mDriver = NULL;
-	CreateSound("enter", "engine_start");
+	CreateSound("skid", "tires_squeal_loop");
+	GetSound("skid")->SetLoop(true);
 	CreateSound("idle", "engine_idle");
 }
 
@@ -212,6 +213,8 @@ void Car::PhysicsSimulate(float delta)
 	LocalVelFront = LocalVelFront.Rotate(mWheelAngle); //Rotate the local vel according to the wheels
 	if (std::abs(LocalVelFront.x) > 500)
 	{
+		if (!mFrontWheelSkid && !mBackWheelSkid)
+			GetSound("skid")->Play();
 		mFrontWheelTraction = ig::Approach(mFrontWheelTraction, 0.03f, 0.002f);
 		mFrontWheelSkid = true;
 	}
@@ -219,6 +222,8 @@ void Car::PhysicsSimulate(float delta)
 	{
 		mFrontWheelTraction = ig::Approach(mFrontWheelTraction, DEFAULT_FRONT_TRACTION, 0.001f);
 		mFrontWheelSkid = false;
+		if (!mBackWheelSkid)
+			GetSound("skid")->Stop();
 	}
 
 	Vector2 FrontForce;
@@ -243,6 +248,8 @@ void Car::PhysicsSimulate(float delta)
 
 	if (InputHandler::IsKeyPressed(sf::Keyboard::Space) || std::fabs(LocalVelBack.x) > 300) //HandBrake
 	{
+		if (!mFrontWheelSkid && !mBackWheelSkid)
+			GetSound("skid")->Play();
 		mBackWheelSkid = true;
 		mBackWheelTraction = ig::Approach(mBackWheelTraction, 0.03f, 0.003f);
 	}
@@ -250,6 +257,8 @@ void Car::PhysicsSimulate(float delta)
 	{
 		mBackWheelSkid = false;
 		mBackWheelTraction = ig::Approach(mBackWheelTraction, DEFAULT_BACK_TRACTION, 0.002f);
+		if (!mFrontWheelSkid)
+			GetSound("skid")->Stop();
 	}
 
 	BackForce = ToGlobal(BackForce) - GetPos();
