@@ -109,7 +109,7 @@ $(document).ready(function(){initNavTree('_car_8h.html','');});
 <div class="line"><a name="l00006"></a><span class="lineno"><a class="code" href="class_car.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_car.html">Car</a> : <span class="keyword">public</span> <a class="code" href="class_base_physics.html">BasePhysics</a></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;         <a class="code" href="class_base_object.html">BaseObject</a>* mDriver;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;         <a class="code" href="class_base_object.html" title="Base entity that all entities in game are derived from.">BaseObject</a>* mDriver;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;         <span class="keywordtype">bool</span> InUse() { <span class="keywordflow">return</span> mDriver != NULL; };</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;         <span class="keywordtype">float</span> mWheelAngle;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;         <span class="keywordtype">float</span> mThrottle;</div>
@@ -134,7 +134,7 @@ $(document).ready(function(){initNavTree('_car_8h.html','');});
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;         <span class="keywordtype">void</span> Think();</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;         <span class="keywordtype">void</span> StartTouch(<a class="code" href="class_collision_info.html">CollisionInfo</a>* info);</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;         <span class="keywordtype">void</span> Exit(<a class="code" href="class_vector2.html">Vector2</a> position);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;         <span class="keywordtype">void</span> Use(<a class="code" href="class_base_object.html">BaseObject</a> *ply);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;         <span class="keywordtype">void</span> Use(<a class="code" href="class_base_object.html" title="Base entity that all entities in game are derived from.">BaseObject</a> *ply);</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;         <span class="keywordtype">void</span> Draw();</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;         <span class="keywordtype">void</span> PhysicsSimulate(<span class="keywordtype">float</span> delta);</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;};</div>

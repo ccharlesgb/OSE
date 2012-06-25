@@ -113,7 +113,7 @@ $(document).ready(function(){initNavTree('_renderer_8h.html','');});
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">class </span>Camera;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">class </span><a class="code" href="class_i_game_state.html">IGameState</a>;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">class </span><a class="code" href="class_base_object.html">BaseObject</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">class </span><a class="code" href="class_base_object.html" title="Base entity that all entities in game are derived from.">BaseObject</a>;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define RENDERER Renderer::Instance()</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno"><a class="code" href="class_renderer.html">   16</a></span>&#160;<span class="preprocessor"></span><span class="keyword">class </span><a class="code" href="class_renderer.html">Renderer</a> : <span class="keyword">public</span> <a class="code" href="class_i_entity_listener.html">IEntityListener</a>&lt;BaseObject*&gt;</div>
@@ -132,9 +132,9 @@ $(document).ready(function(){initNavTree('_renderer_8h.html','');});
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;         <span class="keyword">static</span> <a class="code" href="class_renderer.html">Renderer</a>* Instance();</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;         <span class="keyword">static</span> <span class="keywordtype">void</span> Cleanup();</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;         <span class="keywordtype">void</span> OnResize();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;         <span class="keywordtype">void</span> OnEntityAdded(<a class="code" href="class_base_object.html">BaseObject</a>* ent);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;         <span class="keywordtype">void</span> OnEntityRemoved(<a class="code" href="class_base_object.html">BaseObject</a>* ent);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;         <span class="keywordtype">void</span> AddEntity(<a class="code" href="class_base_object.html">BaseObject</a>* render);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;         <span class="keywordtype">void</span> OnEntityAdded(<a class="code" href="class_base_object.html" title="Base entity that all entities in game are derived from.">BaseObject</a>* ent);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;         <span class="keywordtype">void</span> OnEntityRemoved(<a class="code" href="class_base_object.html" title="Base entity that all entities in game are derived from.">BaseObject</a>* ent);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;         <span class="keywordtype">void</span> AddEntity(<a class="code" href="class_base_object.html" title="Base entity that all entities in game are derived from.">BaseObject</a>* render);</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;         <span class="keywordtype">void</span> Clear() {mRender-&gt;clear();};</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;         <span class="keywordtype">void</span> Display() {mRender-&gt;display();};</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;         <span class="keywordtype">void</span> Draw(<a class="code" href="class_i_game_state.html">IGameState</a> *State);</div>

@@ -2,7 +2,7 @@ var searchData=
 [
   ['bases',['Bases',['../group__base.html',1,'']]],
   ['basedrawable',['BaseDrawable',['../class_base_drawable.html',1,'']]],
-  ['baseobject',['BaseObject',['../class_base_object.html',1,'']]],
+  ['baseobject',['BaseObject',['../class_base_object.html',1,'BaseObject'],['../class_base_object.html#af71f15e3c68d0adc42abcfffaaee13a9',1,'BaseObject::BaseObject()']]],
   ['basephysics',['BasePhysics',['../class_base_physics.html',1,'']]],
   ['baserenderablefactory',['BaseRenderableFactory',['../class_base_renderable_factory.html',1,'']]],
   ['baseshape',['BaseShape',['../class_base_shape.html',1,'']]],

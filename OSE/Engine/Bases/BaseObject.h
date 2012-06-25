@@ -47,7 +47,7 @@ enum RenderGroup
 /**
  * Base entity that all entities in game are derived from.
  *
- * @ingroup engine
+ * @ingroup base
  */
 class BaseObject
 {

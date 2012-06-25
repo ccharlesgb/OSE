@@ -5,25 +5,6 @@
 #include "Utilities/Vector2.h"
 
 /**
- * Wrapper class for sf::Font.
- *
- * @ingroup engine
- */
-class Font
-{
-private:
-	sf::Font mFont; ///< sf::Font to use.
-public:
-	/**
-	 * Default constructor.
-	 *
-	 * @param char Path to font
-	 */
-	Font(const char *path);
-	~Font();
-};
-
-/**
  * Wrapper class for sf::Text
  *
  * @ingroup engine
@@ -56,6 +37,13 @@ public:
 	 * Draw the text to render window.
 	 */
 	void Draw();
+	
+	/**
+	 * Set the text's font.
+	 *
+	 * @param char path
+	 */
+	void SetFont(const char *path);
 	
 	/**
 	 * Set the text's string.

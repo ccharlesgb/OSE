@@ -1,7 +1,21 @@
 var searchData=
 [
   ['get4x4elements',['Get4x4Elements',['../class_matrix3.html#a349329a78bcbc67539c48cc272170a53',1,'Matrix3']]],
+  ['getangle',['GetAngle',['../class_base_object.html#a4100095c19f99323412e32d3626f1f5a',1,'BaseObject']]],
+  ['getclassname',['GetClassName',['../class_base_object.html#aa3c545a4179b337e76595ca333b628b7',1,'BaseObject']]],
+  ['getfont',['GetFont',['../class_font_resource.html#af4a6b8d1fa199e92fe1e5dcc2d14a3e9',1,'FontResource']]],
+  ['getforward',['GetForward',['../class_base_object.html#a9ffc859241fbb6e600b8e309b1c3764b',1,'BaseObject']]],
   ['getinverse',['GetInverse',['../class_matrix3.html#a14543f45c21061f6689a12b7f78d14f1',1,'Matrix3']]],
+  ['getmatrix',['GetMatrix',['../class_base_object.html#a8afb50bd2088a1428b8f87a077fc5ebc',1,'BaseObject']]],
+  ['getmodel',['GetModel',['../class_base_object.html#ad8b7ec753a13e81ec6121e9311c1e753',1,'BaseObject']]],
+  ['getorigin',['GetOrigin',['../class_base_object.html#a0eca11773a6efbd16d0e8e07c1ec8220',1,'BaseObject']]],
+  ['getowner',['GetOwner',['../class_base_object.html#a0e60199eca11fc08b896bcaae16024aa',1,'BaseObject']]],
+  ['getparent',['GetParent',['../class_base_object.html#a0099498da068413c1091b81f80afeadc',1,'BaseObject']]],
+  ['getpos',['GetPos',['../class_base_object.html#af6460a8b949ad38231ca156f21ce62d4',1,'BaseObject']]],
   ['getposition',['GetPosition',['../class_sound.html#af1df3740acfb875cb22e181049618788',1,'Sound']]],
-  ['gettext',['GetText',['../class_text.html#a46ebbe371a84ae41f910ba6492ed8b31',1,'Text']]]
+  ['getright',['GetRight',['../class_base_object.html#a0dc2fdd341b167c2ccc16a9130cfb723',1,'BaseObject']]],
+  ['getsize',['GetSize',['../class_base_object.html#abfe1c5e96a3f2d06796f887558eb04a5',1,'BaseObject']]],
+  ['getsound',['GetSound',['../class_base_object.html#a67d69649372b9acdfbd6dec8f4eea8a4',1,'BaseObject::GetSound()'],['../class_sound_resource.html#a8cd01f30aec801e681cf25bf88813200',1,'SoundResource::GetSound()']]],
+  ['gettext',['GetText',['../class_text.html#a46ebbe371a84ae41f910ba6492ed8b31',1,'Text']]],
+  ['gettexture',['GetTexture',['../class_texture_resource.html#a1e54993cf1a59d56b2d0d0a74384e51d',1,'TextureResource']]]
 ];
