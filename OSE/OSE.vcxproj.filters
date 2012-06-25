@@ -56,7 +56,6 @@
     <ClInclude Include="Engine\Render\Line.h" />
     <ClInclude Include="Engine\Render\Renderer.h" />
     <ClInclude Include="Engine\Render\Sprite.h" />
-    <ClInclude Include="Engine\AudioEnvironment.h" />
     <ClInclude Include="Engine\Camera.h" />
     <ClInclude Include="Engine\EntityCreator.h" />
     <ClInclude Include="Engine\EntityList.h" />
@@ -90,6 +89,7 @@
     <ClInclude Include="Engine\Model.h" />
     <ClInclude Include="Engine\Render\BlendSprite.h" />
     <ClInclude Include="Engine\Profiler.h" />
+    <ClInclude Include="Engine\AudioEnvironment.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Utilities\Matrix3.inl" />

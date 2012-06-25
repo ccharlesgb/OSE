@@ -34,7 +34,7 @@ void Map::Spawn()
 void Map::Draw()
 {
 	Profiler::StartRecord(PROFILE_RENDER_MAP);
-	int arr_size = 70;
+	int arr_size = 20;
 	for (int x=-arr_size;x <= arr_size; x++)
 	{
 		for (int y=-arr_size;y <= arr_size; y++)

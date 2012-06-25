@@ -17,9 +17,9 @@ BlendSprite::~BlendSprite(void)
 void BlendSprite::Draw()
 {
 	sf::RenderStates state;
-	//state.shader = mShader;
-	//mShader->setParameter("blend_channel", mBlendTexture);
-	//mShader->setParameter("other_texture", *mSprite2.getTexture());
+	state.shader = mShader;
+	mShader->setParameter("blend_channel", mBlendTexture);
+	mShader->setParameter("other_texture", *mSprite2.getTexture());
 	if (mDirtyTransform)
 	{
 		mSprite1.setPosition(GameToSFML(GetPosition()).SF());
@@ -33,7 +33,7 @@ void BlendSprite::Draw()
 		mSprite2.setScale(sf::Vector2f(GetScale(),GetScale()));
 		mDirtyTransform = false;
 	}
-	mRenderWindow->draw(mSprite1);
+	mRenderWindow->draw(mSprite1,state);
 }
 
 void BlendSprite::SetTexture1(const char* path)
