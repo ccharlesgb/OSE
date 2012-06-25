@@ -7,6 +7,7 @@
 #include "../Utilities/Matrix3.hpp"
 #include "../Render/Sprite.h"
 #include "../Sound.h"
+#include "../Model.h"
 
 class PhysicsDef;
 class BaseObject;
@@ -78,7 +79,10 @@ protected:
 	PhysicsDef *mPhysObj; //Pointer to the physics object for this entity (NOT NECCESSARILY VALID)
 	Matrix3 mMatrix; //Transformation matrix used by ToGlobal and ToLocal
 	bool mMatrixNeedsUpdate; //If the matrix needs to be updated (Position/rotation etc has changed)
+
+	//MODEL
 	const char* mModel; //Model path (Sprite image)
+	Model mModelInfo;
 
 	Vector2 mPosition;
 	Vector2 mOrigin;

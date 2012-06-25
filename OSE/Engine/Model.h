@@ -11,5 +11,6 @@ public:
 	float mDensity;
 	const char* mTexturePath;
 	float mScale;
+	bool LoadFromFile(const char *path);
 };
 
