@@ -10,6 +10,7 @@ var class_text =
     [ "~Text", "class_text.html#a2d49e5c280e205125b149f7777ae30c7", null ],
     [ "Draw", "class_text.html#af4bb084ff0f66ad827ef6b006f9b0ebd", null ],
     [ "GetText", "class_text.html#a46ebbe371a84ae41f910ba6492ed8b31", null ],
+    [ "SetFont", "class_text.html#af89daf542048a1f041e09c34d8d1a4a1", null ],
     [ "SetPosition", "class_text.html#a38592452ec78d7c00ab257c5f4ce58f5", null ],
     [ "SetText", "class_text.html#a4349ca1c400dd28ecf509ff2ef2a527f", null ]
 ];

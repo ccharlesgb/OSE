@@ -105,7 +105,7 @@ $(document).ready(function(){initNavTree('_base_physics_8h.html','');});
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;BaseObject.h&quot;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;../PhysicsDef.h&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno"><a class="code" href="class_base_physics.html">    5</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_base_physics.html">BasePhysics</a> : <span class="keyword">public</span> <a class="code" href="class_base_object.html">BaseObject</a></div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="code" href="class_base_physics.html">    5</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_base_physics.html">BasePhysics</a> : <span class="keyword">public</span> <a class="code" href="class_base_object.html" title="Base entity that all entities in game are derived from.">BaseObject</a></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
@@ -121,8 +121,8 @@ $(document).ready(function(){initNavTree('_base_physics_8h.html','');});
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;         <span class="keywordtype">void</span> Tick();</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;         <span class="comment">//Inline</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;         <span class="keywordtype">void</span> SetPos(<a class="code" href="class_vector2.html">Vector2</a> p) {<span class="keywordflow">if</span> (mPhysObj) mPhysObj-&gt;SetPos(p); BaseObject::SetPos(p);};</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;         <span class="keywordtype">void</span> SetAngle(<span class="keywordtype">float</span> a) {<span class="keywordflow">if</span> (mPhysObj) mPhysObj-&gt;SetAngle(a); BaseObject::SetAngle(a);};</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="code" href="class_base_physics.html#a7597fbec5e56ce09a87ceeec5e09608b">   21</a></span>&#160;         <span class="keywordtype">void</span> <a class="code" href="class_base_physics.html#a7597fbec5e56ce09a87ceeec5e09608b" title="Set the position of the entity (and its physics object if it exists)">SetPos</a>(<a class="code" href="class_vector2.html">Vector2</a> p) {<span class="keywordflow">if</span> (mPhysObj) mPhysObj-&gt;SetPos(p); <a class="code" href="class_base_physics.html#a7597fbec5e56ce09a87ceeec5e09608b" title="Set the position of the entity (and its physics object if it exists)">BaseObject::SetPos</a>(p);};</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="code" href="class_base_physics.html#a9ea367b7760ecbcb55e756d7a885d3d0">   22</a></span>&#160;         <span class="keywordtype">void</span> <a class="code" href="class_base_physics.html#a9ea367b7760ecbcb55e756d7a885d3d0" title="Set the angle of the entity.">SetAngle</a>(<span class="keywordtype">float</span> a) {<span class="keywordflow">if</span> (mPhysObj) mPhysObj-&gt;SetAngle(a); <a class="code" href="class_base_physics.html#a9ea367b7760ecbcb55e756d7a885d3d0" title="Set the angle of the entity.">BaseObject::SetAngle</a>(a);};</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;         <span class="keywordtype">void</span> SetVelocity(<a class="code" href="class_vector2.html">Vector2</a> vel)</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;         {</div>
@@ -146,7 +146,7 @@ $(document).ready(function(){initNavTree('_base_physics_8h.html','');});
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;         };</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;         <span class="keywordtype">void</span> ApplyForceCenter(<a class="code" href="class_vector2.html">Vector2</a> force)</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;         {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                  mPhysObj-&gt;ApplyForce(force, GetPhysObj()-&gt;GetPos());</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                  mPhysObj-&gt;ApplyForce(force, GetPhysObj()-&gt;<a class="code" href="class_base_object.html#af6460a8b949ad38231ca156f21ce62d4" title="Return the position of the entity.">GetPos</a>());</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;         }</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;         <span class="keywordtype">void</span> ApplyForce(<a class="code" href="class_vector2.html">Vector2</a> force, <a class="code" href="class_vector2.html">Vector2</a> Offset)</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;         {</div>

@@ -145,7 +145,7 @@ $(document).ready(function(){initNavTree('_physics_queries_8h.html','');});
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                  mHitNormal = <a class="code" href="class_vector2.html">Vector2</a>();</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                  mHitPos = <a class="code" href="class_vector2.html">Vector2</a>();</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;         }</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;         <a class="code" href="class_base_object.html">BaseObject</a>* mHitEnt;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;         <a class="code" href="class_base_object.html" title="Base entity that all entities in game are derived from.">BaseObject</a>* mHitEnt;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;         <a class="code" href="class_vector2.html">Vector2</a> mHitPos;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;         <a class="code" href="class_vector2.html">Vector2</a> mHitNormal;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;};</div>
@@ -176,7 +176,7 @@ $(document).ready(function(){initNavTree('_physics_queries_8h.html','');});
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        mBody = fixture-&gt;GetBody();</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                  <span class="keywordflow">if</span> (mBody)</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                  {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                           mResult-&gt;mHitEnt = <span class="keyword">static_cast&lt;</span><a class="code" href="class_base_object.html">BaseObject</a>*<span class="keyword">&gt;</span>(mBody-&gt;GetUserData());</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                           mResult-&gt;mHitEnt = <span class="keyword">static_cast&lt;</span><a class="code" href="class_base_object.html" title="Base entity that all entities in game are derived from.">BaseObject</a>*<span class="keyword">&gt;</span>(mBody-&gt;GetUserData());</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                  }</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                  mResult-&gt;mHitNormal = normal;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                  mResult-&gt;mHitPos = point;</div>
@@ -195,7 +195,7 @@ $(document).ready(function(){initNavTree('_physics_queries_8h.html','');});
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;         <span class="keyword">static</span> b2World* mWorld;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;         <span class="keyword">static</span> <span class="keywordtype">void</span> SetWorld(b2World* world) {<span class="keywordflow">if</span> (mWorld == NULL) mWorld = world;};</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;         <span class="keyword">static</span> <a class="code" href="class_base_object.html">BaseObject</a>* QueryPoint(<a class="code" href="class_vector2.html">Vector2</a> Point);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;         <span class="keyword">static</span> <a class="code" href="class_base_object.html" title="Base entity that all entities in game are derived from.">BaseObject</a>* QueryPoint(<a class="code" href="class_vector2.html">Vector2</a> Point);</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;         <span class="keyword">static</span> <span class="keywordtype">void</span> TraceLine(<a class="code" href="class_trace_info.html">TraceInfo</a>&amp; info, <a class="code" href="class_trace_result.html">TraceResult</a> *result);</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;};</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>

@@ -23,11 +23,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"class_i_game_state.html#acf87fe0d8db1f5e9b5e570980d7915f6",
-"class_trace_info.html#a43e33c334b0f5e0ac57ee3e78b050597",
-"classpugi_1_1xml__node__iterator.html#a6cab973fe0b30de50bc5299fb33424eb",
-"dir_fbcf171215a99c72cbd8617030b138fc.html",
-"structxpath__stack__data.html#a6821cc444dd65d997467fd3f757f4aff",
+"class_i_game_state.html#abefb04dc90d45b179471881e12cb1de5",
+"class_text.html#ac82ae440952fc1c8e10a16f81a593ce1ac23837cdbf2b0b1c1480d86b476335fb",
+"classpugi_1_1xml__node.html#afa78286431f99a0f35b18185e11e28e8",
+"classxpath__string.html#ac8cab48475690223df758e5ab2368533",
+"structxpath__query__impl.html#ad25499e0c8391005e3a1a60633d631fe",
 ];
 
 var navTreeSubIndices = new Array();

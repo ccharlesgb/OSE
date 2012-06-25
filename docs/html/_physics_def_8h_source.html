@@ -110,13 +110,13 @@ $(document).ready(function(){initNavTree('_physics_def_8h.html','');});
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define PIXELS_PER_METRE 64.f</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define METRES_PER_PIXEL 1/PIXELS_PER_METRE</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">class </span><a class="code" href="class_base_object.html">BaseObject</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">class </span><a class="code" href="class_base_object.html" title="Base entity that all entities in game are derived from.">BaseObject</a>;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
 <div class="line"><a name="l00013"></a><span class="lineno"><a class="code" href="class_collision_info.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_collision_info.html">CollisionInfo</a></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;         <a class="code" href="class_base_object.html">BaseObject</a>* OtherEnt;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;         <a class="code" href="class_base_object.html" title="Base entity that all entities in game are derived from.">BaseObject</a>* OtherEnt;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;         <span class="keywordtype">float</span> Speed;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;};</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
@@ -178,7 +178,7 @@ $(document).ready(function(){initNavTree('_physics_def_8h.html','');});
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;         <span class="keywordtype">float</span> mAngle;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;         BODY_TYPE mType;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;         <a class="code" href="class_base_object.html">BaseObject</a>* mOwner;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;         <a class="code" href="class_base_object.html" title="Base entity that all entities in game are derived from.">BaseObject</a>* mOwner;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;         <a class="code" href="class_physics_def.html">PhysicsDef</a>(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;         ~<a class="code" href="class_physics_def.html">PhysicsDef</a>(<span class="keywordtype">void</span>);</div>
@@ -201,8 +201,8 @@ $(document).ready(function(){initNavTree('_physics_def_8h.html','');});
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;         <span class="keywordtype">void</span> SetAngle(<span class="keywordtype">float</span> a);</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;         <span class="keywordtype">float</span> GetAngle();</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;         <span class="keywordtype">void</span> SetOwner(<a class="code" href="class_base_object.html">BaseObject</a>* own) {mOwner = own;};</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;         <a class="code" href="class_base_object.html">BaseObject</a>* GetOwner() {<span class="keywordflow">return</span> mOwner;};</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;         <span class="keywordtype">void</span> SetOwner(<a class="code" href="class_base_object.html" title="Base entity that all entities in game are derived from.">BaseObject</a>* own) {mOwner = own;};</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;         <a class="code" href="class_base_object.html" title="Base entity that all entities in game are derived from.">BaseObject</a>* GetOwner() {<span class="keywordflow">return</span> mOwner;};</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;         <span class="keywordtype">void</span> SetMass(<span class="keywordtype">float</span> mass);</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;         <span class="keywordtype">float</span> GetMass();</div>
