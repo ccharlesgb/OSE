@@ -4,7 +4,7 @@
 
 Font::Font(const char *path)
 {
-	//mFont = *Resource::RequestFont(path);
+	mFont = *FontResource::GetFont(path);
 };
 
 Font::~Font()
@@ -19,6 +19,14 @@ Text::Text(sf::RenderWindow *rend) : BaseDrawable(rend)
 	mText.setCharacterSize(30);
 }
 
+
+void Text::SetFont(const char *path)
+{
+	sf::Font font = Font(path).mFont;
+	
+	std::cout << &font;
+	mText.setFont(font);
+}
 
 void Text::SetPosition(const Vector2 position)
 {

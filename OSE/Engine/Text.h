@@ -21,6 +21,8 @@ public:
 	 */
 	Font(const char *path);
 	~Font();
+	
+	friend class Text;
 };
 
 /**
@@ -56,6 +58,13 @@ public:
 	 * Draw the text to render window.
 	 */
 	void Draw();
+	
+	/**
+	 * Set the text's font.
+	 *
+	 * @param char path
+	 */
+	void SetFont(const char *path);
 	
 	/**
 	 * Set the text's string.
