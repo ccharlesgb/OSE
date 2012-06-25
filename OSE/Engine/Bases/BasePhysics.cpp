@@ -19,6 +19,20 @@ void BasePhysics::PhysicsInit(BODY_TYPE typ)
 
 void BasePhysics::PhysicsHullFromModel()
 {
+	if (mModelInfo.Loaded)
+	{
+		PolygonShape shape;
+		shape.mDensity = mModelInfo.mDensity;
+		
+		for (int i = 0; i < mModelInfo.mVertexCount; i++) {
+			std::cout << "INSERT \n";
+			shape.AddVertex(mModelInfo.mVertices[i]);
+		}
+		
+		GetPhysObj()->AddPhysicsShape(&shape);
+		return;
+	}
+	
 	//TODO: Add error handling
 	std::string mPath(GetModel());
 	std::string file_name = "images/" + mPath + ".txt";
