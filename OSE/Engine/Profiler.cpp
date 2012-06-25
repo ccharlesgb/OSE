@@ -1,5 +1,6 @@
 #include "Profiler.h"
 #include <iostream>
+#include <cmath>
 
 sf::Clock Profiler::mClock;
 TreeNode* Profiler::mTreeRoot;
