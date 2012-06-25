@@ -33,6 +33,7 @@ private:
 	sf::RenderWindow Window;
 	EntityCreator EntityOverlord;
 	double mLastFrame;
+	double mLastProfilePrint;
 public:
 	static void Cleanup();
 	static StateManager* Instance();

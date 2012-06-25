@@ -4,6 +4,7 @@
 #include "GameGlobals.h"
 #include "Utilities/MathUtils.h"
 #include "InputHandler.h"
+#include "Profiler.h"
 
 StateManager* Inst3 = NULL;
 
@@ -34,6 +35,7 @@ StateManager::StateManager(void)
 	bRunning = true;
 	gGlobals.InFocus = true;
 	InputHandler::SetWindow(&Window);
+	mLastProfilePrint = 0.f;
 }
 
 StateManager::~StateManager(void)
@@ -70,14 +72,28 @@ void StateManager::Run()
 		gGlobals.RealTime = StartFrame;
 		if (mCurrentState != NULL)
 		{
+			Profiler::StartFrame();
+			Profiler::StartRecord(PROFILE_WHOLE_FRAME);
 			if (!mCurrentState->GetPaused())
 			{
+				Profiler::StartRecord(PROFILE_STATE_TICK);
 				mCurrentState->_Tick();
+				Profiler::StopRecord(PROFILE_STATE_TICK);
 			}
+			Profiler::StartRecord(PROFILE_EVENT_HANDLE);
 			HandleEvents();
+			Profiler::StopRecord(PROFILE_EVENT_HANDLE);
+			Profiler::StartRecord(PROFILE_RENDER_FRAME);
 			RENDERER->Draw(mCurrentState);
 			RENDERER->Display();
+			Profiler::StopRecord(PROFILE_RENDER_FRAME);
 			mLastFrame = GetRealTime();
+			Profiler::StopRecord(PROFILE_WHOLE_FRAME);
+			if (mLastProfilePrint + 6.f < gGlobals.RealTime)
+			{
+				Profiler::PrintProfile();
+				mLastProfilePrint = gGlobals.RealTime;
+			}
 		}
 	}
 }

@@ -25,7 +25,7 @@ void TextureResource::Precache(const char *path)
 			Texture = ErrorTex;
 		}
 	}
-	
+	Texture->setSmooth(true);
 	mTextures[path] = Texture;
 }
 

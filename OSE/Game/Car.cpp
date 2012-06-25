@@ -10,12 +10,20 @@
 LINKCLASSTONAME("car", Car)
 
 #define MAX_ANGLE 34.f
+#define STEER_SPEED 70.f
 #define MAX_THROTTLE 100.f
-#define THROTTLE_SPEED 0.3f
+#define THROTTLE_INCREASE_SPEED 10.f
+#define THROTTLE_DECREASE_SPEED 50.f
+#define THROTTLE_DIE_SPEED 25.f
 #define TRAIL_LIFETIME 10.f
 
 #define DEFAULT_BACK_TRACTION 0.1f
 #define DEFAULT_FRONT_TRACTION 0.06f
+
+#define BACK_SKID_SPEED 0.1f
+#define BACK_RESTORE_TRACTION_SPEED 0.1f
+#define FRONT_SKID_SPEED 0.1f
+#define FRONT_RESTORE_TRACTION_SPEED 0.1f
 
 Car::Car(void)
 {
@@ -118,49 +126,6 @@ void Car::Exit(Vector2 position)
 
 void Car::Think()
 {
-	//Car Movement
-	float player_walk_speed = 150.f;
-	float steer_factor = GetPhysObj()->GetLinearVelocity().Length() / 1000.f;
-
-	if (InUse()) //What is our driver pressing?
-	{
-		if (InputHandler::IsKeyPressed(sf::Keyboard::E) && mEnterTime + 0.5f < gGlobals.CurTime)
-		{
-			Exit(GetPos() + Vector2(-20, 0));
-			return;
-		}
-		mDriver->SetPos(GetPos() + GetForward() * -160.f);
-		mDriver->SetAngle(GetAngle());
-	
-		if (InputHandler::IsKeyPressed(sf::Keyboard::W))
-		{
-			mThrottle = ig::Approach(mThrottle, MAX_THROTTLE, THROTTLE_SPEED);
-		}
-		else if (InputHandler::IsKeyPressed(sf::Keyboard::S))
-		{
-			mThrottle = ig::Approach(mThrottle, -MAX_THROTTLE / 3.f, 1.5);
-		}
-		else
-			mThrottle = ig::Approach(mThrottle, 0.f, 0.1f);
-		GetSound("idle")->SetPitch(0.7f + (std::fabs(mThrottle / MAX_THROTTLE) / 2.f));
-
-		if (InputHandler::IsKeyPressed(sf::Keyboard::A))
-		{
-			mWheelAngle = ig::Approach(mWheelAngle, -MAX_ANGLE, 1);
-		}
-		else if (InputHandler::IsKeyPressed(sf::Keyboard::D))
-		{
-			mWheelAngle = ig::Approach(mWheelAngle, MAX_ANGLE, 1);
-		}
-		else
-			mWheelAngle = ig::Approach(mWheelAngle, 0, steer_factor);
-	}
-	else
-	{
-		mThrottle = ig::Approach(mThrottle, 0, 5);
-		mWheelAngle = ig::Approach(mWheelAngle, 0, steer_factor);
-	}
-
 	if (GetPhysObj()->GetLinearVelocity().Length() > 100.f && mLastTrailDrop + 0.000001 < gGlobals.CurTime)
 	{
 		if (mFrontWheelSkid)
@@ -203,6 +168,47 @@ void Car::PhysicsSimulate(float delta)
 	Vector2 Vel = GetVelocity() + GetPos();
 	Vector2 LocalVel = ToLocal(Vel);
 
+	//Controls
+	float steer_restore_factor = LocalVel.y * 0.1f;
+	if (InUse()) //What is our driver pressing?
+	{
+		if (InputHandler::IsKeyPressed(sf::Keyboard::E) && mEnterTime + 0.5f < gGlobals.CurTime)
+		{
+			Exit(GetPos() + Vector2(-20, 0));
+			return;
+		}
+		mDriver->SetPos(GetPos() + GetForward() * -160.f);
+		mDriver->SetAngle(GetAngle());
+	
+		if (InputHandler::IsKeyPressed(sf::Keyboard::W))
+		{
+			mThrottle = ig::Approach(mThrottle, MAX_THROTTLE, THROTTLE_INCREASE_SPEED * delta);
+		}
+		else if (InputHandler::IsKeyPressed(sf::Keyboard::S))
+		{
+			mThrottle = ig::Approach(mThrottle, -MAX_THROTTLE / 3.f, THROTTLE_DECREASE_SPEED  * delta);
+		}
+		else
+			mThrottle = ig::Approach(mThrottle, 0.f, THROTTLE_DIE_SPEED * delta);
+		GetSound("idle")->SetPitch(0.7f + (std::fabs(mThrottle / MAX_THROTTLE) / 2.f));
+
+		if (InputHandler::IsKeyPressed(sf::Keyboard::A))
+		{
+			mWheelAngle = ig::Approach(mWheelAngle, -MAX_ANGLE, STEER_SPEED * delta);
+		}
+		else if (InputHandler::IsKeyPressed(sf::Keyboard::D))
+		{
+			mWheelAngle = ig::Approach(mWheelAngle, MAX_ANGLE, STEER_SPEED * delta);
+		}
+		else
+			mWheelAngle = ig::Approach(mWheelAngle, 0, steer_restore_factor * delta);
+	}
+	else
+	{
+		mThrottle = ig::Approach(mThrottle, 0, THROTTLE_DIE_SPEED * 10.f * delta);
+		mWheelAngle = ig::Approach(mWheelAngle, 0, steer_restore_factor * delta);
+	}
+
 	//Physically simulate front wheels
 	Vector2 LocalVelFront = LocalVel + Vector2(ig::DegToRad(GetAngularVelocity()) * 90.f,0.f);
 
@@ -211,16 +217,16 @@ void Car::PhysicsSimulate(float delta)
 	mLine->mVerts[1] = (GetPos() + GetForward() * 90.f) + (ToGlobal(vel) - GetPos());
 
 	LocalVelFront = LocalVelFront.Rotate(mWheelAngle); //Rotate the local vel according to the wheels
-	if (std::abs(LocalVelFront.x) > 500)
+	if (std::abs(LocalVelFront.x) > 700)
 	{
 		if (!mFrontWheelSkid && !mBackWheelSkid)
 			GetSound("skid")->Play();
-		mFrontWheelTraction = ig::Approach(mFrontWheelTraction, 0.03f, 0.002f);
+		mFrontWheelTraction = ig::Approach(mFrontWheelTraction, 0.03f, FRONT_SKID_SPEED * delta);
 		mFrontWheelSkid = true;
 	}
 	else
 	{
-		mFrontWheelTraction = ig::Approach(mFrontWheelTraction, DEFAULT_FRONT_TRACTION, 0.001f);
+		mFrontWheelTraction = ig::Approach(mFrontWheelTraction, DEFAULT_FRONT_TRACTION, FRONT_RESTORE_TRACTION_SPEED * delta);
 		mFrontWheelSkid = false;
 		if (!mBackWheelSkid)
 			GetSound("skid")->Stop();
@@ -251,12 +257,12 @@ void Car::PhysicsSimulate(float delta)
 		if (!mFrontWheelSkid && !mBackWheelSkid)
 			GetSound("skid")->Play();
 		mBackWheelSkid = true;
-		mBackWheelTraction = ig::Approach(mBackWheelTraction, 0.03f, 0.003f);
+		mBackWheelTraction = ig::Approach(mBackWheelTraction, 0.03f, BACK_SKID_SPEED * delta);
 	}
 	else
 	{
 		mBackWheelSkid = false;
-		mBackWheelTraction = ig::Approach(mBackWheelTraction, DEFAULT_BACK_TRACTION, 0.002f);
+		mBackWheelTraction = ig::Approach(mBackWheelTraction, DEFAULT_BACK_TRACTION, BACK_RESTORE_TRACTION_SPEED * delta);
 		if (!mFrontWheelSkid)
 			GetSound("skid")->Stop();
 	}

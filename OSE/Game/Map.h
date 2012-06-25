@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../Engine/Bases/BaseObject.h"
-#include "../Engine/Render/Sprite.h"
+#include "../Engine/Render/BlendSprite.h"
 
 #define TEXTURE_SIZE 1024
 #define TEXTURE_SCALE 2.f
@@ -11,7 +11,7 @@
 class Map : public BaseObject
 {
 private:
-	Sprite* mBackground;
+	BlendSprite* mBackground;
 public:
 	Map(void);
 	~Map(void);

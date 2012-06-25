@@ -7,7 +7,6 @@ class Sprite : public BaseDrawable
 {
 private:
 	sf::Sprite mSprite;
-	sf::Shader *mShader;
 public:
 	Sprite(sf::RenderWindow *rend);
 	~Sprite(void);

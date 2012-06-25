@@ -45,6 +45,8 @@
     <ClCompile Include="Engine\Text.cpp" />
     <ClCompile Include="Game\Car.cpp" />
     <ClCompile Include="Engine\Model.cpp" />
+    <ClCompile Include="Engine\Render\BlendSprite.cpp" />
+    <ClCompile Include="Engine\Profiler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Bases\BaseObject.h" />
@@ -86,6 +88,8 @@
     <ClInclude Include="Engine\Text.h" />
     <ClInclude Include="Game\Car.h" />
     <ClInclude Include="Engine\Model.h" />
+    <ClInclude Include="Engine\Render\BlendSprite.h" />
+    <ClInclude Include="Engine\Profiler.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Utilities\Matrix3.inl" />

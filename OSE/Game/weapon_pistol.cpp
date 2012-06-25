@@ -40,7 +40,7 @@ void weapon_pistol::ShootBullet()
 	TraceInfo info;
 	info.mStartPoint = GetPos() + (GetForward() * -10.f);
 	float range = 2000;
-	float spread = 0.1f; //In radians
+	float spread = 0.07f; //In radians
 	info.mEndPoint = GetPos() + (GetForward() * range) + (GetRight() * ig::Random(-spread,spread) * range);
 	TraceResult TraceRes;
 	PhysicsQueries::TraceLine(info, &TraceRes);
@@ -65,7 +65,6 @@ void weapon_pistol::PrimaryFire(BaseObject* ent, VariantMap &Data)
 	if (me->GetNextPrimaryFire() < gGlobals.CurTime)
 	{
 		me->EmitSound("shot");
-		me->ShootBullet();
 		me->ShootBullet();
 		me->mLastShot = (float)gGlobals.CurTime;
 		me->SetNextPrimaryFire((float)gGlobals.CurTime + 0.1f);

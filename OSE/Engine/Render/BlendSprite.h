@@ -3,24 +3,27 @@
 #include <SFML/Graphics.hpp>
 #include "BaseDrawable.h"
 
-class Sprite : public BaseDrawable
+class BlendSprite : public BaseDrawable
 {
 private:
-	sf::Sprite mSprite;
+	sf::Sprite mSprite1;
+	sf::Sprite mSprite2;
 	sf::Shader *mShader;
+	sf::Texture mBlendTexture;
 public:
-	Sprite(sf::RenderWindow *rend);
-	~Sprite(void);
+	BlendSprite(sf::RenderWindow *rend);
+	~BlendSprite(void);
 	Vector2 GetSize()
 	{
 		Vector2 size;
-		size.x = (float)mSprite.getTexture()->getSize().x;
-		size.y = (float)mSprite.getTexture()->getSize().y;
+		size.x = (float)mSprite1.getTexture()->getSize().x;
+		size.y = (float)mSprite1.getTexture()->getSize().y;
 		return size;
 	};
-	Vector2 GetTextureCentre() {return Vector2(mSprite.getTexture()->getSize().x / 2, mSprite.getTexture()->getSize().y / 2);};
+	Vector2 GetTextureCentre() {return Vector2(mSprite1.getTexture()->getSize().x / 2, mSprite1.getTexture()->getSize().y / 2);};
 	void Draw();
-	void SetTexture(const char* path);
-	void SetColour(Colour col) {mSprite.setColor(sf::Color(col.r, col.g,col.b,col.a));};
+	void SetTexture1(const char* path);
+	void SetTexture2(const char* path);
+	void SetColour(Colour col) {mSprite1.setColor(sf::Color(col.r, col.g,col.b,col.a));};
 };
 

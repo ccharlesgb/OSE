@@ -10,6 +10,7 @@
 #include "../Engine/AudioEnvironment.h"
 #include "../Engine/Utilities/XMLParser.h"
 #include "../Engine/AudioEnvironment.h"
+#include "../Engine/Profiler.h"
 
 #define GRAVITY_STRENGTH 500
 
@@ -69,7 +70,7 @@ void MainGameState::Initialize()
 	car->SetPos(Vector2(100, 0));
 
 	BaseObject* crate;
-	int crate_count = 0;
+	int crate_count = 150;
 	float map_size = 8000.f;
 	for (int i=0; i < crate_count; i++)
 	{
@@ -77,9 +78,8 @@ void MainGameState::Initialize()
 		for (int i=0; i < 4; i++)
 		{
 			crate = CreateEntity("ent_prop");
-			crate->SetModel("crate", ig::Random(0.5f,0.7f));
+			crate->SetModel("crate2", ig::Random(0.7f,1.f));
 			crate->SetPos(pos + Vector2::Random(-20.f,20.f));
-			//crate->Spawn();
 		}
 	}
 }
@@ -124,6 +124,7 @@ void MainGameState::Tick()
 
 	if (mLastPhysics == -1)
 		mLastPhysics = gGlobals.RealTime;
+	Profiler::StartRecord(PROFILE_PHYSICS_STEP);
 	if (mLastPhysics + GetDelta() < gGlobals.CurTime)
 	{
 		float delta = (float)gGlobals.CurTime - mLastPhysics;
@@ -131,6 +132,7 @@ void MainGameState::Tick()
 
 		mLastPhysics = gGlobals.CurTime;
 	}
+	Profiler::StopRecord(PROFILE_PHYSICS_STEP);
 }
 
 /*
@@ -209,7 +211,7 @@ void MainGameState::OnMouseButtonPressed(sf::Mouse::Button Button, bool Pressed)
 			for (int i=0; i<4; i++)
 			{
 				crate = CreateEntity("ent_prop");
-				crate->SetModel("crate", ig::Random(0.5f,0.7f));
+				crate->SetModel("crate2", ig::Random(0.5f,0.7f));
 				crate->SetPos(InputHandler::GetMousePosWorld());
 			}
 		}

@@ -39,7 +39,7 @@ Player::~Player(void)
 void Player::Draw()
 {
 	DrawModel();
-	mText->Draw();
+	//mText->Draw();
 }
 
 void Player::GiveWeapon(BaseObject* ent)
