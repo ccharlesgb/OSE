@@ -265,5 +265,6 @@ void Car::PhysicsSimulate(float delta)
 
 	//Air Resistance
 	float Drag = (LocalVel.y * LocalVel.y) * 0.00001f;
-	ApplyForceCenter((ToGlobal(Vector2(0.f,-Drag)) - GetPos()) * GetPhysObj()->GetMass());
+	Vector2 vec = Vector2(0.f, -Drag);
+	ApplyForceCenter((ToGlobal(vec) - GetPos()) * GetPhysObj()->GetMass());
 }
