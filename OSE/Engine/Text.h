@@ -5,27 +5,6 @@
 #include "Utilities/Vector2.h"
 
 /**
- * Wrapper class for sf::Font.
- *
- * @ingroup engine
- */
-class Font
-{
-private:
-	sf::Font mFont; ///< sf::Font to use.
-public:
-	/**
-	 * Default constructor.
-	 *
-	 * @param char Path to font
-	 */
-	Font(const char *path);
-	~Font();
-	
-	friend class Text;
-};
-
-/**
  * Wrapper class for sf::Text
  *
  * @ingroup engine
