@@ -110,7 +110,7 @@ void BaseObject::SetModel(const char* path, float scale)
 
 	//mModel = mModelInfo.mTexturePath;
 	//mScale = Vector2(mModelInfo.mScale,mModelInfo.mScale);
-		
+	//
 	mIsRenderable = true;
 	mModel = path;
 	mScale = Vector2(scale,scale);
