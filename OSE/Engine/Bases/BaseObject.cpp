@@ -107,13 +107,13 @@ void BaseObject::SetModel(const char* path)
 void BaseObject::SetModel(const char* path, float scale)
 {
 	mSprite = new Sprite(gGlobals.RenderWindow);
-	if (mModelInfo.LoadFromFile(path))
+	/*if (mModelInfo.LoadFromFile(path))
 	{
 		mModel = mModelInfo.mTexturePath;
 		mScale = Vector2(mModelInfo.mScale, mModelInfo.mScale);
 		mSprite->SetTexture(mModelInfo.mTexturePath);
 	}
-	else
+	else*/
 	{
 		mModel = path;
 		mScale = Vector2(scale, scale);
