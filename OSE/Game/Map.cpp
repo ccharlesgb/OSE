@@ -6,11 +6,14 @@
 
 LINKCLASSTONAME("world", Map)
 
+#define ARRAY_SIZE 8
+
 Map::Map(void)
 {
 	RenderInit();
 	SetDrawOrder(RENDERGROUP_BACKGROUND);
-	
+	int map_size = ARRAY_SIZE * TEXTURE_SIZE * 2;
+	SetRenderBounds(Vector2_Rect(Vector2(map_size, map_size) * -0.5f, Vector2(map_size, map_size)));
 	mBackground = new BlendSprite(gGlobals.RenderWindow);
 	mBackground->SetTexture1("grass2");
 	mBackground->SetTexture2("mud1");
@@ -34,10 +37,9 @@ void Map::Spawn()
 void Map::Draw()
 {
 	Profiler::StartRecord(PROFILE_RENDER_MAP);
-	int arr_size = 5;
-	for (int x=-arr_size;x <= arr_size; x++)
+	for (int x=-ARRAY_SIZE / 2;x <= ARRAY_SIZE / 2; x++)
 	{
-		for (int y=-arr_size;y <= arr_size; y++)
+		for (int y=-ARRAY_SIZE / 2; y <= ARRAY_SIZE / 2; y++)
 		{
 			mBackground->SetPosition(Vector2(x * TEXTURE_SIZE, y * TEXTURE_SIZE));
 			mBackground->Draw();

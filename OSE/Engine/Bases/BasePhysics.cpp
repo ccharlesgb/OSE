@@ -71,7 +71,7 @@ void BasePhysics::PhysicsHullFromModel()
 
 void BasePhysics::Tick()
 {
-	if (mPhysObj != NULL)
+	if (mPhysObj != NULL && mPhysObj->IsAwake())
 	{
 		SetPos(mPhysObj->GetPos());
 		SetAngle(mPhysObj->GetAngle());

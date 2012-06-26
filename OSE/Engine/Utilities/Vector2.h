@@ -51,6 +51,10 @@ public:
 
 class Vector2_Rect
 {
+public:
+	Vector2_Rect() {};
+	Vector2_Rect(Vector2 pos, Vector2 size) {Position = pos; Size = size;};
+	Vector2_Rect(const Vector2_Rect& rec) {Position = rec.Position; Size = rec.Size;};
 	Vector2 Position; //Top Left Corner
 	Vector2 Size; //How it extends to the right and below
-}
+};

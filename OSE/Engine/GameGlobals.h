@@ -21,6 +21,7 @@ public:
 	DebugDraw *PhysicsDebugDraw;
 	EntityListGlobal gEntList;
 	sf::RenderWindow* RenderWindow;
+	bool EnableRenderCulling;
 };
 
 extern GameGlobals gGlobals;

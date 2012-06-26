@@ -69,6 +69,8 @@ private:
 	Colour mColour; //The colour of the entity, only affects Model automatically
 	Sprite* mSprite; //The sprite object used in DrawModel/SetModel etc
 	bool mNoDraw; //Enable disable calling of Draw();
+	Vector2_Rect mRenderBounds; //The bounding box of when we should render (LOCAL SPACE)
+	Vector2_Rect mAABB;
 
 	BaseObject *mParent; //Move relative to this entity
 	Vector2 mParentRelativePos; //The position that we should force to maintain with parent
@@ -78,6 +80,7 @@ protected:
 	PhysicsDef *mPhysObj; //Pointer to the physics object for this entity (NOT NECCESSARILY VALID)
 	Matrix3 mMatrix; //Transformation matrix used by ToGlobal and ToLocal
 	bool mMatrixNeedsUpdate; //If the matrix needs to be updated (Position/rotation etc has changed)
+	bool mAABBNeedsUpdate;
 
 	//MODEL
 	const char* mModel; //Model path (Sprite image)
@@ -119,6 +122,11 @@ public:
 	std::string GetClassName() {return mClassName;};
 
 	/**
+	 * Flags that the matrix and AABB need updating
+	 */
+	void SetTransformDirty() {mMatrixNeedsUpdate = true; mAABBNeedsUpdate = true;};
+
+	/**
 	 * Returns the transformation matrix of the entity
 	 */
 	Matrix3 GetMatrix();
@@ -157,8 +165,8 @@ public:
 	* exists)
 	* @param p The position to set the entity to
 	*/
-	virtual void SetPos(Vector2 p) {mPosition = p; mMatrixNeedsUpdate = true;};
-	void SetPos(float x, float y) {SetPos(Vector2(x,y)); mMatrixNeedsUpdate = true;};
+	virtual void SetPos(Vector2 p) {mPosition = p; SetTransformDirty();};
+	void SetPos(float x, float y) {SetPos(Vector2(x,y));};
 	/**
 	* Return the position of the entity
 	*/
@@ -169,7 +177,7 @@ public:
 	* rotate around this point
 	* @param origin The origin of the entity in LOCAL space
 	*/
-	void SetOrigin(Vector2 origin) {mOrigin = origin; mMatrixNeedsUpdate = true;};
+	void SetOrigin(Vector2 origin) {mOrigin = origin; SetTransformDirty();};
 	/**
 	* Get the origin of the entity returns the LOCAL origin.
 	*/
@@ -178,7 +186,7 @@ public:
 	* Set the angle of the entity
 	* @param angle The desired angle in degrees
 	*/
-	virtual void SetAngle(float angle) {mAngle = angle; mMatrixNeedsUpdate = true;};
+	virtual void SetAngle(float angle) {mAngle = angle; SetTransformDirty();};
 	/**
 	* Get the angle of the entity in degrees
 	*/
@@ -293,6 +301,12 @@ public:
 	Colour GetColour() {return mColour;};
 	void SetNoDraw(bool nodraw) {mNoDraw = nodraw;};
 	bool GetNoDraw() {return mNoDraw;};
+	void SetRenderBounds(Vector2_Rect bounds) {mRenderBounds = bounds;};
+	Vector2_Rect GetRenderBounds() {return mRenderBounds;};
+	/**
+	* Return the axis-aligned bounding box of the entity in worldspace
+	*/
+	Vector2_Rect GetAABB();
 
 	//IO
 	void Fire(const char* Name, VariantMap &Data);

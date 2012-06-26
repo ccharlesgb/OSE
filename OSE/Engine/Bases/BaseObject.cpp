@@ -62,6 +62,34 @@ Vector2 BaseObject::ToLocal(Vector2 &point)
 	return GetMatrix().GetInverse().Transform(point.SF());
 }
 
+Vector2_Rect BaseObject::GetAABB()
+{
+	if (mAABBNeedsUpdate)
+	{
+		Vector2 TL, TR, BL, BR;
+		Vector2_Rect bounds = GetRenderBounds();
+		TL = ToGlobal(bounds.Position);
+		TR = ToGlobal(Vector2(bounds.Position.x + bounds.Size.x, bounds.Position.y));
+		BL = ToGlobal(Vector2(bounds.Position.x, bounds.Position.y + bounds.Size.y));
+		BR = ToGlobal(bounds.Position + bounds.Size);
+
+		Vector2 AABB_TL, AABB_BR, AABB_TR, AABB_BL;
+
+		AABB_TL.x = std::min(TL.x, std::min(TR.x, std::min(BL.x, BR.x))); //OH GOD THIS IS HORRIBLE
+		AABB_TL.y = std::max(TL.y, std::max(TR.y, std::max(BL.y, BR.y)));
+		AABB_BR.x = std::max(TL.x, std::max(TR.x, std::max(BL.x, BR.x))); //OH GOD THIS IS HORRIBLE
+		AABB_BR.y = std::min(TL.y, std::min(TR.y, std::min(BL.y, BR.y)));
+		AABB_TR.x = AABB_BR.x;
+		AABB_TR.y = AABB_TL.y;
+		AABB_BL.x = AABB_TL.x;
+		AABB_BL.y = AABB_BR.y;
+
+		mAABB = Vector2_Rect(AABB_BL,AABB_TR-AABB_BL);
+		mAABBNeedsUpdate = false;
+	}
+	return mAABB;
+}
+
 void BaseObject::SetParent(BaseObject* parent)
 {
 	if (parent == NULL || parent == this)
@@ -119,7 +147,7 @@ void BaseObject::SetModel(const char* path, float scale)
 		mScale = Vector2(scale, scale);
 		mSprite->SetTexture(path);
 	}
-
+	SetRenderBounds(Vector2_Rect(mSprite->GetSize() * -0.5f, mSprite->GetSize()));
 	mIsRenderable = true;
 	mSprite->SetScale(scale);
 	SetOrigin(Vector2());

@@ -23,6 +23,7 @@ Renderer::Renderer(void)
 {
 	//mLightSystem = new ltbl::LightSystem();
 	gGlobals.gEntList.RegisterListener(this);
+	gGlobals.EnableRenderCulling = true;
 }
 
 Renderer::~Renderer(void)
@@ -114,35 +115,62 @@ void Renderer::OnEntityRemoved(BaseObject* ent)
 	}
 }
 
-#define GRID_SIZE 256
+Vector2 NearestGrid(Vector2 pos, int grid_size_x , int grid_size_y)
+{
+	Vector2 result;
+	result.x = std::floor((pos.x / grid_size_x) + 0.5f);
+	result.y = std::floor((pos.y / grid_size_y) + 0.5f);
+	return result;
+}
 
 void Renderer::UpdateOnScreenList()
 {
-	Profiler::StartRecord(PROFILE_RENDER_PURGE);
 	OnScreenEnts.ClearDontDelete();
+	if (!gGlobals.EnableRenderCulling)
+	{
+		BaseObject* CurEnt = Renderables.FirstEnt();
+		while(CurEnt != NULL)
+		{
+			OnScreenEnts.Append(CurEnt);
+			CurEnt = Renderables.NextEnt();
+		}
+		return;
+	}
+
 	BaseObject* CurEnt = Renderables.FirstEnt();
+	int GridsOnScreen = 1;
+	int GRID_SIZE_X = gGlobals.GameWidth / GridsOnScreen;
+	int GRID_SIZE_Y = gGlobals.GameHeight / GridsOnScreen;
 	while(CurEnt != NULL)
 	{
 		if (!CurEnt->GetNoDraw())
 		{
-			Vector2 EntPos = CurEnt->GetPos();
-			Vector2 Quadrant; //Quantise the position a grid size TEXTURE_SIZE
-			Quadrant.x = std::floor((EntPos.x / GRID_SIZE) + 0.5f) - 0.5f;
-			Quadrant.y = std::floor((EntPos.y / GRID_SIZE) + 0.5f) - 0.5f;
+			Vector2_Rect ENT_AABB = CurEnt->GetAABB();
+			Vector2_Rect ENT_AABB_SCREENSPACE;
+			ENT_AABB_SCREENSPACE.Position = ENT_AABB.Position - sCamera::GetCentre();
+			ENT_AABB_SCREENSPACE.Size = ENT_AABB.Size; // / sCamera::GetZoom();
 
-			Vector2 CamPos = sCamera::GetCentre();
-			Vector2 ScreenQuadrant;
-			ScreenQuadrant.x = std::floor((CamPos.x / GRID_SIZE) + 0.5f) - 0.5f;
-			ScreenQuadrant.y = std::floor((CamPos.y / GRID_SIZE) + 0.5f) - 0.5f;
+			Vector2 Bottom_Left_Quadrant = NearestGrid(ENT_AABB_SCREENSPACE.Position, GRID_SIZE_X, GRID_SIZE_Y);
+			Vector2 Top_Right_Quadrant	  = NearestGrid(ENT_AABB_SCREENSPACE.Position + ENT_AABB_SCREENSPACE.Size, GRID_SIZE_X, GRID_SIZE_Y);
+	
+			//The size of the screen in our quantised coordinate system
+			Vector2 SCREEN_BOTTOM_LEFT = Vector2(-GridsOnScreen, -GridsOnScreen);
+			Vector2 SCREEN_TOP_RIGHT = Vector2(GridsOnScreen, GridsOnScreen);
 
-			if (std::abs(ScreenQuadrant.x - Quadrant.x) < 3 && std::abs(ScreenQuadrant.y - Quadrant.y) < 3)
+			//Hideous Rectanlge intersection algorithm.
+			//Check if the rectangles AABB is overlapping with the screens AABB
+			if (!(SCREEN_BOTTOM_LEFT.x > Top_Right_Quadrant.x || SCREEN_TOP_RIGHT.x < Bottom_Left_Quadrant.x ||
+				SCREEN_TOP_RIGHT.y < Bottom_Left_Quadrant.y || SCREEN_BOTTOM_LEFT.y > Top_Right_Quadrant.y))
 			{
 				OnScreenEnts.Append(CurEnt);
+			}
+			else
+			{
+				//std::cout << "CULLING: " << CurEnt->GetClassName() << "\n";
 			}
 		}
 		CurEnt = Renderables.NextEnt();
 	}
-	Profiler::StopRecord(PROFILE_RENDER_PURGE);
 }
 
 void Renderer::Draw(IGameState *State)
@@ -155,8 +183,11 @@ void Renderer::Draw(IGameState *State)
 
 	mRender->setView(mView);
 
-	UpdateOnScreenList();//Update the OnScreenEntityList
+	Profiler::StartRecord(PROFILE_RENDER_PURGE);
+	UpdateOnScreenList(); // Update the OnScreenEntityList
+	Profiler::StopRecord(PROFILE_RENDER_PURGE);
 
+	Profiler::StartRecord(PROFILE_RENDER_DRAWCALL);
 	BaseObject* CurEnt = OnScreenEnts.FirstEnt();
 	while(CurEnt != NULL)
 	{
@@ -166,8 +197,11 @@ void Renderer::Draw(IGameState *State)
 		}
 		CurEnt = OnScreenEnts.NextEnt();
 	}
+	Profiler::StopRecord(PROFILE_RENDER_DRAWCALL);
+
 	//mLightSystem->RenderLights();
 	//mLightSystem->RenderLightTexture();
+
 	if (InputHandler::IsKeyPressed(sf::Keyboard::F3))
 		State->DrawDebugData();
 	mRender->setView(mRender->getDefaultView());

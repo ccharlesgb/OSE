@@ -1,6 +1,7 @@
 #include "Profiler.h"
 #include <iostream>
 #include <cmath>
+#include "GameGlobals.h"
 
 sf::Clock Profiler::mClock;
 TreeNode* Profiler::mTreeRoot;
@@ -9,6 +10,7 @@ TreeNode* Profiler::mLastStart;
 void Profiler::PrintProfile()
 {
 #if PROFILER_ENABLED
+	std::cout << "--Entity Count: " << gGlobals.gEntList.GetSize() << "-------------------------------------------------\n";
 	TreeNode* CurNode = mTreeRoot;
 	PrintNode(mTreeRoot,0);
 	mLastStart = NULL;
@@ -46,6 +48,9 @@ const char* Profiler::EnumName(ProfileType type)
 		break;
 	case PROFILE_RENDER_PURGE:
 		name = "RENDER CULL ";
+		break;
+	case PROFILE_RENDER_DRAWCALL:
+		name = "DRAW CALLS  ";
 		break;
 	default:
 		name = "ERROR       ";

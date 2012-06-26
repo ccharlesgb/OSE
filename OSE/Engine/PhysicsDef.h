@@ -112,6 +112,9 @@ public:
 
 	void AddPhysicsShape(PolygonShape* hull);
 	void AddPhysicsShape(CircleShape* hull);
+	
+	void SetAwake(bool awake) {mPhysObj->SetAwake(awake);};
+	bool IsAwake() {return mPhysObj->IsAwake();};
 
 	void SetLinearVelocity(Vector2 vel)
 	{

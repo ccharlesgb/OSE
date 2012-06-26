@@ -70,8 +70,8 @@ void MainGameState::Initialize()
 	car->SetPos(Vector2(100, 0));
 
 	BaseObject* crate;
-	int crate_count = 150;
-	float map_size = 8000.f;
+	int crate_count = 3500;
+	float map_size = 12000.f;
 	for (int i=0; i < crate_count; i++)
 	{
 		Vector2 pos = Vector2::Random(-map_size,map_size);
@@ -185,6 +185,14 @@ void MainGameState::OnKeyPressed(sf::Keyboard::Key Key, bool Pressed)
 	if (Pressed && Key == sf::Keyboard::L)
 	{
 		sAudioEnvironment::SetMasterVolume(sAudioEnvironment::GetMasterVolume() - 10.f);
+	}
+	if (Pressed && Key == sf::Keyboard::F2)
+	{
+		gGlobals.EnableRenderCulling = !gGlobals.EnableRenderCulling;
+		std::string state = "ENABLED";
+		if (!gGlobals.EnableRenderCulling)
+			state = "DISABLED";
+		std::cout << "RENDER CULLING " << state << "\n";
 	}
 }
 

@@ -86,6 +86,11 @@ void Car::Draw()
 
 	DrawModel();
 
+	Vector2_Rect AABB = GetAABB();
+
+	mLine->mVerts[0] = AABB.Position;
+	mLine->mVerts[1] = AABB.Position + AABB.Size;
+
 	mLine->Draw();
 	mLine2->Draw();
 	mLine3->Draw();
@@ -125,7 +130,7 @@ void Car::Exit(Vector2 position)
 }
 
 void Car::Think()
-{
+{	
 	if (GetPhysObj()->GetLinearVelocity().Length() > 100.f && mLastTrailDrop + 0.000001 < gGlobals.CurTime)
 	{
 		if (mFrontWheelSkid)
@@ -212,10 +217,6 @@ void Car::PhysicsSimulate(float delta)
 	//Physically simulate front wheels
 	Vector2 LocalVelFront = LocalVel + Vector2(ig::DegToRad(GetAngularVelocity()) * 90.f,0.f);
 
-	mLine->mVerts[0] = GetPos() + GetForward() * 90.f;
-	Vector2 vel = LocalVelFront / 10.f;
-	mLine->mVerts[1] = (GetPos() + GetForward() * 90.f) + (ToGlobal(vel) - GetPos());
-
 	LocalVelFront = LocalVelFront.Rotate(mWheelAngle); //Rotate the local vel according to the wheels
 	if (std::abs(LocalVelFront.x) > 700)
 	{
@@ -271,10 +272,6 @@ void Car::PhysicsSimulate(float delta)
 
 	mLine4->mVerts[0] = GetPos() + GetForward() * -90.f;
 	mLine4->mVerts[1] = (GetPos() + GetForward() * -90.f) + BackForce * 2.f;
-
-	mLine2->mVerts[0] = GetPos() + GetForward() * -90.f;
-	Vector2 velBack = LocalVelBack / 10.f;
-	mLine2->mVerts[1] = (GetPos() + GetForward() * -90.f) + (ToGlobal(velBack) - GetPos());
 
 	ApplyForce(BackForce * GetPhysObj()->GetMass(), GetPos() + GetForward() * -90.f);
 
