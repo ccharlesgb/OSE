@@ -148,7 +148,7 @@ void MainGameState::OnEvent(sf::Event &Event)
 		float fac = 1.f;
 		fac = 1.f + (del / 5.f);
 		float zoom = sCamera::GetZoom() * fac;
-		zoom = ig::Limit(zoom, 1, 3.f);
+		zoom = ig::Limit(zoom, 1, 8.f);
 		sCamera::SetZoom(zoom);
 	}
 }

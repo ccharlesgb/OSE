@@ -1,12 +1,13 @@
 #include "BlendSprite.h"
 #include "../Resource.h"
+#include "../GameGlobals.h"
 
 BlendSprite::BlendSprite(sf::RenderWindow *rend) : BaseDrawable(rend)
 {
 	mShader= new sf::Shader();
 	mShader->loadFromFile("shaders/blend.frag", sf::Shader::Fragment);
 
-	mBlendTexture.loadFromFile("images/blend_channel.png");
+	mBlendTexture.loadFromFile("images/blend_channel_debug.png");
 
 
 
@@ -23,12 +24,12 @@ void BlendSprite::Draw()
 	state.shader = mShader;
 	mShader->setParameter("blend_channel", mBlendTexture);
 	mShader->setParameter("other_texture", *mSprite2.getTexture());
-	Vector2 GridPos = ig::NearestGrid(GetPosition(), 1024,1024);
-	GridPos.x = std::fmod(GridPos.x, 2) + 1;
-	GridPos.y = std::fmod(GridPos.y, 2) + 1;;
-	//std::cout << GridPos.ToString() << "\n";
+	int blend_scale = 8;
+	Vector2 GridPos = ig::NearestGrid(GetPosition(), 1024, 1024);
+	mShader->setParameter("scale", blend_scale);
 	mShader->setParameter("pos_x", GridPos.x);
 	mShader->setParameter("pos_y", GridPos.y);
+	std::cout << GridPos.ToString() << "\n";
 	if (mDirtyTransform)
 	{
 		mSprite1.setPosition(GameToSFML(GetPosition()).SF());
@@ -50,12 +51,10 @@ void BlendSprite::SetTexture1(const char* path)
 	mSprite1.setTexture(*TextureResource::GetTexture(path));
 	//mSprite1.getTexture()->setSmooth(true);
 	SetPosition(Vector2(0,0));
-	SetOrigin(GetTextureCentre()); //By default origin at middle of texture
 }
 
 void BlendSprite::SetTexture2(const char* path)
 {
 	mSprite2.setTexture(*TextureResource::GetTexture(path));
 	SetPosition(Vector2(0,0));
-	SetOrigin(GetTextureCentre()); //By default origin at middle of texture
 }

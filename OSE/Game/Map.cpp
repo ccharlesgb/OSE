@@ -37,9 +37,9 @@ void Map::Spawn()
 void Map::Draw()
 {
 	Profiler::StartRecord(PROFILE_RENDER_MAP);
-	for (int x=-ARRAY_SIZE / 2;x <= ARRAY_SIZE / 2; x++)
+	for (int x=-4;x < ARRAY_SIZE; x++)
 	{
-		for (int y=-ARRAY_SIZE / 2; y <= ARRAY_SIZE / 2; y++)
+		for (int y=-4; y < ARRAY_SIZE; y++)
 		{
 			mBackground->SetPosition(Vector2(x * TEXTURE_SIZE, y * TEXTURE_SIZE));
 			mBackground->Draw();
