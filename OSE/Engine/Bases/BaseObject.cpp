@@ -66,19 +66,21 @@ Vector2_Rect BaseObject::GetAABB()
 {
 	if (mAABBNeedsUpdate)
 	{
-		Vector2 TL, TR, BL, BR;
-		Vector2_Rect bounds = GetRenderBounds();
-		TL = ToGlobal(bounds.Position);
+		Vector2 TL, TR, BL, BR; // The four coordinate of an OOBB
+		Vector2_Rect bounds = GetRenderBounds(); // Render bounds in local space
+		TL = ToGlobal(bounds.Position); // Convert the render bounds to global space
 		TR = ToGlobal(Vector2(bounds.Position.x + bounds.Size.x, bounds.Position.y));
 		BL = ToGlobal(Vector2(bounds.Position.x, bounds.Position.y + bounds.Size.y));
 		BR = ToGlobal(bounds.Position + bounds.Size);
 
-		Vector2 AABB_TL, AABB_BR, AABB_TR, AABB_BL;
+		Vector2 AABB_TL, AABB_BR, AABB_TR, AABB_BL; // The coordinates of the AABB
 
-		AABB_TL.x = std::min(TL.x, std::min(TR.x, std::min(BL.x, BR.x))); //OH GOD THIS IS HORRIBLE
-		AABB_TL.y = std::max(TL.y, std::max(TR.y, std::max(BL.y, BR.y)));
-		AABB_BR.x = std::max(TL.x, std::max(TR.x, std::max(BL.x, BR.x))); //OH GOD THIS IS HORRIBLE
-		AABB_BR.y = std::min(TL.y, std::min(TR.y, std::min(BL.y, BR.y)));
+		AABB_TL.x = std::min(TL.x, std::min(TR.x, std::min(BL.x, BR.x))); // Find the minimum X value of the corners
+		AABB_TL.y = std::max(TL.y, std::max(TR.y, std::max(BL.y, BR.y))); // Find the maximum Y value of the corners
+		AABB_BR.x = std::max(TL.x, std::max(TR.x, std::max(BL.x, BR.x))); // Find the maximum X value of the corners
+		AABB_BR.y = std::min(TL.y, std::min(TR.y, std::min(BL.y, BR.y))); // Find the minimum Y vaule of the corners
+		// Only found the Top-Left and Bottom-Right corners, but from these
+		// We can deduce the Top-Right and Bottom-Left
 		AABB_TR.x = AABB_BR.x;
 		AABB_TR.y = AABB_TL.y;
 		AABB_BL.x = AABB_TL.x;
