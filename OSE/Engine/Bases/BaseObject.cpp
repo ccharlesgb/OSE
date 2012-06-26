@@ -25,6 +25,7 @@ BaseObject::BaseObject(void)
 	mNextThink = gGlobals.CurTime;
 	mLastThink = gGlobals.CurTime;
 	mShouldThink = true;
+	SetTransformDirty();
 }
 
 BaseObject::~BaseObject(void)

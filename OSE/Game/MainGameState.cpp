@@ -70,7 +70,7 @@ void MainGameState::Initialize()
 	car->SetPos(Vector2(100, 0));
 
 	BaseObject* crate;
-	int crate_count = 3500;
+	int crate_count = 350;
 	float map_size = 12000.f;
 	for (int i=0; i < crate_count; i++)
 	{
@@ -111,6 +111,7 @@ NOTES	: Loop through all physics entities and apply simulated gravity
 */
 void MainGameState::Tick()
 {
+	Profiler::StartRecord(PROFILE_PHYSICS_STEP);
 	BaseObject* CurEnt = gGlobals.gEntList.FirstEnt();
 	while(gGlobals.gEntList.CurrentIsValid())
 	{
@@ -124,7 +125,6 @@ void MainGameState::Tick()
 
 	if (mLastPhysics == -1)
 		mLastPhysics = gGlobals.RealTime;
-	Profiler::StartRecord(PROFILE_PHYSICS_STEP);
 	if (mLastPhysics + GetDelta() < gGlobals.CurTime)
 	{
 		float delta = (float)gGlobals.CurTime - mLastPhysics;

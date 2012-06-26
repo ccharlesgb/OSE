@@ -24,4 +24,6 @@ namespace ig
 	Vector2 GameToSFML(Vector2 Pos);
 	Vector2 SFMLToGame(Vector2 Pos);
 	Vector2 AngleToVector(float angle);
+
+	Vector2 NearestGrid(Vector2 pos, int grid_size_x , int grid_size_y);
 }

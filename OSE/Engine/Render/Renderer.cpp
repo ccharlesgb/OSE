@@ -115,14 +115,6 @@ void Renderer::OnEntityRemoved(BaseObject* ent)
 	}
 }
 
-Vector2 NearestGrid(Vector2 pos, int grid_size_x , int grid_size_y)
-{
-	Vector2 result;
-	result.x = std::floor((pos.x / grid_size_x) + 0.5f);
-	result.y = std::floor((pos.y / grid_size_y) + 0.5f);
-	return result;
-}
-
 void Renderer::UpdateOnScreenList()
 {
 	OnScreenEnts.ClearDontDelete();
@@ -150,8 +142,8 @@ void Renderer::UpdateOnScreenList()
 			ENT_AABB_SCREENSPACE.Position = ENT_AABB.Position - sCamera::GetCentre();
 			ENT_AABB_SCREENSPACE.Size = ENT_AABB.Size; // / sCamera::GetZoom();
 
-			Vector2 Bottom_Left_Quadrant = NearestGrid(ENT_AABB_SCREENSPACE.Position, GRID_SIZE_X, GRID_SIZE_Y);
-			Vector2 Top_Right_Quadrant	  = NearestGrid(ENT_AABB_SCREENSPACE.Position + ENT_AABB_SCREENSPACE.Size, GRID_SIZE_X, GRID_SIZE_Y);
+			Vector2 Bottom_Left_Quadrant = ig::NearestGrid(ENT_AABB_SCREENSPACE.Position, GRID_SIZE_X, GRID_SIZE_Y);
+			Vector2 Top_Right_Quadrant	  = ig::NearestGrid(ENT_AABB_SCREENSPACE.Position + ENT_AABB_SCREENSPACE.Size, GRID_SIZE_X, GRID_SIZE_Y);
 	
 			//The size of the screen in our quantised coordinate system
 			Vector2 SCREEN_BOTTOM_LEFT = Vector2(-GridsOnScreen, -GridsOnScreen);
@@ -166,7 +158,6 @@ void Renderer::UpdateOnScreenList()
 			}
 			else
 			{
-				//std::cout << "CULLING: " << CurEnt->GetClassName() << "\n";
 			}
 		}
 		CurEnt = Renderables.NextEnt();

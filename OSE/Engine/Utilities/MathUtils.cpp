@@ -102,4 +102,11 @@ namespace ig
 		return Vector2(std::cos(angle), std::sin(angle));
 	}
 	
+	Vector2 NearestGrid(Vector2 pos, int grid_size_x , int grid_size_y)
+	{
+		Vector2 result;
+		result.x = std::floor((pos.x / grid_size_x) + 0.5f);
+		result.y = std::floor((pos.y / grid_size_y) + 0.5f);
+		return result;
+	}
 }

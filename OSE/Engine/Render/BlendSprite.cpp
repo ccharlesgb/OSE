@@ -5,7 +5,10 @@ BlendSprite::BlendSprite(sf::RenderWindow *rend) : BaseDrawable(rend)
 {
 	mShader= new sf::Shader();
 	mShader->loadFromFile("shaders/blend.frag", sf::Shader::Fragment);
+
 	mBlendTexture.loadFromFile("images/blend_channel.png");
+
+
 
 }
 
@@ -20,6 +23,12 @@ void BlendSprite::Draw()
 	state.shader = mShader;
 	mShader->setParameter("blend_channel", mBlendTexture);
 	mShader->setParameter("other_texture", *mSprite2.getTexture());
+	Vector2 GridPos = ig::NearestGrid(GetPosition(), 1024,1024);
+	GridPos.x = std::fmod(GridPos.x, 2) + 1;
+	GridPos.y = std::fmod(GridPos.y, 2) + 1;;
+	//std::cout << GridPos.ToString() << "\n";
+	mShader->setParameter("pos_x", GridPos.x);
+	mShader->setParameter("pos_y", GridPos.y);
 	if (mDirtyTransform)
 	{
 		mSprite1.setPosition(GameToSFML(GetPosition()).SF());

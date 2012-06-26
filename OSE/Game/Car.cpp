@@ -91,10 +91,10 @@ void Car::Draw()
 	mLine->mVerts[0] = AABB.Position;
 	mLine->mVerts[1] = AABB.Position + AABB.Size;
 
-	mLine->Draw();
-	mLine2->Draw();
-	mLine3->Draw();
-	mLine4->Draw();
+	//mLine->Draw();
+	//mLine2->Draw();
+	//mLine3->Draw();
+	//mLine4->Draw();
 }
 
 void Car::OnDelete()
