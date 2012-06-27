@@ -28,7 +28,7 @@ Renderer::Renderer(void)
 
 Renderer::~Renderer(void)
 {
-	Renderables.Clear();
+	Renderables.ClearDontDelete();
 }
 
 void Renderer::SetWindow(sf::RenderWindow *wind)
@@ -96,22 +96,32 @@ void Renderer::AddEntity(BaseObject* Ent)
 				FoundGroupBelow = true;
 			}
 		} 
-		while ((*CurIter) != NULL && !FoundGroupBelow);
+		while (CurIter != Renderables.End() && !FoundGroupBelow);
 	}
 	
 	// FoundGroupBelow means iterator is at the next group, so we need to move it back 1 step.
 	if (FoundGroupBelow)
 	{
-		--CurIter;
+		//CurIter--;
 	}
-	Renderables.InsertAtCurrent(Ent);
+	Renderables.InsertAt(Ent, CurIter);
 }
 
 void Renderer::OnEntityRemoved(BaseObject* ent)
 {
 	if (ent->IsRenderable())
 	{
-		Renderables.Delete(ent);
+		EntityList<BaseObject*>::iter CurIter = Renderables.FirstEnt();
+		while (CurIter != Renderables.End())
+		{
+			if (ent == (*CurIter))
+			{
+				CurIter = Renderables.DeleteSoft(CurIter);
+				return;
+			}
+			else
+				CurIter = Renderables.NextEnt(CurIter);
+		}
 	}
 }
 
@@ -133,7 +143,7 @@ void Renderer::UpdateOnScreenList()
 	int GridsOnScreen = 1;
 	int GRID_SIZE_X = gGlobals.GameWidth / GridsOnScreen;
 	int GRID_SIZE_Y = gGlobals.GameHeight / GridsOnScreen;
-	while((*CurEnt) != NULL)
+	while(CurEnt != Renderables.End())
 	{
 		if (!(*CurEnt)->GetNoDraw())
 		{
@@ -182,7 +192,7 @@ void Renderer::Draw(IGameState *State)
 	//mLightSystem->RenderLights();
 	//mLightSystem->RenderLightTexture();
 	EntityList<BaseObject*>::iter CurEnt = OnScreenEnts.FirstEnt();
-	while((*CurEnt) != NULL)
+	while(CurEnt != OnScreenEnts.End())
 	{
 		if (!(*CurEnt)->GetNoDraw())
 		{

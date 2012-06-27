@@ -88,13 +88,12 @@ void IGameState::_Tick()
 	
 	EntityList<BaseObject*>::iter CurEnt = gGlobals.gEntList.FirstEnt();
 	Profiler::StartRecord(PROFILE_ENTITY_TICK);
-	while(gGlobals.gEntList.CurrentIsValid())
+	while(CurEnt != gGlobals.gEntList.End())
 	{
 		if ((*CurEnt)->FlaggedForDeletion() == true)
 		{
 			_OnEntityDeleted(*CurEnt);
-			gGlobals.gEntList.DeleteCurrent();
-			CurEnt = gGlobals.gEntList.CurrentEnt();
+			CurEnt = gGlobals.gEntList.DeleteHard(CurEnt);
 			continue;
 		}
 		(*CurEnt)->Tick();

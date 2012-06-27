@@ -23,30 +23,26 @@ public:
 private:
 	Container mList;
 	std::vector<IEntityListener<T>*> mListeners;
-	iter mIter;
-	bool mCurIsValid;
 public:
 	EntityList();
 	~EntityList();
 
 	void Append(VType ent);
-	void InsertAtCurrent(VType);
+	void InsertAt(VType ent, iter pos);
 	void Clear();
 	void ClearDontDelete();
-
-	bool CurrentIsValid();
 
 	int GetSize() {return mList.size();};
 
 	void RegisterListener(IEntityListener<T> *listen);
 
-	void DeleteCurrent();
-	void Delete(T ent);
+	iter DeleteHard(iter pos);
+	iter DeleteSoft(iter pos);
 
-	typename std::vector<T>::iterator FirstEnt();
-	iter CurrentEnt();
+	iter FirstEnt();
 	iter NextEnt(iter CurrentIter);
 	iter PreviousEnt(iter CurrentIter);
+	iter End();
 };
 
 /*
@@ -56,8 +52,6 @@ NOTES	:
 template<class T>
 EntityList<T>::EntityList(void)
 {
-	mIter = mList.begin();
-	mCurIsValid = false;
 }
 
 /*
@@ -70,16 +64,10 @@ EntityList<T>::~EntityList(void)
 	mList.clear();
 }
 
-/*
-NAME	: CurrentIsValid
-NOTES	: If the current iterator points to a valid entity. This is a
-		  bit of a hack but its stable right now if you iterate in a
-		  specific way.
-*/
 template<class T>
-bool EntityList<T>::CurrentIsValid()
+void EntityList<T>::InsertAt(VType ent, iter pos)
 {
-	return mCurIsValid;
+	mList.insert(pos, ent);
 }
 
 /*
@@ -90,12 +78,11 @@ template<class T>
 void EntityList<T>::Clear()
 {
 	iter CurEnt = FirstEnt();
-	while (CurrentIsValid())
+	while (mList.size() > 0)
 	{
-		DeleteCurrent();
-		CurEnt = CurrentEnt();
+		delete *CurEnt;
+		CurEnt = mList.erase(CurEnt);
 	}
-	mList.clear();
 }
 
 /*
@@ -106,7 +93,6 @@ template<class T>
 void EntityList<T>::ClearDontDelete()
 {
 	mList.clear();
-	mCurIsValid = false;
 }
 
 /*
@@ -138,76 +124,36 @@ void EntityList<T>::Append(VType ent)
 }
 
 /*
-NAME	: InsertAtCurrent
-NOTES	: Insert an entity at the current iteration
+NAME	: DeleteHard
+NOTES	: Deletes a specific entity from memory and the list
 */
 template<class T>
-void EntityList<T>::InsertAtCurrent(VType ent)
+typename std::vector<T>::iterator EntityList<T>::DeleteHard(iter pos)
 {
-	//assert(CurrentIsValid());
-	mList.insert(mIter, ent);
-
-	typename std::vector<IEntityListener<T>*>::iterator i;
-	i = mListeners.begin();
+	typename std::vector<IEntityListener<T>*>::iterator i = mListeners.begin();
 	while (i != mListeners.end())
 	{
-		(*i)->OnEntityAdded(ent);
+		(*i)->OnEntityRemoved(*pos);
 		i++;
 	}
+	delete *pos;
+	return mList.erase(pos);
 }
 
 /*
-NAME	: Delete
-NOTES	: Deletes a specific entity from the list
+NAME	: DeleteSoft
+NOTES	: Deletes a specific entity from the list, NOT FROM MEMORY
 */
 template<class T>
-void EntityList<T>::Delete(T ent)
+typename std::vector<T>::iterator EntityList<T>::DeleteSoft(iter pos)
 {
-	iter i = mList.begin();
-	bool found = false;
-	while (!found && i != mList.end())
-	{
-		if ((*i) == ent)
-		{
-			//Inform Listeners
-			typename std::vector<IEntityListener<T>*>::iterator i2;
-			i2 = mListeners.begin();
-			while (i2 != mListeners.end())
-			{
-				(*i2)->OnEntityRemoved(ent);
-				i2++;
-			}
-			//Delete the entity
-			mList.erase(i);
-			found = true;
-		}
-		i++;
-	}
-}
-
-/*
-NAME	: DeleteCurrent
-NOTES	: Deletes whatever entity we are currently iterating at
-		  IMPORTANT: also changes mIter to be the NEW next
-		  entity. If you use DeleteCurrent in an iteration through
-		  a list then refresh your CurEnt with GetCurrent()
-*/
-template<class T>
-void EntityList<T>::DeleteCurrent()
-{
-	//Inform Listeners
-	typename std::vector<IEntityListener<T>*>::iterator i;
-	i = mListeners.begin();
+	typename std::vector<IEntityListener<T>*>::iterator i = mListeners.begin();
 	while (i != mListeners.end())
 	{
-		(*i)->OnEntityRemoved(*mIter);
+		(*i)->OnEntityRemoved(*pos);
 		i++;
 	}
-	//Delete Entity
-	delete *mIter;
-	mIter = mList.erase(mIter);
-	if (mIter >= mList.end())
-		mCurIsValid = false;
+	return mList.erase(pos);
 }
 
 /*
@@ -217,24 +163,7 @@ NOTES	: Get the first entity in our list, revalidate the iterator
 template<class T>
 typename std::vector<T>::iterator EntityList<T>::FirstEnt()
 {
-	iter FirstIter;
-	if (mList.size() == 0)
-	{
-		mCurIsValid = false;
-	}
-	mCurIsValid = true;
-	FirstIter = mList.begin();
-	return FirstIter;
-}
-
-/*
-NAME	: CurrentEnt
-NOTES	: 
-*/
-template<class T>
-typename std::vector<T>::iterator EntityList<T>::CurrentEnt()
-{
-	return mIter;
+	return mList.begin();
 }
 
 /*
@@ -245,11 +174,6 @@ template<class T>
 typename std::vector<T>::iterator EntityList<T>::NextEnt(iter CurrentIter)
 {
 	CurrentIter++;
-	if (mIter >= mList.end())
-	{
-		mCurIsValid = false;
-	}
-	mCurIsValid = true;
 	return CurrentIter;
 }
 
@@ -267,4 +191,14 @@ typename std::vector<T>::iterator EntityList<T>::PreviousEnt(iter CurrentIter)
 	}
 	mCurIsValid = true;
 	return CurrentIter;
+}
+
+/*
+NAME	: End
+NOTES	: Get the previous entity unless there isnt one -> return null
+*/
+template<class T>
+typename std::vector<T>::iterator EntityList<T>::End()
+{
+	return mList.end();
 }

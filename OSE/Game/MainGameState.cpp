@@ -93,12 +93,11 @@ NOTES	: Remove all physics entities before the Box2D world is removed
 void MainGameState::ShutDown()
 {
 	EntityList<BaseObject*>::iter CurEnt = gGlobals.gEntList.FirstEnt();
-	while(gGlobals.gEntList.CurrentIsValid())
+	while(CurEnt != gGlobals.gEntList.End())
 	{
 		if ((*CurEnt)->IsPhysicsEnabled())
 		{
-			gGlobals.gEntList.DeleteCurrent();
-			CurEnt = gGlobals.gEntList.CurrentEnt();
+			CurEnt = gGlobals.gEntList.DeleteHard(CurEnt);
 		}
 		else
 			CurEnt = gGlobals.gEntList.NextEnt(CurEnt);

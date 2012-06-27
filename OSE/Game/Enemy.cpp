@@ -40,7 +40,7 @@ void Enemy::Think()
 {
 	ObjList* Players = gGlobals.gEntList.FindInCircle(GetPos(), 512);
 	EntityList<BaseObject*>::iter CurEnt = Players->FirstEnt();
-	while (Players->CurrentIsValid())
+	while (CurEnt != Players->End())
 	{
 		if ((*CurEnt)->GetClassName() == "player")
 		{

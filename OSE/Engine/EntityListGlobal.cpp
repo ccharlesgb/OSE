@@ -13,8 +13,8 @@ ObjList* EntityListGlobal::FindInCircle(Vector2 origin, float radius)
 {
 	float radius_squared = radius * radius; //Avoid the square root!
 	ObjList* list = new ObjList;
-	EntityList::iter CurEnt = gGlobals.gEntList.FirstEnt();
-	while(CurrentIsValid())
+	EntityList::iter CurEnt = FirstEnt();
+	while(CurEnt != End())
 	{
 		float dist_squared = ((*CurEnt)->GetPos() - origin).LengthSquared();
 		if (dist_squared <= radius_squared)
@@ -36,7 +36,7 @@ ObjList* EntityListGlobal::FindByClass(const char* classname)
 {
 	ObjList* list = new ObjList();
 	EntityList::iter CurEnt = gGlobals.gEntList.FirstEnt();
-	while(CurrentIsValid())
+	while(CurEnt != gGlobals.gEntList.End())
 	{
 		if ((*CurEnt)->GetClassName() == classname)
 		{

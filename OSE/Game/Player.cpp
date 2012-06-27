@@ -56,7 +56,7 @@ void Player::GiveWeapon(BaseObject* ent)
 void Player::ChooseWeapon(const char* name)
 {
 	EntityList<BaseObject*>::iter CurEnt = mWeapons.FirstEnt();
-	while (mWeapons.CurrentIsValid())
+	while (CurEnt != mWeapons.End())
 	{
 		if ((*CurEnt)->GetClassName() == name)
 		{
