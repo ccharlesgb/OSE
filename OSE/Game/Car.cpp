@@ -29,7 +29,7 @@ Car::Car(void)
 {
 	SetPos(Vector2(0,0));
 	RenderInit();
-	SetDrawOrder(RENDERGROUP_PLAYER);
+	SetDrawOrder(RENDERGROUP_ENTITIES);
 	PhysicsInit(DYNAMIC_BODY);
 	mWheelAngle = 0.f;
 	mThrottle = 0.f;

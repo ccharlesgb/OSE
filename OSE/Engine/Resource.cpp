@@ -136,15 +136,16 @@ std::map<std::string, Model*> ModelResource::mModels;
 
 void ModelResource::Precache(const char *path)
 {
-	const char* FILE_PATH = ("images/" + std::string(path) + ".xml").c_str();
+	std::string FILE_PATH = ("images/" + std::string(path) + ".xml").c_str();
 	std::cout << "LOADING: " << FILE_PATH << "\n";
 	
 	Model *model = new Model();
 	
-	if (!model->LoadFromFile(FILE_PATH)) {
+	if (!model->LoadFromFile(FILE_PATH.c_str())) {
 		// TODO: Some error managment
 		std::cout << "ERROR! UNABLE TO FIND THE FONT: " + std::string(FILE_PATH) + "\n";
 	}
+	model->Loaded = true;
 	
 	mModels[path] = model;
 }

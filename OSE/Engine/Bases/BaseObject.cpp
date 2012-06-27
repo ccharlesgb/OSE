@@ -2,6 +2,7 @@
 #include "../EntityCreator.h"
 #include "../GameGlobals.h"
 #include "../Render/Line.h"
+#include "../Resource.h"
 
 BaseObject::BaseObject(void)
 {
@@ -138,11 +139,13 @@ void BaseObject::SetModel(const char* path)
 void BaseObject::SetModel(const char* path, float scale)
 {
 	mSprite = new Sprite(gGlobals.RenderWindow);
-	/*if (mModelInfo.LoadFromFile(path))
+	//mModelInfo = *ModelResource::GetModel(path);
+	/*if (mModelInfo.Loaded)
 	{
 		mModel = mModelInfo.mTexturePath;
 		mScale = Vector2(mModelInfo.mScale, mModelInfo.mScale);
-		mSprite->SetTexture(mModelInfo.mTexturePath);
+		mSprite->SetTexture(mModel);
+		std::cout << "LOADED CAR MODEL\n";
 	}
 	else*/
 	{

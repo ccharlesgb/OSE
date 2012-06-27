@@ -13,16 +13,16 @@ Model::Model()
 
 bool Model::LoadFromFile(const char *path)
 {
-	path = ("images/" + std::string(path) + ".xml").c_str();
+	std::string filepath = path;
 	
 	pugi::xml_document doc;
-	pugi::xml_parse_result result = doc.load_file(path);
+	pugi::xml_parse_result result = doc.load_file(filepath.c_str());
 	
 	if (result)
-		std::cout << "XML [" << path << "] parsed without errors, attr value: [" << doc.child("node").attribute("attr").value() << "]\n\n";
+		std::cout << "XML [" << filepath << "] parsed without errors, attr value: [" << doc.child("node").attribute("attr").value() << "]\n\n";
 	else
 	{
-		std::cout << "XML [" << path << "] parsed with errors, attr value: [" << doc.child("node").attribute("attr").value() << "]\n";
+		std::cout << "XML [" << filepath << "] parsed with errors, attr value: [" << doc.child("node").attribute("attr").value() << "]\n";
 		std::cout << "Error description: " << result.description() << "\n";
 		std::cout << "Error offset: " << result.offset << " (error at [..." << ("test.xml" + result.offset) << "]\n\n";
 		

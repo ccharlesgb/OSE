@@ -27,8 +27,8 @@ void Player::Spawn()
 {
 	GetPhysObj()->SetAngularDamping(25);
 	GetPhysObj()->SetLinearDamping(10);
-	SetModel("player");
-	SetOrigin(Vector2(0,15));
+	SetModel("player2", 0.3);
+	SetOrigin(Vector2(0,45));
 	PhysicsHullFromModel();
 }
 
@@ -45,7 +45,8 @@ void Player::Draw()
 void Player::GiveWeapon(BaseObject* ent)
 {
 	ent->SetOwner(this);
-	ent->SetPos(GetPos() + GetForward() * 50.f);
+	Vector2 shoot_pos = GetPos() + GetForward() * 50.f + GetRight() * 10.f;
+	ent->SetPos(shoot_pos);
 	ent->SetAngle(GetAngle());
 	ent->SetParent(this);
 	mWeapons.Append(ent);
