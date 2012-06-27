@@ -22,6 +22,8 @@ void Enemy::Spawn()
 	SetModel("zombie", 0.25);
 	SetOrigin(Vector2(0,45));
 	PhysicsHullFromModel();
+	SetMaxHealth(200);
+	SetHealth(200);
 }
 
 Enemy::~Enemy(void)
@@ -37,15 +39,15 @@ void Enemy::Draw()
 void Enemy::Think()
 {
 	ObjList* Players = gGlobals.gEntList.FindInCircle(GetPos(), 512);
-	BaseObject* CurEnt = Players->FirstEnt();
+	EntityList<BaseObject*>::iter CurEnt = Players->FirstEnt();
 	while (Players->CurrentIsValid())
 	{
-		if (CurEnt->GetClassName() == "player")
+		if ((*CurEnt)->GetClassName() == "player")
 		{
-			mTarget = CurEnt;
+			mTarget = (*CurEnt);
 			break;
 		}
-		CurEnt = Players->NextEnt();
+		CurEnt = Players->NextEnt(CurEnt);
 	}
 }
 

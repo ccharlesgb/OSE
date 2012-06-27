@@ -10,6 +10,7 @@
 #include "../Engine/AudioEnvironment.h"
 #include "../Engine/AudioEnvironment.h"
 #include "../Engine/Profiler.h"
+#include "../Engine/EntityList.h"
 
 #define GRAVITY_STRENGTH 500
 
@@ -89,16 +90,16 @@ NOTES	: Remove all physics entities before the Box2D world is removed
 */
 void MainGameState::ShutDown()
 {
-	BaseObject* CurEnt = gGlobals.gEntList.FirstEnt();
+	EntityList<BaseObject*>::iter CurEnt = gGlobals.gEntList.FirstEnt();
 	while(gGlobals.gEntList.CurrentIsValid())
 	{
-		if (CurEnt->IsPhysicsEnabled())
+		if ((*CurEnt)->IsPhysicsEnabled())
 		{
 			gGlobals.gEntList.DeleteCurrent();
 			CurEnt = gGlobals.gEntList.CurrentEnt();
 		}
 		else
-			CurEnt = gGlobals.gEntList.NextEnt();
+			CurEnt = gGlobals.gEntList.NextEnt(CurEnt);
 	}
 }
 
@@ -110,15 +111,15 @@ NOTES	: Loop through all physics entities and apply simulated gravity
 void MainGameState::Tick()
 {
 	Profiler::StartRecord(PROFILE_PHYSICS_STEP);
-	BaseObject* CurEnt = gGlobals.gEntList.FirstEnt();
-	while(gGlobals.gEntList.CurrentIsValid())
+	EntityList<BaseObject*>::iter CurEnt = gGlobals.gEntList.FirstEnt();
+	while(CurEnt != gGlobals.gEntList.End())
 	{
 		//std::cout << "CUR: " << CurEnt << "\n";
-		if (CurEnt->IsPhysicsEnabled() && mLastPhysics + GetDelta() < gGlobals.CurTime)
+		if ((*CurEnt)->IsPhysicsEnabled() && mLastPhysics + GetDelta() < gGlobals.CurTime)
 		{
-			CurEnt->PhysicsSimulate((float)gGlobals.CurTime - mLastPhysics);
+			(*CurEnt)->PhysicsSimulate((float)gGlobals.CurTime - mLastPhysics);
 		}
-		CurEnt = gGlobals.gEntList.NextEnt();
+		CurEnt = gGlobals.gEntList.NextEnt(CurEnt);
 	}
 
 	if (mLastPhysics == -1)

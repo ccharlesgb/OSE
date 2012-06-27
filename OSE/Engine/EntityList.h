@@ -12,13 +12,15 @@ public:
 	virtual void OnEntityRemoved(T ent) {};
 };
 
+
 template<class T>
 class EntityList
 {
-private:
+public:
 	typedef T VType;
 	typedef std::vector<VType> Container;
 	typedef typename Container::iterator iter;
+private:
 	Container mList;
 	std::vector<IEntityListener<T>*> mListeners;
 	iter mIter;
@@ -41,10 +43,10 @@ public:
 	void DeleteCurrent();
 	void Delete(T ent);
 
-	T FirstEnt();
-	T CurrentEnt();
-	T NextEnt();
-	T PreviousEnt();
+	typename std::vector<T>::iterator FirstEnt();
+	iter CurrentEnt();
+	iter NextEnt(iter CurrentIter);
+	iter PreviousEnt(iter CurrentIter);
 };
 
 /*
@@ -87,7 +89,7 @@ NOTES	: Delete all the entities from memory in our list
 template<class T>
 void EntityList<T>::Clear()
 {
-	T CurEnt = FirstEnt();
+	iter CurEnt = FirstEnt();
 	while (CurrentIsValid())
 	{
 		DeleteCurrent();
@@ -213,16 +215,16 @@ NAME	: FirstEnt
 NOTES	: Get the first entity in our list, revalidate the iterator
 */
 template<class T>
-T EntityList<T>::FirstEnt()
+typename std::vector<T>::iterator EntityList<T>::FirstEnt()
 {
+	iter FirstIter;
 	if (mList.size() == 0)
 	{
 		mCurIsValid = false;
-		return NULL;
 	}
 	mCurIsValid = true;
-	mIter = mList.begin();
-	return *mIter;
+	FirstIter = mList.begin();
+	return FirstIter;
 }
 
 /*
@@ -230,11 +232,9 @@ NAME	: CurrentEnt
 NOTES	: 
 */
 template<class T>
-T EntityList<T>::CurrentEnt()
+typename std::vector<T>::iterator EntityList<T>::CurrentEnt()
 {
-	if (mCurIsValid == false)
-		return NULL;
-	return *mIter;
+	return mIter;
 }
 
 /*
@@ -242,16 +242,15 @@ NAME	: NextEnt
 NOTES	: Get the next entity unless there isnt one -> return null
 */
 template<class T>
-T EntityList<T>::NextEnt()
+typename std::vector<T>::iterator EntityList<T>::NextEnt(iter CurrentIter)
 {
-	mIter++;
+	CurrentIter++;
 	if (mIter >= mList.end())
 	{
 		mCurIsValid = false;
-		return NULL;
 	}
 	mCurIsValid = true;
-	return *mIter;
+	return CurrentIter;
 }
 
 /*
@@ -259,14 +258,13 @@ NAME	: PreviousEnt
 NOTES	: Get the previous entity unless there isnt one -> return null
 */
 template<class T>
-T EntityList<T>::PreviousEnt()
+typename std::vector<T>::iterator EntityList<T>::PreviousEnt(iter CurrentIter)
 {
-	mIter--;
+	CurrentIter--;
 	if (mIter <= mList.begin())
 	{
 		mCurIsValid = false;
-		return NULL;
 	}
 	mCurIsValid = true;
-	return *mIter;
+	return CurrentIter;
 }

@@ -3,6 +3,7 @@
 #include "GameGlobals.h"
 #include "AudioEnvironment.h"
 #include "Profiler.h"
+#include "EntityList.h"
 
 /*
 NAME	: OnEntityAdded
@@ -85,19 +86,19 @@ void IGameState::_Tick()
 
 	sAudioEnvironment::Update();
 	
-	BaseObject* CurEnt = gGlobals.gEntList.FirstEnt();
+	EntityList<BaseObject*>::iter CurEnt = gGlobals.gEntList.FirstEnt();
 	Profiler::StartRecord(PROFILE_ENTITY_TICK);
 	while(gGlobals.gEntList.CurrentIsValid())
 	{
-		if (CurEnt->FlaggedForDeletion() == true)
+		if ((*CurEnt)->FlaggedForDeletion() == true)
 		{
-			_OnEntityDeleted(CurEnt);
+			_OnEntityDeleted(*CurEnt);
 			gGlobals.gEntList.DeleteCurrent();
 			CurEnt = gGlobals.gEntList.CurrentEnt();
 			continue;
 		}
-		CurEnt->Tick();
-		CurEnt = gGlobals.gEntList.NextEnt();
+		(*CurEnt)->Tick();
+		CurEnt = gGlobals.gEntList.NextEnt(CurEnt);
 	}
 	Profiler::StopRecord(PROFILE_ENTITY_TICK);
 	Profiler::StartRecord(PROFILE_ENTITY_CREATION);

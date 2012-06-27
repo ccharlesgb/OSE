@@ -55,15 +55,15 @@ void Player::GiveWeapon(BaseObject* ent)
 
 void Player::ChooseWeapon(const char* name)
 {
-	BaseObject* CurEnt = mWeapons.FirstEnt();
+	EntityList<BaseObject*>::iter CurEnt = mWeapons.FirstEnt();
 	while (mWeapons.CurrentIsValid())
 	{
-		if (CurEnt->GetClassName() == name)
+		if ((*CurEnt)->GetClassName() == name)
 		{
-			mActiveWeapon = CurEnt;
+			mActiveWeapon = *CurEnt;
 			break;
 		}
-		CurEnt = mWeapons.NextEnt();
+		CurEnt = mWeapons.NextEnt(CurEnt);
 	}
 }
 

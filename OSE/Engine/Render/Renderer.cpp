@@ -79,7 +79,7 @@ void Renderer::OnEntityAdded(BaseObject* ent)
 void Renderer::AddEntity(BaseObject* Ent)
 {
 	//Insert the renderer into its correct draw position
-	BaseObject* iter = Renderables.FirstEnt();
+	EntityList<BaseObject*>::iter CurIter = Renderables.FirstEnt();
 	bool FoundGroupBelow = false; //Have we found the correct position?
 	
 	if (Renderables.GetSize() > 0)
@@ -87,22 +87,22 @@ void Renderer::AddEntity(BaseObject* Ent)
 		do
 		{
 			//If we should be drawing after the current renderer
-			if (Ent->GetDrawOrder() >= iter->GetDrawOrder())
+			if (Ent->GetDrawOrder() >= (*CurIter)->GetDrawOrder())
 			{
-				iter = Renderables.NextEnt(); //Move on we want to draw after this one
+				CurIter = Renderables.NextEnt(CurIter); //Move on we want to draw after this one
 			}
 			else
 			{
 				FoundGroupBelow = true;
 			}
 		} 
-		while (iter != NULL && !FoundGroupBelow);
+		while ((*CurIter) != NULL && !FoundGroupBelow);
 	}
 	
 	// FoundGroupBelow means iterator is at the next group, so we need to move it back 1 step.
 	if (FoundGroupBelow)
 	{
-		--iter;
+		--CurIter;
 	}
 	Renderables.InsertAtCurrent(Ent);
 }
@@ -120,24 +120,24 @@ void Renderer::UpdateOnScreenList()
 	OnScreenEnts.ClearDontDelete();
 	if (!gGlobals.EnableRenderCulling)
 	{
-		BaseObject* CurEnt = Renderables.FirstEnt();
-		while(CurEnt != NULL)
+		EntityList<BaseObject*>::iter CurEnt = Renderables.FirstEnt();
+		while((*CurEnt) != NULL)
 		{
-			OnScreenEnts.Append(CurEnt);
-			CurEnt = Renderables.NextEnt();
+			OnScreenEnts.Append(*CurEnt);
+			CurEnt = Renderables.NextEnt(CurEnt);
 		}
 		return;
 	}
 
-	BaseObject* CurEnt = Renderables.FirstEnt();
+	EntityList<BaseObject*>::iter CurEnt = Renderables.FirstEnt();
 	int GridsOnScreen = 1;
 	int GRID_SIZE_X = gGlobals.GameWidth / GridsOnScreen;
 	int GRID_SIZE_Y = gGlobals.GameHeight / GridsOnScreen;
-	while(CurEnt != NULL)
+	while((*CurEnt) != NULL)
 	{
-		if (!CurEnt->GetNoDraw())
+		if (!(*CurEnt)->GetNoDraw())
 		{
-			Vector2_Rect ENT_AABB = CurEnt->GetAABB();
+			Vector2_Rect ENT_AABB = (*CurEnt)->GetAABB();
 			Vector2_Rect ENT_AABB_SCREENSPACE;
 			ENT_AABB_SCREENSPACE.Position = ENT_AABB.Position - sCamera::GetCentre();
 			ENT_AABB_SCREENSPACE.Size = ENT_AABB.Size; // / sCamera::GetZoom();
@@ -154,13 +154,13 @@ void Renderer::UpdateOnScreenList()
 			if (!(SCREEN_BOTTOM_LEFT.x > Top_Right_Quadrant.x || SCREEN_TOP_RIGHT.x < Bottom_Left_Quadrant.x ||
 				SCREEN_TOP_RIGHT.y < Bottom_Left_Quadrant.y || SCREEN_BOTTOM_LEFT.y > Top_Right_Quadrant.y))
 			{
-				OnScreenEnts.Append(CurEnt);
+				OnScreenEnts.Append((*CurEnt));
 			}
 			else
 			{
 			}
 		}
-		CurEnt = Renderables.NextEnt();
+		CurEnt = Renderables.NextEnt(CurEnt);
 	}
 }
 
@@ -181,14 +181,14 @@ void Renderer::Draw(IGameState *State)
 	Profiler::StartRecord(PROFILE_RENDER_DRAWCALL);
 	//mLightSystem->RenderLights();
 	//mLightSystem->RenderLightTexture();
-	BaseObject* CurEnt = OnScreenEnts.FirstEnt();
-	while(CurEnt != NULL)
+	EntityList<BaseObject*>::iter CurEnt = OnScreenEnts.FirstEnt();
+	while((*CurEnt) != NULL)
 	{
-		if (!CurEnt->GetNoDraw())
+		if (!(*CurEnt)->GetNoDraw())
 		{
-			CurEnt->Draw();
+			(*CurEnt)->Draw();
 		}
-		CurEnt = OnScreenEnts.NextEnt();
+		CurEnt = OnScreenEnts.NextEnt(CurEnt);
 	}
 	Profiler::StopRecord(PROFILE_RENDER_DRAWCALL);
 
