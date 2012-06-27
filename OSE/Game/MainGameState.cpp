@@ -216,12 +216,9 @@ void MainGameState::OnMouseButtonPressed(sf::Mouse::Button Button, bool Pressed)
 		if (Pressed && Button == sf::Mouse::Left)
 		{
 			BaseObject* crate;
-			for (int i=0; i<4; i++)
-			{
-				crate = CreateEntity("ent_prop");
-				crate->SetModel("crate2", ig::Random(0.5f,0.7f));
-				crate->SetPos(InputHandler::GetMousePosWorld());
-			}
+			crate = CreateEntity("enemy");
+			crate->SetModel("crate2", ig::Random(0.5f,0.7f));
+			crate->SetPos(InputHandler::GetMousePosWorld());
 		}
 	}
 }

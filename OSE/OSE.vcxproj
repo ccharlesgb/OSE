@@ -43,6 +43,7 @@
     <ClCompile Include="Engine\StateManager.cpp" />
     <ClCompile Include="Game\Car.cpp" />
     <ClCompile Include="Game\Decal.cpp" />
+    <ClCompile Include="Game\Enemy.cpp" />
     <ClCompile Include="Game\MainGameState.cpp" />
     <ClCompile Include="Game\Map.cpp" />
     <ClCompile Include="Game\Player.cpp" />
@@ -87,6 +88,7 @@
     <ClInclude Include="Engine\StateManager.h" />
     <ClInclude Include="Game\Car.h" />
     <ClInclude Include="Game\Decal.h" />
+    <ClInclude Include="Game\Enemy.h" />
     <ClInclude Include="Game\MainGameState.h" />
     <ClInclude Include="Game\Map.h" />
     <ClInclude Include="Game\Player.h" />

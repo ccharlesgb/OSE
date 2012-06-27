@@ -12,7 +12,7 @@ EntityListGlobal::~EntityListGlobal(void)
 ObjList* EntityListGlobal::FindInCircle(Vector2 origin, float radius)
 {
 	float radius_squared = radius * radius; //Avoid the square root!
-	ObjList* list = NULL;
+	ObjList* list = new ObjList;
 	BaseObject* CurEnt = gGlobals.gEntList.FirstEnt();
 	while(CurrentIsValid())
 	{

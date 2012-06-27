@@ -47,6 +47,7 @@
     <ClCompile Include="Engine\Model.cpp" />
     <ClCompile Include="Engine\Render\BlendSprite.cpp" />
     <ClCompile Include="Engine\Profiler.cpp" />
+    <ClCompile Include="Game\Enemy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Bases\BaseObject.h" />
@@ -90,6 +91,7 @@
     <ClInclude Include="Engine\Render\BlendSprite.h" />
     <ClInclude Include="Engine\Profiler.h" />
     <ClInclude Include="Engine\AudioEnvironment.h" />
+    <ClInclude Include="Game\Enemy.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Utilities\Matrix3.inl" />
