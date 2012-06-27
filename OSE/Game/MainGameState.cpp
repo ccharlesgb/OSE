@@ -8,7 +8,6 @@
 #include "../Engine/InputHandler.h"
 #include "../Engine/PhysicsQueries.h"
 #include "../Engine/AudioEnvironment.h"
-#include "../Engine/Utilities/XMLParser.h"
 #include "../Engine/AudioEnvironment.h"
 #include "../Engine/Profiler.h"
 
@@ -22,7 +21,6 @@ NOTES	:
 */
 MainGameState::MainGameState(void)
 {
-	XMLParser::LoadFile("test.xml");
 	mLastPhysics = -1;
 	mPhysAcc = 0;
 }
