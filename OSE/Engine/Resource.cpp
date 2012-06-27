@@ -2,6 +2,8 @@
 #include "Utilities/pugixml.hpp"
 //#include "GameGlobals.h"
 
+#define ERROR_TEXTURE "images/car.png"
+
 /**
  * TextureResource
  */
@@ -20,7 +22,7 @@ void TextureResource::Precache(const char *path)
 	{
 		std::cout << "Error unable to find texture: " + FILE_PATH + "\n";
 		if (ErrorTex == NULL) {
-			Texture->loadFromFile("images/ship.png");
+			Texture->loadFromFile(ERROR_TEXTURE);
 			ErrorTex = Texture;
 		} else {
 			Texture = ErrorTex;
