@@ -84,7 +84,7 @@ protected:
 
 	//MODEL
 	const char* mModel; //Model path (Sprite image)
-	Model mModelInfo;
+	Model *mModelInfo;
 
 	Vector2 mPosition;
 	Vector2 mOrigin;

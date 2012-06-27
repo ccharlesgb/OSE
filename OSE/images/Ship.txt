@@ -1,6 +1,0 @@
-//Box2D Physics Information for Crate
-//Wind coordinates anticlockwise
-//Seperate vertices with new lines
-0 185
--190 -200
-190 -200

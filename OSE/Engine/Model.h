@@ -6,7 +6,7 @@ class Model
 {
 public:
 	
-	bool Loaded;
+	bool mLoaded;
 	
 	Vector2 mVertices[8];
 	

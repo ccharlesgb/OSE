@@ -3,13 +3,13 @@
 	<texture>car</texture>
 	<scale>1</scale>
 	<physics_hull>
-		<density>4</density>
+		<density>6</density>
 		<vertex_count>4</vertex_count>
 		<vertices>
-			<vertex>50 50</vertex>
-			<vertex>-50 50</vertex>
-			<vertex>-50 -50</vertex>
-			<vertex>50 -50</vertex>
+			<vertex>55 110</vertex>
+			<vertex>-55 110</vertex>
+			<vertex>-55 -110</vertex>
+			<vertex>55 -110</vertex>
 		</vertices>
 	</physics_hull>
 </model>

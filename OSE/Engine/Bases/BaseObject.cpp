@@ -139,23 +139,17 @@ void BaseObject::SetModel(const char* path)
 void BaseObject::SetModel(const char* path, float scale)
 {
 	mSprite = new Sprite(gGlobals.RenderWindow);
-	//mModelInfo = *ModelResource::GetModel(path);
-	/*if (mModelInfo.Loaded)
+	mModelInfo = ModelResource::GetModel(path);
+	if (mModelInfo)
 	{
-		mModel = mModelInfo.mTexturePath;
-		mScale = Vector2(mModelInfo.mScale, mModelInfo.mScale);
+		mModel = mModelInfo->mTexturePath;
+		mScale = Vector2(mModelInfo->mScale, mModelInfo->mScale);
+		mScale = mScale * scale;
 		mSprite->SetTexture(mModel);
-		std::cout << "LOADED CAR MODEL\n";
-	}
-	else*/
-	{
-		mModel = path;
-		mScale = Vector2(scale, scale);
-		mSprite->SetTexture(path);
 	}
 	SetRenderBounds(Vector2_Rect(mSprite->GetSize() * -0.5f, mSprite->GetSize()));
 	mIsRenderable = true;
-	mSprite->SetScale(scale);
+	mSprite->SetScale(mScale.x);
 	SetOrigin(Vector2());
 }
 

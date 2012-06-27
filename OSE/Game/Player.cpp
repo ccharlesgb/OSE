@@ -27,7 +27,7 @@ void Player::Spawn()
 {
 	GetPhysObj()->SetAngularDamping(25);
 	GetPhysObj()->SetLinearDamping(10);
-	SetModel("player2", 0.3);
+	SetModel("player2", 0.25);
 	SetOrigin(Vector2(0,45));
 	PhysicsHullFromModel();
 }
