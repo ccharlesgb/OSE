@@ -8,6 +8,7 @@
 #include "../GameGlobals.h"
 #include "../EntityList.h"
 //#include <LTBL/Light/LightSystem.h>
+#include "BaseHUD.h"
 
 class Camera;
 class IGameState;
@@ -21,6 +22,9 @@ private:
 	//ltbl::LightSystem *mLightSystem;
 	sf::View mView;
 	DebugDraw* mPhysDebug;
+	
+	BaseHUD *HUD;
+	
 	EntityList<BaseObject*> Renderables;
 	EntityList<BaseObject*> OnScreenEnts;
 public:
@@ -38,6 +42,8 @@ public:
 	void Display() {mRender->display();};
 	void Draw(IGameState *State);
 	void SetWindow(sf::RenderWindow *wind);
+	
+	void SetHUD(BaseHUD *hud) { HUD = hud; };
 
 	void UpdateOnScreenList();
 };

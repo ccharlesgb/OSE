@@ -2,6 +2,7 @@
 
 #include "../Engine/IGameState.h"
 #include "../Engine/PhysicsWorld.h"
+#include "HUD.h"
 
 class MainGameState : public IGameState
 {
@@ -13,6 +14,7 @@ private:
 	double mPhysAcc;
 	std::vector<BaseObject*> mPlanets;
 	BaseObject* bg;
+	HUD *Hud;
 public:
 	MainGameState(void);
 	~MainGameState(void);
