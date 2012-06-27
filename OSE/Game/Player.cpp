@@ -45,7 +45,7 @@ void Player::Draw()
 void Player::GiveWeapon(BaseObject* ent)
 {
 	ent->SetOwner(this);
-	Vector2 shoot_pos = GetPos() + GetForward() * 50.f + GetRight() * 10.f;
+	Vector2 shoot_pos = GetPos() + GetForward() * 40.f + GetRight() * 10.f;
 	ent->SetPos(shoot_pos);
 	ent->SetAngle(GetAngle());
 	ent->SetParent(this);
@@ -111,7 +111,7 @@ void Player::PhysicsSimulate(float delta)
 	}
 	else if (InputHandler::IsKeyPressed(sf::Keyboard::S))
 	{
-		MoveVector.y = -1;
+		MoveVector.y = -0.8f;
 	}
 	if (InputHandler::IsKeyPressed(sf::Keyboard::A))
 	{
@@ -121,7 +121,9 @@ void Player::PhysicsSimulate(float delta)
 	{
 		MoveVector.x = 0.7f;
 	}
-	MoveVector = MoveVector.Normalize() * player_walk_speed;
+	if (MoveVector.Length() > 1.f)
+		MoveVector = MoveVector.Normalize();
+	MoveVector = MoveVector * player_walk_speed;
 	MoveVector = ToGlobal(MoveVector) - GetPos();
 	ApplyForceCenter(MoveVector * GetPhysObj()->GetMass());
 }
