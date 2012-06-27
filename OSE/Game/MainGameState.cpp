@@ -52,6 +52,8 @@ NOTES	: Create default entities, generate the map (eg solar systems)
 */
 void MainGameState::Initialize()
 {
+	Hud = new HUD();
+	
 	Map = CreateEntity("world");
 	//Map->Spawn();
 	

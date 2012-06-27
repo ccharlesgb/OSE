@@ -196,4 +196,9 @@ void Renderer::Draw(IGameState *State)
 	if (InputHandler::IsKeyPressed(sf::Keyboard::F3))
 		State->DrawDebugData();
 	mRender->setView(mRender->getDefaultView());
+	
+	if (HUD != NULL)
+	{
+		HUD->Draw();
+	}
 }
