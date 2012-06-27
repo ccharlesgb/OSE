@@ -179,6 +179,8 @@ void Renderer::Draw(IGameState *State)
 	Profiler::StopRecord(PROFILE_RENDER_PURGE);
 
 	Profiler::StartRecord(PROFILE_RENDER_DRAWCALL);
+	//mLightSystem->RenderLights();
+	//mLightSystem->RenderLightTexture();
 	BaseObject* CurEnt = OnScreenEnts.FirstEnt();
 	while(CurEnt != NULL)
 	{
@@ -190,8 +192,6 @@ void Renderer::Draw(IGameState *State)
 	}
 	Profiler::StopRecord(PROFILE_RENDER_DRAWCALL);
 
-	//mLightSystem->RenderLights();
-	//mLightSystem->RenderLightTexture();
 
 	if (InputHandler::IsKeyPressed(sf::Keyboard::F3))
 		State->DrawDebugData();
