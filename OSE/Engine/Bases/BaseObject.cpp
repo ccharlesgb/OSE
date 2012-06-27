@@ -71,9 +71,14 @@ Vector2_Rect BaseObject::GetAABB()
 		Vector2 TL, TR, BL, BR; // The four coordinate of an OOBB
 		Vector2_Rect bounds = GetRenderBounds(); // Render bounds in local space
 		TL = ToGlobal(bounds.Position); // Convert the render bounds to global space
-		TR = ToGlobal(Vector2(bounds.Position.x + bounds.Size.x, bounds.Position.y));
-		BL = ToGlobal(Vector2(bounds.Position.x, bounds.Position.y + bounds.Size.y));
-		BR = ToGlobal(bounds.Position + bounds.Size);
+		
+		Vector2 vTR = Vector2(bounds.Position.x + bounds.Size.x, bounds.Position.y);
+		Vector2 vBL = Vector2(bounds.Position.x, bounds.Position.y + bounds.Size.y);
+		Vector2 vBR = bounds.Position + bounds.Size;
+		
+		TR = ToGlobal(vTR);
+		BL = ToGlobal(vBL);
+		BR = ToGlobal(vBR);
 
 		Vector2 AABB_TL, AABB_BR, AABB_TR, AABB_BL; // The coordinates of the AABB
 
