@@ -147,7 +147,7 @@ void BaseObject::SetModel(const char* path, float scale)
 	mModelInfo = ModelResource::GetModel(path);
 	if (mModelInfo)
 	{
-		mModel = mModelInfo->mTexturePath;
+		mModel = mModelInfo->mTexturePath.c_str();
 		mScale = Vector2(mModelInfo->mScale, mModelInfo->mScale);
 		mScale = mScale * scale;
 		mSprite->SetTexture(mModel);
