@@ -15,6 +15,7 @@ public:
 	void Think();
 	void Draw();
 
+	void TakeDamage(const DamageInfo &info);
 	void PhysicsSimulate(float delta);
 };
 

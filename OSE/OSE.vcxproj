@@ -37,7 +37,6 @@
     <ClCompile Include="Engine\Utilities\Randomiser.cpp" />
     <ClCompile Include="Engine\Utilities\VariantMap.cpp" />
     <ClCompile Include="Engine\Utilities\Vector2.cpp" />
-    <ClCompile Include="Engine\Utilities\XMLParser.cpp" />
     <ClCompile Include="Engine\Resource.cpp" />
     <ClCompile Include="Engine\Sound.cpp" />
     <ClCompile Include="Engine\StateManager.cpp" />
@@ -82,7 +81,6 @@
     <ClInclude Include="Engine\Utilities\Randomiser.h" />
     <ClInclude Include="Engine\Utilities\VariantMap.h" />
     <ClInclude Include="Engine\Utilities\Vector2.h" />
-    <ClInclude Include="Engine\Utilities\XMLParser.h" />
     <ClInclude Include="Engine\Resource.h" />
     <ClInclude Include="Engine\Sound.h" />
     <ClInclude Include="Engine\StateManager.h" />

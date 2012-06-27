@@ -39,7 +39,6 @@
     <ClCompile Include="Engine\Utilities\Randomiser.cpp" />
     <ClCompile Include="Engine\Utilities\VariantMap.cpp" />
     <ClCompile Include="Engine\Utilities\Vector2.cpp" />
-    <ClCompile Include="Engine\Utilities\XMLParser.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Engine\Render\DebugOverlay.cpp" />
     <ClCompile Include="Engine\Text.cpp" />
@@ -83,7 +82,6 @@
     <ClInclude Include="Engine\Utilities\Randomiser.h" />
     <ClInclude Include="Engine\Utilities\VariantMap.h" />
     <ClInclude Include="Engine\Utilities\Vector2.h" />
-    <ClInclude Include="Engine\Utilities\XMLParser.h" />
     <ClInclude Include="Engine\Render\DebugOverlay.h" />
     <ClInclude Include="Engine\Text.h" />
     <ClInclude Include="Game\Car.h" />

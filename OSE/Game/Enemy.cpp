@@ -19,7 +19,7 @@ void Enemy::Spawn()
 {
 	GetPhysObj()->SetAngularDamping(25);
 	GetPhysObj()->SetLinearDamping(10);
-	SetModel("zombie", 0.3);
+	SetModel("zombie", 0.25);
 	SetOrigin(Vector2(0,45));
 	PhysicsHullFromModel();
 }
@@ -36,19 +36,34 @@ void Enemy::Draw()
 
 void Enemy::Think()
 {
-	ObjList* Players = gGlobals.gEntList.FindInCircle(GetPos(), 1024);
+	ObjList* Players = gGlobals.gEntList.FindInCircle(GetPos(), 512);
 	BaseObject* CurEnt = Players->FirstEnt();
-	if (Players->CurrentIsValid())
+	while (Players->CurrentIsValid())
 	{
 		if (CurEnt->GetClassName() == "player")
-			mTarget = Players->FirstEnt();
+		{
+			mTarget = CurEnt;
+			break;
+		}
 		CurEnt = Players->NextEnt();
 	}
 }
 
+void Enemy::TakeDamage(const DamageInfo &info)
+{
+	SetHealth(GetHealth() - info.Amount);
+	Colour mCol = GetColour();
+	mCol.r = (GetHealth() / GetMaxHealth()) * 210.f + 45.f;
+	mCol.g = (GetHealth() / GetMaxHealth()) * 210.f + 45.f;
+	mCol.b = (GetHealth() / GetMaxHealth()) * 210.f + 45.f;
+	SetColour(mCol);
+	if (GetHealth() <= 0)
+		Delete();
+}
+
 void Enemy::PhysicsSimulate(float delta)
 {
-	float player_walk_speed = 60.f;
+	float player_walk_speed = 50.f;
 	//Point towards player
 	if (mTarget)
 	{
@@ -58,6 +73,7 @@ void Enemy::PhysicsSimulate(float delta)
 		GetPhysObj()->ApplyTorque(ig::NormalizeAngle(TargetAngle - GetAngle()) * GetPhysObj()->GetMass());
 
 		Vector2 MoveVector;
+		MoveVector.y = 1;
 	
 		MoveVector = MoveVector.Normalize() * player_walk_speed;
 		MoveVector = ToGlobal(MoveVector) - GetPos();
