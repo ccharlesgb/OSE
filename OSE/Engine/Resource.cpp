@@ -167,13 +167,12 @@ void ModelResource::Precache(const char *path)
 	pugi::xml_node PhysicsNode = ModelRoot.child("physics_hull");
 	if (PhysicsNode)
 	{
-		model->mVertexCount = PhysicsNode.child("density").text().as_int();
 		model->mDensity = PhysicsNode.child("density").text().as_float();
 		
 		pugi::xml_node VertexList = PhysicsNode.child("vertices");
 		pugi::xml_node CurVertex = VertexList.first_child();
-		int id = 0;
 		
+		int id = 0;
 		while (CurVertex != NULL)
 		{
 			std::string line = CurVertex.text().as_string();
@@ -191,7 +190,8 @@ void ModelResource::Precache(const char *path)
 		}
 		model->mVertexCount = id;
 	}
-	std::cout << "Finished Loading Model:"        << "\n";
+	
+	std::cout << "Finished Loading Model:"               << "\n";
 	std::cout << "Texture Path: " << model->mTexturePath << "\n";
 	std::cout << "Scale       : " << model->mScale       << "\n";
 	std::cout << "Density     : " << model->mDensity     << "\n";
