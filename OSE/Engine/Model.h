@@ -14,7 +14,7 @@ public:
 	
 	float mDensity;
 	
-	const char* mTexturePath;
+	std::string mTexturePath;
 	
 	float mScale;
 	

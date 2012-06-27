@@ -7,7 +7,7 @@ Model::Model()
 	
 	mVertexCount = 0;
 	mDensity = 0.f;
-	mTexturePath = NULL;
+	mTexturePath = "";
 	mScale = 1.f;
 }
 
