@@ -11,6 +11,7 @@ LINKCLASSTONAME("world", Map)
 Map::Map(void)
 {
 	RenderInit();
+	SetPos(Vector2());
 	SetDrawOrder(RENDERGROUP_BACKGROUND);
 	int map_size = ARRAY_SIZE * TEXTURE_SIZE * 2;
 	SetRenderBounds(Vector2_Rect(Vector2(map_size, map_size) * -0.5f, Vector2(map_size, map_size)));
@@ -37,9 +38,9 @@ void Map::Spawn()
 void Map::Draw()
 {
 	Profiler::StartRecord(PROFILE_RENDER_MAP);
-	for (int x=-4;x < ARRAY_SIZE; x++)
+	for (int x=-ARRAY_SIZE / 2;x <= ARRAY_SIZE / 2; x++)
 	{
-		for (int y=-4; y < ARRAY_SIZE; y++)
+		for (int y=-ARRAY_SIZE / 2; y <= ARRAY_SIZE / 2; y++)
 		{
 			mBackground->SetPosition(Vector2(x * TEXTURE_SIZE, y * TEXTURE_SIZE));
 			mBackground->Draw();

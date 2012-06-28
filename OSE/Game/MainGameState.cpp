@@ -72,12 +72,17 @@ void MainGameState::Initialize()
 
 	BaseObject* crate;
 	int crate_count = 350;
+	int tree_count = 50;
 	float map_size = 4500.f;
 	for (int i=0; i < crate_count; i++)
 	{
 		Vector2 pos = Vector2::Random(-map_size,map_size);
-		bool SpawnZombie = ig::RandomInt(0,10) == 0;
-		for (int i=0; i < 4; i++)
+		int Chooser = ig::RandomInt(0,10);
+		bool SpawnZombie = Chooser == 0;
+		int Amount = ig::RandomInt(1,3);
+		if (SpawnZombie)
+			Amount = ig::RandomInt(4,10);
+		for (int i=0; i < Amount; i++)
 		{
 			if (SpawnZombie)
 			{
@@ -87,10 +92,18 @@ void MainGameState::Initialize()
 			else
 			{
 				crate = CreateEntity("ent_prop");
-				crate->SetModel("crate2", ig::Random(0.3f,0.4f));
+				crate->SetModel("crate2", ig::Random(0.3f,0.5f));
+				crate->SetDrawOrder(RENDERGROUP_TOP);
 			}
 			crate->SetPos(pos + Vector2::Random(-20.f,20.f));
 		}
+	}
+	for (int i=0; i < tree_count; i++)
+	{
+		crate = CreateEntity("ent_prop");
+		crate->SetModel("tree1", ig::Random(1.f,1.f));
+		crate->SetDrawOrder(RENDERGROUP_TOP);
+		crate->SetPos(Vector2::Random(-map_size, map_size));
 	}
 }
 
@@ -157,7 +170,7 @@ void MainGameState::OnEvent(sf::Event &Event)
 		float fac = 1.f;
 		fac = 1.f + (del / 5.f);
 		float zoom = sCamera::GetZoom() * fac;
-		zoom = ig::Limit(zoom, 1, 8.f);
+		zoom = ig::Limit(zoom, 1, 20.f);
 		sCamera::SetZoom(zoom);
 	}
 }
