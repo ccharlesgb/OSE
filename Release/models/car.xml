@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<model>
+	<texture>car</texture>
+	<scale>1</scale>
+	<physics_hull>
+		<density>6</density>
+		<vertex_count>4</vertex_count>
+		<vertices>
+			<vertex>55 110</vertex>
+			<vertex>-55 110</vertex>
+			<vertex>-55 -110</vertex>
+			<vertex>55 -110</vertex>
+		</vertices>
+	</physics_hull>
+</model>

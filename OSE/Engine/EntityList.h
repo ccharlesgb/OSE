@@ -185,11 +185,6 @@ template<class T>
 typename std::vector<T>::iterator EntityList<T>::PreviousEnt(iter CurrentIter)
 {
 	CurrentIter--;
-	if (mIter <= mList.begin())
-	{
-		mCurIsValid = false;
-	}
-	mCurIsValid = true;
 	return CurrentIter;
 }
 

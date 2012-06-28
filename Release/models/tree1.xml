@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<model>
+	<texture>tree1</texture>
+	<scale>1</scale>
+	<physics_hull>
+		<density>100</density>
+		<vertex_count>4</vertex_count>
+		<vertices>
+			<vertex>15 25</vertex>
+			<vertex>-15 25</vertex>
+      <vertex>-25 10</vertex>
+      <vertex>-25 -10</vertex>
+			<vertex>-15 -25</vertex>
+			<vertex>15 -25</vertex>
+      <vertex>25 -10</vertex>
+      <vertex>25 10</vertex>
+		</vertices>
+	</physics_hull>
+</model>

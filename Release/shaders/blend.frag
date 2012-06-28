@@ -1,9 +1,15 @@
 uniform sampler2D texture;
-uniform float pixel_threshold;
+uniform sampler2D blend_channel;
+uniform sampler2D other_texture;
+uniform float pos_x;
+uniform float pos_y;
+uniform float scale;
 
 void main()
 {
-    float factor = 1.0 / (pixel_threshold + 0.001);
-	vec2 pos = floor(gl_TexCoord[0].xy * factor + 0.5) / factor;
-	gl_FragColor = texture2D(texture, pos) * gl_Color;	
+	vec2 offset;
+	offset.x = 0.0;
+	offset.y = 0.0;
+    float factor = texture2D(blend_channel, (gl_TexCoord[0].xy + offset)).x;
+	gl_FragColor = (texture2D(texture, gl_TexCoord[0].xy) * factor) + (texture2D(other_texture, gl_TexCoord[0].xy) * (1.0-factor));
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<model>
+	<texture>player2</texture>
+	<scale>1</scale>
+	<physics_hull>
+		<density>4</density>
+		<vertex_count>6</vertex_count>
+		<vertices>
+			<vertex>70 115</vertex>
+			<vertex>-15 115</vertex>
+			<vertex>-80 -5</vertex>
+			<vertex>-85 -75</vertex>
+      <vertex>0 -90</vertex>
+      <vertex>90 -75</vertex>
+		</vertices>
+	</physics_hull>
+</model>
+
+//70 115
+//-15 115
+//-80 -5
+//-85 -75
+//0 -90
+//90 -75
