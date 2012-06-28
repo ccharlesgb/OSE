@@ -27,7 +27,7 @@ void Player::Spawn()
 {
 	GetPhysObj()->SetAngularDamping(25);
 	GetPhysObj()->SetLinearDamping(10);
-	SetModel("player2", 0.25);
+	SetModel("player2", 0.28);
 	SetOrigin(Vector2(0,45));
 	PhysicsHullFromModel();
 }
@@ -50,7 +50,7 @@ void Player::GiveWeapon(BaseObject* ent)
 	ent->SetAngle(GetAngle());
 	ent->SetParent(this);
 	mWeapons.Append(ent);
-	mActiveWeapon = ent;
+	mActiveWeapon = dynamic_cast<weapon_pistol*>(ent);
 }
 
 void Player::ChooseWeapon(const char* name)
@@ -60,7 +60,7 @@ void Player::ChooseWeapon(const char* name)
 	{
 		if ((*CurEnt)->GetClassName() == name)
 		{
-			mActiveWeapon = *CurEnt;
+			mActiveWeapon = dynamic_cast<weapon_pistol*>(*CurEnt);
 			break;
 		}
 		CurEnt = mWeapons.NextEnt(CurEnt);
@@ -88,12 +88,16 @@ void Player::Think()
 		}
 		mNextUse = gGlobals.CurTime + USE_DELAY;
 	}
+	if (InputHandler::IsKeyPressed(sf::Keyboard::R))
+	{
+		mActiveWeapon->Reload();
+	}
 }
 
 void Player::PhysicsSimulate(float delta)
 {
 	//Player movement code
-	float player_walk_speed = 60.f;
+	float player_walk_speed = 50.f;
 	mText->SetPosition(GetPos());
 	//Point player towards mouse
 	if (!InputHandler::IsKeyPressed(sf::Keyboard::LShift))
@@ -123,6 +127,11 @@ void Player::PhysicsSimulate(float delta)
 	}
 	if (MoveVector.Length() > 1.f)
 		MoveVector = MoveVector.Normalize();
+	if (MoveVector.Length() > 0)
+	{
+		Vector2 orig_offset = Vector2((float)std::sin(gGlobals.CurTime * 6) * 5.f, (float)std::cos(gGlobals.CurTime * 6) * 5.f);
+		SetOrigin(Vector2(0,45) + orig_offset);
+	}
 	MoveVector = MoveVector * player_walk_speed;
 	MoveVector = ToGlobal(MoveVector) - GetPos();
 	ApplyForceCenter(MoveVector * GetPhysObj()->GetMass());

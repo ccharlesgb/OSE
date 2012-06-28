@@ -8,9 +8,6 @@ BlendSprite::BlendSprite(sf::RenderWindow *rend) : BaseDrawable(rend)
 	mShader->loadFromFile("shaders/blend.frag", sf::Shader::Fragment);
 
 	mBlendTexture.loadFromFile("images/blend_channel.png");
-
-
-
 }
 
 BlendSprite::~BlendSprite(void)

@@ -1,17 +1,18 @@
 #include "Profiler.h"
-#include <iostream>
 #include <cmath>
 #include "GameGlobals.h"
 
 sf::Clock Profiler::mClock;
 TreeNode* Profiler::mTreeRoot;
 TreeNode* Profiler::mLastStart;
+ProfileInformation* Profiler::mLastFrameInfo;
+int Profiler::mPrintOrder;
 
 void Profiler::PrintProfile()
 {
 #if PROFILER_ENABLED
-	std::cout << "--Entity Count: " << gGlobals.gEntList.GetSize() << "-------------------------------------------------\n";
 	TreeNode* CurNode = mTreeRoot;
+	mPrintOrder = 0;
 	PrintNode(mTreeRoot,0);
 	mLastStart = NULL;
 #endif
@@ -52,6 +53,15 @@ const char* Profiler::EnumName(ProfileType type)
 	case PROFILE_RENDER_DRAWCALL:
 		name = "DRAW CALLS  ";
 		break;
+	case PROFILE_ENTITY_DRAW:
+		name = "ENTITY DRAW ";
+		break;
+	case PROFILE_TEMPORARY_1:
+		name = "TEMP 1      ";
+		break;
+	case PROFILE_TEMPORARY_2:
+		name = "TEMP 2      ";
+		break;
 	default:
 		name = "ERROR       ";
 		break;
@@ -63,17 +73,11 @@ const char* Profiler::EnumName(ProfileType type)
 void Profiler::PrintNode(TreeNode* root, int depth)
 {
 	int i = 0;
-	std::string INDENT;
-	for (int ind = 0; ind < depth * 4; ind++)
-		INDENT = INDENT + ' ';
-	std::string INV_INDENT;
-	for (int ind = 0; ind < 4 * (4 - depth); ind ++)
-	{
-		INV_INDENT = INV_INDENT + ' ';
-	}
-	float Percent = (root->mExecTime.asSeconds() / mTreeRoot->mExecTime.asSeconds()) * 100.f;
-	std::cout << INDENT << EnumName(root->mType) << INV_INDENT << " Time: " << root->mExecTime.asSeconds() * 1000.f << "ms" 
-		<< "         (" << std::floor(Percent + 0.5f) << "%)\n";
+	mLastFrameInfo->NAME[mPrintOrder] = EnumName(root->mType);
+	mLastFrameInfo->TIME[mPrintOrder] = root->mExecTime.asSeconds() * 1000.f;
+	mLastFrameInfo->DEPTH[mPrintOrder] = depth;
+	mPrintOrder++;
+
 	TreeNode* CurChild = root->mChildren[0];
 	do
 	{

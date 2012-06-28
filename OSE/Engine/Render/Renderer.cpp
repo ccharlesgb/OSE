@@ -131,7 +131,7 @@ void Renderer::UpdateOnScreenList()
 	if (!gGlobals.EnableRenderCulling)
 	{
 		EntityList<BaseObject*>::iter CurEnt = Renderables.FirstEnt();
-		while((*CurEnt) != NULL)
+		while(CurEnt != Renderables.End())
 		{
 			OnScreenEnts.Append(*CurEnt);
 			CurEnt = Renderables.NextEnt(CurEnt);
@@ -156,8 +156,8 @@ void Renderer::UpdateOnScreenList()
 			Vector2 Top_Right_Quadrant	  = ig::NearestGrid(ENT_AABB_SCREENSPACE.Position + ENT_AABB_SCREENSPACE.Size, GRID_SIZE_X, GRID_SIZE_Y);
 	
 			//The size of the screen in our quantised coordinate system
-			Vector2 SCREEN_BOTTOM_LEFT = Vector2(-GridsOnScreen, -GridsOnScreen);
-			Vector2 SCREEN_TOP_RIGHT = Vector2(GridsOnScreen, GridsOnScreen);
+			Vector2 SCREEN_BOTTOM_LEFT = Vector2(-GridsOnScreen, -GridsOnScreen) * sCamera::GetZoom();
+			Vector2 SCREEN_TOP_RIGHT = Vector2(GridsOnScreen, GridsOnScreen) * sCamera::GetZoom();
 
 			//Hideous Rectanlge intersection algorithm.
 			//Check if the rectangles AABB is overlapping with the screens AABB
@@ -177,6 +177,7 @@ void Renderer::UpdateOnScreenList()
 void Renderer::Draw(IGameState *State)
 {
 	Clear();
+
 	sCamera::UpdateView();
 	mView.setCenter(GameToSFML(sCamera::GetCentre()).SF());
 	mView.setRotation(sCamera::GetRotation());
@@ -188,7 +189,7 @@ void Renderer::Draw(IGameState *State)
 	UpdateOnScreenList(); // Update the OnScreenEntityList
 	Profiler::StopRecord(PROFILE_RENDER_PURGE);
 
-	Profiler::StartRecord(PROFILE_RENDER_DRAWCALL);
+	Profiler::StartRecord(PROFILE_ENTITY_DRAW);
 	//mLightSystem->RenderLights();
 	//mLightSystem->RenderLightTexture();
 	EntityList<BaseObject*>::iter CurEnt = OnScreenEnts.FirstEnt();
@@ -200,8 +201,7 @@ void Renderer::Draw(IGameState *State)
 		}
 		CurEnt = OnScreenEnts.NextEnt(CurEnt);
 	}
-	Profiler::StopRecord(PROFILE_RENDER_DRAWCALL);
-
+	Profiler::StopRecord(PROFILE_ENTITY_DRAW);
 
 	if (InputHandler::IsKeyPressed(sf::Keyboard::F3))
 		State->DrawDebugData();
@@ -211,4 +211,9 @@ void Renderer::Draw(IGameState *State)
 	{
 		HUD->Draw();
 	}
+
+	//DO THIS LAST UPDATE THE WHOLE SCREEN!
+	Profiler::StartRecord(PROFILE_RENDER_DRAWCALL);
+	Display();
+	Profiler::StopRecord(PROFILE_RENDER_DRAWCALL);
 }

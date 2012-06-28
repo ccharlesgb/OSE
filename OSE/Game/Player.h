@@ -3,6 +3,7 @@
 #include "../Engine/Bases/BasePhysics.h"
 #include "../Engine/EntityList.h"
 #include "../Engine/Text.h"
+#include "../Game/weapon_pistol.h"
 
 #define USE_DELAY 0.5f
 
@@ -10,7 +11,7 @@ class Player : public BasePhysics
 {
 private:
 	EntityList<BaseObject*> mWeapons;
-	BaseObject *mActiveWeapon;
+	weapon_pistol *mActiveWeapon;
 	float mNextUse;
 	Text *mText;
 public:

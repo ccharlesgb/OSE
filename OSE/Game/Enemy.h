@@ -8,6 +8,7 @@ class Enemy : public BasePhysics
 {
 private:
 	BaseObject* mTarget;
+	float mLastSearch;
 public:
 	Enemy(void);
 	~Enemy(void);
@@ -17,5 +18,6 @@ public:
 
 	void TakeDamage(const DamageInfo &info);
 	void PhysicsSimulate(float delta);
+	void StartTouch(CollisionInfo *info);
 };
 

@@ -26,6 +26,7 @@ protected:
 	float mScale;
 	sf::RenderWindow* mRenderWindow;
 	bool mDirtyTransform;
+	bool mUseScreenCoords;
 public:
 	BaseDrawable(sf::RenderWindow *rend);
 	~BaseDrawable(void);
@@ -33,6 +34,8 @@ public:
 	Vector2 GameToSFML(Vector2 pos);
 
 	std::string GetImagePath(const char* path);
+
+	void SetUseScreenCoords(bool screencoords) {mUseScreenCoords = screencoords;};
 
 	void SetPosition(Vector2 pos) {mPos = pos; mDirtyTransform = true;};
 	Vector2 GetPosition() {return mPos;};

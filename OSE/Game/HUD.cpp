@@ -1,16 +1,63 @@
 #include "HUD.h"
 #include "../Engine/Render/Renderer.h"
+#include "../Engine/EntityListGlobal.h"
+#include "../Engine/InputHandler.h"
+#include "../Engine/Profiler.h"
 
 HUD::HUD()
 {
-	Renderer::Instance()->SetHUD(this);
+	RENDERER->SetHUD(this);
 	mHealth = new Text(gGlobals.RenderWindow);
-	mHealth->SetText("HAX");
-	mHealth->SetPosition(Vector2(0, 0));
+	mHealth->SetText("Health: ");
+	mHealth->SetUseScreenCoords(true);
+	mHealth->SetPosition(Vector2(10.f, gGlobals.GameHeight * 0.9f));
+
+	for (int i=0; i<PROFILE_TYPE_COUNT; i++)
+	{
+		mProfileDump[i] = new Text(gGlobals.RenderWindow);
+		mProfileDump[i]->SetUseScreenCoords(true);
+		mProfileDump[i]->SetPosition(Vector2(10, i * 25));
+		mProfileDump[i]->SetScale(0.6f);
+	}
+	mShowingProfile = false;
 }
 
 void HUD::Draw()
 {
-	//mHealth->Draw();
+	ObjList* list = gGlobals.gEntList.FindByClass("player");
+	if (list->GetSize() > 0)
+	{
+		BaseObject* ply = (*list->FirstEnt()); // Get the (first) player
+		char buffer[30];
+		sprintf(buffer, "Health: %i", (int)ply->GetHealth());
+		mHealth->SetText(buffer);
+		mHealth->Draw();
+	}
+
+	if (InputHandler::IsKeyPressed(sf::Keyboard::F4))
+	{
+		mShowingProfile = !mShowingProfile;
+	}
+	if (mShowingProfile)
+	{
+		ProfileInformation* mExecTimes = Profiler::GetLastFrameInfo();
+		for(int i=0; i<PROFILE_TYPE_COUNT; i++)
+		{
+			if (mExecTimes->NAME[i].empty())
+				continue;
+			char buffer[60];
+			std::string INDENT;
+			for(int spaces = 0; spaces < mExecTimes->DEPTH[i] * 4; spaces++)
+			{
+				INDENT = INDENT + ' ';
+			}
+			float perc = mExecTimes->TIME[i] / mExecTimes->TIME[0];
+			mProfileDump[i]->SetColour(Colour(255, 255 - (255 * perc),255 - (255 * perc)));
+
+			sprintf(buffer, (INDENT + mExecTimes->NAME[i] + ": %f").c_str(), mExecTimes->TIME[i]);
+			mProfileDump[i]->SetText(buffer);
+			mProfileDump[i]->Draw();
+		}
+	}
 }
 

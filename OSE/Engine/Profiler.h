@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/System.hpp>
+#include <iostream>
 
 #define PROFILER_ENABLED 1
 
@@ -10,13 +11,24 @@ enum ProfileType
 	PROFILE_STATE_TICK,
 	PROFILE_RENDER_FRAME,
 	PROFILE_RENDER_DRAWCALL,
+	PROFILE_ENTITY_DRAW,
 	PROFILE_RENDER_MAP,
 	PROFILE_RENDER_PURGE,
 	PROFILE_PHYSICS_STEP,
 	PROFILE_EVENT_HANDLE,
 	PROFILE_ENTITY_TICK,
 	PROFILE_ENTITY_CREATION,
-	COUNT
+	PROFILE_TEMPORARY_1,
+	PROFILE_TEMPORARY_2,
+	PROFILE_TYPE_COUNT
+};
+
+class ProfileInformation
+{
+public:
+	std::string NAME[PROFILE_TYPE_COUNT];
+	float TIME[PROFILE_TYPE_COUNT];
+	int DEPTH[PROFILE_TYPE_COUNT];
 };
 
 class TreeNode
@@ -40,7 +52,9 @@ private:
 
 	static TreeNode* mTreeRoot;
 	static TreeNode* mLastStart;
+	static int mPrintOrder;
 public:
+	static ProfileInformation *mLastFrameInfo;
 	static void StartFrame() {mLastStart = NULL;};
 	static void PrintProfile();
 	static void PrintNode(TreeNode* root, int depth);
@@ -52,5 +66,9 @@ public:
 	static void StopRecord(ProfileType type);
 
 	static const char* EnumName(ProfileType type);
+
+	static void Init() {mLastFrameInfo = new ProfileInformation();};
+
+	static ProfileInformation* GetLastFrameInfo() {return mLastFrameInfo;};
 };
 

@@ -16,7 +16,7 @@ void Text::SetFont(const char *path)
 
 void Text::SetPosition(const Vector2 position)
 {
-	Vector2 pos = ig::GameToSFML(position);
+	Vector2 pos = GameToSFML(position);
 	mText.setPosition(pos.SF());
 }
 

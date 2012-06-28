@@ -15,8 +15,8 @@ Map::Map(void)
 	int map_size = ARRAY_SIZE * TEXTURE_SIZE * 2;
 	SetRenderBounds(Vector2_Rect(Vector2(map_size, map_size) * -0.5f, Vector2(map_size, map_size)));
 	mBackground = new BlendSprite(gGlobals.RenderWindow);
-	mBackground->SetTexture1("grass2");
-	mBackground->SetTexture2("mud1");
+	mBackground->SetTexture1("paintedgrass");
+	mBackground->SetTexture2("paintedgrass");
 }
 
 Map::~Map(void)

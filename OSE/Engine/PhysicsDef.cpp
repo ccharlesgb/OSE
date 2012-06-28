@@ -77,6 +77,7 @@ void PhysicsDef::CreatePhysics(b2World *World)
 	mWorld = World;
 	b2BodyDef def;
 	def.position = mPosition.B2();
+	def.angle = ig::DegToRad(mAngle);
 	switch (GetType())
 	{
 	case STATIC_BODY:

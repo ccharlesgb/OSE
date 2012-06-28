@@ -6,7 +6,9 @@
 class HUD : public BaseHUD
 {
 private:
-	Text *mHealth;
+	Text* mHealth;
+	Text* mProfileDump[15];
+	bool mShowingProfile;
 public:
 	
 	/**

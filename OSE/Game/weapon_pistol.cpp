@@ -8,6 +8,7 @@ weapon_pistol::weapon_pistol(void)
 {
 	RegisterInput("fire1", PrimaryFire);
 	CreateSound("shot", "gunshot");
+	CreateSound("reload", "reload");
 	RenderInit();
 	GetSound("shot")->SetVolume(20.f);
 	SetDrawOrder(RENDERGROUP_ENTITIES);
@@ -15,6 +16,12 @@ weapon_pistol::weapon_pistol(void)
 	mLine->SetColour(Colour(255, 236, 139));
 	mNextPrimaryFire = 0.f;
 	mLastShot = 0.f;
+	mPrimClip = 0;
+	mSecoClip = 0;
+	SetPrimaryAmmo(500);
+	SetPrimaryClipSize(40);
+	RestockPrimaryClip();
+	RestockSecondaryClip();
 }
 
 weapon_pistol::~weapon_pistol(void)
@@ -26,6 +33,16 @@ void weapon_pistol::Spawn()
 	SetModel("muzzle_flash", 0.2f);
 }
 
+void weapon_pistol::Reload()
+{
+	if (IsReloading())
+		return;
+	SetNextPrimaryFire(gGlobals.CurTime + 3.5f);
+	GetSound("reload")->Play();
+	RestockPrimaryClip();
+	mReloading = true;
+}
+
 void weapon_pistol::Draw()
 {
 	if (mLastShot + 0.05 > gGlobals.CurTime)
@@ -33,6 +50,24 @@ void weapon_pistol::Draw()
 		mLine->Draw();
 		DrawModel();
 	}
+}
+
+void weapon_pistol::Think()
+{
+}
+
+void weapon_pistol::UsePrimaryAmmo(int amount)
+{
+	mPrimClip = ig::Approach(mPrimClip, 0, amount);
+	if (mPrimClip <= 0)
+		Reload();
+}
+
+void weapon_pistol::UseSecondaryAmmo(int amount)
+{
+	mSecoClip = ig::Approach(mPrimClip, 0, amount);
+	if (mSecoClip <= 0)
+		Reload();
 }
 
 void weapon_pistol::ShootBullet()
@@ -63,10 +98,14 @@ void weapon_pistol::PrimaryFire(BaseObject* ent, VariantMap &Data)
 {
 	weapon_pistol* me = dynamic_cast<weapon_pistol*>(ent);
 	if (me->GetNextPrimaryFire() < gGlobals.CurTime)
-	{
+	{	
+		me->mReloading = false;
+		if (me->GetPrimaryAmmo() <= 0)
+			return;
 		me->EmitSound("shot");
 		me->ShootBullet();
 		me->mLastShot = (float)gGlobals.CurTime;
 		me->SetNextPrimaryFire((float)gGlobals.CurTime + 0.1f);
+		me->UsePrimaryAmmo(1);
 	}
 }

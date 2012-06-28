@@ -17,7 +17,10 @@ LINKCLASSTONAME("car", Car)
 #define THROTTLE_DIE_SPEED 25.f
 #define TRAIL_LIFETIME 10.f
 
-#define DEFAULT_BACK_TRACTION 0.1f
+#define FRONT_SKID_THRESHOLD 380.f
+#define BACK_SKID_THRESHOLD 200.f
+
+#define DEFAULT_BACK_TRACTION 0.08f
 #define DEFAULT_FRONT_TRACTION 0.06f
 
 #define BACK_SKID_SPEED 0.1f
@@ -218,7 +221,7 @@ void Car::PhysicsSimulate(float delta)
 	Vector2 LocalVelFront = LocalVel + Vector2(ig::DegToRad(GetAngularVelocity()) * 90.f,0.f);
 
 	LocalVelFront = LocalVelFront.Rotate(mWheelAngle); //Rotate the local vel according to the wheels
-	if (std::abs(LocalVelFront.x) > 700)
+	if (std::abs(LocalVelFront.x) > FRONT_SKID_THRESHOLD)
 	{
 		if (!mFrontWheelSkid && !mBackWheelSkid)
 			GetSound("skid")->Play();
@@ -249,11 +252,10 @@ void Car::PhysicsSimulate(float delta)
 	Vector2 BackForce;
 	Vector2 LocalVelBack = LocalVel - Vector2(ig::DegToRad(GetAngularVelocity()) * 90.f,0.f);
 
-
 	BackForce.x = -LocalVelBack.x * mBackWheelTraction;
 	BackForce.y = mThrottle * mBackWheelTraction * 6.f;
 
-	if (InputHandler::IsKeyPressed(sf::Keyboard::Space) || std::fabs(LocalVelBack.x) > 300) //HandBrake
+	if ((InUse() && InputHandler::IsKeyPressed(sf::Keyboard::Space)) || std::fabs(LocalVelBack.x) > BACK_SKID_THRESHOLD) //HandBrake
 	{
 		if (!mFrontWheelSkid && !mBackWheelSkid)
 			GetSound("skid")->Play();

@@ -72,14 +72,22 @@ void MainGameState::Initialize()
 
 	BaseObject* crate;
 	int crate_count = 350;
-	float map_size = 12000.f;
+	float map_size = 4500.f;
 	for (int i=0; i < crate_count; i++)
 	{
 		Vector2 pos = Vector2::Random(-map_size,map_size);
 		for (int i=0; i < 4; i++)
 		{
-			crate = CreateEntity("ent_prop");
-			crate->SetModel("crate2", ig::Random(0.7f,1.f));
+			if (ig::RandomInt(0,10) == 0)
+			{
+				crate = CreateEntity("enemy");
+				crate->SetAngle(ig::Random(0,360));
+			}
+			else
+			{
+				crate = CreateEntity("ent_prop");
+				crate->SetModel("crate2", ig::Random(0.3f,0.4f));
+			}
 			crate->SetPos(pos + Vector2::Random(-20.f,20.f));
 		}
 	}
@@ -216,7 +224,7 @@ void MainGameState::OnMouseButtonPressed(sf::Mouse::Button Button, bool Pressed)
 		if (Pressed && Button == sf::Mouse::Left)
 		{
 			BaseObject* crate;
-			crate = CreateEntity("enemy");
+			crate = CreateEntity("ent_prop");
 			crate->SetModel("crate2", ig::Random(0.5f,0.7f));
 			crate->SetPos(InputHandler::GetMousePosWorld());
 		}

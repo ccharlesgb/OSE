@@ -13,7 +13,7 @@ void BasePhysics::PhysicsInit(BODY_TYPE typ)
 	mPhysObj = new PhysicsDef;
 	mPhysObj->SetOwner(this);
 	mPhysObj->SetPos(GetPos());
-	mPhysObj->SetAngle(0);
+	mPhysObj->SetAngle(GetAngle());
 	mPhysObj->SetType(typ);
 }
 

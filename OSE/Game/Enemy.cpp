@@ -13,21 +13,34 @@ Enemy::Enemy(void)
 	SetDrawOrder(RENDERGROUP_PLAYER);
 	PhysicsInit(DYNAMIC_BODY);
 	mTarget = NULL;
+	mLastSearch = ig::Random(0.f,1.f);
 }
 
 void Enemy::Spawn()
 {
 	GetPhysObj()->SetAngularDamping(25);
 	GetPhysObj()->SetLinearDamping(10);
-	SetModel("zombie", 0.25);
+	SetModel("zombie", 0.28);
 	SetOrigin(Vector2(0,45));
 	PhysicsHullFromModel();
-	SetMaxHealth(200);
-	SetHealth(200);
+	SetMaxHealth(150);
+	SetHealth(150);
 }
 
 Enemy::~Enemy(void)
 {
+}
+
+void Enemy::StartTouch(CollisionInfo *info)
+{
+	if (info->OtherEnt->GetClassName() == "player")
+	{
+		DamageInfo dmg_info;
+		dmg_info.Amount = ig::Random(5,10);
+		dmg_info.Inflictor = this;
+		dmg_info.type = DAMAGETYPE_MELEE;
+		info->OtherEnt->TakeDamage(dmg_info);
+	}
 }
 
 void Enemy::Draw()
@@ -38,16 +51,20 @@ void Enemy::Draw()
 
 void Enemy::Think()
 {
-	ObjList* Players = gGlobals.gEntList.FindInCircle(GetPos(), 512);
-	EntityList<BaseObject*>::iter CurEnt = Players->FirstEnt();
-	while (CurEnt != Players->End())
+	if (mLastSearch + 1.f < gGlobals.CurTime)
 	{
-		if ((*CurEnt)->GetClassName() == "player")
+		ObjList* Players = gGlobals.gEntList.FindInCircle(GetPos(), 512);
+		EntityList<BaseObject*>::iter CurEnt = Players->FirstEnt();
+		while (CurEnt != Players->End())
 		{
-			mTarget = (*CurEnt);
-			break;
+			if ((*CurEnt)->GetClassName() == "player")
+			{
+				mTarget = (*CurEnt);
+				break;
+			}
+			CurEnt = Players->NextEnt(CurEnt);
 		}
-		CurEnt = Players->NextEnt(CurEnt);
+		mLastSearch = gGlobals.CurTime;
 	}
 }
 
@@ -65,14 +82,14 @@ void Enemy::TakeDamage(const DamageInfo &info)
 
 void Enemy::PhysicsSimulate(float delta)
 {
-	float player_walk_speed = 50.f;
+	float player_walk_speed = 36.f;
 	//Point towards player
 	if (mTarget)
 	{
 		Vector2 MousePos = mTarget->GetPos();
 		Vector2 MouseDirHat = (MousePos - GetPos()).Normalize();
 		float TargetAngle = ig::RadToDeg(std::atan2(MouseDirHat.y, MouseDirHat.x)) - 90.f;
-		GetPhysObj()->ApplyTorque(ig::NormalizeAngle(TargetAngle - GetAngle()) * GetPhysObj()->GetMass());
+		GetPhysObj()->ApplyTorque(ig::NormalizeAngle(TargetAngle - GetAngle()) * GetPhysObj()->GetMass() * 0.3f);
 
 		Vector2 MoveVector;
 		MoveVector.y = 1;

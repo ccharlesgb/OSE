@@ -67,4 +67,7 @@ public:
 	 */
 	void SetPosition(const Vector2 position);
 	
+	void SetScale(float scale) {mText.setScale(scale,scale);};
+
+	void SetColour(Colour col) {mText.setColor(col.SF());};
 };
