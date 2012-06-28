@@ -14,6 +14,9 @@ private:
 	weapon_pistol *mActiveWeapon;
 	float mNextUse;
 	Text *mText;
+
+	float mWalkSpeed;
+	float mLastTakeDamage;
 public:
 	Player(void);
 	~Player(void);
@@ -24,5 +27,9 @@ public:
 	void GiveWeapon(BaseObject *wep);
 	void ChooseWeapon(const char* name);
 	void PhysicsSimulate(float delta);
+
+	void SetWalkSpeed(float speed) {mWalkSpeed = speed;};
+	float GetWalkSpeed() {return mWalkSpeed;};
+	void TakeDamage(const DamageInfo &info);
 };
 

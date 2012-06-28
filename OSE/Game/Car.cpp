@@ -108,7 +108,14 @@ void Car::OnDelete()
 
 void Car::StartTouch(CollisionInfo* info)
 {
-
+	if (info->Speed > 500)
+	{
+		DamageInfo d_info;
+		d_info.Inflictor = info->OtherEnt;
+		d_info.Amount = info->Speed / 10;
+		d_info.type = DAMAGETYPE_PHYSICS;
+		info->OtherEnt->TakeDamage(d_info);
+	}
 }
 
 void Car::Use(BaseObject *ply)

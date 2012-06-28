@@ -13,7 +13,8 @@ Enemy::Enemy(void)
 	SetDrawOrder(RENDERGROUP_PLAYER);
 	PhysicsInit(DYNAMIC_BODY);
 	mTarget = NULL;
-	mLastSearch = ig::Random(0.f,1.f);
+	mLastSearch = ig::Random(0.f,1.f); //If laod
+	mLastWander = ig::Random(0.f, 2.f);
 }
 
 void Enemy::Spawn()
@@ -64,6 +65,11 @@ void Enemy::Think()
 			}
 			CurEnt = Players->NextEnt(CurEnt);
 		}
+		if (mTarget == NULL && mLastWander + 6.f < gGlobals.CurTime)
+		{
+			mWanderPos = GetPos() + Vector2::Random(-400.f,400.f);
+			mLastWander = gGlobals.CurTime;
+		}
 		mLastSearch = gGlobals.CurTime;
 	}
 }
@@ -84,18 +90,34 @@ void Enemy::PhysicsSimulate(float delta)
 {
 	float player_walk_speed = 36.f;
 	//Point towards player
+	Vector2 TargetPos;
 	if (mTarget)
 	{
-		Vector2 MousePos = mTarget->GetPos();
-		Vector2 MouseDirHat = (MousePos - GetPos()).Normalize();
-		float TargetAngle = ig::RadToDeg(std::atan2(MouseDirHat.y, MouseDirHat.x)) - 90.f;
-		GetPhysObj()->ApplyTorque(ig::NormalizeAngle(TargetAngle - GetAngle()) * GetPhysObj()->GetMass() * 0.3f);
-
-		Vector2 MoveVector;
-		MoveVector.y = 1;
-	
-		MoveVector = MoveVector.Normalize() * player_walk_speed;
-		MoveVector = ToGlobal(MoveVector) - GetPos();
-		ApplyForceCenter(MoveVector * GetPhysObj()->GetMass());
+		TargetPos = mTarget->GetPos();
 	}
+	else
+	{
+		TargetPos = mWanderPos;
+		if ((TargetPos - GetPos()).Length() < 40.f) //Arrived!
+		{
+			return;
+		}
+	}
+	Vector2 MouseDirHat = (TargetPos - GetPos()).Normalize();
+	float TargetAngle = ig::RadToDeg(std::atan2(MouseDirHat.y, MouseDirHat.x)) - 90.f;
+	GetPhysObj()->ApplyTorque(ig::NormalizeAngle(TargetAngle - GetAngle()) * GetPhysObj()->GetMass() * 0.3f);
+
+	Vector2 MoveVector;
+	MoveVector.y = 1;
+	
+	MoveVector = MoveVector.Normalize() * player_walk_speed;
+	MoveVector = ToGlobal(MoveVector) - GetPos();
+	ApplyForceCenter(MoveVector * GetPhysObj()->GetMass());
+}
+
+void Enemy::OnDelete()
+{
+	BaseObject* decal = CreateEntity("ent_decal");
+	decal->SetModel("blood_spatter");
+	decal->SetPos(GetPos());
 }

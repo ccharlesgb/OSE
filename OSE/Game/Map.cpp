@@ -16,7 +16,7 @@ Map::Map(void)
 	SetRenderBounds(Vector2_Rect(Vector2(map_size, map_size) * -0.5f, Vector2(map_size, map_size)));
 	mBackground = new BlendSprite(gGlobals.RenderWindow);
 	mBackground->SetTexture1("paintedgrass");
-	mBackground->SetTexture2("paintedgrass");
+	mBackground->SetTexture2("paintedmud");
 }
 
 Map::~Map(void)

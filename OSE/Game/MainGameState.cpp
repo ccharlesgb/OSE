@@ -76,9 +76,10 @@ void MainGameState::Initialize()
 	for (int i=0; i < crate_count; i++)
 	{
 		Vector2 pos = Vector2::Random(-map_size,map_size);
+		bool SpawnZombie = ig::RandomInt(0,10) == 0;
 		for (int i=0; i < 4; i++)
 		{
-			if (ig::RandomInt(0,10) == 0)
+			if (SpawnZombie)
 			{
 				crate = CreateEntity("enemy");
 				crate->SetAngle(ig::Random(0,360));

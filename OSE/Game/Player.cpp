@@ -4,6 +4,8 @@
 #include "../Engine/PhysicsQueries.h"
 
 #define USE_RANGE 50.f
+#define DEFAULT_WALK_SPEED 50.f
+#define HEALTH_REGEN_TIME 5.f
 
 //This function registers the entity to the EntityCreator.
 //"player" is the classname. Player is the coded classname
@@ -21,6 +23,8 @@ Player::Player(void)
 	mText->SetFont("LCDM2N");
 	mText->SetText("Test");
 	mText->SetPosition(GetPos());
+	SetWalkSpeed(DEFAULT_WALK_SPEED);
+	mLastTakeDamage = 0.f;
 }
 
 void Player::Spawn()
@@ -53,6 +57,13 @@ void Player::GiveWeapon(BaseObject* ent)
 	mActiveWeapon = dynamic_cast<weapon_pistol*>(ent);
 }
 
+void Player::TakeDamage(const DamageInfo &info)
+{
+	SetHealth(GetHealth() - info.Amount);
+	SetWalkSpeed(ig::Approach(GetWalkSpeed(), 20.f, -15.f));
+	mLastTakeDamage = gGlobals.CurTime;
+}
+
 void Player::ChooseWeapon(const char* name)
 {
 	EntityList<BaseObject*>::iter CurEnt = mWeapons.FirstEnt();
@@ -73,6 +84,15 @@ void Player::Think()
 	{
 		VariantMap dat;
 		mActiveWeapon->Fire("fire1", dat);
+	}
+
+	if (mLastTakeDamage + HEALTH_REGEN_TIME < gGlobals.CurTime)
+	{
+		SetHealth(ig::Approach(GetHealth(), GetMaxHealth(), 0.1f));
+	}
+	if (mLastTakeDamage + 0.5f < gGlobals.CurTime)
+	{
+		SetWalkSpeed(ig::Approach(GetWalkSpeed(), DEFAULT_WALK_SPEED, 0.5f));
 	}
 
 	if (InputHandler::IsKeyPressed(sf::Keyboard::E) && mNextUse < gGlobals.CurTime)
@@ -97,7 +117,6 @@ void Player::Think()
 void Player::PhysicsSimulate(float delta)
 {
 	//Player movement code
-	float player_walk_speed = 50.f;
 	mText->SetPosition(GetPos());
 	//Point player towards mouse
 	if (!InputHandler::IsKeyPressed(sf::Keyboard::LShift))
@@ -132,7 +151,7 @@ void Player::PhysicsSimulate(float delta)
 		Vector2 orig_offset = Vector2((float)std::sin(gGlobals.CurTime * 6) * 5.f, (float)std::cos(gGlobals.CurTime * 6) * 5.f);
 		SetOrigin(Vector2(0,45) + orig_offset);
 	}
-	MoveVector = MoveVector * player_walk_speed;
+	MoveVector = MoveVector * GetWalkSpeed();
 	MoveVector = ToGlobal(MoveVector) - GetPos();
 	ApplyForceCenter(MoveVector * GetPhysObj()->GetMass());
 }
