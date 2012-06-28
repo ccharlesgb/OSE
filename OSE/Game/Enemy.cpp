@@ -26,6 +26,7 @@ void Enemy::Spawn()
 	PhysicsHullFromModel();
 	SetMaxHealth(150);
 	SetHealth(150);
+	UpdateWanderPos();
 }
 
 Enemy::~Enemy(void)
@@ -50,6 +51,11 @@ void Enemy::Draw()
 	//mText->Draw();
 }
 
+void Enemy::UpdateWanderPos()
+{
+	mWanderPos = GetPos() + Vector2::Random(-400.f,400.f);
+}
+
 void Enemy::Think()
 {
 	if (mLastSearch + 1.f < gGlobals.CurTime)
@@ -67,7 +73,7 @@ void Enemy::Think()
 		}
 		if (mTarget == NULL && mLastWander + 6.f < gGlobals.CurTime)
 		{
-			mWanderPos = GetPos() + Vector2::Random(-400.f,400.f);
+			UpdateWanderPos();
 			mLastWander = gGlobals.CurTime;
 		}
 		mLastSearch = gGlobals.CurTime;

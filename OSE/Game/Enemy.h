@@ -22,5 +22,6 @@ public:
 	void PhysicsSimulate(float delta);
 	void StartTouch(CollisionInfo *info);
 	void OnDelete();
+	void UpdateWanderPos();
 };
 

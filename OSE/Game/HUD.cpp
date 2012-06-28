@@ -3,6 +3,8 @@
 #include "../Engine/EntityListGlobal.h"
 #include "../Engine/InputHandler.h"
 #include "../Engine/Profiler.h"
+#include "weapon_pistol.h"
+#include "Player.h"
 
 HUD::HUD()
 {
@@ -10,7 +12,12 @@ HUD::HUD()
 	mHealth = new Text(gGlobals.RenderWindow);
 	mHealth->SetText("Health: ");
 	mHealth->SetUseScreenCoords(true);
-	mHealth->SetPosition(Vector2(10.f, gGlobals.GameHeight * 0.9f));
+	mHealth->SetPosition(Vector2(10.f, gGlobals.GameHeight * 0.95f));
+
+	mAmmo = new Text(gGlobals.RenderWindow);
+	mAmmo->SetText("Ammo: ");
+	mAmmo->SetUseScreenCoords(true);
+	mAmmo->SetPosition(Vector2(gGlobals.GameWidth * 0.85f, gGlobals.GameHeight * 0.95f));
 
 	for (int i=0; i<PROFILE_TYPE_COUNT; i++)
 	{
@@ -27,11 +34,16 @@ void HUD::Draw()
 	ObjList* list = gGlobals.gEntList.FindByClass("player");
 	if (list->GetSize() > 0)
 	{
-		BaseObject* ply = (*list->FirstEnt()); // Get the (first) player
+		Player* ply = dynamic_cast<Player*>(*list->FirstEnt()); // Get the (first) player
 		char buffer[30];
 		sprintf(buffer, "Health: %i", (int)ply->GetHealth());
 		mHealth->SetText(buffer);
 		mHealth->Draw();
+
+		weapon_pistol* wep = dynamic_cast<weapon_pistol*>(ply->GetActiveWeapon());
+		sprintf(buffer, "Ammo: %i", wep->GetPrimaryAmmo());
+		mAmmo->SetText(buffer);
+		mAmmo->Draw();
 	}
 
 	if (InputHandler::IsKeyPressed(sf::Keyboard::F4))

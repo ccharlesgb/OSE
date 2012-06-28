@@ -31,5 +31,7 @@ public:
 	void SetWalkSpeed(float speed) {mWalkSpeed = speed;};
 	float GetWalkSpeed() {return mWalkSpeed;};
 	void TakeDamage(const DamageInfo &info);
+
+	BaseObject* GetActiveWeapon() {return mActiveWeapon;};
 };
 
