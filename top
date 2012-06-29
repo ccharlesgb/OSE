@@ -1,0 +1,1700 @@
+[33mcommit 07607b612fbdde2b72c69624dc4822f3f3848d12[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Fri Jun 29 20:23:42 2012 +0100
+
+    Structure for animating sprites!
+
+[33mcommit 5df57a26959c5fc518459ef3b127fca9492d5921[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Fri Jun 29 20:02:16 2012 +0100
+
+    Fixed blend texture scaling
+
+[33mcommit 91d129353e894b1121c3fa5f850f2403f50773cc[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Fri Jun 29 15:27:55 2012 +0100
+
+    Animation tests
+
+[33mcommit adb5f6a9e10c6d4469f6bd60d1b2410cf408bfbf[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Thu Jun 28 20:10:13 2012 +0100
+
+    Fixed EntityList
+
+[33mcommit 67dc502bcc67a12f4553ac933043cac1fdcbc7d7[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Thu Jun 28 19:38:27 2012 +0100
+
+    Trees!
+
+[33mcommit c6cb6e53d8850157df4bd61eacbdc86f23e312fb[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Thu Jun 28 18:28:52 2012 +0100
+
+    Improved Wander behaviour. Added Ammo to HUD
+
+[33mcommit 5da6aaf2bf9d813a8d16e51be24ffbe6d3a63a4e[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Thu Jun 28 17:50:33 2012 +0100
+
+    Zombies now wander around
+    
+    Cars kill zombies.
+    Zombies drop blood.
+    Zombies wander around.
+    New Mud texture
+
+[33mcommit 3c2ec90be8fd2d05d3f7209f09e3a54624feb906[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Thu Jun 28 16:39:26 2012 +0100
+
+    Weapons Reload F4 to show profiler
+
+[33mcommit cf8a4ca75f8b6fc3061bae586bcb7f08e7d12661[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 27 23:49:38 2012 +0100
+
+    New Entity List look at IGameState on how to use it
+
+[33mcommit f01965f58370af3b919e98f55473b15facf0743d[m
+Merge: fcd3d4d 72e267f
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 27 20:52:56 2012 +0100
+
+    Merge branch 'master' of https://github.com/ccharlesgb/OSE
+
+[33mcommit fcd3d4d8d917e03775051975e026ee6918eef1bf[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 27 20:52:44 2012 +0100
+
+    New EntityList
+
+[33mcommit 72e267fab2cba2bcc8bbba71504d2874d784de1c[m
+Merge: c2de3c0 663ecee
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Wed Jun 27 20:44:20 2012 +0200
+
+    Merge branch 'master' of github.com:ccharlesgb/OSE
+
+[33mcommit c2de3c00a28063162d74805b698e4e04aa0bb5f3[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Wed Jun 27 20:44:14 2012 +0200
+
+    Hud
+
+[33mcommit 663ecee1d16cf8f8958151846038887e8aa344d4[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 27 19:28:52 2012 +0100
+
+    Zombie NPC chases yo ass
+
+[33mcommit 74629aea45ae5498f25ca080f5cdea46988c3e10[m
+Merge: 4a06584 1f74cdb
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 27 19:04:42 2012 +0100
+
+    Merge branch 'master' of https://github.com/ccharlesgb/OSE
+
+[33mcommit 4a06584a0dcc19fbb17f76461405e5a7e8eb86e2[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 27 19:04:31 2012 +0100
+
+    Zombie NPC not yet working
+
+[33mcommit 1f74cdb6c102cd0cba559e88f826be281a6b217c[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Wed Jun 27 19:47:10 2012 +0200
+
+    Removed XMLParser.
+
+[33mcommit cf274d276fcb9871818315255943cda33fe5f559[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Wed Jun 27 19:40:32 2012 +0200
+
+    Removed the unnecessary vertex count read from xml. Counts the vertexes while it loops them instead.
+
+[33mcommit bb5937f20a6dbe1c3035e9f6d01fed26eccd98e0[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Wed Jun 27 19:22:43 2012 +0200
+
+    Fixed shader not compiling on osx.
+
+[33mcommit cf2c91d7541bd5abbc66b23e0e4f29e94da0c192[m
+Merge: 41e9bac 56a1109
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Wed Jun 27 19:16:59 2012 +0200
+
+    Merge branch 'master' of github.com:ccharlesgb/OSE
+
+[33mcommit 41e9bac641112049137f51e8d1e42684363dc2f3[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Wed Jun 27 19:16:35 2012 +0200
+
+    Fixed weird error with texture path string getting corrupt.
+
+[33mcommit 56a110904fd377c7268ced7d97df9c2474935c2f[m
+Merge: bb065dc 028282f
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 27 17:25:06 2012 +0100
+
+    Merge branch 'master' of https://github.com/ccharlesgb/OSE
+
+[33mcommit bb065dc9a44a8d712ae7a7a9bf11f439a484ae33[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 27 17:24:26 2012 +0100
+
+    Still no lighting :<
+
+[33mcommit 028282f092bffdff721ee8c630bfa31ee2677ef3[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Wed Jun 27 18:20:29 2012 +0200
+
+    Added error texture define.
+
+[33mcommit e9c12654d84e705dbcf5dc9230606a32368565ed[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Wed Jun 27 18:20:11 2012 +0200
+
+    Stupid Xcode errors (converting lvalue …).
+
+[33mcommit 33ea39b5093c7f13796c0cd6186ff2f15e132b6b[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 27 15:43:44 2012 +0100
+
+    Fixed up player sprite, working model loader
+
+[33mcommit d64765d6f57e6fcf9be96032c3a628456e0f5a50[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 27 03:26:24 2012 +0100
+
+    New Player Sprite, Trying to get model loader working.
+    
+    Model loader crashes game, needs error handling and stuff!
+
+[33mcommit 21f0b26a380ca68ddc3f4736990f467fc83e0c0b[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 27 00:36:13 2012 +0100
+
+    Terrible player sprite psd
+    
+    Trying to get blendsprite to scale the blend_channel. Failing
+
+[33mcommit 1cb2fdc5fe5890977a50ba6740ed4e643419d421[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 26 18:14:17 2012 +0100
+
+    Working on modifying the blend texture
+
+[33mcommit d1ad1dc972de5139634489cfcc779a6c25af4170[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 26 03:05:33 2012 +0100
+
+    Commented GetAABB()
+
+[33mcommit 64ef5231fc773e409791844ac344e21895877731[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 26 02:47:13 2012 +0100
+
+    Render Culling works better
+    
+    - Added BaseObject;:GetAABB()
+
+[33mcommit 0a9796f32aec1c13b003cc069ece6309ab5a0c28[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 25 22:40:02 2012 +0100
+
+    Added Vector2_Rect added render culling (buggy)
+
+[33mcommit ea44b9d7f7b2a39daf09c6deacdc5cd01dbfe099[m
+Merge: 58fb790 62c30b9
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 25 23:08:34 2012 +0200
+
+    Merge branch 'master' of github.com:ccharlesgb/OSE
+
+[33mcommit 58fb7909186540b73ee98a3c9899b3509381e953[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 25 23:08:18 2012 +0200
+
+    Model loader.
+
+[33mcommit 62c30b90f6c3040c9404d8ce6104d628092abc93[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 25 21:57:42 2012 +0100
+
+    Reduced map size
+
+[33mcommit f6e159babc0d1ffe15cd740c2a8e8c19a1798429[m
+Merge: ff366e5 1b79732
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 25 21:51:01 2012 +0100
+
+    Merge branch 'master' of https://github.com/ccharlesgb/OSE
+
+[33mcommit ff366e50685b52ad37a3ca3bf521d5097c4a1e02[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 25 21:50:00 2012 +0100
+
+    Fixed shader
+
+[33mcommit 1b797328ca74a60c2f8e4ee956b39b803cffbf37[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 25 22:49:46 2012 +0200
+
+    Forgot to include cmath.
+
+[33mcommit 2f7d1c9b21303c079e27ca4e757cce0c7484d7e2[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 25 21:32:07 2012 +0100
+
+    Commented out model loading for now
+
+[33mcommit cd6f249d16f7dfa080bbbac35bf3336e1982d049[m
+Merge: ae524c7 7fee125
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 25 21:22:18 2012 +0100
+
+    Merge branch 'master' of https://github.com/ccharlesgb/OSE
+
+[33mcommit ae524c7bd076aeee3e980b5fd56f94175d5d5269[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 25 21:21:47 2012 +0100
+
+    Profiler, blend textures
+
+[33mcommit 7fee125d5c08901835ebf860f6901c17f1e15146[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 25 15:49:38 2012 +0200
+
+    Added model load support.
+
+[33mcommit a5aefcf95e2f3ed810f82621c21e3f4f4b6109e1[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 25 01:37:30 2012 +0100
+
+    Revert "Testing git"
+    
+    This reverts commit 1b251b7936a92d8fed80ff0f19f65ab5cf67668d.
+
+[33mcommit 1b251b7936a92d8fed80ff0f19f65ab5cf67668d[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 25 01:31:37 2012 +0100
+
+    Testing git
+
+[33mcommit 4d00d668a95119eb0e01edd032e316a6e542b6ff[m
+Merge: 58fffc4 3b01634
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 25 01:29:55 2012 +0100
+
+    Merge branch 'master' of https://github.com/ccharlesgb/OSE
+
+[33mcommit 3b01634fc060b201eb16b8f57c82e56ed32c7ac4[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 25 02:29:00 2012 +0200
+
+    Generated documents.
+
+[33mcommit 58fffc422e5ef05dd76ce2a0c24d47dd45314940[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 25 01:28:54 2012 +0100
+
+    Tire Squeal, Blend Sprite
+
+[33mcommit edf4c9f2cd93408390fc9aad50c5986c02b14407[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 25 02:27:44 2012 +0200
+
+    Fixed fons.
+
+[33mcommit 64f20740a634937335e0e2747d6195d1bf9d13de[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 25 02:09:50 2012 +0200
+
+    FontResource.
+
+[33mcommit b7146a60ba92448a1a14596a200eab5a5a186e45[m
+Merge: 282636d 5e3a1e0
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 25 01:08:31 2012 +0100
+
+    Merge branch 'master' of https://github.com/ccharlesgb/OSE
+
+[33mcommit 282636d7cd2e65e08b3da3f2a1b25871a6ec6bbf[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 25 01:08:00 2012 +0100
+
+    Added API for model loading please add to model.LoadFromFile
+
+[33mcommit 5e3a1e0e5d52d3a662f2860881643c0c7eff3314[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 25 02:03:19 2012 +0200
+
+    Xcode complaining again.
+
+[33mcommit cae3fc6dcece60700b61f6f825db211b975da8de[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 25 01:01:48 2012 +0100
+
+    Added model
+
+[33mcommit 91b2a49cd15fab7dfb5b6c837e6cc90ea6891764[m
+Merge: 59e631d df3a8f7
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 25 00:41:16 2012 +0100
+
+    Merge branch 'master' of https://github.com/ccharlesgb/OSE
+
+[33mcommit 59e631de12fe6873a0b47566b5d51a512e500a6d[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 25 00:40:50 2012 +0100
+
+    Documented some stuff.
+    
+    Tweaked car
+
+[33mcommit df3a8f7528b37934febd1a3966b8bc05c5387bc1[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 25 01:36:37 2012 +0200
+
+    Mini tweak, debug message should say Sounds not Models.
+
+[33mcommit da13cd4802347bda86c0bf53edf55aafc3ae76bc[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 25 01:35:08 2012 +0200
+
+    Rewrote ResourceLoader.
+
+[33mcommit 31677c82a7f8e60ea3750cb6d7588d38b5a9b4ec[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 25 00:54:10 2012 +0200
+
+    Ops, that constructor is no longer used (text.cpp).
+
+[33mcommit 0e15627f21f8f3c65ead0cf44ad6861062d9b33e[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 25 00:49:29 2012 +0200
+
+    Minor document tweak for Text.h
+
+[33mcommit adef067978e1a7cda16c16b45c61568be445a415[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 25 00:46:37 2012 +0200
+
+    Made Doxyfile use relative paths.
+
+[33mcommit 2a1c16b06f114ccec24584c833bde48e406f559f[m
+Merge: bee0a59 28ad744
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 25 00:40:29 2012 +0200
+
+    Merge branch 'master' of github.com:ccharlesgb/OSE
+
+[33mcommit bee0a5922476765ccf36fa414918b8663d6d8cd3[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 25 00:40:15 2012 +0200
+
+    Finished documenting Text.h.
+
+[33mcommit 28ad7445f281d7eaa15d55b4865fd8190f0e5cfc[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Sun Jun 24 23:34:14 2012 +0100
+
+    c
+
+[33mcommit 063af8d270426587f7e2dc8ac04311814d201b08[m
+Merge: e1a136f 51a6372
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Sun Jun 24 23:31:13 2012 +0100
+
+    Merge branch 'master' of https://github.com/ccharlesgb/OSE
+
+[33mcommit e1a136fe3a383fd4ff72ec4a30dd0487736151df[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Sun Jun 24 23:30:11 2012 +0100
+
+    Made the game slightly less indy
+
+[33mcommit 6065f09a01323310384a928d52404e12b6689cb8[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 25 00:29:38 2012 +0200
+
+    No need for it to be friend class.
+
+[33mcommit 51a6372f4e192cd6b5c86eb5b23a8379164ed854[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 25 00:28:35 2012 +0200
+
+    Finished documenting Text class.
+
+[33mcommit 3adc1357f08f9301efa6a1c1754e76e00c04f649[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 25 00:09:35 2012 +0200
+
+    Removed some test stuff from Text, added Document groups.
+
+[33mcommit 1c133f4faeadaa60db77d729b6d1b87c3cf2cc84[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Sun Jun 24 23:04:16 2012 +0100
+
+    OMG 8-BIT SO INDY
+
+[33mcommit ab368543b7e5b031ea27d5ab3b6a64a9d83a7a08[m
+Merge: dc6809c c0e9ce8
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Sun Jun 24 21:44:01 2012 +0100
+
+    Merge branch 'master' of https://github.com/ccharlesgb/OSE
+
+[33mcommit dc6809c535a582e53594846cd92f267854e5057f[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Sun Jun 24 20:22:55 2012 +0100
+
+    Cleaned up pistol
+
+[33mcommit c0e9ce8bce4cea4bae9bbac63092256494eef875[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Sun Jun 24 20:56:29 2012 +0200
+
+    Compile errors again, Xcode is sensitive :(
+
+[33mcommit d0570d276974ce49b249e2b230d6948eaac644da[m
+Merge: b6091c7 7cd85c3
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Sun Jun 24 20:50:14 2012 +0200
+
+    Merge branch 'master' of github.com:ccharlesgb/OSE
+
+[33mcommit 7cd85c3218c29c53b9f37f90a35e68b6792cd818[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Sun Jun 24 19:39:33 2012 +0100
+
+    CAR CHANGES!
+    
+    Car now skids.
+    Handbrake is space
+
+[33mcommit b6091c7e6acc4e7d1692cd9decad15642f98c64b[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Sun Jun 24 19:50:35 2012 +0200
+
+    Fixed text, worldspace works.
+
+[33mcommit 1834b9c1ce1614b968e5e142f301f36b327cab2e[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Sun Jun 24 18:34:31 2012 +0100
+
+    Working on car.
+
+[33mcommit cb0de35a6e1cddc26aebd9df392a8e6d923638f7[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Sun Jun 24 18:08:47 2012 +0100
+
+    Renamed ship to car
+
+[33mcommit 2f2019331fa02ae98627422cf1866270ae4dd506[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Sun Jun 24 18:29:18 2012 +0200
+
+    Compile error again (osx).
+
+[33mcommit e75ef710f4a5b6016b4f2082e04539190cbf774b[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Sun Jun 24 17:03:56 2012 +0100
+
+    Broek some stuff regarding thinking
+
+[33mcommit 41ba860b72a07bf0a22bb5dec59efebd25485912[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Sun Jun 24 16:19:54 2012 +0100
+
+    Added parenting BaseObject::SetParent(ent)
+    
+    Very buggy for physics objects!
+
+[33mcommit 4c1d5814a36246b61bd326cd14dba9ff21541954[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Sun Jun 24 15:22:47 2012 +0100
+
+    Text works (Dont click it crashes game)
+
+[33mcommit 39dabe9b50438a0f847dcb72a59d00a030d9f228[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Sun Jun 24 15:05:05 2012 +0100
+
+    Changed an include in text
+
+[33mcommit 12f4591050d14775f19c0a11cad497424073d20c[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Sun Jun 24 15:52:30 2012 +0200
+
+    More Text work.
+
+[33mcommit d4180fb280d85dba8c7b8e9bf61ba8a73676c712[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Sun Jun 24 14:47:40 2012 +0200
+
+    Started adding Font and Text wrappers.
+
+[33mcommit f0692b8e25ce5a87010515df33f3000bcc8d507f[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Sun Jun 24 03:23:33 2012 +0100
+
+    Fixed! (READ NOTES!!!!)
+    
+    Spawn() is now considered an internal function to entities. DO NOT call
+    it manually (will enforce this properly later)
+
+[33mcommit 2507e6596cdbaf26262b6e84c248d5da95855ace[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Sun Jun 24 02:40:52 2012 +0100
+
+    Working state commented out c ode that breaks
+
+[33mcommit f198ad556225e822ee8e9e0cbddf5a2ac4ba11e6[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Sun Jun 24 02:08:28 2012 +0100
+
+    Help :<
+
+[33mcommit ee822341d0b9cd49933ef89bf6bbcf339d8e2210[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Sun Jun 24 01:48:16 2012 +0100
+
+    Added mAddQueue to entity creator
+    
+    Broke think kinda
+
+[33mcommit 1eafacb113dd3086fb6889e3bcb56c19f63e64bc[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Sun Jun 24 00:28:55 2012 +0200
+
+    Xcode complaining about converting variables again.
+
+[33mcommit 40c1a96acbe8ad979b3b5586b7ef048dae94f007[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Sun Jun 24 00:21:37 2012 +0200
+
+    Removed _MISC_USEFUL_STUFF as it's no longer useful :P
+
+[33mcommit 2cd180be90ba58332e15dacaa8d9638b89922ca6[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Sat Jun 23 20:44:56 2012 +0100
+
+    Trying to fix entity crash (cant)
+
+[33mcommit 916b090bf0aff0b5782f1d4afceb9792e54d5e83[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Sat Jun 23 20:01:00 2012 +0100
+
+    DebugOverlay (TODO)
+
+[33mcommit e29e6546ab5b73b94bf6fe1cfd4813af53aec95e[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Sat Jun 23 18:17:16 2012 +0100
+
+    AudioEnvironemtn::GetGlobalVolume()
+
+[33mcommit cbade0d4a79848ab9cd7149623a854ff28446150[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Sat Jun 23 18:15:46 2012 +0100
+
+    Removed some includes. Added AudioEnvironment::SetGlobalVolume
+
+[33mcommit f3f1d4bd18a3d24775bda8e1709d248b0294d5a3[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Sat Jun 23 17:33:29 2012 +0100
+
+    fixed camera
+
+[33mcommit 57446879df92da697faed3bd70b2e5e42a6cfbba[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Sat Jun 23 16:59:40 2012 +0100
+
+    Camera is broken but I can't see why?
+
+[33mcommit 651c018efdf538d6b7203fce9500d88b04e89df8[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Sat Jun 23 17:25:51 2012 +0200
+
+    Removed include <iostream> from a bunch of entities as its no longer needed.
+
+[33mcommit d1daadce4a9c2fbb5ec023bf96f8c265c4663a6e[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Sat Jun 23 15:52:35 2012 +0100
+
+    Reorganised project
+    
+    Fixed shit loads of warnings.
+    Fixed Sound returning bools for pitch and volume
+
+[33mcommit 09e7fcc7a86a7fa02ca6cab3a0cc0482e384bd47[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Sat Jun 23 15:12:43 2012 +0100
+
+    nothing
+
+[33mcommit 8189779a9d164c54290a0ebda0a7914b5ad011f7[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Sat Jun 23 02:30:49 2012 +0200
+
+    Added cleanup for Model resources.
+
+[33mcommit 2e3a828de886fcad66de2991796896b99d3f6f5f[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Sat Jun 23 02:24:09 2012 +0200
+
+    Started on RequestModel for resource loader.
+
+[33mcommit 676176283240d1fd5d22d14192df8e67c38e1972[m
+Merge: b3cb6fa 83fa97d
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Sat Jun 23 02:07:02 2012 +0200
+
+    Merge branch 'master' of github.com:ccharlesgb/OSE
+
+[33mcommit b3cb6fabfd264a3236bb519a7ac9ceac6d4dd718[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Sat Jun 23 02:06:42 2012 +0200
+
+    Documented Resource loader a bit.
+
+[33mcommit 83fa97d58316824a845fd611ad4607c6e3f71bfd[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Sat Jun 23 01:00:04 2012 +0100
+
+    XML support works
+
+[33mcommit 0ee89f62a828571b889740b011b8bf0ab11110aa[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Sat Jun 23 00:35:51 2012 +0100
+
+    XML Support (Almost!)
+
+[33mcommit 585f2800f0e94dc6f01b933a0398d7cfe7d13454[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Fri Jun 22 21:51:51 2012 +0100
+
+    Trying to get XML Loading working (Use Mini-XML lib)
+
+[33mcommit bf297f38dc1602230d3d2c74af63a6564af288bd[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Fri Jun 22 13:25:32 2012 +0100
+
+    Wheels turn on Car!
+
+[33mcommit 2161d241633116de1d808aac785ea4bcf7a60134[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Fri Jun 22 12:44:54 2012 +0100
+
+    Got traceles to work!
+    
+    Added more fields to TraceResult: mHitPos, mHitNormal, mHitEnt
+
+[33mcommit 13d40d478c2430572dc47190b446e51a2b985dc5[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Fri Jun 22 13:20:18 2012 +0200
+
+    Removed LTBL include.
+
+[33mcommit 05618832fb62b9e93fc1ae1dd0ccd45faa1e972e[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Fri Jun 22 12:12:31 2012 +0100
+
+    TRACELINES WORK YOU SHITHEADS
+
+[33mcommit 2bcb175a5619e3e3511d252e954e7710c6558c56[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Fri Jun 22 12:00:46 2012 +0100
+
+    Added more gun effects. Broke tracelines
+
+[33mcommit 5a7734ce4f7caaf4fbaaaaa05f9694692e301279[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Fri Jun 22 03:26:25 2012 +0100
+
+    Playing aruond with let there be light support
+    
+    Not working right now!
+
+[33mcommit 988970b50d0a211d518fceef32d1896aa38b98e2[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Fri Jun 22 02:43:02 2012 +0100
+
+    Added gunshot sound
+
+[33mcommit 8d013caff1a5c09d40242594acea3f5ef072a5e4[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Fri Jun 22 02:49:23 2012 +0200
+
+    More sound.
+
+[33mcommit 8f08171e2dbd6b8c4d56adde21c711500cf68714[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Fri Jun 22 01:45:27 2012 +0100
+
+    SFMLTOGame
+
+[33mcommit db374b3ccea5020a84e6b02f2c90fba23c0b9646[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Fri Jun 22 01:31:53 2012 +0100
+
+    Updated engine sounds
+
+[33mcommit b5d715a182184d7b10f880c6f7f0291111c9cbc2[m
+Merge: 7d70d40 b36b4d6
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Fri Jun 22 02:31:16 2012 +0200
+
+    Merge branch 'master' of github.com:ccharlesgb/OSE
+
+[33mcommit 7d70d40a21290f2b833e83f5d268e6636ba97459[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Fri Jun 22 02:30:53 2012 +0200
+
+    Added a bunch of functions to sound.
+
+[33mcommit b36b4d6bb797032cc1d9e4a2c09b44e2df0d5ad8[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Fri Jun 22 01:28:27 2012 +0100
+
+    Sexy sounds to car
+
+[33mcommit fb227574342f5fddcb9a28afafc2aba085201ded[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Fri Jun 22 02:22:27 2012 +0200
+
+    Documented Sound and AudioEnvironment classes.
+    Removed timestamp from docs.
+
+[33mcommit ab574b73d8aa7f4e115f5cfc17c0ee0abc272e24[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Fri Jun 22 01:11:15 2012 +0100
+
+    Loads of stuff!
+    
+    Added BaseObject:TakeDamage()
+    Added Get/SetHealth
+    Added Get/SetMaxHealth
+    Car now damages crates when it hits it
+    Bullet now damages crates
+
+[33mcommit 5d536d34c86350d91156557028174af929e5c432[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Fri Jun 22 01:54:55 2012 +0200
+
+    Docs, lol
+
+[33mcommit 8dbf52e302290ac9c562ff07e866a1c36a55512b[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Fri Jun 22 01:32:18 2012 +0200
+
+    Added AudioEnvironment static class.
+
+[33mcommit b86439bfbd9383e2a1df3d9f04f0af4343b4ce52[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Fri Jun 22 01:25:20 2012 +0200
+
+    Added AngleToVector for mathutils.
+
+[33mcommit d96838874b93234e3bbf2eb1f26acdac365cc97a[m
+Merge: cf9714d 18ed22e
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Fri Jun 22 00:54:23 2012 +0200
+
+    Merge branch 'master' of github.com:ccharlesgb/OSE
+
+[33mcommit cf9714d8201de45b7f5ef52b8b89fb70308b9410[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Fri Jun 22 00:54:09 2012 +0200
+
+    Added SetMinDistance and SetAttenuation to sound.
+
+[33mcommit 18ed22e9466acd05fefd0b5c6a338936661daf99[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Thu Jun 21 23:26:42 2012 +0100
+
+    Adjusting car
+
+[33mcommit 5e27b3ea7f3a74115a2c8b745a3868b470330574[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Fri Jun 22 00:25:57 2012 +0200
+
+    Basic sound support.
+
+[33mcommit 70b11568bc95b8175f78e2485584588d7566c4a6[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Thu Jun 21 22:35:00 2012 +0100
+
+    Made map bigger, Tweaked car
+
+[33mcommit 0d28fe3d2e242ae33caa9527e4e80b5e9ad16218[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Thu Jun 21 22:26:55 2012 +0100
+
+    Added BaseObject:Use(), Get in car by 'E'
+
+[33mcommit 609497821fac30d787874d12d75ea7cb43251b85[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Thu Jun 21 22:08:40 2012 +0100
+
+    Fixed soudn not compiling
+
+[33mcommit 4ce4e5f9401b78ad390c2f2fff674dd90665218d[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Thu Jun 21 22:03:09 2012 +0100
+
+    Fixed up Car
+
+[33mcommit 5405b8d7a46c0cb7e4ac35209b0af9a83f725fe5[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Thu Jun 21 21:51:29 2012 +0100
+
+    Made car physically simulated a bti more
+
+[33mcommit d507a28b18edbd0a111e225ded0fc420b739df4e[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Thu Jun 21 22:48:52 2012 +0200
+
+    Sound! (BaseObject needs to loop them and update position).
+
+[33mcommit 5af012dd12f6598497a6fc363d8a17c850d8c914[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Thu Jun 21 21:06:40 2012 +0100
+
+    Added ig::GameToSFML()
+    
+    omg its a car
+
+[33mcommit be41c43f60cc89791f4222d265f9132b2859651a[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Thu Jun 21 21:50:21 2012 +0200
+
+    Removed old and unused GetImagePath from BaseDrawable (we use the loader now).
+
+[33mcommit 8f0007b3cca733e656aff5b83d62445481943ca8[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Thu Jun 21 21:32:11 2012 +0200
+
+    Finnished the Sound loader. Fixed a small bug with error textures.
+
+[33mcommit e4a2ca2783ccc581f9ed3ab9f9c6ad49e81bd2b5[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Thu Jun 21 21:16:58 2012 +0200
+
+    Removed constructor and destructor from Resources as they never get called (it's a static class).
+    Added a Cleanup function instead.
+
+[33mcommit 913362a1570ea5cc8f2fda9bf3215286472d7a1c[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Thu Jun 21 21:13:24 2012 +0200
+
+    Tweaked the Resource loader a bit, stores the error texture rather than loading it every time a texture is missing.
+
+[33mcommit 00da57b31276209c301b2a231530d0b978942059[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Thu Jun 21 20:06:56 2012 +0100
+
+    Added angular spread to gun
+
+[33mcommit 5ea3af4d54deaab75456d8d637975478e80adccc[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Thu Jun 21 20:02:52 2012 +0100
+
+    Fixed Raycast behaviour
+
+[33mcommit f44f79fe18201b744b12c2bc9ea07b8c925e7571[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Thu Jun 21 19:44:21 2012 +0100
+
+    Crash is gone dont know what I did...
+
+[33mcommit b5681200868396ae8be72c58a2d3292b5d493de7[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Thu Jun 21 19:19:34 2012 +0100
+
+    Gun works but crashes sometimes
+
+[33mcommit fdc793aa6abcac0fd8fdf0bc87ae3256c9e9565e[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Thu Jun 21 18:46:40 2012 +0100
+
+    Gun almost works!
+
+[33mcommit 790b34fd721b05b17d798c6f4c6c7540def6be69[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Thu Jun 21 19:43:16 2012 +0200
+
+    Improved the ship, you can now exit it by pressing E.
+    It also hides the player rather than deleting it.
+
+[33mcommit d9a50ef37bae4a3de961d2a6163bf99c3debf9c9[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Thu Jun 21 19:39:04 2012 +0200
+
+    Fixed the game freezing if a entity was NoDraw.
+
+[33mcommit 93b33c375b244a260056bba0b70f55612dd62592[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Thu Jun 21 18:27:25 2012 +0100
+
+    Checked for NULLS
+
+[33mcommit af2e909e9ac92ff75af9cddfd85ee3904eec0dbf[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Thu Jun 21 18:23:28 2012 +0100
+
+    Compiles still crashing gimme a sec
+
+[33mcommit 53e5cc6cda8b496a0a1e337d3b11b6b48718bb8b[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Thu Jun 21 18:13:11 2012 +0100
+
+    Broke everything!
+
+[33mcommit d91fe56c9c1f0af77bd15532b6504f36835e5548[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Thu Jun 21 19:03:50 2012 +0200
+
+    Fixed compile errors on osx.
+
+[33mcommit 37d8f59abf89a0b410deb1e115f8fd2fa0aa45c9[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Thu Jun 21 17:56:10 2012 +0100
+
+    More work on pistol
+
+[33mcommit 7ddb746c89737a26795284c155d77c06242eaf94[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Thu Jun 21 17:26:15 2012 +0100
+
+    Added SetNoDraw(bool) Added tracelines
+
+[33mcommit 3a73e15f121a700dac34e84ca3d1f8a83eda8158[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Thu Jun 21 17:01:47 2012 +0100
+
+    Fixed up ship, Trynig to add tracelines
+
+[33mcommit 6903f80ce5429dbb4b78c3428412e464b58d10da[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Thu Jun 21 01:30:22 2012 +0100
+
+    Fixed an include
+
+[33mcommit d2e64681690ead329711772edf3da32d6e8519d0[m
+Merge: 4d66883 91401e6
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Wed Jun 20 20:38:19 2012 +0200
+
+    Merge branch 'master' of github.com:ccharlesgb/OSE
+
+[33mcommit 4d668837c55e7e718732952da1e32f4a89224c66[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Wed Jun 20 20:38:03 2012 +0200
+
+    Added a ship (colliding with it as player enters it, to exit delete it with right click). It won't work unless you disable the "Joint" system in PhysicsWorld.h.
+
+[33mcommit 91401e6efc17179efbca6ab214567f442516daaf[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 20 19:26:58 2012 +0100
+
+    Added pistol doesnt do anything yet
+    
+    Need a way to do ray traces with box2D
+
+[33mcommit 2a723b68febf87bb8a36e7462e60171b758a1dd6[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 20 19:15:35 2012 +0100
+
+    Initalized some vars in baseobject
+
+[33mcommit 1967a0b353b0b0de2b0fc1c4f83dac6ad8d9a382[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 20 19:14:25 2012 +0100
+
+    Cleaned up player again
+
+[33mcommit df1b36538fdfd8b0e9001bb4d7cf7cb0515d9f7f[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 20 19:13:15 2012 +0100
+
+    Cleaned up player
+
+[33mcommit a0173f88d1edf91cbe85c84af10ab2d0ccff02ee[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 20 18:42:14 2012 +0100
+
+    sawblade image
+
+[33mcommit 98aadf4ae4fa552142fa08cf7db267a026df1370[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 20 18:09:50 2012 +0100
+
+    Fixed Player movement
+
+[33mcommit 21d5b1ffbb410a6a0301ea82f761a9d2b2dc1f42[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 20 18:03:08 2012 +0100
+
+    Er still broken?
+
+[33mcommit 86dfc555b76c33a5b84571f153c7a3aa9474e4dc[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 20 17:59:45 2012 +0100
+
+    Trying to make player movement use ApplyTorque (Broken)
+
+[33mcommit 20246210880e716bdb1fd5e93f7527c5fee1ae74[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Wed Jun 20 18:53:54 2012 +0200
+
+    AddEntity now places the entities at the correct position int he Render list (Last in their group).
+
+[33mcommit 121e7d2c66a707cbb1870393a67e488725b238e8[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 20 17:38:32 2012 +0100
+
+    Joints work
+
+[33mcommit ed2a4179940b4fc496f28bc2eafdf6ee137a480f[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 20 17:04:12 2012 +0100
+
+    Render code almost works it isnt perfect any ideas?
+
+[33mcommit 970503084d9cbe7b151c9e5844dae9cd97c4d4ba[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 20 16:32:56 2012 +0100
+
+    Fixed decal
+
+[33mcommit a70ed1c6f3d02f25f7935312f61332171d8fd6a2[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Wed Jun 20 16:42:06 2012 +0200
+
+    Made Delete() call OnDelete hook (BaseObject).
+
+[33mcommit 64e23841f348f580e2c4e79502ebf87fefe59e59[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Wed Jun 20 16:41:41 2012 +0200
+
+    Changed Prop to use OnDelete for creating the decal rather than having it in the descriptor.
+
+[33mcommit 3160a66ff4f18afcee7b18bd4deae1a4496e872b[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Wed Jun 20 16:36:17 2012 +0200
+
+    Renived SetSprite from decal.
+
+[33mcommit a5b03fdbe114c9b5d7fef291cc0e45458aceca2a[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Wed Jun 20 15:39:04 2012 +0200
+
+    Tweaked the IGameState Think, it won't skip any FlaggedForDeletion now.
+
+[33mcommit 8634c6b3a678ff013d31b7c920fa0c8e3309d600[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Wed Jun 20 15:08:27 2012 +0200
+
+    Added Decal entity.
+
+[33mcommit 3e90c58cd52ac03ea10a8582d945def7d876a252[m
+Merge: bdbb3c6 eed5d43
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Wed Jun 20 14:58:43 2012 +0200
+
+    Merge branch 'master' of github.com:ccharlesgb/OSE
+
+[33mcommit bdbb3c6cc2d1c342162975cba0dab5b5fb81259f[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Wed Jun 20 14:58:30 2012 +0200
+
+    Moved Utilities to Utilities folder, and updated the includes.
+
+[33mcommit eed5d439fa9685ed2be8165dbf80e755ce685888[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 20 13:42:44 2012 +0100
+
+    Testing Creating Constraints (not Working)
+
+[33mcommit 5c541999233f794246c260234a8e494c1f9155cd[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Wed Jun 20 11:43:24 2012 +0200
+
+    Fixed wrong usage of sf::Mouse::Button::Right/Left, should be sf::Mouse::Right/Left. in MainGameState.
+
+[33mcommit b0ea7be1278e43b1147f001bafdf17313dc79207[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 20 03:46:54 2012 +0100
+
+    Prevented killing player
+
+[33mcommit 4c8666309017a11e03d5d1dd79832ed8e938e5f8[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 20 03:45:38 2012 +0100
+
+    Fixed up Mouse Deletion
+    
+    Left Click: Spawn Crate
+    Right Click: Delete Crate
+
+[33mcommit a091bc53bfeff746e8f738dd97ed8ace8b68350c[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 20 03:40:38 2012 +0100
+
+    Cleaned up physics code.
+
+[33mcommit d2785726d072abecac8e0ee85dc8ba77c7910d8e[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 20 03:18:34 2012 +0100
+
+    Mouse collision now works!
+
+[33mcommit de26de04440caa26a4f9d6ba4b426b0306c84839[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 20 02:28:06 2012 +0100
+
+    New GitIgnore cleaned!
+
+[33mcommit 9863a32cfbf369bf26709b1410232a59c2b0b6db[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 20 02:25:04 2012 +0100
+
+    Cleanup...
+
+[33mcommit 3299e7f34a648761fe906f6b710f3ea437e242b6[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 20 02:19:36 2012 +0100
+
+    Cleanup Still
+
+[33mcommit bc5bbd3785f513d5a582e6ea688d9c6f83850d4e[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 20 02:18:50 2012 +0100
+
+    Cleaned up git repo
+
+[33mcommit 1616dcba2ec34fb2b22e3d15890c7eeef454e30a[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 20 02:15:20 2012 +0100
+
+    GitIgnore
+
+[33mcommit 125788fa94931a959ca68f1991e980ece364cd25[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Wed Jun 20 02:43:14 2012 +0200
+
+    Added Resource cleanup.
+
+[33mcommit 7bb9a0443fbaec0e445c0a6ee7de4acc56d1eeeb[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 20 01:29:59 2012 +0100
+
+    Cleaned up PSD Changed Grass
+
+[33mcommit 3a5187244fc049ceaebe374d1afba4c08e89f534[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 20 01:21:50 2012 +0100
+
+    Fixed Resource Loader
+    
+    Removed mTexture from sprite (it isnt needed)
+
+[33mcommit 9d54030265d6f6a591dbc869081f6843c937fc05[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Wed Jun 20 00:25:42 2012 +0100
+
+    Everything is broken
+
+[33mcommit 4bc3c9b893750480a979054b980d3531da42beec[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Wed Jun 20 00:55:06 2012 +0200
+
+    Resource loader (WIP).
+
+[33mcommit 088ef521d444fa8a6dd480744114c4ec8aea6869[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 23:11:28 2012 +0100
+
+    Added my old resource manager for tips, its shit though
+
+[33mcommit 1f371e7d78285681370449db10b7e55097d1110f[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Tue Jun 19 23:39:54 2012 +0200
+
+    fabs again. (camera this time).
+
+[33mcommit ccf318484ce781a7b879d6534daa39c33f18fd88[m
+Merge: 794ef55 2cdb669
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Tue Jun 19 23:38:24 2012 +0200
+
+    Merge branch 'master' of github.com:ccharlesgb/OSE
+
+[33mcommit 794ef552fd696df57bc867de8031d797e4eab7d5[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Tue Jun 19 23:38:08 2012 +0200
+
+    Using fabs rather than abs (float), I hate environment differences.
+
+[33mcommit 2cdb6693d210f74a58df6ae55c8e2688302b06f3[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 22:34:39 2012 +0100
+
+    Used non standard abs
+
+[33mcommit 1d0b158977be8658606f1164fc0e99fddbf996a8[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 22:09:23 2012 +0100
+
+    Deleted Unused Files
+
+[33mcommit 7666039d503276229eefdf607e230edbf64fce13[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 22:05:44 2012 +0100
+
+    Fixed main includes
+
+[33mcommit 6969ff64926e73bcab71cb96bca8e99095241f29[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 22:05:06 2012 +0100
+
+    Moved main.cpp
+
+[33mcommit bb7ab6ebb209ae3dab1a1d660d0965dc649a731d[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 22:01:57 2012 +0100
+
+    Directory changes
+
+[33mcommit 5c6079a803dab130b4f2ef3196151b9b94f65734[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 21:51:20 2012 +0100
+
+    Compiled
+
+[33mcommit 2e8db15c0cc87d4e27c33b113badbdc5631e1b16[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 21:34:05 2012 +0100
+
+    Fixed GetMousePosWorld, Fixed Zoom (O L Keys)
+
+[33mcommit 64a0ea70ebaef40bcb7f418daa765c4540c6f091[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 21:12:47 2012 +0100
+
+    Tried to debug build (failed)
+
+[33mcommit eb6a749af4a4093c7bc49d8e57d7a7e705224506[m
+Merge: 2880c22 3d50ef2
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Tue Jun 19 22:22:17 2012 +0200
+
+    Merge branch 'master' of github.com:ccharlesgb/OSE
+
+[33mcommit 2880c22c3de215c377682c777d032a5686271ec4[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Tue Jun 19 22:21:53 2012 +0200
+
+    Fixed crash when closing (osx), it tried to delete mSprite when it was unused.
+
+[33mcommit 3d50ef2d95506e0b8cb77bfc2de4f9e151a54de7[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 20:26:04 2012 +0100
+
+    Fixed up player collision mesh
+
+[33mcommit 8d3121e905da92153fe0c9b60f7d8eed6a039c4f[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 20:13:54 2012 +0100
+
+    Box2D 2.2.1 support
+
+[33mcommit 408363ed8db1d8d0057f8b560772d61bd6d98775[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 19:36:22 2012 +0100
+
+    Revert "Broke everything :<"
+    
+    This reverts commit b806341ca61d58715182e07fc11339233df54457.
+
+[33mcommit b806341ca61d58715182e07fc11339233df54457[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 19:35:33 2012 +0100
+
+    Broke everything :<
+
+[33mcommit 3a246e1286ba6e2163d5a112a7a825749bdb7523[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 19:24:21 2012 +0100
+
+    Added Colour class and accessor funcs for baseobject
+
+[33mcommit 91af6d2e0f2962703b3c272f33cf943fd1dce14c[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 19:07:13 2012 +0100
+
+    Removed debug messages
+
+[33mcommit c417f2e5e7a3cc96784017e410f1501f77866d33[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 18:56:59 2012 +0100
+
+    Fixed deleting stuff 2
+
+[33mcommit 2eda2f91123cd4230429ecbd5a247f18bed60666[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 18:56:43 2012 +0100
+
+    Fixed deleting stuff
+
+[33mcommit 7141da9ed5e6d02ca08d2a7cfbacbd520c74b8c4[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Tue Jun 19 19:53:55 2012 +0200
+
+    Included iostream.
+
+[33mcommit 042b09f1f28c5a1bec6efa731a4ffa033d162dd0[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 18:49:43 2012 +0100
+
+    debug msgs
+
+[33mcommit 417610e3cbd1ba66eb3119a4185fdbc7ebd086d1[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Tue Jun 19 19:46:50 2012 +0200
+
+    Removed a unnecessary (and broken) if apple.
+
+[33mcommit 010197f3af8d61f68419127ad2aac960fbe772b3[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 13:39:10 2012 +0100
+
+    When you delete an entity its destructor isnt called?
+
+[33mcommit f425d679eea615050bf4900294e28125c0b64e23[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 13:26:45 2012 +0100
+
+    Fixed Deletion
+
+[33mcommit 8fe6779e1bac0e7556478a281d2b47b90fc022a8[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Tue Jun 19 14:21:13 2012 +0200
+
+    Improved the map render system.
+
+[33mcommit 69c1a5a2deb8dfbd9400b69ebdfbef7db626ab6a[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Tue Jun 19 14:07:57 2012 +0200
+
+    Warning (const char*) in RegisterState.
+
+[33mcommit 4aeb552d68b594ff958943dc37b0eec5a873baa4[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Tue Jun 19 14:05:12 2012 +0200
+
+    Fixed some warnings regarding trying to use a uninitialized list.
+
+[33mcommit ef765fb9d0567a43ca70006278ea9f47919d376e[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Tue Jun 19 14:04:40 2012 +0200
+
+    Typo in camera.
+
+[33mcommit 74328f54f8e299b3336648f98eb6d416eaf59e2a[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Tue Jun 19 13:56:55 2012 +0200
+
+    More warnings fixed, LINKCLASSTONAME (Conversion from string literal to 'char *' is deprecated)
+
+[33mcommit 6fdf6339fd969093005d7547fb31e0c0162b109f[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Tue Jun 19 13:51:26 2012 +0200
+
+    Removed some warnings in PhysicsDef.
+
+[33mcommit 9a785673ac68d9771c187519f742358d4275bc94[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 05:40:57 2012 +0100
+
+    Origins, Fixed Map, Added Collision callbacks
+    
+    DELETING ENTITIES IS BROKEN :(
+
+[33mcommit e29b9d28c7c60a4c36968e3b2f801eb06c0ed818[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 01:48:09 2012 +0100
+
+    Can't figure out why the grass wont render
+
+[33mcommit ef57b5814522efcadb13a01f2534300d4a4b458d[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 01:12:40 2012 +0100
+
+    Trying to fix getmouseworld
+
+[33mcommit d3fa7a43a82815d02a8dd7a80f1db6b931d29788[m
+Merge: 558fef8 717c83f
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Tue Jun 19 02:09:31 2012 +0200
+
+    Merge branch 'master' of github.com:ccharlesgb/OSE
+
+[33mcommit 558fef8ac9a3b67a4c8cb0df3b362549a8115c71[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Tue Jun 19 02:09:16 2012 +0200
+
+    Map, WIP.
+
+[33mcommit 717c83f7e0869f33c4866b1e6edd7ce78752e52b[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 01:06:25 2012 +0100
+
+    Fixed Mouse position code
+
+[33mcommit 4f41a2d92c3b823e1c64104795c97707ff76282e[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 01:04:47 2012 +0100
+
+    Fixed Crate positioning code
+
+[33mcommit 801ced916d3ab6a76e2d87fe939537a73834f34d[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 00:56:16 2012 +0100
+
+    Crates work now :)
+
+[33mcommit 9a27ee9fd961b1c8bf7a0e816a79617708c7f68f[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 00:13:44 2012 +0100
+
+    s
+
+[33mcommit 729e867af980ef19627a542d5866e2bb9d530c7c[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 00:13:30 2012 +0100
+
+    Adjusted player physics object
+
+[33mcommit ffa1251b54d724988f25f4f8a02196aad4b45abc[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Tue Jun 19 00:04:56 2012 +0100
+
+    Fixed the polygon shape crashing everything
+
+[33mcommit 30e2deb7f81a5104c6d75060c0233ef157101573[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Tue Jun 19 00:34:23 2012 +0200
+
+    Added a small comment to the last commit.
+
+[33mcommit 8bfdfd67cdaefa88e2f08c01348dbd1947339e3b[m
+Author: Hinton <hinton.oscar@gmail.com>
+Date:   Tue Jun 19 00:30:52 2012 +0200
+
+    OSX resources path.
+
+[33mcommit 29fff08e487fd77039bf24c8ff86e170e767eb20[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 18 23:19:39 2012 +0100
+
+    Added apple stuff (type it in)
+
+[33mcommit cc74702e54959f711ad85d393746e8415d55aae6[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 18 23:04:39 2012 +0100
+
+    void BasePhysics::PhysicsHullFromModel() is crashing everything
+
+[33mcommit d99bb796f991d3aa375546e6b9c0a013ef777613[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 18 22:46:15 2012 +0100
+
+    Rebuilding renderer
+    
+    Player now renders ALMOST correctly
+
+[33mcommit dbc6bc5e885b6b27321c5fe6735dffc2bbf42182[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 18 21:53:39 2012 +0100
+
+    Got rid of baserenderable
+
+[33mcommit 0ef492ac0f007d859762733a6cf404d5deb2561a[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 18 20:18:25 2012 +0100
+
+    Comments
+
+[33mcommit 26839fad3a50bc79cd31a40d747e9e2eeb28c9ec[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 18 20:10:57 2012 +0100
+
+    Removed Renderer
+
+[33mcommit 226111f217b78522754154b3159b1371d2d3bbaf[m
+Author: Oscar Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 18 20:33:22 2012 +0200
+
+    Changed to use the internal __APPLE__ rather than MAC.
+
+[33mcommit fb1eb0b2f019c14ea70f05fd05270229539f766a[m
+Author: Oscar Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 18 20:00:57 2012 +0200
+
+    Ops, that should have been included.
+
+[33mcommit c81fca0233fb388dc0f4763ac49ac26e0b5e6cbd[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 18 18:57:51 2012 +0100
+
+    Fixed prop loading
+
+[33mcommit 6c8b5d4b2f8d215913d568f044596f2f9b4817fb[m
+Author: Oscar Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 18 19:56:46 2012 +0200
+
+    OSX Resource loader, we need to do something for it to auto detect win/osx paths.
+
+[33mcommit 77a82001f971491a3caa1adf35c583a346bdde22[m
+Author: Oscar Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 18 19:56:22 2012 +0200
+
+    Xcode workspace redone.
+
+[33mcommit 6e2874d74cbf6cd517cbafeb5422be88b8b9641b[m
+Author: Oscar Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 18 19:56:07 2012 +0200
+
+    OSX Fixes.
+
+[33mcommit df0f9176333dc55800d603861ed9bfc9a335f94b[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 18 18:23:18 2012 +0100
+
+    Fixed player movement a bit
+
+[33mcommit 353756cd2ed7824f0b64ffc045b3484ce996c4d6[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 18 18:21:12 2012 +0100
+
+    Fixed mah shit
+
+[33mcommit a00fa749f0156a7d0652b514d04f8a2014722ec2[m
+Author: Oscar Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 18 18:28:38 2012 +0200
+
+    Another error, DeleteCurrent().
+
+[33mcommit 48b675ac880b1f9689430f526d22495b8f1f78da[m
+Merge: 62e1b9a 82b6212
+Author: Oscar Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 18 18:27:44 2012 +0200
+
+    Merge branch 'master' of github.com:ccharlesgb/OSE
+
+[33mcommit 62e1b9a0f4ed1969db91ce0c4deba23c45a97b1c[m
+Author: Oscar Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 18 18:27:30 2012 +0200
+
+    Fixed errors with iterators due to missing type name.
+
+[33mcommit 82b621231bd194657097364dc4d862d1ed1df150[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 18 17:04:47 2012 +0100
+
+    Fixed renderer almost!
+
+[33mcommit 2859f524b4037202a9624be774ebbefebb6ece19[m
+Merge: 64f5556 015d3f1
+Author: Oscar Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 18 18:02:55 2012 +0200
+
+    Merge branch 'master' of github.com:ccharlesgb/OSE
+
+[33mcommit 015d3f1a446de3a388db7e94db937d829f64c925[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 18 16:45:20 2012 +0100
+
+    Compiles and Runs Renderer broken
+
+[33mcommit 64f5556d4e305fc953e2f00317bf21ad9f5fc7be[m
+Merge: 64645ec 7a30d1f
+Author: Oscar Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 18 17:40:19 2012 +0200
+
+    Merge branch 'master' of github.com:ccharlesgb/OSE
+    
+    Conflicts:
+    	Intergalactic.xcodeproj/project.pbxproj
+    	Intergalactic.xcodeproj/project.xcworkspace/xcuserdata/Oscar.xcuserdatad/UserInterfaceState.xcuserstate
+
+[33mcommit 64645ec569e1a0dc9b2fe66a2ff160c1148c44c2[m
+Author: Oscar Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 18 17:39:04 2012 +0200
+
+    xcode workspace changes.
+
+[33mcommit 7a30d1fffc59d50dfce83b2b82e16bcb81ef4267[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 18 16:37:17 2012 +0100
+
+    Compiles
+
+[33mcommit a58de413c493541e3acd98d5f2ffb65ba9663677[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 18 15:51:31 2012 +0100
+
+    Compiling for SFML 2
+    
+    EVERYTHING IS BROKEN
+
+[33mcommit 2f114fd4942fcd145bfc05a3a64e192cf1954ba6[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 18 03:10:01 2012 +0100
+
+    Halfway through fixing for sfml 2
+
+[33mcommit 4c073c112ae316d080bbf22443ca146c83bf7aab[m
+Merge: ebcbeb3 277c3fd
+Author: Oscar Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 18 03:10:07 2012 +0200
+
+    Merge branch 'master' of github.com:ccharlesgb/OSE
+
+[33mcommit ebcbeb30ceb24889d45a197b9fd50947e10413c1[m
+Author: Oscar Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 18 03:09:36 2012 +0200
+
+    Changed EntityCreator to use char* rather than string for name.
+
+[33mcommit 277c3fd81a653844e7b7a6fe6b957f16ea939d71[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 18 02:02:49 2012 +0100
+
+    Changed Prop
+
+[33mcommit 8e6d8eea7ff6a8c2606cea5edce29690df5d5903[m
+Author: Oscar Hinton <hinton.oscar@gmail.com>
+Date:   Mon Jun 18 02:52:45 2012 +0200
+
+    Xcode.
+
+[33mcommit df6221a7c962701c281e11c6256aac557354e904[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 18 01:11:53 2012 +0100
+
+    Cleanup
+    
+    Removed Images from intergalactic
+    Added Physics Prop
+    Added Map entity
+
+[33mcommit e51856c732c2f3d00290146a204e1cfb47a5d794[m
+Author: Connor Charles <ccharles.gb@gmail.com>
+Date:   Mon Jun 18 00:03:07 2012 +0100
+
+    Initial Commit
