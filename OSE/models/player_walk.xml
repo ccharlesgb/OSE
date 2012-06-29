@@ -1,7 +1,24 @@
 <?xml version="1.0"?>
 <model>
-	<texture>player_walk</texture>
+	<texture>player_walk</texture> <!--The spritesheet with all animations on it-->
+  
+  <animations>
+    <animation>
+      <name>walk</name>
+      <row>0</row> <!--The row this animation is present on the spritesheet-->
+      <sequence>0 1 2 1 0 3 4 3</sequence> <!-- The order the frames are displayed in the sequence-->
+      <framerate>20</framerate>
+    </animation>
+    <animation>
+      <name>idle</name>
+      <row>1</row>
+      <sequence>0 1 2</sequence>
+      <framerate>20</framerate>
+    </animation>
+  </animations>
+  
 	<scale>1</scale>
+  
 	<physics_hull>
 		<density>4</density>
 		<vertex_count>6</vertex_count>

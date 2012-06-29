@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\Animation.cpp" />
     <ClCompile Include="Engine\Render\BaseHUD.cpp" />
     <ClCompile Include="Engine\Render\BlendSprite.cpp" />
     <ClCompile Include="Engine\Render\DebugOverlay.cpp" />
@@ -54,8 +55,10 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Engine\Model.cpp" />
     <ClCompile Include="Engine\Profiler.cpp" />
+    <ClCompile Include="Engine\Render\SpriteAnimating.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\Animation.h" />
     <ClInclude Include="engine\render\basehud.h" />
     <ClInclude Include="Engine\Render\BlendSprite.h" />
     <ClInclude Include="Engine\Render\DebugOverlay.h" />
@@ -100,10 +103,10 @@
     <ClInclude Include="Game\weapon_pistol.h" />
     <ClInclude Include="Engine\Model.h" />
     <ClInclude Include="Engine\Profiler.h" />
+    <ClInclude Include="Engine\Render\SpriteAnimating.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Utilities\Matrix3.inl" />
-    <None Include="test.xml" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C7D8212C-82CC-43FE-90EE-28537D0A221D}</ProjectGuid>

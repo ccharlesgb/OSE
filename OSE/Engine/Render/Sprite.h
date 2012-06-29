@@ -13,8 +13,8 @@ public:
 	Vector2 GetSize()
 	{
 		Vector2 size;
-		size.x = (float)mSprite.getTexture()->getSize().x;
-		size.y = (float)mSprite.getTexture()->getSize().y;
+		size.x = (float)mSprite.getTextureRect().width;
+		size.y = (float)mSprite.getTextureRect().height;
 		return size;
 	};
 	Vector2 GetTextureCentre() {return Vector2(mSprite.getTextureRect().width / 2, mSprite.getTextureRect().height / 2);};
