@@ -7,7 +7,7 @@
 DebugDraw::DebugDraw(sf::RenderWindow *r) 
 { 
 	pRender = r;
-   SetFlags(e_shapeBit | e_jointBit | e_centerOfMassBit | e_aabbBit); 
+   SetFlags(e_shapeBit | e_jointBit | e_centerOfMassBit);// | e_aabbBit); 
    //SetFlags(0xFFFF); 
 } 
 

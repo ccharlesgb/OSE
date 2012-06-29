@@ -60,9 +60,9 @@ Vector2 Renderer::ToScreen(Vector2 pos)
 
 void Renderer::OnResize()
 {
+	std::cout << "Resize\n";
 	gGlobals.GameWidth = mRender->getSize().x;
 	gGlobals.GameHeight = mRender->getSize().y;
-	Vector2 Size = Vector2(gGlobals.GameWidth, gGlobals.GameHeight);
 };
 
 //Called whenever ANY entity is added to the game. Check if its renderable then add it to a list

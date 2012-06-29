@@ -80,20 +80,15 @@ Vector2_Rect BaseObject::GetAABB()
 		BL = ToGlobal(vBL);
 		BR = ToGlobal(vBR);
 
-		Vector2 AABB_TL, AABB_BR, AABB_TR, AABB_BL; // The coordinates of the AABB
+		Vector2 UpperBound, LowerBound;
 
-		AABB_TL.x = std::min(TL.x, std::min(TR.x, std::min(BL.x, BR.x))); // Find the minimum X value of the corners
-		AABB_TL.y = std::max(TL.y, std::max(TR.y, std::max(BL.y, BR.y))); // Find the maximum Y value of the corners
-		AABB_BR.x = std::max(TL.x, std::max(TR.x, std::max(BL.x, BR.x))); // Find the maximum X value of the corners
-		AABB_BR.y = std::min(TL.y, std::min(TR.y, std::min(BL.y, BR.y))); // Find the minimum Y vaule of the corners
-		// Only found the Top-Left and Bottom-Right corners, but from these
-		// We can deduce the Top-Right and Bottom-Left
-		AABB_TR.x = AABB_BR.x;
-		AABB_TR.y = AABB_TL.y;
-		AABB_BL.x = AABB_TL.x;
-		AABB_BL.y = AABB_BR.y;
+		LowerBound.x = std::min(TL.x, std::min(TR.x, std::min(BL.x, BR.x)));
+		LowerBound.y = std::min(TL.y, std::min(TR.y, std::min(BL.y, BR.y)));
+		UpperBound.x = std::max(TL.x, std::max(TR.x, std::max(BL.x, BR.x)));
+		UpperBound.y = std::max(TL.y, std::max(TR.y, std::max(BL.y, BR.y)));
 
-		mAABB = Vector2_Rect(AABB_BL,AABB_TR-AABB_BL);
+		mAABB = Vector2_Rect(LowerBound,UpperBound-LowerBound);
+		
 		mAABBNeedsUpdate = false;
 	}
 	return mAABB;

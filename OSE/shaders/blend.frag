@@ -8,8 +8,9 @@ uniform float scale;
 void main()
 {
 	vec2 offset;
-	offset.x = 0.0;
-	offset.y = 0.0;
-    float factor = texture2D(blend_channel, (gl_TexCoord[0].xy + offset)).x;
+	offset.x = pos_x;
+	offset.y = pos_y;
+	vec2 ScaledTexCoord = (gl_TexCoord[0].xy / scale) + offset;
+    float factor = texture2D(blend_channel, ScaledTexCoord).x;
 	gl_FragColor = (texture2D(texture, gl_TexCoord[0].xy) * factor) + (texture2D(other_texture, gl_TexCoord[0].xy) * (1.0-factor));
 }

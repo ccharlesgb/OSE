@@ -21,11 +21,38 @@ void BlendSprite::Draw()
 	state.shader = mShader;
 	mShader->setParameter("blend_channel", mBlendTexture);
 	mShader->setParameter("other_texture", *mSprite2.getTexture());
+
 	int blend_scale = 8;
 	Vector2 GridPos = ig::NearestGrid(GetPosition(), 1024, 1024);
-	//mShader->setParameter("scale", blend_scale);
-	//mShader->setParameter("pos_x", GridPos.x);
-	//mShader->setParameter("pos_y", GridPos.y);
+	GridPos.y *= -1;
+	Vector2 Offset;
+
+	if (GridPos.x > -0.02)
+	{
+		Offset.x = std::abs((int)GridPos.x) % blend_scale;
+	}
+	else
+	{
+		Offset.x = blend_scale - (std::abs((int)GridPos.x) % blend_scale);
+		if (Offset.x == blend_scale)
+			Offset.x = 0;
+	}
+	if (GridPos.y > -0.02)
+	{
+		Offset.y = std::abs((int)GridPos.y) % blend_scale;
+	}
+	else
+	{
+		Offset.y = blend_scale - (std::abs((int)GridPos.y) % blend_scale);
+		if (Offset.y == blend_scale)
+			Offset.y = 0;
+	}
+	
+	Offset = Offset / blend_scale;
+
+	mShader->setParameter("scale", blend_scale);
+	mShader->setParameter("pos_x", Offset.x);
+	mShader->setParameter("pos_y", Offset.y);
 	//std::cout << GridPos.ToString() << "\n";
 	if (mDirtyTransform)
 	{

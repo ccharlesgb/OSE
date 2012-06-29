@@ -10,7 +10,7 @@
 LINKCLASSTONAME("car", Car)
 
 #define MAX_ANGLE 34.f
-#define STEER_SPEED 70.f
+#define STEER_SPEED 130.f
 #define MAX_THROTTLE 80.f
 #define THROTTLE_INCREASE_SPEED 10.f
 #define THROTTLE_DECREASE_SPEED 50.f
@@ -108,11 +108,11 @@ void Car::OnDelete()
 
 void Car::StartTouch(CollisionInfo* info)
 {
-	if (info->Speed > 500)
+	if (info->Speed > 300)
 	{
 		DamageInfo d_info;
 		d_info.Inflictor = info->OtherEnt;
-		d_info.Amount = info->Speed / 10;
+		d_info.Amount = info->Speed / 4.f;
 		d_info.type = DAMAGETYPE_PHYSICS;
 		info->OtherEnt->TakeDamage(d_info);
 	}

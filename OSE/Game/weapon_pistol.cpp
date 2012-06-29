@@ -74,7 +74,7 @@ void weapon_pistol::ShootBullet()
 {
 	TraceInfo info;
 	info.mStartPoint = GetPos() + (GetForward() * -10.f);
-	float range = 2000;
+	float range = 1200;
 	float spread = 0.07f; //In radians
 	info.mEndPoint = GetPos() + (GetForward() * range) + (GetRight() * ig::Random(-spread,spread) * range);
 	TraceResult TraceRes;
