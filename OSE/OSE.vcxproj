@@ -49,6 +49,7 @@
     <ClCompile Include="Game\Map.cpp" />
     <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="Game\Prop.cpp" />
+    <ClCompile Include="Game\prop_static.cpp" />
     <ClCompile Include="Game\weapon_pistol.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Engine\Model.cpp" />
@@ -95,6 +96,7 @@
     <ClInclude Include="Game\Map.h" />
     <ClInclude Include="Game\Player.h" />
     <ClInclude Include="Game\Prop.h" />
+    <ClInclude Include="Game\prop_static.h" />
     <ClInclude Include="Game\weapon_pistol.h" />
     <ClInclude Include="Engine\Model.h" />
     <ClInclude Include="Engine\Profiler.h" />

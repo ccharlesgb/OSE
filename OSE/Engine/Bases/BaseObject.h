@@ -69,7 +69,7 @@ private:
 	
 	//Rendering
 	Colour mColour; //The colour of the entity, only affects Model automatically
-	Sprite* mSprite; //The sprite object used in DrawModel/SetModel etc
+	/////////
 	bool mNoDraw; //Enable disable calling of Draw();
 	Vector2_Rect mRenderBounds; //The bounding box of when we should render (LOCAL SPACE)
 	Vector2_Rect mAABB;
@@ -83,6 +83,10 @@ protected:
 	Matrix3 mMatrix; //Transformation matrix used by ToGlobal and ToLocal
 	bool mMatrixNeedsUpdate; //If the matrix needs to be updated (Position/rotation etc has changed)
 	bool mAABBNeedsUpdate;
+
+	//HACK HACK HACK: MOVED THIS TEMPORARILY TO TEST ANIMATIONS
+	Sprite* mSprite; //The sprite object used in DrawModel/SetModel etc
+
 
 	//MODEL
 	const char* mModel; //Model path (Sprite image)

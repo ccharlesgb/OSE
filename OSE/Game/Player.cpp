@@ -25,14 +25,26 @@ Player::Player(void)
 	mText->SetPosition(GetPos());
 	SetWalkSpeed(DEFAULT_WALK_SPEED);
 	mLastTakeDamage = 0.f;
+
+	mCurFrame = 1;
+	mLastFrameChange = 0.f;
+
+	mSequence[0] = 0;
+	mSequence[1] = 1;
+	mSequence[2] = 2;
+	mSequence[3] = 1;
+	mSequence[4] = 0;
+	mSequence[5] = 3;
+	mSequence[6] = 4;
+	mSequence[7] = 3;
 }
 
 void Player::Spawn()
 {
 	GetPhysObj()->SetAngularDamping(25);
 	GetPhysObj()->SetLinearDamping(10);
-	SetModel("player2", 0.28);
-	SetOrigin(Vector2(0,45));
+	SetModel("player_walk", 0.54);
+	SetOrigin(Vector2(0,22));
 	PhysicsHullFromModel();
 }
 
@@ -148,8 +160,20 @@ void Player::PhysicsSimulate(float delta)
 		MoveVector = MoveVector.Normalize();
 	if (MoveVector.Length() > 0)
 	{
-		Vector2 orig_offset = Vector2((float)std::sin(gGlobals.CurTime * 6) * 5.f, (float)std::cos(gGlobals.CurTime * 6) * 5.f);
-		SetOrigin(Vector2(0,45) + orig_offset);
+		//TEMP ANIM CODE
+		if (mLastFrameChange + (1/12.f) < gGlobals.CurTime)
+		{
+			sf::IntRect rect;
+			rect.height = 128;
+			rect.width = 128;
+			rect.top = 0;
+			rect.left = mSequence[mCurFrame] * 128;
+			mSprite->SetTextureRect(rect);
+			mCurFrame++;
+			mLastFrameChange = gGlobals.CurTime;
+		}
+		if (mCurFrame > 7)
+			mCurFrame = 0;
 	}
 	MoveVector = MoveVector * GetWalkSpeed();
 	MoveVector = ToGlobal(MoveVector) - GetPos();

@@ -197,6 +197,15 @@ void Renderer::Draw(IGameState *State)
 	{
 		if (!(*CurEnt)->GetNoDraw())
 		{
+			if ((*CurEnt)->GetDrawOrder() == RENDERGROUP_TOP)
+			{
+				float dist_squared = ((*CurEnt)->GetPos() - sCamera::GetCentre()).LengthSquared();
+				Colour col = (*CurEnt)->GetColour();
+				float alpha = 1 - (4000 / dist_squared);
+				alpha  *= 255.f;
+				col.a = ig::Limit(alpha, 0.f, 255.f);
+				(*CurEnt)->SetColour(col);
+			}
 			(*CurEnt)->Draw();
 		}
 		CurEnt = OnScreenEnts.NextEnt(CurEnt);

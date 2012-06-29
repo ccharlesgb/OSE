@@ -24,6 +24,7 @@ MainGameState::MainGameState(void)
 {
 	mLastPhysics = -1;
 	mPhysAcc = 0;
+	mNextHorde = 0;
 }
 
 /*
@@ -72,38 +73,31 @@ void MainGameState::Initialize()
 
 	BaseObject* crate;
 	int crate_count = 350;
-	int tree_count = 50;
+	int tree_count = 200;
 	float map_size = 4500.f;
 	for (int i=0; i < crate_count; i++)
 	{
 		Vector2 pos = Vector2::Random(-map_size,map_size);
 		int Chooser = ig::RandomInt(0,10);
-		bool SpawnZombie = Chooser == 0;
 		int Amount = ig::RandomInt(1,3);
-		if (SpawnZombie)
-			Amount = ig::RandomInt(4,10);
 		for (int i=0; i < Amount; i++)
 		{
-			if (SpawnZombie)
-			{
-				crate = CreateEntity("enemy");
-				crate->SetAngle(ig::Random(0,360));
-			}
-			else
-			{
-				crate = CreateEntity("ent_prop");
-				crate->SetModel("crate2", ig::Random(0.3f,0.5f));
-				crate->SetDrawOrder(RENDERGROUP_TOP);
-			}
+			crate = CreateEntity("ent_prop");
+			crate->SetModel("crate2", ig::Random(0.3f,0.5f));
 			crate->SetPos(pos + Vector2::Random(-20.f,20.f));
 		}
 	}
 	for (int i=0; i < tree_count; i++)
 	{
-		crate = CreateEntity("ent_prop");
+		Vector2 tree_pos = Vector2::Random(-map_size, map_size);
+		crate = CreateEntity("ent_prop_static");
 		crate->SetModel("tree1", ig::Random(1.f,1.f));
 		crate->SetDrawOrder(RENDERGROUP_TOP);
-		crate->SetPos(Vector2::Random(-map_size, map_size));
+		crate->SetPos(tree_pos);
+
+		BaseObject* trunk = CreateEntity("ent_decal");
+		trunk->SetModel("tree_trunk");
+		trunk->SetPos(tree_pos);
 	}
 }
 
@@ -143,6 +137,22 @@ void MainGameState::Tick()
 			(*CurEnt)->PhysicsSimulate((float)gGlobals.CurTime - mLastPhysics);
 		}
 		CurEnt = gGlobals.gEntList.NextEnt(CurEnt);
+	}
+
+	if (mNextHorde < gGlobals.CurTime)
+	{
+		BaseObject* zombie;
+		int horde_size = ig::RandomInt(3,15);
+		float ang = ig::Random(0,6.82);
+		Vector2 offset = Vector2(std::cos(ang), std::sin(ang)) * ig::Random(2000,2500);
+		Vector2 pos = Player->GetPos() + offset;
+		for (int i=0; i < horde_size; i++)
+		{
+			zombie = CreateEntity("enemy");
+			zombie->SetPos(pos + Vector2::Random(-50,50));
+			zombie->SetAngle(ig::Random(0,360));
+		}
+		mNextHorde = gGlobals.CurTime + ig::Random(10.f,20.f);
 	}
 
 	if (mLastPhysics == -1)

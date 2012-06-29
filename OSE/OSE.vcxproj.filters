@@ -49,6 +49,7 @@
     <ClCompile Include="Game\Enemy.cpp" />
     <ClCompile Include="Game\HUD.cpp" />
     <ClCompile Include="Engine\Render\BaseHUD.cpp" />
+    <ClCompile Include="Game\prop_static.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Bases\BaseObject.h" />
@@ -94,6 +95,7 @@
     <ClInclude Include="Game\Enemy.h" />
     <ClInclude Include="Game\HUD.h" />
     <ClInclude Include="engine\render\basehud.h" />
+    <ClInclude Include="Game\prop_static.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Utilities\Matrix3.inl" />

@@ -17,9 +17,11 @@ public:
 		size.y = (float)mSprite.getTexture()->getSize().y;
 		return size;
 	};
-	Vector2 GetTextureCentre() {return Vector2(mSprite.getTexture()->getSize().x / 2, mSprite.getTexture()->getSize().y / 2);};
+	Vector2 GetTextureCentre() {return Vector2(mSprite.getTextureRect().width / 2, mSprite.getTextureRect().height / 2);};
 	void Draw();
 	void SetTexture(const char* path);
-	void SetColour(Colour col) {mSprite.setColor(sf::Color(col.r, col.g,col.b,col.a));};
+	void SetColour(const Colour &col) {mSprite.setColor(sf::Color(col.r, col.g,col.b,col.a));};
+
+	void SetTextureRect(const sf::IntRect &rect) {mSprite.setTextureRect(rect);};
 };
 

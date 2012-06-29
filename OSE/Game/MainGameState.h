@@ -15,6 +15,7 @@ private:
 	std::vector<BaseObject*> mPlanets;
 	BaseObject* bg;
 	HUD *Hud;
+	double mNextHorde;
 public:
 	MainGameState(void);
 	~MainGameState(void);

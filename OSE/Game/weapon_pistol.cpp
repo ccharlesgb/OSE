@@ -18,7 +18,7 @@ weapon_pistol::weapon_pistol(void)
 	mLastShot = 0.f;
 	mPrimClip = 0;
 	mSecoClip = 0;
-	SetPrimaryAmmo(500);
+	SetPrimaryAmmo(5000);
 	SetPrimaryClipSize(40);
 	RestockPrimaryClip();
 	RestockSecondaryClip();
