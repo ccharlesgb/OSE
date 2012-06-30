@@ -64,7 +64,7 @@ void Renderer::OnResize()
 	//std::cout << "Resize\n";
 	gGlobals.GameWidth = mRender->getSize().x;
 	gGlobals.GameHeight = mRender->getSize().y;
-	mHUDView.setSize(gGlobals.GameWidth, gGlobals.GameHeight);
+	mHUDView.setSize((float)gGlobals.GameWidth, (float)gGlobals.GameHeight);
 };
 
 //Called whenever ANY entity is added to the game. Check if its renderable then add it to a list
@@ -205,7 +205,7 @@ void Renderer::Draw(IGameState *State)
 				Colour col = (*CurEnt)->GetColour();
 				float alpha = 1 - (4000 / dist_squared);
 				alpha  *= 255.f;
-				col.a = ig::Limit(alpha, 0.f, 255.f);
+				col.a = (int)ig::Limit(alpha, 0.f, 255.f);
 				(*CurEnt)->SetColour(col);
 			}
 			(*CurEnt)->Draw();

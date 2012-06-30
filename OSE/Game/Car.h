@@ -22,7 +22,7 @@ private:
 	Line* mLine2;
 	Line* mLine3;
 	Line* mLine4;
-	float mLastTrailDrop;
+	double mLastTrailDrop;
 public:
 	Car(void);
 	~Car(void);

@@ -12,7 +12,7 @@ LINKCLASSTONAME("car", Car)
 
 #define MAX_ANGLE 34.f
 #define STEER_SPEED 130.f
-#define MAX_THROTTLE 80.f
+#define MAX_THROTTLE 45.f
 #define THROTTLE_INCREASE_SPEED 10.f
 #define THROTTLE_DECREASE_SPEED 50.f
 #define THROTTLE_DIE_SPEED 25.f
@@ -68,7 +68,7 @@ void Car::Spawn()
 	GetPhysObj()->SetAngularDamping(1);
 	GetPhysObj()->SetLinearDamping(1);
 	
-	SetModel("car", 1.f);
+	SetModel("props/car", 1.f);
 	PhysicsHullFromModel();
 	mDriver = NULL;
 	CreateSound("skid", "tires_squeal_loop");
@@ -150,12 +150,12 @@ void Car::Think()
 			data.AddData("time", (float)gGlobals.CurTime + TRAIL_LIFETIME);
 
 			BaseObject* scorch = CreateEntity("ent_decal");
-			scorch->SetModel("scorch", ig::Random(0.3f,0.4f));
+			scorch->SetModel("decals/scorch", ig::Random(0.3f,0.4f));
 			scorch->SetPos(GetPos() + GetForward() * 90.f + GetRight() * -40.f);
 			scorch->Fire("dietime", data);
 
 			scorch = CreateEntity("ent_decal");
-			scorch->SetModel("scorch", ig::Random(0.3f,0.4f));
+			scorch->SetModel("decals/scorch", ig::Random(0.3f,0.4f));
 			scorch->SetPos(GetPos() + GetForward() * 90.f + GetRight() * 40.f);
 			scorch->Fire("dietime", data);
 			mLastTrailDrop = gGlobals.CurTime;
@@ -166,12 +166,12 @@ void Car::Think()
 			data.AddData("time", (float)gGlobals.CurTime + TRAIL_LIFETIME);
 
 			BaseObject* scorch = CreateEntity("ent_decal");
-			scorch->SetModel("scorch", ig::Random(0.3f,0.4f));
+			scorch->SetModel("decals/scorch", ig::Random(0.3f,0.4f));
 			scorch->SetPos(GetPos() + GetForward() * -90.f + GetRight() * -40.f);
 			scorch->Fire("dietime", data);
 
 			scorch = CreateEntity("ent_decal");
-			scorch->SetModel("scorch", ig::Random(0.3f,0.4f));
+			scorch->SetModel("decals/scorch", ig::Random(0.3f,0.4f));
 			scorch->SetPos(GetPos() + GetForward() * -90.f + GetRight() * 40.f);
 			scorch->Fire("dietime", data);
 			mLastTrailDrop = gGlobals.CurTime;

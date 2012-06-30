@@ -20,42 +20,22 @@ Player::Player(void)
 	PhysicsInit(DYNAMIC_BODY);
 	GiveWeapon(CreateEntity("weapon_pistol"));
 	mNextUse = 0.f;
-	mText = new Text(gGlobals.RenderWindow);
-	mText->SetFont("LCDM2N");
-	mText->SetText("Test");
-	mText->SetPosition(GetPos());
 	SetWalkSpeed(DEFAULT_WALK_SPEED);
 	mLastTakeDamage = 0.f;
-
-	mHead = new Sprite(gGlobals.RenderWindow);
-	mHead->SetAngle(GetAngle());
-	mHead->SetPosition(GetPos());
-	mHead->SetTexture("player_head");
-	mHead->SetOrigin(Vector2(0,50));
-	mHead->SetScale(0.27f);
 }
 
 void Player::Spawn()
 {
 	GetPhysObj()->SetAngularDamping(25);
 	GetPhysObj()->SetLinearDamping(10);
-	SetModel("player", 0.5f);
+	SetModel("npc/player", 0.5f);
+	CreateHead("player_head");
 	SetOrigin(Vector2(0,30));
 	PhysicsHullFromModel();
 }
 
 Player::~Player(void)
 {
-}
-
-void Player::Draw()
-{
-	DrawModel();
-	
-	//Draw Head on top
-	mHead->SetPosition(GetPos());
-	mHead->SetAngle(GetAngle());
-	mHead->Draw();
 }
 
 void Player::GiveWeapon(BaseObject* ent)
@@ -128,14 +108,13 @@ void Player::Think()
 
 void Player::PhysicsSimulate(float delta)
 {
-	//Player movement code
-	mText->SetPosition(GetPos());
 	//Point player towards mouse
+	Vector2 MousePos = InputHandler::GetMousePosWorld();
+	Vector2 MouseDirHat = (MousePos - GetPos()).Normalize();
+	float TargetAngle = ig::RadToDeg(std::atan2(MouseDirHat.y, MouseDirHat.x)) - 90.f;
+	SetHeadAngle(TargetAngle - GetAngle());
 	if (!InputHandler::IsKeyPressed(sf::Keyboard::LShift))
 	{
-		Vector2 MousePos = InputHandler::GetMousePosWorld();
-		Vector2 MouseDirHat = (MousePos - GetPos()).Normalize();
-		float TargetAngle = ig::RadToDeg(std::atan2(MouseDirHat.y, MouseDirHat.x)) - 90.f;
 		GetPhysObj()->ApplyTorque(ig::NormalizeAngle(TargetAngle - GetAngle()) * GetPhysObj()->GetMass());
 	}
 

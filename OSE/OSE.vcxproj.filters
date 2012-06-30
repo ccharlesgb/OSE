@@ -51,6 +51,7 @@
     <ClCompile Include="Engine\Render\BaseHUD.cpp" />
     <ClCompile Include="Game\prop_static.cpp" />
     <ClCompile Include="Engine\Render\SpriteAnimating.cpp" />
+    <ClCompile Include="Game\BaseHuman.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Bases\BaseObject.h" />
@@ -100,6 +101,7 @@
     <ClInclude Include="Engine\Animation.h" />
     <ClInclude Include="Engine\Render\SpriteAnimating.h" />
     <ClInclude Include="Engine\Render\Colour.h" />
+    <ClInclude Include="Game\BaseHuman.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Utilities\Matrix3.inl" />

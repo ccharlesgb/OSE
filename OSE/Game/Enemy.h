@@ -8,9 +8,9 @@ class Enemy : public BasePhysics
 {
 private:
 	BaseObject* mTarget;
-	float mLastSearch;
+	double mLastSearch;
 	Vector2 mWanderPos;
-	float mLastWander;
+	double mLastWander;
 public:
 	Enemy(void);
 	~Enemy(void);

@@ -2,6 +2,8 @@
 #include "../Resource.h"
 #include "../GameGlobals.h"
 
+#pragma warning( disable : 4244 )
+
 BlendSprite::BlendSprite(sf::RenderWindow *rend) : BaseDrawable(rend)
 {
 	mShader= new sf::Shader();

@@ -3,7 +3,7 @@
 	<texture>car</texture>
 	<scale>1</scale>
 	<physics_hull>
-		<density>6</density>
+		<density>9</density>
 		<vertex_count>4</vertex_count>
 		<vertices>
 			<vertex>55 110</vertex>

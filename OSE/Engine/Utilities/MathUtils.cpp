@@ -25,7 +25,7 @@ namespace ig
 	int RandomInt(int min, int max)
 	{
 		float frac = (float)Rand();
-		return std::floor(((frac * (max-min)) + min) + 0.5f);
+		return (int)std::floor(((frac * (max-min)) + min) + 0.5f);
 	}
 	
 	float RadToDeg(float Rad)

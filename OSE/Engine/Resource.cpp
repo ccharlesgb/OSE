@@ -60,7 +60,7 @@ std::map<std::string, sf::SoundBuffer*> SoundResource::mSounds;
 
 void SoundResource::Precache(const char *path)
 {
-	std::string FILE_PATH = ("images/" + std::string(path) + ".wav").c_str();
+	std::string FILE_PATH = ("sounds/" + std::string(path) + ".wav").c_str();
 	std::cout << "LOADING: " << FILE_PATH << "\n";
 	
 	sf::SoundBuffer* Buffer = new sf::SoundBuffer();
@@ -100,7 +100,7 @@ std::map<std::string, sf::Font*> FontResource::mFonts;
 
 void FontResource::Precache(const char *path)
 {
-	std::string FILE_PATH = ("images/" + std::string(path) + ".ttf").c_str();
+	std::string FILE_PATH = ("fonts/" + std::string(path) + ".ttf").c_str();
 	std::cout << "LOADING: " << FILE_PATH << "\n";
 	
 	sf::Font* font = new sf::Font();

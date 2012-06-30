@@ -41,6 +41,7 @@
     <ClCompile Include="Engine\Resource.cpp" />
     <ClCompile Include="Engine\Sound.cpp" />
     <ClCompile Include="Engine\StateManager.cpp" />
+    <ClCompile Include="Game\BaseHuman.cpp" />
     <ClCompile Include="Game\Car.cpp" />
     <ClCompile Include="Game\Decal.cpp" />
     <ClCompile Include="Game\Enemy.cpp" />
@@ -91,6 +92,7 @@
     <ClInclude Include="Engine\Resource.h" />
     <ClInclude Include="Engine\Sound.h" />
     <ClInclude Include="Engine\StateManager.h" />
+    <ClInclude Include="Game\BaseHuman.h" />
     <ClInclude Include="Game\Car.h" />
     <ClInclude Include="Game\Decal.h" />
     <ClInclude Include="Game\Enemy.h" />

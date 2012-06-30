@@ -30,7 +30,7 @@ weapon_pistol::~weapon_pistol(void)
 
 void weapon_pistol::Spawn()
 {
-	SetModel("muzzle_flash", 0.2f);
+	SetModel("decals/muzzle_flash", 0.2f);
 }
 
 void weapon_pistol::Reload()

@@ -60,8 +60,8 @@ private:
 	bool mDeleteMe; //Should the entity be deleted on the next entity purge?
 
 	//Thinking
-	float mNextThink;
-	float mLastThink;
+	double mNextThink;
+	double mLastThink;
 	bool mShouldThink;
 
 	std::string mClassName; //The class name of the entity eg "player"
@@ -107,7 +107,7 @@ protected:
 	bool mIsPlaying;
 	bool mAnimShouldLoop;
 	int mCurFrameID;
-	float mLastFrameAdvance;
+	double mLastFrameAdvance;
 
 	RenderGroup mDrawOrder;
 	bool mIsRenderable; //Do we have a renderer?
@@ -200,11 +200,11 @@ public:
 	* Set the angle of the entity
 	* @param angle The desired angle in degrees
 	*/
-	virtual void SetAngle(float angle) {mAngle = angle; SetTransformDirty();};
+	virtual void SetAngle(float angle) {mAngle = ig::NormalizeAngle(angle); SetTransformDirty();};
 	/**
 	* Get the angle of the entity in degrees
 	*/
-	float GetAngle() {return mAngle;};
+	float GetAngle() {return ig::NormalizeAngle(mAngle);};
 
 	/**
 	* Get the local AABB of the entities model
@@ -312,7 +312,7 @@ public:
 	//////////////////////////////////////////////////////////
 	//Thinking
 	void SetNextThink(float time) {mNextThink = time;};
-	float GetNextThink() {return mNextThink;};
+	double GetNextThink() {return mNextThink;};
 	void ShouldThink(bool think) {mShouldThink = think;};
 	bool IsThinking() {return mShouldThink;};
 

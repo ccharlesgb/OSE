@@ -21,7 +21,7 @@ void Enemy::Spawn()
 {
 	GetPhysObj()->SetAngularDamping(25);
 	GetPhysObj()->SetLinearDamping(10);
-	SetModel("zombie", 0.28);
+	SetModel("npc/zombie", 0.28f);
 	SetOrigin(Vector2(0,45));
 	PhysicsHullFromModel();
 	SetMaxHealth(150);
@@ -84,9 +84,11 @@ void Enemy::TakeDamage(const DamageInfo &info)
 {
 	SetHealth(GetHealth() - info.Amount);
 	Colour mCol = GetColour();
+#pragma warning( disable : 4244 )
 	mCol.r = (GetHealth() / GetMaxHealth()) * 210.f + 45.f;
 	mCol.g = (GetHealth() / GetMaxHealth()) * 210.f + 45.f;
 	mCol.b = (GetHealth() / GetMaxHealth()) * 210.f + 45.f;
+#pragma warning( default : 4244 )
 	SetColour(mCol);
 	if (GetHealth() <= 0)
 		Delete();
@@ -124,6 +126,6 @@ void Enemy::PhysicsSimulate(float delta)
 void Enemy::OnDelete()
 {
 	BaseObject* decal = CreateEntity("ent_decal");
-	decal->SetModel("blood_spatter");
+	decal->SetModel("decals/blood_spatter");
 	decal->SetPos(GetPos());
 }

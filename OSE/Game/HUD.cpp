@@ -36,12 +36,20 @@ void HUD::Draw()
 	{
 		Player* ply = dynamic_cast<Player*>(*list->FirstEnt()); // Get the (first) player
 		char buffer[30];
-		sprintf(buffer, "Health: %i", (int)ply->GetHealth());
+#ifdef __APPLE__ 
+			sprintf(buffer, "Health: %i", (int)ply->GetHealth());
+#else
+			sprintf_s(buffer, "Health: %i", (int)ply->GetHealth());
+#endif
 		mHealth->SetText(buffer);
 		mHealth->Draw();
 
 		weapon_pistol* wep = dynamic_cast<weapon_pistol*>(ply->GetActiveWeapon());
+#ifdef __APPLE__ 
 		sprintf(buffer, "Ammo: %i", wep->GetPrimaryAmmo());
+#else
+		sprintf_s(buffer, "Ammo: %i", wep->GetPrimaryAmmo());
+#endif
 		mAmmo->SetText(buffer);
 		mAmmo->Draw();
 	}
@@ -71,11 +79,19 @@ void HUD::Draw()
 				float fps = (1000.f/mExecTimes->TIME[i]);
 				if (fps > 60.f)
 					mProfileDump[i]->SetColour(Colour(0,255,0));
+#ifdef _APPLE_
 				sprintf(buffer, (INDENT + mExecTimes->NAME[i] + ": %f (FPS: %f)").c_str(),mExecTimes->TIME[i], fps);
+#else
+				sprintf_s(buffer, (INDENT + mExecTimes->NAME[i] + ": %f (FPS: %f)").c_str(),mExecTimes->TIME[i], fps);
+#endif
 			}
 			else
 			{
+#ifdef _APPLE_
 				sprintf(buffer, (INDENT + mExecTimes->NAME[i] + ": %f").c_str(), mExecTimes->TIME[i]);
+#else
+				sprintf_s(buffer, (INDENT + mExecTimes->NAME[i] + ": %f").c_str(), mExecTimes->TIME[i]);
+#endif
 			}
 			mProfileDump[i]->SetText(buffer);
 			mProfileDump[i]->Draw();

@@ -83,7 +83,7 @@ void MainGameState::Initialize()
 		for (int i=0; i < Amount; i++)
 		{
 			crate = CreateEntity("ent_prop");
-			crate->SetModel("crate2", ig::Random(0.3f,0.5f));
+			crate->SetModel("props/crate2", ig::Random(0.3f,0.5f));
 			crate->SetPos(pos + Vector2::Random(-20.f,20.f));
 		}
 	}
@@ -92,12 +92,12 @@ void MainGameState::Initialize()
 		float tree_size = ig::Random(0.6f,0.9f);
 		Vector2 tree_pos = Vector2::Random(-map_size, map_size);
 		crate = CreateEntity("ent_prop_static");
-		crate->SetModel("tree1", tree_size);
+		crate->SetModel("props/tree1", tree_size);
 		crate->SetDrawOrder(RENDERGROUP_TOP);
 		crate->SetPos(tree_pos);
 
 		BaseObject* trunk = CreateEntity("ent_decal");
-		trunk->SetModel("tree_trunk", tree_size);
+		trunk->SetModel("props/tree_trunk", tree_size);
 		trunk->SetPos(tree_pos);
 	}
 }
@@ -135,7 +135,7 @@ void MainGameState::Tick()
 		//std::cout << "CUR: " << CurEnt << "\n";
 		if ((*CurEnt)->IsPhysicsEnabled() && mLastPhysics + GetDelta() < gGlobals.CurTime)
 		{
-			(*CurEnt)->PhysicsSimulate((float)gGlobals.CurTime - mLastPhysics);
+			(*CurEnt)->PhysicsSimulate(gGlobals.CurTime - mLastPhysics);
 		}
 		CurEnt = gGlobals.gEntList.NextEnt(CurEnt);
 	}
@@ -144,7 +144,7 @@ void MainGameState::Tick()
 	{
 		BaseObject* zombie;
 		int horde_size = ig::RandomInt(3,15);
-		float ang = ig::Random(0,6.82);
+		float ang = ig::Random(0,6.82f);
 		Vector2 offset = Vector2(std::cos(ang), std::sin(ang)) * ig::Random(2000,2500);
 		Vector2 pos = Player->GetPos() + offset;
 		for (int i=0; i < horde_size; i++)
@@ -160,7 +160,7 @@ void MainGameState::Tick()
 		mLastPhysics = gGlobals.RealTime;
 	if (mLastPhysics + GetDelta() < gGlobals.CurTime)
 	{
-		float delta = (float)gGlobals.CurTime - mLastPhysics;
+		float delta = gGlobals.CurTime - mLastPhysics;
 		mPhysicsWorld.Step(delta);
 
 		mLastPhysics = gGlobals.CurTime;
@@ -177,7 +177,7 @@ void MainGameState::OnEvent(sf::Event &Event)
 {
 	if (Event.type == sf::Event::MouseWheelMoved)
 	{
-		float del = (int)Event.mouseWheel.delta;
+		float del = (float)Event.mouseWheel.delta;
 		float fac = 1.f;
 		fac = 1.f + (del / 5.f);
 		float zoom = sCamera::GetZoom() * fac;
@@ -250,7 +250,7 @@ void MainGameState::OnMouseButtonPressed(sf::Mouse::Button Button, bool Pressed)
 		{
 			BaseObject* crate;
 			crate = CreateEntity("ent_prop");
-			crate->SetModel("crate2", ig::Random(0.5f,0.7f));
+			crate->SetModel("props/crate2", ig::Random(0.5f,0.7f));
 			crate->SetPos(InputHandler::GetMousePosWorld());
 		}
 	}

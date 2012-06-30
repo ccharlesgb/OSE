@@ -5,7 +5,7 @@
 class Decal : public BaseObject
 {
 private:
-	float mDietime;
+	double mDietime;
 public:
 	static void SetDietime(BaseObject* ent, VariantMap &Data);
 	Decal(void);

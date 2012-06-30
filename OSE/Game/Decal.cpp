@@ -32,7 +32,7 @@ void Decal::Think()
 	if (mDietime != -1.f && gGlobals.CurTime > mDietime)
 	{
 		Colour col = GetColour();
-		float fade_factor = ig::Limit(1 - (gGlobals.CurTime - mDietime) / 5.f,0.f,1.f); // 1 - (SECONDS_PASSED / TOTAL_FADE_TIME)
+		float fade_factor = ig::Limit(1 - float(gGlobals.CurTime - mDietime) / 5.f,0.f,1.f); // 1 - (SECONDS_PASSED / TOTAL_FADE_TIME)
 		col.a = fade_factor * 255.f;
 		SetColour(col);
 		if (fade_factor == 0.f)
