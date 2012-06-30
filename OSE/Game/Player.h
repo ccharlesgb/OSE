@@ -17,10 +17,6 @@ private:
 
 	float mWalkSpeed;
 	float mLastTakeDamage;
-
-	int mCurFrame; //TEMP ANIM HACK
-	float mLastFrameChange;
-	int mSequence[8];
 public:
 	Player(void);
 	~Player(void);

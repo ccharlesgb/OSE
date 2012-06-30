@@ -50,7 +50,6 @@
     <ClCompile Include="Game\HUD.cpp" />
     <ClCompile Include="Engine\Render\BaseHUD.cpp" />
     <ClCompile Include="Game\prop_static.cpp" />
-    <ClCompile Include="Engine\Animation.cpp" />
     <ClCompile Include="Engine\Render\SpriteAnimating.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -100,6 +99,7 @@
     <ClInclude Include="Game\prop_static.h" />
     <ClInclude Include="Engine\Animation.h" />
     <ClInclude Include="Engine\Render\SpriteAnimating.h" />
+    <ClInclude Include="Engine\Render\Colour.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Utilities\Matrix3.inl" />

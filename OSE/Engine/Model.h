@@ -1,11 +1,20 @@
 #pragma once
 
 #include "Utilities/Vector2.h"
+#include "Animation.h"
 
-class Model
+#define MODEL_MAX_ANIMATIONS 4
+
+struct Model
 {
 public:
 	
+	//ANIMAION PROPERTIES
+	Animation mAnimations[MODEL_MAX_ANIMATIONS];
+	bool mIsAnimating;
+	int mAnimationCount;
+
+
 	bool mLoaded;
 	
 	Vector2 mVertices[8];

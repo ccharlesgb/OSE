@@ -4,6 +4,7 @@
 #include "../Engine/GameGlobals.h"
 #include "../Engine/Camera.h"
 #include "../Engine/Sound.h"
+#include "../Engine/Render/Sprite.h"
 
 //This function registers the entity to the EntityCreator.
 //"player" is the classname. Player is the coded classname

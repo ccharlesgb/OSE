@@ -5,10 +5,11 @@
 #include "../EntityCreator.h"
 #include "../Utilities/Vector2.h"
 #include "../Utilities/Matrix3.hpp"
-#include "../Render/Sprite.h"
 #include "../Sound.h"
 #include "../Model.h"
+#include "../Render/Colour.h"
 
+class Sprite;
 class PhysicsDef;
 class BaseObject;
 class CollisionInfo;
@@ -201,7 +202,7 @@ public:
 	/**
 	* Get the local AABB of the entities model
 	*/
-	Vector2 GetSize() {return mSprite->GetSize();};
+	//Vector2 GetSize() {return mSprite->GetSize();};
 
 	/**
 	* Create an entity and return a reference to the entity if
@@ -237,18 +238,23 @@ public:
 
 	//Model
 	/**
-	* Sets the model of an entity. TODO: MODEL FORMAT
+	* Sets the model of an entity.
 	* @param path the filepath of the model
 	*/
 	void SetModel(const char* path);
 	/**
-	* Sets the model of an entity. TODO: MODEL FORMAT
+	* Sets the model of an entity.
 	*/
 	void SetModel(const char* path, float scale);
 	/**
-	* Gets the model of an entity. TODO: MODEL FORMAT
+	* Gets the model of an entity.
 	*/
 	const char* GetModel() {return mModel;};
+	/**
+	* Sets the model of an entity, initialise as SpriteAnimating
+	* @param path the filepath of the model
+	*/
+	void SetModelAnimating(const char* path, float scale);
 
 	//Sound
 	/**

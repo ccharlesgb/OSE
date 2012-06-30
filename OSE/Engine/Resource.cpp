@@ -1,6 +1,7 @@
 #include "Resource.h"
 #include "Utilities/pugixml.hpp"
-//#include "GameGlobals.h"
+#include "Model.h"
+#include "Animation.h"
 
 #define ERROR_TEXTURE "images/car.png"
 
@@ -163,6 +164,45 @@ void ModelResource::Precache(const char *path)
 	model->mTexturePath = ModelRoot.child("texture").text().as_string();
 	model->mScale = ModelRoot.child("scale").text().as_float();
 	
+	//Parse animation data
+	pugi::xml_node AnimationsNode = ModelRoot.child("animations");
+	if (AnimationsNode)
+	{
+		pugi::xml_node CurAnim = AnimationsNode.first_child();
+		int id = 0;
+		//Loop through all the animations in the model file and load their data
+		while (CurAnim != NULL)
+		{
+			model->mAnimations[id].mName = CurAnim.child("name").text().as_string();
+			model->mAnimations[id].mFrameRate = CurAnim.child("framerate").text().as_float();
+			model->mAnimations[id].mRow = CurAnim.child("row").text().as_int();
+
+			//Sequence is formatted as a string sperated by spaces so split them up
+			//and convert to integers into the array
+			std::string SequenceString = CurAnim.child("sequence").text().as_string();
+			
+			int CurSearchPos = 0; //How far into the string are we?
+			int SpacePos = 0; //Where is the space located?
+			int CurFrameID = 0; //Current frame we are parsing
+			std::cout << "Parsing: " << SequenceString << "\n";
+			do
+			{
+				SpacePos = SequenceString.find(" ", CurSearchPos);
+				std::string CurFrame = SequenceString.substr(CurSearchPos, SpacePos - CurSearchPos);
+				CurSearchPos = SpacePos + 1;
+				model->mAnimations[id].mSequence[CurFrameID] = atoi(CurFrame.c_str());
+				std::cout << "Sequence adding frame: " << CurFrame.c_str() << "\n";
+				CurFrameID++;
+			} 
+			while (SpacePos != std::string::npos);
+			model->mAnimationCount = CurFrameID;
+			std::cout << "LOADED " << CurFrameID << " animations.\n";
+
+			id++;
+			CurAnim = CurAnim.next_sibling();
+		}
+	}
+
 	//Parse Physics Data
 	pugi::xml_node PhysicsNode = ModelRoot.child("physics_hull");
 	if (PhysicsNode)
@@ -190,12 +230,6 @@ void ModelResource::Precache(const char *path)
 		}
 		model->mVertexCount = id;
 	}
-	
-	std::cout << "Finished Loading Model:"               << "\n";
-	std::cout << "Texture Path: " << model->mTexturePath << "\n";
-	std::cout << "Scale       : " << model->mScale       << "\n";
-	std::cout << "Density     : " << model->mDensity     << "\n";
-	std::cout << "Vertex Count: " << model->mVertexCount << "\n";
 
 	model->mLoaded = true;
 	

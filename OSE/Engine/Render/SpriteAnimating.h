@@ -3,14 +3,14 @@
 #include <vector>
 #include "Sprite.h"
 
-class Animation;
+struct Animation;
 
 class SpriteAnimating : public Sprite
 {
 private:
 	std::vector<Animation*> mAnimations;
-public:
-	SpriteAnimating(void);
+public:	
+	SpriteAnimating(sf::RenderWindow *rend);
 	~SpriteAnimating(void);
 };
 

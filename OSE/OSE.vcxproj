@@ -11,7 +11,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Engine\Animation.cpp" />
     <ClCompile Include="Engine\Render\BaseHUD.cpp" />
     <ClCompile Include="Engine\Render\BlendSprite.cpp" />
     <ClCompile Include="Engine\Render\DebugOverlay.cpp" />
@@ -61,6 +60,7 @@
     <ClInclude Include="Engine\Animation.h" />
     <ClInclude Include="engine\render\basehud.h" />
     <ClInclude Include="Engine\Render\BlendSprite.h" />
+    <ClInclude Include="Engine\Render\Colour.h" />
     <ClInclude Include="Engine\Render\DebugOverlay.h" />
     <ClInclude Include="Engine\AudioEnvironment.h" />
     <ClInclude Include="Engine\Bases\BaseObject.h" />

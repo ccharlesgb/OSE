@@ -4,7 +4,9 @@
 #include <string>
 #include "SFML/Graphics.hpp"
 #include <SFML/Audio.hpp>
-#include "Model.h"
+
+struct Model; //Forward declare
+struct Animation;
 
 /**
  * Texture resource loader.

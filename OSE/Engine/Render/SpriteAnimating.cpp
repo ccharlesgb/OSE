@@ -1,10 +1,9 @@
 #include "SpriteAnimating.h"
 
 
-SpriteAnimating::SpriteAnimating(void)
+SpriteAnimating::SpriteAnimating(sf::RenderWindow *rend) : Sprite(rend)
 {
 }
-
 
 SpriteAnimating::~SpriteAnimating(void)
 {

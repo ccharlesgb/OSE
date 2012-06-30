@@ -1,18 +1,11 @@
 #pragma once
 
-#define ANIMATION_MAX_FRAMES
+#define ANIMATION_MAX_FRAMES 16
 
-class Animation
+struct Animation
 {
-private:
+	const char* mName;
 	int mSequence[ANIMATION_MAX_FRAMES];
 	float mFrameRate;
 	int mRow;
-	
-	bool mIsPlaying; //Are we playing right now?
-	int mCurFrame; //Frame that is current being displayed
-public:
-	Animation(void);
-	~Animation(void);
 };
-

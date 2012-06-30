@@ -3,6 +3,8 @@
 #include "../GameGlobals.h"
 #include "../Render/Line.h"
 #include "../Resource.h"
+#include "../Render/SpriteAnimating.h"
+#include "../Render/Sprite.h"
 
 BaseObject::BaseObject(void)
 {
@@ -139,6 +141,23 @@ void BaseObject::SetModel(const char* path)
 void BaseObject::SetModel(const char* path, float scale)
 {
 	mSprite = new Sprite(gGlobals.RenderWindow);
+	mModelInfo = ModelResource::GetModel(path);
+	if (mModelInfo)
+	{
+		mModel = mModelInfo->mTexturePath.c_str();
+		mScale = Vector2(mModelInfo->mScale, mModelInfo->mScale);
+		mScale = mScale * scale;
+		mSprite->SetTexture(mModel);
+	}
+	SetRenderBounds(Vector2_Rect(mSprite->GetSize() * -0.5f, mSprite->GetSize()));
+	mIsRenderable = true;
+	mSprite->SetScale(mScale.x);
+	SetOrigin(Vector2());
+}
+
+void BaseObject::SetModelAnimating(const char* path, float scale)
+{
+	mSprite = new SpriteAnimating(gGlobals.RenderWindow);
 	mModelInfo = ModelResource::GetModel(path);
 	if (mModelInfo)
 	{
