@@ -14,7 +14,6 @@ public:
 	bool mIsAnimating;
 	int mAnimationCount;
 
-
 	bool mLoaded;
 	
 	Vector2 mVertices[8];
@@ -31,6 +30,7 @@ public:
 	 * Default constructor.
 	 */
 	Model();
+	~Model() {std::cout << "DELETING MODEl\n";};
 	
 	/**
 	 * Load model information from file (xml).

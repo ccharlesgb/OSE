@@ -3,7 +3,7 @@
 #include "../Engine/Bases/BasePhysics.h"
 #include "../Engine/EntityList.h"
 #include "../Engine/Text.h"
-#include "../Game/weapon_pistol.h"
+#include "../Game/weapon_pistol.h";
 
 #define USE_DELAY 0.5f
 
@@ -17,6 +17,8 @@ private:
 
 	float mWalkSpeed;
 	float mLastTakeDamage;
+
+	Sprite* mHead;
 public:
 	Player(void);
 	~Player(void);

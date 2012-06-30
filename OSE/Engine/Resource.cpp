@@ -176,6 +176,7 @@ void ModelResource::Precache(const char *path)
 			model->mAnimations[id].mName = CurAnim.child("name").text().as_string();
 			model->mAnimations[id].mFrameRate = CurAnim.child("framerate").text().as_float();
 			model->mAnimations[id].mRow = CurAnim.child("row").text().as_int();
+			model->mAnimations[id].mFrameSize = CurAnim.child("framesize").text().as_int();
 
 			//Sequence is formatted as a string sperated by spaces so split them up
 			//and convert to integers into the array
@@ -195,12 +196,14 @@ void ModelResource::Precache(const char *path)
 				CurFrameID++;
 			} 
 			while (SpacePos != std::string::npos);
-			model->mAnimationCount = CurFrameID;
-			std::cout << "LOADED " << CurFrameID << " animations.\n";
+
+			model->mAnimations[id].mLength = CurFrameID;
 
 			id++;
 			CurAnim = CurAnim.next_sibling();
 		}
+		model->mAnimationCount = id;
+		std::cout << "LOADED " << id << " animations.\n";
 	}
 
 	//Parse Physics Data

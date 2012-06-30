@@ -17,6 +17,10 @@ public:
 		size.y = (float)mSprite.getTextureRect().height;
 		return size;
 	};
+	Vector2 GetTextureSize()
+	{
+		return Vector2(mSprite.getTexture()->getSize().x,mSprite.getTexture()->getSize().y);
+	};
 	Vector2 GetTextureCentre() {return Vector2(mSprite.getTextureRect().width / 2, mSprite.getTextureRect().height / 2);};
 	void Draw();
 	void SetTexture(const char* path);

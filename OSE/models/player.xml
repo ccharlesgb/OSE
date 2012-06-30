@@ -5,15 +5,17 @@
   <animations>
     <animation>
       <name>walk</name>
-      <row>1</row> <!--The row this animation is present on the spritesheet-->
-      <sequence>0 1 2 1 0 3 4 3</sequence> <!-- The order the frames are displayed in the sequence-->
-      <framerate>20</framerate>
+      <row>0</row> <!--The row this animation is present on the spritesheet-->
+      <sequence>0 1 2 1 0 3</sequence> <!-- The order the frames are displayed in the sequence-->
+      <framerate>10</framerate>
+      <framesize>256</framesize>
     </animation>
     <animation>
       <name>idle</name>
-      <row>0</row>
+      <row>1</row>
       <sequence>0 1 2 1</sequence>
       <framerate>20</framerate>
+      <framesize>256</framesize>
     </animation>
   </animations>
   

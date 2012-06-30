@@ -29,6 +29,10 @@ BaseObject::BaseObject(void)
 	mLastThink = gGlobals.CurTime;
 	mShouldThink = true;
 	SetTransformDirty();
+
+	mIsPlaying = false;
+	mCurAnimation = false;
+	mCurFrameID = 0;
 }
 
 BaseObject::~BaseObject(void)
@@ -155,21 +159,56 @@ void BaseObject::SetModel(const char* path, float scale)
 	SetOrigin(Vector2());
 }
 
-void BaseObject::SetModelAnimating(const char* path, float scale)
+void BaseObject::PlayAnimation(const char* name, bool loop)
 {
-	mSprite = new SpriteAnimating(gGlobals.RenderWindow);
-	mModelInfo = ModelResource::GetModel(path);
-	if (mModelInfo)
+	Animation* anim = NULL;
+	for (int i=0; i < mModelInfo->mAnimationCount; i++)
 	{
-		mModel = mModelInfo->mTexturePath.c_str();
-		mScale = Vector2(mModelInfo->mScale, mModelInfo->mScale);
-		mScale = mScale * scale;
-		mSprite->SetTexture(mModel);
+		if (mModelInfo->mAnimations[i].mName == std::string(name)) //Strings are equal
+		{
+			anim = &mModelInfo->mAnimations[i];
+			break;
+		}
 	}
-	SetRenderBounds(Vector2_Rect(mSprite->GetSize() * -0.5f, mSprite->GetSize()));
-	mIsRenderable = true;
-	mSprite->SetScale(mScale.x);
-	SetOrigin(Vector2());
+	if (anim)
+	{
+		mIsPlaying = true;
+		mAnimShouldLoop = loop;
+		mCurFrameID = 0;
+		mCurAnimation = anim;
+	}
+	else
+	{
+		std::cout << "Couldn't find animation with name \"" << name << "\" in model \"" << mModelInfo->mTexturePath << "\"\n";
+	}
+}
+
+void BaseObject::AdvanceAnimation()
+{
+	if (!mIsPlaying) //No animation to advance
+		return;
+	mCurFrameID++;
+	if (mCurFrameID >= mCurAnimation->mLength)
+	{
+		if (mAnimShouldLoop)
+		{
+			mCurFrameID = 0;
+		}
+		else
+		{
+			mCurFrameID = 0;
+			mCurAnimation = NULL;
+			mIsPlaying = false;
+		}
+	}
+	//Update the sprite
+	sf::IntRect rect;
+	int mFrameHeight = mCurAnimation->mFrameSize;
+	rect.top = mCurAnimation->mRow * mFrameHeight;
+	rect.left = mCurAnimation->mSequence[mCurFrameID] * mFrameHeight;
+	rect.width = mFrameHeight;
+	rect.height = mFrameHeight;
+	mSprite->SetTextureRect(rect);
 }
 
 void BaseObject::Draw()
@@ -179,6 +218,14 @@ void BaseObject::Draw()
 
 void BaseObject::DrawModel()
 {
+	if (mIsPlaying)
+	{
+		if (mLastFrameAdvance + (1/mCurAnimation->mFrameRate) < gGlobals.CurTime)
+		{
+			AdvanceAnimation();
+			mLastFrameAdvance = gGlobals.CurTime;
+		}
+	}
 	mSprite->SetPosition(GetPos().SF());
 	mSprite->SetAngle(GetAngle());
 	mSprite->SetOrigin(GetOrigin());

@@ -102,6 +102,13 @@ protected:
 	float mHealth;
 	float mMaxHealth;
 
+	//Animation
+	Animation *mCurAnimation;
+	bool mIsPlaying;
+	bool mAnimShouldLoop;
+	int mCurFrameID;
+	float mLastFrameAdvance;
+
 	RenderGroup mDrawOrder;
 	bool mIsRenderable; //Do we have a renderer?
 	bool mIsPhysics; //Do we have a physics object?
@@ -236,6 +243,7 @@ public:
 	*/
 	BaseObject* GetParent() {return mParent;};
 
+	////////////////////////////////////////
 	//Model
 	/**
 	* Sets the model of an entity.
@@ -250,12 +258,17 @@ public:
 	* Gets the model of an entity.
 	*/
 	const char* GetModel() {return mModel;};
-	/**
-	* Sets the model of an entity, initialise as SpriteAnimating
-	* @param path the filepath of the model
-	*/
-	void SetModelAnimating(const char* path, float scale);
 
+	////////////////////////////////////////////////
+	//Animation
+	void PlayAnimation(const char* name, bool loop);
+	bool IsAnimating() {return mIsPlaying;};
+	bool IsLooping() {return mAnimShouldLoop;};
+	void AdvanceAnimation();
+	const Animation* GetCurrentAnimation() {return mCurAnimation;};
+	
+
+	//////////////////////////////////////////////////////
 	//Sound
 	/**
 	* Create a sound object that can be played by the entity.
@@ -275,35 +288,41 @@ public:
 	*/
 	Sound* GetSound(const char *name);
 
+	//////////////////////////////////////////////////////////
 	//Health
 	void SetHealth(const float hlt) {mHealth = hlt;};
 	float GetHealth() {return mHealth;};
 	void SetMaxHealth(const float mhlt) {mMaxHealth = mhlt;};
 	float GetMaxHealth() {return mMaxHealth;};
 
+	/////////////////////////////////////////////////////////////
 	//MetaData (UNFINISHED)
 	void SetMetaData(const char* ID, float dat);
 	void SetMetaData(const char* ID, int dat);
 	void SetMetaData(const char* ID, BaseObject* dat);
 
+	//////////////////////////////////////////////////////////
 	//Deletion
 	void Delete() {
 		mDeleteMe = true;
 		OnDelete();
 	};
 	bool FlaggedForDeletion() {return mDeleteMe;};
-
+	
+	//////////////////////////////////////////////////////////
 	//Thinking
 	void SetNextThink(float time) {mNextThink = time;};
 	float GetNextThink() {return mNextThink;};
 	void ShouldThink(bool think) {mShouldThink = think;};
 	bool IsThinking() {return mShouldThink;};
 
+	////////////////////////////////////////////////////////////////////
 	//Physics
 	bool IsPhysicsEnabled() {return mIsPhysics;};
 	PhysicsDef* GetPhysObj() {return mPhysObj;};
 	virtual void PhysicsSimulate(float delta) {};
-
+	
+	///////////////////////////////////////////////////////////////////
 	//Rendering
 	void RenderInit() {mIsRenderable = true;};
 	bool IsRenderable() {return mIsRenderable;};
@@ -315,16 +334,16 @@ public:
 	bool GetNoDraw() {return mNoDraw;};
 	void SetRenderBounds(Vector2_Rect bounds) {mRenderBounds = bounds;};
 	Vector2_Rect GetRenderBounds() {return mRenderBounds;};
+	void DrawModel();
 	/**
 	* Return the axis-aligned bounding box of the entity in worldspace
 	*/
 	Vector2_Rect GetAABB();
 
+	/////////////////////////////////////////////
 	//IO
 	void Fire(const char* Name, VariantMap &Data);
 	void RegisterInput(const char* Name, InputFunc Func);
-
-	void DrawModel();
 
 	//DEBUG DRAWS (SLOW METHODS DONT USE THEM FOR RELEASE STUFF)
 	void DebugDrawLine(Vector2 p1, Vector2 p2, const Colour &col);

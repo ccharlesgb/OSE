@@ -2,6 +2,7 @@
 #include "../Engine/InputHandler.h"
 #include "../Engine/GameGlobals.h"
 #include "../Engine/PhysicsQueries.h"
+#include "../Engine/Render/Sprite.h"
 
 #define USE_RANGE 50.f
 #define DEFAULT_WALK_SPEED 50.f
@@ -25,13 +26,20 @@ Player::Player(void)
 	mText->SetPosition(GetPos());
 	SetWalkSpeed(DEFAULT_WALK_SPEED);
 	mLastTakeDamage = 0.f;
+
+	mHead = new Sprite(gGlobals.RenderWindow);
+	mHead->SetAngle(GetAngle());
+	mHead->SetPosition(GetPos());
+	mHead->SetTexture("player_head");
+	mHead->SetOrigin(Vector2(0,20));
+	mHead->SetScale(0.35f);
 }
 
 void Player::Spawn()
 {
 	GetPhysObj()->SetAngularDamping(25);
 	GetPhysObj()->SetLinearDamping(10);
-	SetModelAnimating("player", 0.35);
+	SetModel("player", 0.35f);
 	SetOrigin(Vector2(0,22));
 	PhysicsHullFromModel();
 }
@@ -43,7 +51,11 @@ Player::~Player(void)
 void Player::Draw()
 {
 	DrawModel();
-	//mText->Draw();
+	
+	//Draw Head on top
+	mHead->SetPosition(GetPos());
+	mHead->SetAngle(GetAngle());
+	mHead->Draw();
 }
 
 void Player::GiveWeapon(BaseObject* ent)
@@ -146,6 +158,15 @@ void Player::PhysicsSimulate(float delta)
 	}
 	if (MoveVector.Length() > 1.f)
 		MoveVector = MoveVector.Normalize();
+	if (MoveVector.Length() > 0.f)
+	{
+		if (!GetCurrentAnimation() || (GetCurrentAnimation()->mName != "walk"))
+			PlayAnimation("walk", true);
+	}
+	else
+	{
+		PlayAnimation("idle", false);
+	}
 	MoveVector = MoveVector * GetWalkSpeed();
 	MoveVector = ToGlobal(MoveVector) - GetPos();
 	ApplyForceCenter(MoveVector * GetPhysObj()->GetMass());
