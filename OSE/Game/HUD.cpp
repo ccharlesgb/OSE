@@ -66,7 +66,17 @@ void HUD::Draw()
 			float perc = mExecTimes->TIME[i] / mExecTimes->TIME[0];
 			mProfileDump[i]->SetColour(Colour(255, 255 - (255 * perc),255 - (255 * perc)));
 
-			sprintf(buffer, (INDENT + mExecTimes->NAME[i] + ": %f").c_str(), mExecTimes->TIME[i]);
+			if (i == 0) //WHOLE TICK
+			{
+				float fps = (1000.f/mExecTimes->TIME[i]);
+				if (fps > 60.f)
+					mProfileDump[i]->SetColour(Colour(0,255,0));
+				sprintf(buffer, (INDENT + mExecTimes->NAME[i] + ": %f (FPS: %f)").c_str(),mExecTimes->TIME[i], fps);
+			}
+			else
+			{
+				sprintf(buffer, (INDENT + mExecTimes->NAME[i] + ": %f").c_str(), mExecTimes->TIME[i]);
+			}
 			mProfileDump[i]->SetText(buffer);
 			mProfileDump[i]->Draw();
 		}
