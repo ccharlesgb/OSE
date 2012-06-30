@@ -35,6 +35,7 @@ void Renderer::SetWindow(sf::RenderWindow *wind)
 {
 	mRender = wind;
 	mView.setSize((float)gGlobals.GameWidth, (float)gGlobals.GameHeight);
+	mHUDView = mRender->getDefaultView();
 	//mView.Zoom(1/RENDER_SCALE);
 	mPhysDebug = new DebugDraw(wind);
 	gGlobals.PhysicsDebugDraw = mPhysDebug;
@@ -60,9 +61,10 @@ Vector2 Renderer::ToScreen(Vector2 pos)
 
 void Renderer::OnResize()
 {
-	std::cout << "Resize\n";
+	//std::cout << "Resize\n";
 	gGlobals.GameWidth = mRender->getSize().x;
 	gGlobals.GameHeight = mRender->getSize().y;
+	mHUDView.setSize(gGlobals.GameWidth, gGlobals.GameHeight);
 };
 
 //Called whenever ANY entity is added to the game. Check if its renderable then add it to a list
@@ -214,7 +216,7 @@ void Renderer::Draw(IGameState *State)
 
 	if (InputHandler::IsKeyPressed(sf::Keyboard::F3))
 		State->DrawDebugData();
-	mRender->setView(mRender->getDefaultView());
+	mRender->setView(mHUDView);
 	
 	if (HUD != NULL)
 	{

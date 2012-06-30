@@ -33,6 +33,7 @@ BaseObject::BaseObject(void)
 	mIsPlaying = false;
 	mCurAnimation = false;
 	mCurFrameID = 0;
+	mCurAnimation = NULL;
 }
 
 BaseObject::~BaseObject(void)
@@ -199,6 +200,7 @@ void BaseObject::AdvanceAnimation()
 			mCurFrameID = 0;
 			mCurAnimation = NULL;
 			mIsPlaying = false;
+			return;
 		}
 	}
 	//Update the sprite

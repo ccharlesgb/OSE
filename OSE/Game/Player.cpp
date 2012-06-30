@@ -31,15 +31,15 @@ Player::Player(void)
 	mHead->SetAngle(GetAngle());
 	mHead->SetPosition(GetPos());
 	mHead->SetTexture("player_head");
-	mHead->SetOrigin(Vector2(0,20));
-	mHead->SetScale(0.3f);
+	mHead->SetOrigin(Vector2(0,50));
+	mHead->SetScale(0.27f);
 }
 
 void Player::Spawn()
 {
 	GetPhysObj()->SetAngularDamping(25);
 	GetPhysObj()->SetLinearDamping(10);
-	SetModel("player", 0.3f);
+	SetModel("player", 0.5f);
 	SetOrigin(Vector2(0,30));
 	PhysicsHullFromModel();
 }

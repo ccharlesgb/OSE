@@ -89,14 +89,15 @@ void MainGameState::Initialize()
 	}
 	for (int i=0; i < tree_count; i++)
 	{
+		float tree_size = ig::Random(0.6f,0.9f);
 		Vector2 tree_pos = Vector2::Random(-map_size, map_size);
 		crate = CreateEntity("ent_prop_static");
-		crate->SetModel("tree1", ig::Random(1.f,1.f));
+		crate->SetModel("tree1", tree_size);
 		crate->SetDrawOrder(RENDERGROUP_TOP);
 		crate->SetPos(tree_pos);
 
 		BaseObject* trunk = CreateEntity("ent_decal");
-		trunk->SetModel("tree_trunk");
+		trunk->SetModel("tree_trunk", tree_size);
 		trunk->SetPos(tree_pos);
 	}
 }

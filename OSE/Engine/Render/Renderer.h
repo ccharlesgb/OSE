@@ -21,6 +21,7 @@ private:
 	sf::RenderWindow *mRender;
 	//ltbl::LightSystem *mLightSystem;
 	sf::View mView;
+	sf::View mHUDView;
 	DebugDraw* mPhysDebug;
 	
 	BaseHUD *HUD;
