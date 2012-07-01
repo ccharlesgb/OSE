@@ -36,11 +36,25 @@ void Lighting::OnEntityAdded(BaseObject* ent)
 
 void Lighting::OnEntityRemoved(BaseObject* ent)
 {
-
+	if (ent->GetCastShadows())
+	{
+		EntityList<BaseObject*>::iter CurIter = ShadowCasters.FirstEnt();
+		while (CurIter != ShadowCasters.End())
+		{
+			if (ent == (*CurIter))
+			{
+				CurIter = ShadowCasters.DeleteSoft(CurIter);
+				return;
+			}
+			else
+				CurIter = ShadowCasters.NextEnt(CurIter);
+		}
+	}
 }
 
-void Lighting::UpdateLightingTexture()
+void Lighting::UpdateLightingTexture(sf::View &view)
 {
+	mCasterTexture.setView(view);
 	Profiler::StartRecord(PROFILE_RENDER_LIGHTS);
 	mCasterTexture.clear(sf::Color::White);
 
@@ -58,8 +72,7 @@ void Lighting::UpdateLightingTexture()
 		{
 			sf::Vertex vert;
 			Vector2 vert_pos = Hull->mVertices[vert_ind];
-			vert_pos.y *= -1;
-			vert_pos = CurEnt->ToGlobal(vert_pos);
+			vert_pos = ig::GameToSFML(CurEnt->ToGlobal(vert_pos));
 			vert.position = vert_pos.SF();
 			vert.texCoords = sf::Vector2f(0,0);
 			shadowhull.append(vert);
@@ -70,4 +83,5 @@ void Lighting::UpdateLightingTexture()
 	}
 	Profiler::StopRecord(PROFILE_RENDER_LIGHTS);
 	mLightingSprite.setPosition(ig::GameToSFML(sCamera::GetCentre()).SF());
+	mLightingSprite.setColor(sf::Color(255,255,255,100));
 }

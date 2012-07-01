@@ -219,7 +219,7 @@ void Renderer::Draw(IGameState *State)
 	if (InputHandler::IsKeyPressed(sf::Keyboard::F3))
 		State->DrawDebugData();
 
-	mLighting->UpdateLightingTexture();
+	mLighting->UpdateLightingTexture(mView);
 	sf::RenderStates state;
 	//state.blendMode = sf::BlendMultiply;
 	mRender->draw(*mLighting->GetLightingSprite(), state);

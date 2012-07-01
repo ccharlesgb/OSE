@@ -25,6 +25,6 @@ public:
 	sf::Texture* GetLightingTexture() {return &mLightingFinal;};
 	sf::Sprite* GetLightingSprite() {return &mLightingSprite;};
 
-	void UpdateLightingTexture();
+	void UpdateLightingTexture(sf::View &view);
 };
 
