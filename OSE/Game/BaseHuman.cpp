@@ -46,9 +46,6 @@ void BaseHuman::Spawn()
 {
 	GetPhysObj()->SetAngularDamping(25);
 	GetPhysObj()->SetLinearDamping(10);
-	SetModel("player", 0.5f);
-	SetOrigin(Vector2(0,30));
-	PhysicsHullFromModel();
 }
 
 BaseHuman::~BaseHuman(void)

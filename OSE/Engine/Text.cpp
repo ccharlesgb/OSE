@@ -8,7 +8,6 @@ Text::Text(sf::RenderWindow *rend) : BaseDrawable(rend)
 	mText.setCharacterSize(30);
 }
 
-
 void Text::SetFont(const char *path)
 {
 	mText.setFont(*FontResource::GetFont(path));
@@ -19,7 +18,6 @@ void Text::SetPosition(const Vector2 position)
 	Vector2 pos = GameToSFML(position);
 	mText.setPosition(pos.SF());
 }
-
 
 void Text::Draw()
 {
