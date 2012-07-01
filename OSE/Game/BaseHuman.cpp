@@ -28,7 +28,7 @@ void BaseHuman::CreateHead(const char* texture_path)
 	mHead->SetAngle(GetAngle());
 	mHead->SetPosition(GetPos());
 	mHead->SetTexture(texture_path);
-	mHead->SetOrigin(Vector2(0,50));
+	mHead->SetOrigin(Vector2(0,60));
 	mHead->SetScale(0.27f);
 }
 
@@ -53,6 +53,8 @@ void BaseHuman::Spawn()
 
 BaseHuman::~BaseHuman(void)
 {
+	delete mHead;
+	delete mFeet;
 }
 
 void BaseHuman::Draw()

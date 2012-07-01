@@ -1,10 +1,10 @@
 #pragma once
 
-#include "../Engine/Bases/BasePhysics.h"
+#include "BaseHuman.h"
 #include "../Engine/EntityList.h"
 #include "../Engine/Text.h"
 
-class Enemy : public BasePhysics
+class Enemy : public BaseHuman
 {
 private:
 	BaseObject* mTarget;
