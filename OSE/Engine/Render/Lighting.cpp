@@ -73,7 +73,7 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 			Vector2 vert_pos = Hull->mVertices[vert_ind];
 			vert_pos = CurEnt->ToGlobal(vert_pos);
 			vert_pos = vert_pos + Vector2(1440/2, 450);
-			vert_pos = vert_pos + Vector2(0.f, -sCamera::GetCentre().y);
+			vert_pos = vert_pos + Vector2(0.f, -2 * sCamera::GetCentre().y);
 			sf::Vertex vert;
 			vert.position = vert_pos.SF();
 			vert.texCoords = sf::Vector2f(0,0);
@@ -86,5 +86,4 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 	}
 	Profiler::StopRecord(PROFILE_RENDER_LIGHTS);
 	mLightingSprite.setPosition(Vector2(1440/2, 450).SF());
-	mLightingSprite.setColor(sf::Color(255,255,255,100));
 }
