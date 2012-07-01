@@ -2,6 +2,7 @@
 #include "../Engine/InputHandler.h"
 #include "../Engine/GameGlobals.h"
 #include "../Engine/PhysicsQueries.h"
+#include "../Engine/Render/Sprite.h"
 
 //This function registers the entity to the EntityCreator.
 LINKCLASSTONAME("enemy", Enemy)
@@ -21,7 +22,9 @@ void Enemy::Spawn()
 {
 	GetPhysObj()->SetAngularDamping(25);
 	GetPhysObj()->SetLinearDamping(10);
-	SetModel("npc/zombie", 0.28f);
+	SetModel("npc/zombie", 0.25f);
+	CreateHead("zombie_head");
+	mHead->SetOrigin(Vector2(0,37));
 	SetOrigin(Vector2(0,45));
 	PhysicsHullFromModel();
 	SetMaxHealth(150);
@@ -43,12 +46,6 @@ void Enemy::StartTouch(CollisionInfo *info)
 		dmg_info.type = DAMAGETYPE_MELEE;
 		info->OtherEnt->TakeDamage(dmg_info);
 	}
-}
-
-void Enemy::Draw()
-{
-	DrawModel();
-	//mText->Draw();
 }
 
 void Enemy::UpdateWanderPos()
@@ -90,6 +87,7 @@ void Enemy::TakeDamage(const DamageInfo &info)
 	mCol.b = (GetHealth() / GetMaxHealth()) * 210.f + 45.f;
 #pragma warning( default : 4244 )
 	SetColour(mCol);
+	mHead->SetColour(mCol);
 	if (GetHealth() <= 0)
 		Delete();
 }
@@ -113,6 +111,9 @@ void Enemy::PhysicsSimulate(float delta)
 	}
 	Vector2 MouseDirHat = (TargetPos - GetPos()).Normalize();
 	float TargetAngle = ig::RadToDeg(std::atan2(MouseDirHat.y, MouseDirHat.x)) - 90.f;
+
+	SetHeadAngle(TargetAngle - GetAngle());
+
 	GetPhysObj()->ApplyTorque(ig::NormalizeAngle(TargetAngle - GetAngle()) * GetPhysObj()->GetMass() * 0.3f);
 
 	Vector2 MoveVector;

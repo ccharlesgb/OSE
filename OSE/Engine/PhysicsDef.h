@@ -46,9 +46,11 @@ class PolygonShape : public BaseShape
 private:
 	int mVertexCount;
 public:
+	bool mIsChain;
 	PolygonShape()
 	{
 		mVertexCount = 0;
+		mIsChain = false;
 	}
 	~PolygonShape()
 	{

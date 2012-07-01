@@ -100,6 +100,9 @@ void MainGameState::Initialize()
 		trunk->SetModel("props/tree_trunk", tree_size);
 		trunk->SetPos(tree_pos);
 	}
+	crate = CreateEntity("primitive");
+	crate->SetPos(Vector2());
+
 }
 
 /*

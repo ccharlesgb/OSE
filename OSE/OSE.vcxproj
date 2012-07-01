@@ -56,6 +56,7 @@
     <ClCompile Include="Engine\Model.cpp" />
     <ClCompile Include="Engine\Profiler.cpp" />
     <ClCompile Include="Engine\Render\SpriteAnimating.cpp" />
+    <ClCompile Include="Game\Primitive.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Animation.h" />
@@ -106,6 +107,7 @@
     <ClInclude Include="Engine\Model.h" />
     <ClInclude Include="Engine\Profiler.h" />
     <ClInclude Include="Engine\Render\SpriteAnimating.h" />
+    <ClInclude Include="Game\Primitive.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Utilities\Matrix3.inl" />

@@ -105,9 +105,19 @@ void PhysicsDef::AddPhysicsShape(PolygonShape* hull)
 		hull->mVertices[i].y = hull->mVertices[i].y * METRES_PER_PIXEL;
 		verts[i] = hull->mVertices[i].B2();
 	}
-	b2PolygonShape fix;
-	fix.Set(verts, hull->GetVertexCount());
-	mPhysObj->CreateFixture(&fix, hull->mDensity);
+	if (!hull->mIsChain)
+	{
+		b2PolygonShape fix;
+		fix.Set(verts, hull->GetVertexCount());
+		mPhysObj->CreateFixture(&fix, hull->mDensity);
+	}
+	else
+	{
+		b2ChainShape fix;
+		fix.CreateLoop(verts,hull->GetVertexCount());
+		mPhysObj->CreateFixture(&fix, hull->mDensity);
+	}
+	
 };
 
 void PhysicsDef::AddPhysicsShape(CircleShape* hull) 

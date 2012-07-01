@@ -13,6 +13,7 @@ private:
 	float mWalkSpeed;
 	float mHeadAngle;
 
+protected:
 	Sprite* mHead;
 	Sprite* mFeet;
 public:
