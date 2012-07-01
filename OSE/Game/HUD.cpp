@@ -79,7 +79,7 @@ void HUD::Draw()
 				float fps = (1000.f/mExecTimes->TIME[i]);
 				if (fps > 60.f)
 					mProfileDump[i]->SetColour(Colour(0,255,0));
-#ifdef _APPLE_
+#ifdef __APPLE__
 				sprintf(buffer, (INDENT + mExecTimes->NAME[i] + ": %f (FPS: %f)").c_str(),mExecTimes->TIME[i], fps);
 #else
 				sprintf_s(buffer, (INDENT + mExecTimes->NAME[i] + ": %f (FPS: %f)").c_str(),mExecTimes->TIME[i], fps);
@@ -87,7 +87,7 @@ void HUD::Draw()
 			}
 			else
 			{
-#ifdef _APPLE_
+#ifdef __APPLE__
 				sprintf(buffer, (INDENT + mExecTimes->NAME[i] + ": %f").c_str(), mExecTimes->TIME[i]);
 #else
 				sprintf_s(buffer, (INDENT + mExecTimes->NAME[i] + ": %f").c_str(), mExecTimes->TIME[i]);
