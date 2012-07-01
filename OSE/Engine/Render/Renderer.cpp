@@ -24,7 +24,6 @@ Renderer::Renderer(void)
 	//mLightSystem = new ltbl::LightSystem();
 	gGlobals.gEntList.RegisterListener(this);
 	gGlobals.EnableRenderCulling = true;
-	mLighting = new Lighting();
 }
 
 Renderer::~Renderer(void)
@@ -41,6 +40,9 @@ void Renderer::SetWindow(sf::RenderWindow *wind)
 	//mView.Zoom(1/RENDER_SCALE);
 	mPhysDebug = new DebugDraw(wind);
 	gGlobals.PhysicsDebugDraw = mPhysDebug;
+
+	mLighting = new Lighting();
+	mLighting->mRender = mRender;
 };
 
 void Renderer::Cleanup()
@@ -222,9 +224,11 @@ void Renderer::Draw(IGameState *State)
 	mLighting->UpdateLightingTexture(mView);
 	sf::RenderStates state;
 	//state.blendMode = sf::BlendMultiply;
-	mRender->draw(*mLighting->GetLightingSprite(), state);
 
 	mRender->setView(mHUDView);
+	mRender->draw(*mLighting->GetLightingSprite(), state);
+
+
 	if (HUD != NULL)
 	{
 		HUD->Draw();

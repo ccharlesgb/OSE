@@ -70,18 +70,21 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 		PolygonShape* Hull = CurEnt->GetPhysObj()->mHullShape;
 		for (int vert_ind=0; vert_ind < Hull->GetVertexCount(); vert_ind++)
 		{
-			sf::Vertex vert;
 			Vector2 vert_pos = Hull->mVertices[vert_ind];
-			vert_pos = ig::GameToSFML(CurEnt->ToGlobal(vert_pos));
+			vert_pos = CurEnt->ToGlobal(vert_pos);
+			vert_pos = vert_pos + Vector2(1440/2, 450);
+			vert_pos = vert_pos + Vector2(0.f, -sCamera::GetCentre().y);
+			sf::Vertex vert;
 			vert.position = vert_pos.SF();
 			vert.texCoords = sf::Vector2f(0,0);
 			shadowhull.append(vert);
 		}
 
+		//mRender->draw(shadowhull,state);
 		mCasterTexture.draw(shadowhull, state);
 		i = ShadowCasters.NextEnt(i);
 	}
 	Profiler::StopRecord(PROFILE_RENDER_LIGHTS);
-	mLightingSprite.setPosition(ig::GameToSFML(sCamera::GetCentre()).SF());
+	mLightingSprite.setPosition(Vector2(1440/2, 450).SF());
 	mLightingSprite.setColor(sf::Color(255,255,255,100));
 }

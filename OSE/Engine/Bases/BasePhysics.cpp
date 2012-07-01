@@ -5,6 +5,7 @@
 BasePhysics::BasePhysics(void)
 {
 	mPhysObj = NULL;
+	SetCastShadows(true);
 }
 
 void BasePhysics::PhysicsInit(BODY_TYPE typ)
