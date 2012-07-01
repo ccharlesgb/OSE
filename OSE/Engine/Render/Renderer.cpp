@@ -24,11 +24,13 @@ Renderer::Renderer(void)
 	//mLightSystem = new ltbl::LightSystem();
 	gGlobals.gEntList.RegisterListener(this);
 	gGlobals.EnableRenderCulling = true;
+	mLighting = new Lighting();
 }
 
 Renderer::~Renderer(void)
 {
 	Renderables.ClearDontDelete();
+	delete mLighting;
 }
 
 void Renderer::SetWindow(sf::RenderWindow *wind)
@@ -216,8 +218,13 @@ void Renderer::Draw(IGameState *State)
 
 	if (InputHandler::IsKeyPressed(sf::Keyboard::F3))
 		State->DrawDebugData();
+
+	mLighting->UpdateLightingTexture();
+	sf::RenderStates state;
+	//state.blendMode = sf::BlendMultiply;
+	mRender->draw(*mLighting->GetLightingSprite(), state);
+
 	mRender->setView(mHUDView);
-	
 	if (HUD != NULL)
 	{
 		HUD->Draw();

@@ -62,6 +62,9 @@ const char* Profiler::EnumName(ProfileType type)
 	case PROFILE_TEMPORARY_2:
 		name = "TEMP 2      ";
 		break;
+	case PROFILE_RENDER_LIGHTS:
+		name = "LIGHTING    ";
+		break;
 	default:
 		name = "ERROR       ";
 		break;

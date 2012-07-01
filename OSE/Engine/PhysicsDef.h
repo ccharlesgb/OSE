@@ -56,6 +56,17 @@ public:
 	{
 		
 	}
+	PolygonShape* Copy()
+	{
+		PolygonShape* shape = new PolygonShape();
+		shape->mVertexCount = mVertexCount;
+		shape->mIsChain = mIsChain;
+		for (int i=0; i < mVertexCount; i++)
+		{
+			shape->mVertices[i] = mVertices[i];
+		}
+		return shape;
+	}
 	Vector2 mVertices[16]; //TODO: MAKE THIS DYNAMIC?
 	int GetVertexCount() {return mVertexCount;};
 	void AddVertex(const Vector2 &v) {mVertices[mVertexCount] = v; mVertexCount++;};
@@ -79,6 +90,7 @@ private:
 	BODY_TYPE mType;
 	BaseObject* mOwner;
 public:
+	PolygonShape *mHullShape;
 	PhysicsDef(void);
 	~PhysicsDef(void);
 

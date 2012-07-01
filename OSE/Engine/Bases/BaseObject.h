@@ -109,6 +109,7 @@ protected:
 	int mCurFrameID;
 	double mLastFrameAdvance;
 
+	bool mCastShadows; //Should we cast shadows?
 	RenderGroup mDrawOrder;
 	bool mIsRenderable; //Do we have a renderer?
 	bool mIsPhysics; //Do we have a physics object?
@@ -335,6 +336,9 @@ public:
 	void SetRenderBounds(Vector2_Rect bounds) {mRenderBounds = bounds;};
 	Vector2_Rect GetRenderBounds() {return mRenderBounds;};
 	void DrawModel();
+	void SetCastShadows(bool cast) {mCastShadows = cast;};
+	bool GetCastShadows() {return mCastShadows && mIsPhysics;}
+
 	/**
 	* Return the axis-aligned bounding box of the entity in worldspace
 	*/

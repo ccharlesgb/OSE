@@ -98,6 +98,7 @@ void PhysicsDef::CreatePhysics(b2World *World)
 
 void PhysicsDef::AddPhysicsShape(PolygonShape* hull) 
 {
+	mHullShape = hull->Copy();
 	b2Vec2 verts[MAX_VERTEX];
 	for (int i=0; i <= hull->GetVertexCount(); i++)
 	{

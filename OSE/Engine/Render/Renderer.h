@@ -9,6 +9,7 @@
 #include "../EntityList.h"
 //#include <LTBL/Light/LightSystem.h>
 #include "BaseHUD.h"
+#include "Lighting.h"
 
 class Camera;
 class IGameState;
@@ -24,6 +25,8 @@ private:
 	sf::View mHUDView;
 	DebugDraw* mPhysDebug;
 	
+	Lighting* mLighting;
+
 	BaseHUD *HUD;
 	
 	EntityList<BaseObject*> Renderables;
@@ -36,8 +39,11 @@ public:
 	static Renderer* Instance();
 	static void Cleanup();
 	void OnResize();
+
+	//IEntityListener Implementation
 	void OnEntityAdded(BaseObject* ent);
 	void OnEntityRemoved(BaseObject* ent);
+
 	void AddEntity(BaseObject* render);
 	void Clear() {mRender->clear();};
 	void Display() {mRender->display();};
