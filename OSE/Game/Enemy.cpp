@@ -9,10 +9,6 @@ LINKCLASSTONAME("enemy", Enemy)
 
 Enemy::Enemy(void)
 {
-	SetPos(Vector2(0,0));
-	RenderInit();
-	SetDrawOrder(RENDERGROUP_PLAYER);
-	PhysicsInit(DYNAMIC_BODY);
 	mTarget = NULL;
 	mLastSearch = ig::Random(0.f,1.f); //If laod
 	mLastWander = ig::Random(0.f, 2.f);
@@ -20,8 +16,8 @@ Enemy::Enemy(void)
 
 void Enemy::Spawn()
 {
-	GetPhysObj()->SetAngularDamping(25);
-	GetPhysObj()->SetLinearDamping(10);
+	BaseHuman::Spawn();
+	
 	SetModel("npc/zombie", 0.25f);
 	CreateHead("zombie_head");
 	mHead->SetOrigin(Vector2(0,37));

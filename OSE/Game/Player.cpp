@@ -14,24 +14,21 @@ LINKCLASSTONAME("player", Player)
 
 Player::Player(void)
 {
-	SetPos(Vector2(0,0));
-	RenderInit();
-	SetDrawOrder(RENDERGROUP_PLAYER);
-	PhysicsInit(DYNAMIC_BODY);
 	GiveWeapon(CreateEntity("weapon_pistol"));
 	mNextUse = 0.f;
-	SetWalkSpeed(DEFAULT_WALK_SPEED);
 	mLastTakeDamage = 0.f;
 }
 
 void Player::Spawn()
 {
-	GetPhysObj()->SetAngularDamping(25);
-	GetPhysObj()->SetLinearDamping(10);
+	BaseHuman::Spawn();
+	
 	SetModel("npc/player", 0.5f);
 	CreateHead("player_head");
 	SetOrigin(Vector2(0,30));
 	PhysicsHullFromModel();
+	
+	PlayAnimation("idle", false);
 }
 
 Player::~Player(void)
