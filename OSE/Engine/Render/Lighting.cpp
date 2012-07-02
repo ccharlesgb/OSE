@@ -100,7 +100,7 @@ void Lighting::DrawShadows(LightInfo *light, sf::RenderTexture* tex)
 	EntityList<BaseObject*>::iter i = ShadowCasters.FirstEnt();
 	sf::RenderStates state;
 	state.texture = &mBlackTex;
-	state.blendMode = sf::BlendAdd;
+	//state.blendMode = sf::BlendAdd;
 	while(i != ShadowCasters.End())
 	{	
 		BaseObject* CurEnt = *i;
