@@ -203,12 +203,14 @@ void Renderer::Draw(IGameState *State)
 	{
 		if (!(*CurEnt)->GetNoDraw())
 		{
+			//OH GOD TREMENDOUS HACK OH DEAR OH DEAR
 			if ((*CurEnt)->GetDrawOrder() == RENDERGROUP_ENTITIES && !DrewLights)
 			{
 				mLighting->UpdateLightingTexture(mView);
 				sf::RenderStates state;
 				state.blendMode = sf::BlendMultiply;
-
+				mLighting->mBlurShader.setParameter("blur_radius", 0.003f);
+				state.shader = &mLighting->mBlurShader;
 				mRender->setView(mHUDView);
 				mRender->draw(*mLighting->GetLightingSprite(), state);
 				mRender->setView(mView);
@@ -233,7 +235,6 @@ void Renderer::Draw(IGameState *State)
 		State->DrawDebugData();
 
 	mRender->setView(mHUDView);
-
 
 	if (HUD != NULL)
 	{

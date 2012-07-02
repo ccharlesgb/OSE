@@ -14,7 +14,13 @@ private:
 	sf::RenderTexture mCasterTexture;
 	sf::Sprite mLightingSprite;
 	EntityList<BaseObject*> ShadowCasters;
+	
+	sf::Sprite mLightSprite;
+	sf::RenderTexture rendertex;
+	sf::Shader mLightShader;
+
 public:
+	sf::Shader mBlurShader;
 	sf::RenderWindow *mRender;
 	Lighting(void);
 	~Lighting(void);
@@ -27,5 +33,8 @@ public:
 	sf::Sprite* GetLightingSprite() {return &mLightingSprite;};
 
 	void UpdateLightingTexture(sf::View &view);
+
+	void DrawLight(Vector2 pos);
+	void DrawShadows(Vector2 LightPos);
 };
 

@@ -4,11 +4,13 @@
 #include "../Profiler.h"
 #include "../Camera.h"
 
+#define AMBIENT_LIGHT 30.f
+
 Lighting::Lighting(void)
 {
 	float Ambient = 50;
 	sf::Image BlackImg;
-	BlackImg.create(1,1, sf::Color::Black);
+	BlackImg.create(1,1, sf::Color(AMBIENT_LIGHT,AMBIENT_LIGHT,AMBIENT_LIGHT));
 	mBlackTex.loadFromImage(BlackImg);
 	BlackImg.create(1440,900, sf::Color(Ambient,Ambient,Ambient,255));
 	mLightingFinal.loadFromImage(BlackImg);
@@ -20,6 +22,21 @@ Lighting::Lighting(void)
 	mLightingSprite.setTexture(mCasterTexture.getTexture());
 	mLightingSprite.setOrigin(1440/2, 900/2);
 	gGlobals.gEntList.RegisterListener(this);
+
+	sf::CircleShape mLightShape;
+	mLightShape.setRadius(256.f);
+	mLightShape.setFillColor(sf::Color(200,200,200));
+	mLightShape.setOutlineThickness(0.f);
+	//mLightShape.setOrigin();
+
+	
+	rendertex.create(512,512,false);
+	rendertex.clear(sf::Color(0,0,0,0));
+	rendertex.draw(mLightShape);
+	mLightSprite.setTexture(rendertex.getTexture());
+	mLightSprite.setOrigin(256,256);
+	mBlurShader.loadFromFile("shaders/blur.frag", sf::Shader::Fragment);
+	mLightShader.loadFromFile("shaders/light_falloff.frag", sf::Shader::Fragment);
 
 }
 
@@ -60,16 +77,23 @@ sf::Vector2f ConvertCoords(Vector2 coord)
 	return coord.SF();
 }
 
-void Lighting::UpdateLightingTexture(sf::View &view)
+void Lighting::DrawLight(Vector2 pos)
 {
-	mCasterTexture.setView(view);
-	Profiler::StartRecord(PROFILE_RENDER_LIGHTS);
-	mCasterTexture.clear(sf::Color(100,100,100));
+	//Draw Lights
+	sf::RenderStates light_state;
+	light_state.shader = &mLightShader;
+	light_state.blendMode = sf::BlendAdd;
+	mLightSprite.setScale(3,3);
+	mLightSprite.setColor(sf::Color(100,100,255));
+	mLightSprite.setPosition(ConvertCoords(pos));
+	mCasterTexture.draw(mLightSprite,light_state);
+}
+
+void Lighting::DrawShadows(Vector2 LightPos)
+{
 	EntityList<BaseObject*>::iter i = ShadowCasters.FirstEnt();
 	sf::RenderStates state;
 	state.texture = &mBlackTex;
-
-	Vector2 LightPos = sCamera::GetCentre();
 	while(i != ShadowCasters.End())
 	{
 		sf::VertexArray shadowhull;
@@ -112,12 +136,12 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 		vert.texCoords = sf::Vector2f(0,0);
 		shadowhull.append(vert);
 
-		vertex_pos = MinDotPos + MinDotDir * 200.f;
+		vertex_pos = MinDotPos + MinDotDir * (1000.f);
 		vert.position = ConvertCoords(vertex_pos);
 		vert.texCoords = sf::Vector2f(0,0);
 		shadowhull.append(vert);
 
-		vertex_pos = MaxDotPos + MaxDotDir * 200.f;
+		vertex_pos = MaxDotPos + MaxDotDir * (1000.f);
 		vert.position = ConvertCoords(vertex_pos);
 		vert.texCoords = sf::Vector2f(0,0);
 		shadowhull.append(vert);
@@ -128,9 +152,24 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 		shadowhull.append(vert);
 
 		//mRender->draw(shadowhull,state);
+
 		mCasterTexture.draw(shadowhull,state);
 		i = ShadowCasters.NextEnt(i);
 	}
+}
+
+void Lighting::UpdateLightingTexture(sf::View &view)
+{
+	mCasterTexture.setView(view);
+	Profiler::StartRecord(PROFILE_RENDER_LIGHTS);
+	mCasterTexture.clear(sf::Color(AMBIENT_LIGHT,AMBIENT_LIGHT,AMBIENT_LIGHT));
+
+	//DrawLight(sCamera::GetCentre());
+
+	DrawLight(Vector2());
+	DrawShadows(Vector2());
+	//DrawShadows(sCamera::GetCentre());
+
 	Profiler::StopRecord(PROFILE_RENDER_LIGHTS);
 	mLightingSprite.setPosition(Vector2(1440/2, 450).SF());
 }
