@@ -16,12 +16,10 @@ Lighting::Lighting(void)
 	mBlackTex.loadFromImage(BlackImg);
 	BlackImg.create(1,1, sf::Color(Ambient,Ambient,Ambient,255));
 
-	light_tex_size = 1024;
-	glFlush();
-	mFinalTexture.create(light_tex_size, light_tex_size, false);
+	mFinalTexture.create(1440, 900, false);
 
 	mFinalSprite.setTexture(mFinalTexture.getTexture());
-	mFinalSprite.setOrigin(light_tex_size / 2, light_tex_size / 2);
+	mFinalSprite.setOrigin(1440/2, 900/2);
 
 	mBlurShader.loadFromFile("shaders/blur.frag", sf::Shader::Fragment);
 	mLightShader.loadFromFile("shaders/light_falloff.frag", sf::Shader::Fragment);
@@ -30,20 +28,17 @@ Lighting::Lighting(void)
 	//These will be merged into one and then displayed by the renderer
 	sf::RenderTexture* rend_tex;
 	rend_tex = new sf::RenderTexture();
-	glFlush();
-	rend_tex->create(light_tex_size, light_tex_size, false);
+	rend_tex->create(1440, 900, false);
 	rend_tex->clear(sf::Color::Black);
 	mLightTextures.push_back(rend_tex);
 
 	rend_tex = new sf::RenderTexture();	
-	glFlush();
-	rend_tex->create(light_tex_size, light_tex_size, false);
+	rend_tex->create(1440, 900, false);
 	rend_tex->clear(sf::Color::Black);
 	mLightTextures.push_back(rend_tex);
 	
 	rend_tex = new sf::RenderTexture();
-	glFlush();
-	rend_tex->create(light_tex_size, light_tex_size, false);
+	rend_tex->create(1440, 900, false);
 	rend_tex->clear(sf::Color::Black);
 	mLightTextures.push_back(rend_tex);
 }
@@ -85,7 +80,7 @@ void Lighting::OnEntityRemoved(BaseObject* ent)
 sf::Vector2f ConvertCoords(Vector2 coord)
 {
 	coord.y *= -1;
-	coord = coord + Vector2(1440/2, 450);
+	coord = coord + Vector2(1440/2, 900/2);
 	return coord.SF();
 }
 
@@ -105,7 +100,7 @@ void Lighting::DrawShadows(LightInfo *light, sf::RenderTexture* tex)
 	EntityList<BaseObject*>::iter i = ShadowCasters.FirstEnt();
 	sf::RenderStates state;
 	state.texture = &mBlackTex;
-	//state.blendMode = sf::BlendAdd;
+	state.blendMode = sf::BlendAdd;
 	while(i != ShadowCasters.End())
 	{	
 		BaseObject* CurEnt = *i;
@@ -199,19 +194,18 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 	while (CurTexPos != mLightTextures.end())
 	{
 		sf::Sprite mDrawingSprite;
+		(*CurTexPos)->display();
 		mDrawingSprite.setTexture((*CurTexPos)->getTexture());
 		sf::RenderStates states;
 		states.blendMode = sf::BlendAdd;
-		
-		glFlush();
+	
 		mFinalTexture.draw(mDrawingSprite,states);
-		glFlush();
 		
 		(*CurTexPos)->clear(sf::Color::Black);
 
 		CurTexPos++;
 	}
-
+	mFinalTexture.display();
 	Profiler::StopRecord(PROFILE_RENDER_LIGHTS);
 	mFinalSprite.setPosition(Vector2(1440/2, 900/2).SF());
 	ShadowCasters.ClearDontDelete();
