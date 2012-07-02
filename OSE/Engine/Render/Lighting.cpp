@@ -89,7 +89,7 @@ void Lighting::DrawLight(LightInfo *light, sf::RenderTexture* tex)
 {
 	//Draw Lights
 	sf::RenderStates light_state;
-	light_state.shader = &mLightShader;
+	//light_state.shader = &mLightShader;
 	//light_state.blendMode = sf::BlendAdd;
 	light->GetSprite()->setColor(light->GetColour());
 	light->GetSprite()->setPosition(ConvertCoords(light->GetPosition()));
