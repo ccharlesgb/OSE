@@ -196,13 +196,24 @@ void Renderer::Draw(IGameState *State)
 	Profiler::StopRecord(PROFILE_RENDER_PURGE);
 
 	Profiler::StartRecord(PROFILE_ENTITY_DRAW);
-	//mLightSystem->RenderLights();
-	//mLightSystem->RenderLightTexture();
+
+	bool DrewLights = false;
 	EntityList<BaseObject*>::iter CurEnt = OnScreenEnts.FirstEnt();
 	while(CurEnt != OnScreenEnts.End())
 	{
 		if (!(*CurEnt)->GetNoDraw())
 		{
+			if ((*CurEnt)->GetDrawOrder() == RENDERGROUP_ENTITIES && !DrewLights)
+			{
+				mLighting->UpdateLightingTexture(mView);
+				sf::RenderStates state;
+				state.blendMode = sf::BlendMultiply;
+
+				mRender->setView(mHUDView);
+				mRender->draw(*mLighting->GetLightingSprite(), state);
+				mRender->setView(mView);
+				DrewLights = true;
+			}
 			if ((*CurEnt)->GetDrawOrder() == RENDERGROUP_TOP)
 			{
 				float dist_squared = ((*CurEnt)->GetPos() - sCamera::GetCentre()).LengthSquared();
@@ -221,12 +232,7 @@ void Renderer::Draw(IGameState *State)
 	if (InputHandler::IsKeyPressed(sf::Keyboard::F3))
 		State->DrawDebugData();
 
-	mLighting->UpdateLightingTexture(mView);
-	sf::RenderStates state;
-	state.blendMode = sf::BlendMultiply;
-
 	mRender->setView(mHUDView);
-	mRender->draw(*mLighting->GetLightingSprite(), state);
 
 
 	if (HUD != NULL)
