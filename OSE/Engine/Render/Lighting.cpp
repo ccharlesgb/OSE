@@ -4,6 +4,7 @@
 #include "../Profiler.h"
 #include "../Camera.h"
 #include "../../Game/effect_light.h"
+#include <SFML/OpenGL.hpp>
 
 #define AMBIENT_LIGHT 30.f
 
@@ -16,6 +17,7 @@ Lighting::Lighting(void)
 	BlackImg.create(1,1, sf::Color(Ambient,Ambient,Ambient,255));
 
 	light_tex_size = 1024;
+	glFlush();
 	mFinalTexture.create(light_tex_size, light_tex_size, false);
 
 	mFinalSprite.setTexture(mFinalTexture.getTexture());
@@ -28,16 +30,19 @@ Lighting::Lighting(void)
 	//These will be merged into one and then displayed by the renderer
 	sf::RenderTexture* rend_tex;
 	rend_tex = new sf::RenderTexture();
+	glFlush();
 	rend_tex->create(light_tex_size, light_tex_size, false);
 	rend_tex->clear(sf::Color::Black);
 	mLightTextures.push_back(rend_tex);
 
-	rend_tex = new sf::RenderTexture();
+	rend_tex = new sf::RenderTexture();	
+	glFlush();
 	rend_tex->create(light_tex_size, light_tex_size, false);
 	rend_tex->clear(sf::Color::Black);
 	mLightTextures.push_back(rend_tex);
 	
 	rend_tex = new sf::RenderTexture();
+	glFlush();
 	rend_tex->create(light_tex_size, light_tex_size, false);
 	rend_tex->clear(sf::Color::Black);
 	mLightTextures.push_back(rend_tex);
@@ -80,9 +85,7 @@ void Lighting::OnEntityRemoved(BaseObject* ent)
 sf::Vector2f ConvertCoords(Vector2 coord)
 {
 	coord.y *= -1;
-	coord = coord + Vector2(512, 512);
-
-	coord = coord + Vector2(0.f, -0 * sCamera::GetCentre().y);
+	coord = coord + Vector2(1440/2, 450);
 	return coord.SF();
 }
 
@@ -90,8 +93,8 @@ void Lighting::DrawLight(LightInfo *light, sf::RenderTexture* tex)
 {
 	//Draw Lights
 	sf::RenderStates light_state;
-	//light_state.shader = &mLightShader;
-	//light_state.blendMode = sf::BlendAdd;
+	light_state.shader = &mLightShader;
+	light_state.blendMode = sf::BlendAdd;
 	light->GetSprite()->setColor(light->GetColour());
 	light->GetSprite()->setPosition(ConvertCoords(light->GetPosition()));
 	tex->draw(*light->GetSprite(),light_state);
