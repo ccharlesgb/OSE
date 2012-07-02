@@ -202,7 +202,7 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 		mDrawingSprite.setTexture((*CurTexPos)->getTexture());
 		sf::RenderStates states;
 		states.blendMode = sf::BlendAdd;
-		mFinalTexture.draw(mDrawingSprite,states);
+		//mFinalTexture.draw(mDrawingSprite,states);
 		
 		(*CurTexPos)->clear(sf::Color::Black);
 
