@@ -20,6 +20,7 @@ Lighting::Lighting(void)
 	mLightingSprite.setTexture(mCasterTexture.getTexture());
 	mLightingSprite.setOrigin(1440/2, 900/2);
 	gGlobals.gEntList.RegisterListener(this);
+
 }
 
 Lighting::~Lighting(void)
@@ -56,6 +57,87 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 {
 	mCasterTexture.setView(view);
 	Profiler::StartRecord(PROFILE_RENDER_LIGHTS);
+	mCasterTexture.clear(sf::Color(100,100,100));
+	EntityList<BaseObject*>::iter i = ShadowCasters.FirstEnt();
+	sf::RenderStates state;
+	state.texture = &mBlackTex;
+
+	Vector2 LightPos = sCamera::GetCentre();
+	while(i != ShadowCasters.End())
+	{
+		sf::VertexArray shadowhull;
+		shadowhull.setPrimitiveType(sf::TrianglesFan);
+
+		BaseObject* CurEnt = *i;
+		Vector2 LightToEnt = (CurEnt->GetPos() - LightPos).Normalize();
+
+		float MaxDot = -1000;
+		Vector2 MaxDotPos, MinDotPos;
+		Vector2 MaxDotDir, MinDotDir;
+		float MinDot = 1000;
+
+		PolygonShape* Hull = CurEnt->GetPhysObj()->mHullShape;
+		for (int vert_ind=0; vert_ind < Hull->GetVertexCount(); vert_ind++)
+		{
+			Vector2 vert_pos = Hull->mVertices[vert_ind];
+			vert_pos = CurEnt->ToGlobal(vert_pos);
+			Vector2 LightToVert = (vert_pos - LightPos).Normalize();
+
+			float VertDotPos = LightToEnt.Dot(LightToVert);
+			if (VertDotPos < MinDot)
+			{
+				MinDot = VertDotPos;
+				MinDotPos = vert_pos;
+				MinDotDir = LightToVert;
+			}
+			if (VertDotPos > MaxDot)
+			{
+				MaxDot = VertDotPos;
+				MaxDotPos = vert_pos;
+				MaxDotDir = LightToVert;
+			}
+		}
+
+		sf::Vertex vert;
+		Vector2 vertex_pos = MinDotPos;
+		vertex_pos = vertex_pos + Vector2(1440/2, 450);
+		vertex_pos = vertex_pos + Vector2(0.f, -2 * sCamera::GetCentre().y);
+		vert.position = ig::GameToSFML(vertex_pos).SF();
+		vert.texCoords = sf::Vector2f(0,0);
+		shadowhull.append(vert);
+
+		vertex_pos = MinDotPos + MinDotDir * 200.f;
+		vertex_pos = vertex_pos + Vector2(1440/2, 450);
+		vertex_pos = vertex_pos + Vector2(0.f, -2 * sCamera::GetCentre().y);
+		vert.position = ig::GameToSFML(vertex_pos).SF();
+		vert.texCoords = sf::Vector2f(0,0);
+		shadowhull.append(vert);
+
+		vertex_pos = MaxDotPos + MaxDotDir * 200.f;
+		vertex_pos = vertex_pos + Vector2(1440/2, 450);
+		vertex_pos = vertex_pos + Vector2(0.f, -2 * sCamera::GetCentre().y);
+		vert.position = ig::GameToSFML(vertex_pos).SF();
+		vert.texCoords = sf::Vector2f(0,0);
+		shadowhull.append(vert);
+
+		vertex_pos = MaxDotPos;
+		vertex_pos = vertex_pos + Vector2(1440/2, 450);
+		vertex_pos = vertex_pos + Vector2(0.f, -2 * sCamera::GetCentre().y);
+		vert.position = ig::GameToSFML(vertex_pos).SF();
+		vert.texCoords = sf::Vector2f(0,0);
+		shadowhull.append(vert);
+
+		//mRender->draw(shadowhull,state);
+		mCasterTexture.draw(shadowhull,state);
+		i = ShadowCasters.NextEnt(i);
+	}
+	Profiler::StopRecord(PROFILE_RENDER_LIGHTS);
+	mLightingSprite.setPosition(Vector2(1440/2, 450).SF());
+}
+
+
+//Code for shader based lighting may come in useful one day!
+/*
 	mCasterTexture.clear(sf::Color::White);
 
 	EntityList<BaseObject*>::iter i = ShadowCasters.FirstEnt();
@@ -84,6 +166,4 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 		mCasterTexture.draw(shadowhull, state);
 		i = ShadowCasters.NextEnt(i);
 	}
-	Profiler::StopRecord(PROFILE_RENDER_LIGHTS);
-	mLightingSprite.setPosition(Vector2(1440/2, 450).SF());
-}
+*/

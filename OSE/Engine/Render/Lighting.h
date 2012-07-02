@@ -14,7 +14,6 @@ private:
 	sf::RenderTexture mCasterTexture;
 	sf::Sprite mLightingSprite;
 	EntityList<BaseObject*> ShadowCasters;
-
 public:
 	sf::RenderWindow *mRender;
 	Lighting(void);

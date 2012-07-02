@@ -223,7 +223,7 @@ void Renderer::Draw(IGameState *State)
 
 	mLighting->UpdateLightingTexture(mView);
 	sf::RenderStates state;
-	//state.blendMode = sf::BlendMultiply;
+	state.blendMode = sf::BlendMultiply;
 
 	mRender->setView(mHUDView);
 	mRender->draw(*mLighting->GetLightingSprite(), state);
