@@ -4,7 +4,7 @@
 #include "../Profiler.h"
 #include "../Camera.h"
 #include "../../Game/effect_light.h"
-#include <SFML/OpenGL.hpp>
+
 
 #define AMBIENT_LIGHT 30.f
 

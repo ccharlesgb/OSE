@@ -1,9 +1,11 @@
 #pragma once
 
+#include <SFML/OpenGL.hpp>
 #include <SFML/Graphics.hpp>
 #include "../GameGlobals.h"
 #include "../EntityList.h"
 #include <vector>
+
 
 class BaseObject;
 class LightInfo;
