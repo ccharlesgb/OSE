@@ -202,7 +202,10 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 		mDrawingSprite.setTexture((*CurTexPos)->getTexture());
 		sf::RenderStates states;
 		states.blendMode = sf::BlendAdd;
-		//mFinalTexture.draw(mDrawingSprite,states);
+		
+		glFlush();
+		mFinalTexture.draw(mDrawingSprite,states);
+		glFlush();
 		
 		(*CurTexPos)->clear(sf::Color::Black);
 
