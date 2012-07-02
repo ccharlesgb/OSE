@@ -53,6 +53,13 @@ void Lighting::OnEntityRemoved(BaseObject* ent)
 	}
 }
 
+sf::Vector2f ConvertCoords(Vector2 coord)
+{
+	coord = coord + Vector2(1440/2, 450);
+	coord = coord + Vector2(0.f, -2 * sCamera::GetCentre().y);
+	return coord.SF();
+}
+
 void Lighting::UpdateLightingTexture(sf::View &view)
 {
 	mCasterTexture.setView(view);
@@ -83,7 +90,7 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 			vert_pos = CurEnt->ToGlobal(vert_pos);
 			Vector2 LightToVert = (vert_pos - LightPos).Normalize();
 
-			float VertDotPos = LightToEnt.Dot(LightToVert);
+			float VertDotPos = LightToEnt.Cross(LightToVert);
 			if (VertDotPos < MinDot)
 			{
 				MinDot = VertDotPos;
@@ -97,33 +104,26 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 				MaxDotDir = LightToVert;
 			}
 		}
+		//std::cout << MinDot << "   " << MaxDot << "\n";
 
 		sf::Vertex vert;
 		Vector2 vertex_pos = MinDotPos;
-		vertex_pos = vertex_pos + Vector2(1440/2, 450);
-		vertex_pos = vertex_pos + Vector2(0.f, -2 * sCamera::GetCentre().y);
-		vert.position = ig::GameToSFML(vertex_pos).SF();
+		vert.position = ConvertCoords(vertex_pos);
 		vert.texCoords = sf::Vector2f(0,0);
 		shadowhull.append(vert);
 
 		vertex_pos = MinDotPos + MinDotDir * 200.f;
-		vertex_pos = vertex_pos + Vector2(1440/2, 450);
-		vertex_pos = vertex_pos + Vector2(0.f, -2 * sCamera::GetCentre().y);
-		vert.position = ig::GameToSFML(vertex_pos).SF();
+		vert.position = ConvertCoords(vertex_pos);
 		vert.texCoords = sf::Vector2f(0,0);
 		shadowhull.append(vert);
 
 		vertex_pos = MaxDotPos + MaxDotDir * 200.f;
-		vertex_pos = vertex_pos + Vector2(1440/2, 450);
-		vertex_pos = vertex_pos + Vector2(0.f, -2 * sCamera::GetCentre().y);
-		vert.position = ig::GameToSFML(vertex_pos).SF();
+		vert.position = ConvertCoords(vertex_pos);
 		vert.texCoords = sf::Vector2f(0,0);
 		shadowhull.append(vert);
 
 		vertex_pos = MaxDotPos;
-		vertex_pos = vertex_pos + Vector2(1440/2, 450);
-		vertex_pos = vertex_pos + Vector2(0.f, -2 * sCamera::GetCentre().y);
-		vert.position = ig::GameToSFML(vertex_pos).SF();
+		vert.position = ConvertCoords(vertex_pos);
 		vert.texCoords = sf::Vector2f(0,0);
 		shadowhull.append(vert);
 

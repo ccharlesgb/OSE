@@ -68,12 +68,12 @@ void MainGameState::Initialize()
 	
 	sAudioEnvironment::SetListener(Player);
 	
-	BaseObject* car = CreateEntity("car");
-	car->SetPos(Vector2(100, 0));
+	//BaseObject* car = CreateEntity("car");
+	//car->SetPos(Vector2(100, 0));
 
 	BaseObject* crate;
-	int crate_count = 350;
-	int tree_count = 200;
+	int crate_count = 200;
+	int tree_count = 0;
 	float map_size = 4500.f;
 	for (int i=0; i < crate_count; i++)
 	{
@@ -100,8 +100,8 @@ void MainGameState::Initialize()
 		trunk->SetModel("props/tree_trunk", tree_size);
 		trunk->SetPos(tree_pos);
 	}
-	crate = CreateEntity("primitive");
-	crate->SetPos(Vector2());
+	//crate = CreateEntity("primitive");
+	//crate->SetPos(Vector2());
 
 }
 
