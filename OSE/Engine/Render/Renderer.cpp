@@ -43,6 +43,7 @@ void Renderer::SetWindow(sf::RenderWindow *wind)
 
 	mLighting = new Lighting();
 	mLighting->mRender = mRender;
+	OnScreenEnts.RegisterListener(mLighting);
 };
 
 void Renderer::Cleanup()

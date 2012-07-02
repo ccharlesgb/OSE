@@ -10,6 +10,7 @@ BaseObject::BaseObject(void)
 {
 	mClassName = "ERROR";
 	mModel = "";
+	mModelInfo = NULL;
 	mSprite = NULL;
 	mPhysObj = NULL;
 	mParent = NULL;
@@ -215,7 +216,8 @@ void BaseObject::AdvanceAnimation()
 
 void BaseObject::Draw()
 {
-	DrawModel();
+	if (mModelInfo)
+		DrawModel();
 }
 
 void BaseObject::DrawModel()

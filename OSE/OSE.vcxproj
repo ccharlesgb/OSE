@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Game\effect_light.cpp" />
     <ClCompile Include="Engine\Render\BaseHUD.cpp" />
     <ClCompile Include="Engine\Render\BlendSprite.cpp" />
     <ClCompile Include="Engine\Render\DebugOverlay.cpp" />
@@ -53,6 +54,7 @@
     <ClCompile Include="Game\prop_static.cpp" />
     <ClCompile Include="Game\weapon_pistol.cpp" />
     <ClCompile Include="Engine\Render\Lighting.cpp" />
+    <ClCompile Include="Engine\Render\LightInfo.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Engine\Model.cpp" />
     <ClCompile Include="Engine\Profiler.cpp" />
@@ -60,6 +62,7 @@
     <ClCompile Include="Game\Primitive.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game\effect_light.h" />
     <ClInclude Include="Engine\Animation.h" />
     <ClInclude Include="engine\render\basehud.h" />
     <ClInclude Include="Engine\Render\BlendSprite.h" />
@@ -110,6 +113,7 @@
     <ClInclude Include="Engine\Render\SpriteAnimating.h" />
     <ClInclude Include="Game\Primitive.h" />
     <ClInclude Include="Engine\Render\Lighting.h" />
+    <ClInclude Include="Engine\Render\LightInfo.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Utilities\Matrix3.inl" />

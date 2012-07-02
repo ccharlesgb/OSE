@@ -3,21 +3,24 @@
 #include <SFML/Graphics.hpp>
 #include "../GameGlobals.h"
 #include "../EntityList.h"
+#include <vector>
 
 class BaseObject;
+class LightInfo;
 
 class Lighting : public IEntityListener<BaseObject*>
 {
 private:
-	sf::Texture mBlackTex;
-	sf::Texture mLightingFinal;
+	sf::Texture mBlackTex; // Black texture for shadows
+
 	sf::RenderTexture mCasterTexture;
 	sf::Sprite mLightingSprite;
 	EntityList<BaseObject*> ShadowCasters;
 	
-	sf::Sprite mLightSprite;
-	sf::RenderTexture rendertex;
 	sf::Shader mLightShader;
+
+	EntityList<BaseObject*> mLights;
+	std::vector<sf::RenderTexture*> mLightTextures;
 
 public:
 	sf::Shader mBlurShader;
@@ -29,12 +32,12 @@ public:
 	void OnEntityAdded(BaseObject* ent);
 	void OnEntityRemoved(BaseObject* ent);
 
-	sf::Texture* GetLightingTexture() {return &mLightingFinal;};
+	//sf::Texture* GetLightingTexture() {return &mLightingFinal;};
 	sf::Sprite* GetLightingSprite() {return &mLightingSprite;};
 
 	void UpdateLightingTexture(sf::View &view);
 
-	void DrawLight(Vector2 pos);
-	void DrawShadows(Vector2 LightPos);
+	void DrawLight(LightInfo *light, sf::RenderTexture* tex);
+	void DrawShadows(LightInfo *light, sf::RenderTexture* tex);
 };
 

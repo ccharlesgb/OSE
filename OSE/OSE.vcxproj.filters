@@ -54,6 +54,8 @@
     <ClCompile Include="Game\BaseHuman.cpp" />
     <ClCompile Include="Game\Primitive.cpp" />
     <ClCompile Include="Engine\Render\Lighting.cpp" />
+    <ClCompile Include="Engine\Render\LightInfo.cpp" />
+    <ClCompile Include="Game\effect_light.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Bases\BaseObject.h" />
@@ -106,6 +108,8 @@
     <ClInclude Include="Game\BaseHuman.h" />
     <ClInclude Include="Game\Primitive.h" />
     <ClInclude Include="Engine\Render\Lighting.h" />
+    <ClInclude Include="Engine\Render\LightInfo.h" />
+    <ClInclude Include="Game\effect_light.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Utilities\Matrix3.inl" />
