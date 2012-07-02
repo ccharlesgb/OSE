@@ -13,12 +13,13 @@ Lighting::Lighting(void)
 	sf::Image BlackImg;
 	BlackImg.create(1,1, sf::Color::Black);
 	mBlackTex.loadFromImage(BlackImg);
-	BlackImg.create(1440,900, sf::Color(Ambient,Ambient,Ambient,255));
+	BlackImg.create(1,1, sf::Color(Ambient,Ambient,Ambient,255));
 
-	mFinalTexture.create(1440,900, false);
+	light_tex_size = 1024;
+	mFinalTexture.create(light_tex_size, light_tex_size, false);
 
 	mFinalSprite.setTexture(mFinalTexture.getTexture());
-	mFinalSprite.setOrigin(1440/2, 900/2);
+	mFinalSprite.setOrigin(light_tex_size / 2, light_tex_size / 2);
 
 	mBlurShader.loadFromFile("shaders/blur.frag", sf::Shader::Fragment);
 	mLightShader.loadFromFile("shaders/light_falloff.frag", sf::Shader::Fragment);
@@ -27,17 +28,17 @@ Lighting::Lighting(void)
 	//These will be merged into one and then displayed by the renderer
 	sf::RenderTexture* rend_tex;
 	rend_tex = new sf::RenderTexture();
-	rend_tex->create(1440, 900, false);
+	rend_tex->create(light_tex_size, light_tex_size, false);
 	rend_tex->clear(sf::Color::Black);
 	mLightTextures.push_back(rend_tex);
 
 	rend_tex = new sf::RenderTexture();
-	rend_tex->create(1440, 900, false);
+	rend_tex->create(light_tex_size, light_tex_size, false);
 	rend_tex->clear(sf::Color::Black);
 	mLightTextures.push_back(rend_tex);
 	
 	rend_tex = new sf::RenderTexture();
-	rend_tex->create(1440, 900, false);
+	rend_tex->create(light_tex_size, light_tex_size, false);
 	rend_tex->clear(sf::Color::Black);
 	mLightTextures.push_back(rend_tex);
 }
@@ -79,7 +80,7 @@ void Lighting::OnEntityRemoved(BaseObject* ent)
 sf::Vector2f ConvertCoords(Vector2 coord)
 {
 	coord.y *= -1;
-	coord = coord + Vector2(1440/2, 450);
+	coord = coord + Vector2(512, 512);
 
 	coord = coord + Vector2(0.f, -0 * sCamera::GetCentre().y);
 	return coord.SF();
@@ -206,7 +207,7 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 	}
 
 	Profiler::StopRecord(PROFILE_RENDER_LIGHTS);
-	mFinalSprite.setPosition(Vector2(1440/2, 450).SF());
+	mFinalSprite.setPosition(Vector2(1440/2, 900/2).SF());
 	ShadowCasters.ClearDontDelete();
 	mLights.ClearDontDelete();
 }

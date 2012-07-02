@@ -209,7 +209,7 @@ void Renderer::Draw(IGameState *State)
 			{
 				mLighting->UpdateLightingTexture(mView);
 				sf::RenderStates state;
-				state.blendMode = sf::BlendMultiply;
+				//state.blendMode = sf::BlendMultiply;
 				//mLighting->mBlurShader.setParameter("blur_radius", 0.003f);
 				//state.shader = &mLighting->mBlurShader;
 				mRender->setView(mHUDView);
