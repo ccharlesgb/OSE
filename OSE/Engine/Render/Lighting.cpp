@@ -15,12 +15,10 @@ Lighting::Lighting(void)
 	mBlackTex.loadFromImage(BlackImg);
 	BlackImg.create(1440,900, sf::Color(Ambient,Ambient,Ambient,255));
 
-	//mLightingSprite.setTexture(mLightingFinal);
+	mFinalTexture.create(1440,900, false);
 
-	mCasterTexture.create(1440,900, false);
-
-	mLightingSprite.setTexture(mCasterTexture.getTexture());
-	mLightingSprite.setOrigin(1440/2, 900/2);
+	mFinalSprite.setTexture(mFinalTexture.getTexture());
+	mFinalSprite.setOrigin(1440/2, 900/2);
 
 	mBlurShader.loadFromFile("shaders/blur.frag", sf::Shader::Fragment);
 	mLightShader.loadFromFile("shaders/light_falloff.frag", sf::Shader::Fragment);
@@ -107,8 +105,13 @@ void Lighting::DrawShadows(LightInfo *light, sf::RenderTexture* tex)
 	while(i != ShadowCasters.End())
 	{	
 		BaseObject* CurEnt = *i;
-		sf::VertexArray shadowhull;
-		shadowhull.setPrimitiveType(sf::TrianglesFan);
+
+		float dist_sqr = (CurEnt->GetPos() - light->GetPosition()).LengthSquared(); //Avoid root!
+		if (dist_sqr > light->GetRadius() * light->GetRadius()) //We arent giong to cast a shadow so dont bother
+		{
+			i = ShadowCasters.NextEnt(i);
+			continue;
+		}
 
 		Vector2 LightToEnt = (CurEnt->GetPos() - light->GetPosition()).Normalize();
 
@@ -141,6 +144,8 @@ void Lighting::DrawShadows(LightInfo *light, sf::RenderTexture* tex)
 		//std::cout << MinDot << "   " << MaxDot << "\n";
 	
 		//Define the coordinates for the shadow volume
+		sf::VertexArray shadowhull;
+		shadowhull.setPrimitiveType(sf::TrianglesFan);
 		sf::Vertex vert;
 		Vector2 vertex_pos = MinDotPos;
 		vert.position = ConvertCoords(vertex_pos);
@@ -162,8 +167,6 @@ void Lighting::DrawShadows(LightInfo *light, sf::RenderTexture* tex)
 		vert.texCoords = sf::Vector2f(0,0);
 		shadowhull.append(vert);
 
-		//mRender->draw(shadowhull,state);
-
 		tex->draw(shadowhull,state);
 		i = ShadowCasters.NextEnt(i);
 	}
@@ -171,9 +174,8 @@ void Lighting::DrawShadows(LightInfo *light, sf::RenderTexture* tex)
 
 void Lighting::UpdateLightingTexture(sf::View &view)
 {
-	//mCasterTexture.setView(view);
 	Profiler::StartRecord(PROFILE_RENDER_LIGHTS);
-	mCasterTexture.clear(sf::Color(AMBIENT_LIGHT,AMBIENT_LIGHT,AMBIENT_LIGHT)); //Clear the main texture to ambient
+	mFinalTexture.clear(sf::Color(AMBIENT_LIGHT,AMBIENT_LIGHT,AMBIENT_LIGHT)); //Clear the main texture to ambient
 
 	EntityList<BaseObject*>::iter CurPos = mLights.FirstEnt();
 	std::vector<sf::RenderTexture*>::iterator CurTexPos = mLightTextures.begin();
@@ -196,7 +198,7 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 		mDrawingSprite.setTexture((*CurTexPos)->getTexture());
 		sf::RenderStates states;
 		states.blendMode = sf::BlendAdd;
-		mCasterTexture.draw(mDrawingSprite,states);
+		mFinalTexture.draw(mDrawingSprite,states);
 		
 		(*CurTexPos)->clear(sf::Color::Black);
 
@@ -204,7 +206,7 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 	}
 
 	Profiler::StopRecord(PROFILE_RENDER_LIGHTS);
-	mLightingSprite.setPosition(Vector2(1440/2, 450).SF());
+	mFinalSprite.setPosition(Vector2(1440/2, 450).SF());
 	ShadowCasters.ClearDontDelete();
 	mLights.ClearDontDelete();
 }

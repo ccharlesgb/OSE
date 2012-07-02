@@ -13,8 +13,8 @@ class Lighting : public IEntityListener<BaseObject*>
 private:
 	sf::Texture mBlackTex; // Black texture for shadows
 
-	sf::RenderTexture mCasterTexture; //Our Final texture for ALL lights
-	sf::Sprite mLightingSprite; //The sprite that draws the final texture
+	sf::RenderTexture mFinalTexture; //Our Final texture for ALL lights
+	sf::Sprite mFinalSprite; //The sprite that draws the final texture
 	EntityList<BaseObject*> ShadowCasters; //Entities that should cast shadows
 	
 	sf::Shader mLightShader;
@@ -33,7 +33,7 @@ public:
 	void OnEntityRemoved(BaseObject* ent);
 
 	//sf::Texture* GetLightingTexture() {return &mLightingFinal;};
-	sf::Sprite* GetLightingSprite() {return &mLightingSprite;};
+	sf::Sprite* GetLightingSprite() {return &mFinalSprite;};
 
 	void UpdateLightingTexture(sf::View &view);
 

@@ -73,7 +73,7 @@ void MainGameState::Initialize()
 
 	BaseObject* crate;
 	int crate_count = 200;
-	int tree_count = 0;
+	int tree_count = 50;
 	float map_size = 4500.f;
 	for (int i=0; i < crate_count; i++)
 	{
