@@ -23,6 +23,7 @@ void LightInfo::UpdateLightSprite()
 	rendertex.create(mRadius * 2,mRadius * 2,false);
 	rendertex.clear(sf::Color(0,0,0,0));
 	rendertex.draw(mLightShape);
+	rendertex.display();
 	mLightSprite.setTexture(rendertex.getTexture());
 	mLightSprite.setOrigin(mRadius, mRadius);
 }
