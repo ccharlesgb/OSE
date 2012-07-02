@@ -6,7 +6,7 @@ effect_light::effect_light(void)
 {
 	mLightInfo.SetPosition(GetPos());
 	mLightInfo.SetRadius(512.f);
-	mLightInfo.SetColour(Colour(200,200,200));
+	mLightInfo.SetColour(Colour(ig::Random(0,255),ig::Random(0,255),ig::Random(0,255)));
 	RenderInit();
 }
 

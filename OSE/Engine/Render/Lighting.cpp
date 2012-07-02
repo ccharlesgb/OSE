@@ -9,6 +9,7 @@
 
 Lighting::Lighting(void)
 {
+	std::cout << "MAKE LIGHTING ENGINE\n";
 	float Ambient = 50;
 	sf::Image BlackImg;
 	BlackImg.create(1,1, sf::Color::Black);
@@ -181,7 +182,6 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 
 	EntityList<BaseObject*>::iter CurPos = mLights.FirstEnt();
 	std::vector<sf::RenderTexture*>::iterator CurTexPos = mLightTextures.begin();
-	std::cout << mLights.GetSize() << "\n";
 	while (CurPos != mLights.End() && CurTexPos != mLightTextures.end())
 	{
 		effect_light* CurLight = dynamic_cast<effect_light*>(*CurPos);
@@ -189,6 +189,7 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 		DrawLight(CurLight->GetLight(), *CurTexPos);
 		DrawShadows(CurLight->GetLight(), *CurTexPos);
 
+		CurTexPos++;
 		CurPos = mLights.NextEnt(CurPos);
 	}
 
@@ -198,9 +199,9 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 	{
 		sf::Sprite mDrawingSprite;
 		mDrawingSprite.setTexture((*CurTexPos)->getTexture());
-		sf::RenderStates state;
-		state.blendMode = sf::BlendAdd;
-		mCasterTexture.draw(mDrawingSprite,state);
+		sf::RenderStates states;
+		states.blendMode = sf::BlendAdd;
+		mCasterTexture.draw(mDrawingSprite,states);
 		
 		(*CurTexPos)->clear(sf::Color::Black);
 

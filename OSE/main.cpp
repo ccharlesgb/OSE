@@ -39,7 +39,7 @@
 
 int main()
 {
-	
+	std::cout << "MAK ENGINE\n";
 	// Set the filepath on apple devices to resources within the .app file.
 #ifdef __APPLE__    
 	CFBundleRef mainBundle = CFBundleGetMainBundle();

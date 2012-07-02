@@ -21,21 +21,11 @@ StateManager::StateManager(void)
 {
 	Profiler::Init();
 	ig::SeedRandom();
-	int width = 1440;
-	int height = 900;
-	gGlobals.GameWidth = width;
-	gGlobals.GameHeight = height;
-	std::string title = "Onslaught";
-	Window.create(sf::VideoMode(width, height, 32), title);
-	//Window.setFramerateLimit(120);
-	gGlobals.RenderWindow = &Window;
-	//Window.EnableVerticalSync(true);
-	RENDERER->SetWindow(&Window);
+
 	mStateCount = 0;
 	mCurrentState = NULL;
 	bRunning = true;
 	gGlobals.InFocus = true;
-	InputHandler::SetWindow(&Window);
 	mLastProfilePrint = 0.f;
 }
 
@@ -59,6 +49,17 @@ void StateManager::Cleanup()
 
 void StateManager::Begin()
 {
+	int width = 1440;
+	int height = 900;
+	gGlobals.GameWidth = width;
+	gGlobals.GameHeight = height;
+	std::string title = "Onslaught";
+	Window.create(sf::VideoMode(width, height, 32), title);
+	//Window.setFramerateLimit(120);
+	gGlobals.RenderWindow = &Window;
+	//Window.EnableVerticalSync(true);
+	RENDERER->SetWindow(&Window);
+	InputHandler::SetWindow(&Window);
 	//BEGIN GAME LOOP
 	SetState("game");
 	Run();
