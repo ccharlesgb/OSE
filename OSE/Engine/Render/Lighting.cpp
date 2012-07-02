@@ -9,7 +9,6 @@
 
 Lighting::Lighting(void)
 {
-	std::cout << "MAKE LIGHTING ENGINE\n";
 	float Ambient = 50;
 	sf::Image BlackImg;
 	BlackImg.create(1,1, sf::Color::Black);
@@ -23,17 +22,12 @@ Lighting::Lighting(void)
 	mLightingSprite.setTexture(mCasterTexture.getTexture());
 	mLightingSprite.setOrigin(1440/2, 900/2);
 
-	sf::CircleShape mLightShape;
-	mLightShape.setRadius(256.f);
-	mLightShape.setFillColor(sf::Color(200,200,200));
-	mLightShape.setOutlineThickness(0.f);
-	//mLightShape.setOrigin();
-
 	mBlurShader.loadFromFile("shaders/blur.frag", sf::Shader::Fragment);
 	mLightShader.loadFromFile("shaders/light_falloff.frag", sf::Shader::Fragment);
 
+	//Create 3 light textures for lights to draw their shit on
+	//These will be merged into one and then displayed by the renderer
 	sf::RenderTexture* rend_tex;
-
 	rend_tex = new sf::RenderTexture();
 	rend_tex->create(1440, 900, false);
 	rend_tex->clear(sf::Color::Black);
@@ -145,7 +139,8 @@ void Lighting::DrawShadows(LightInfo *light, sf::RenderTexture* tex)
 			}
 		}
 		//std::cout << MinDot << "   " << MaxDot << "\n";
-
+	
+		//Define the coordinates for the shadow volume
 		sf::Vertex vert;
 		Vector2 vertex_pos = MinDotPos;
 		vert.position = ConvertCoords(vertex_pos);

@@ -5,7 +5,6 @@ LightInfo::LightInfo(void)
 {
 	mColour = sf::Color(200,200,200);
 	mRadius = 512.f;
-	UpdateLightSprite();
 }
 
 LightInfo::~LightInfo(void)
@@ -14,6 +13,7 @@ LightInfo::~LightInfo(void)
 
 void LightInfo::UpdateLightSprite()
 {
+	std::cout << "Rendering light sprite texture\n";
 	sf::CircleShape mLightShape;
 	mLightShape.setRadius(mRadius);
 	mLightShape.setFillColor(mColour);

@@ -35,6 +35,7 @@ BaseObject::BaseObject(void)
 	mCurAnimation = false;
 	mCurFrameID = 0;
 	mCurAnimation = NULL;
+	mLastFrameAdvance = 0;
 }
 
 BaseObject::~BaseObject(void)

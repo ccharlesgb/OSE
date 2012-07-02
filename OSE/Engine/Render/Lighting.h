@@ -13,14 +13,14 @@ class Lighting : public IEntityListener<BaseObject*>
 private:
 	sf::Texture mBlackTex; // Black texture for shadows
 
-	sf::RenderTexture mCasterTexture;
-	sf::Sprite mLightingSprite;
-	EntityList<BaseObject*> ShadowCasters;
+	sf::RenderTexture mCasterTexture; //Our Final texture for ALL lights
+	sf::Sprite mLightingSprite; //The sprite that draws the final texture
+	EntityList<BaseObject*> ShadowCasters; //Entities that should cast shadows
 	
 	sf::Shader mLightShader;
 
-	EntityList<BaseObject*> mLights;
-	std::vector<sf::RenderTexture*> mLightTextures;
+	EntityList<BaseObject*> mLights; //effect_lights
+	std::vector<sf::RenderTexture*> mLightTextures; //Textures for each light in the screen
 
 public:
 	sf::Shader mBlurShader;

@@ -18,7 +18,7 @@ public:
 
 	void UpdateLightSprite();
 
-	void SetRadius(float radius) {mRadius = radius; UpdateLightSprite();};
+	void SetRadius(float radius) {mRadius = radius;};
 	float GetRadius() {return mRadius;};
 
 	void SetPosition(const Vector2 &pos) {mPos = pos;};
@@ -26,7 +26,7 @@ public:
 
 	sf::Sprite* GetSprite() {return &mLightSprite;};
 
-	void SetColour(Colour col) {mColour = col.SF(); UpdateLightSprite();};
+	void SetColour(Colour col) {mColour = col.SF();};
 	sf::Color GetColour() {return mColour;};
 };
 
