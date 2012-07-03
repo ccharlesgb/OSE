@@ -25,7 +25,7 @@ effect_light::effect_light(void)
 		col = Colour(255,255,255);
 		break;
 	}
-
+	col = Colour(255,215,100);
 	mLightInfo.SetColour(col);
 	RenderInit();
 	mLightInfo.UpdateLightSprite();

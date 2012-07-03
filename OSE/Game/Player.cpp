@@ -27,6 +27,10 @@ void Player::Spawn()
 	CreateHead("player_head");
 	SetOrigin(Vector2(0,30));
 	PhysicsHullFromModel();
+
+	BaseObject* mLight = CreateEntity("effect_light");
+	mLight->SetPos(GetPos());
+	mLight->SetParent(this);
 	
 	PlayAnimation("idle", false);
 }

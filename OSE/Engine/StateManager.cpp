@@ -8,6 +8,8 @@
 
 StateManager* Inst3 = NULL;
 
+#define FULLSCREEN false
+
 StateManager* StateManager::Instance()
 {
 	if (Inst3 == NULL)
@@ -49,12 +51,20 @@ void StateManager::Cleanup()
 
 void StateManager::Begin()
 {
-	int width = 1440;
-	int height = 900;
+	int width = 1920;
+	int height = 1080;
 	gGlobals.GameWidth = width;
 	gGlobals.GameHeight = height;
 	std::string title = "Onslaught";
-	Window.create(sf::VideoMode(width, height, 32), title);
+	if (FULLSCREEN)
+	{
+		sf::VideoMode mode = sf::VideoMode::getFullscreenModes().front();
+		Window.create(mode, title,sf::Style::Fullscreen);
+	}
+	else
+	{
+		Window.create(sf::VideoMode(width,height, 32),title);
+	}
 	//Window.setFramerateLimit(120);
 	gGlobals.RenderWindow = &Window;
 	//Window.EnableVerticalSync(true);

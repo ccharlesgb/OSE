@@ -6,7 +6,10 @@
 #include "../../Game/effect_light.h"
 
 
-#define AMBIENT_LIGHT 30.f
+#define AMBIENT_LIGHT 100.f
+#define MAX_LIGHTS 8
+#define LIGHT_TEX_SCALE 2.f //The higher this is the lower resolution the lighting images are
+#define FINAL_TEX_SCALE 1.f //DOESNT WORK YET
 
 Lighting::Lighting(void)
 {
@@ -16,10 +19,14 @@ Lighting::Lighting(void)
 	mBlackTex.loadFromImage(BlackImg);
 	BlackImg.create(1,1, sf::Color(Ambient,Ambient,Ambient,255));
 
-	mFinalTexture.create(1440, 900, false);
-
+	float width = gGlobals.GameWidth;
+	float height = gGlobals.GameHeight;
+	mFinalTexture.create(gGlobals.GameWidth / FINAL_TEX_SCALE, gGlobals.GameHeight / FINAL_TEX_SCALE, false);
+	mFinalTexture.setSmooth(true);
 	mFinalSprite.setTexture(mFinalTexture.getTexture());
-	mFinalSprite.setOrigin(1440/2, 900/2);
+	mFinalSprite.setScale(FINAL_TEX_SCALE,FINAL_TEX_SCALE);
+	mFinalSprite.setOrigin(gGlobals.GameWidth/2, gGlobals.GameHeight/2);
+	mFinalSprite.setPosition(Vector2(gGlobals.GameWidth/2, gGlobals.GameHeight/2).SF());
 
 	mBlurShader.loadFromFile("shaders/blur.frag", sf::Shader::Fragment);
 	mLightShader.loadFromFile("shaders/light_falloff.frag", sf::Shader::Fragment);
@@ -27,20 +34,14 @@ Lighting::Lighting(void)
 	//Create 3 light textures for lights to draw their shit on
 	//These will be merged into one and then displayed by the renderer
 	sf::RenderTexture* rend_tex;
-	rend_tex = new sf::RenderTexture();
-	rend_tex->create(1440, 900, false);
-	rend_tex->clear(sf::Color::Black);
-	mLightTextures.push_back(rend_tex);
-
-	rend_tex = new sf::RenderTexture();	
-	rend_tex->create(1440, 900, false);
-	rend_tex->clear(sf::Color::Black);
-	mLightTextures.push_back(rend_tex);
-	
-	rend_tex = new sf::RenderTexture();
-	rend_tex->create(1440, 900, false);
-	rend_tex->clear(sf::Color::Black);
-	mLightTextures.push_back(rend_tex);
+	for (int i = 0; i < MAX_LIGHTS; i++)
+	{
+		rend_tex = new sf::RenderTexture();
+		rend_tex->create(gGlobals.GameWidth / LIGHT_TEX_SCALE, gGlobals.GameHeight / LIGHT_TEX_SCALE, false);
+		rend_tex->clear(sf::Color::Black);
+		rend_tex->setSmooth(true);
+		mLightTextures.push_back(rend_tex);
+	}
 }
 
 Lighting::~Lighting(void)
@@ -80,7 +81,7 @@ void Lighting::OnEntityRemoved(BaseObject* ent)
 sf::Vector2f ConvertCoords(Vector2 coord)
 {
 	coord.y *= -1;
-	coord = coord + Vector2(1440/2, 900/2);
+	coord = coord + Vector2(gGlobals.GameWidth/2, gGlobals.GameHeight/2);
 	return coord.SF();
 }
 
@@ -100,7 +101,6 @@ void Lighting::DrawShadows(LightInfo *light, sf::RenderTexture* tex)
 	EntityList<BaseObject*>::iter i = ShadowCasters.FirstEnt();
 	sf::RenderStates state;
 	state.texture = &mBlackTex;
-	//state.blendMode = sf::BlendAdd;
 	while(i != ShadowCasters.End())
 	{	
 		BaseObject* CurEnt = *i;
@@ -173,11 +173,12 @@ void Lighting::DrawShadows(LightInfo *light, sf::RenderTexture* tex)
 
 void Lighting::UpdateLightingTexture(sf::View &view)
 {
-	Profiler::StartRecord(PROFILE_RENDER_LIGHTS);
+
 	mFinalTexture.clear(sf::Color(AMBIENT_LIGHT,AMBIENT_LIGHT,AMBIENT_LIGHT)); //Clear the main texture to ambient
 
 	EntityList<BaseObject*>::iter CurPos = mLights.FirstEnt();
 	std::vector<sf::RenderTexture*>::iterator CurTexPos = mLightTextures.begin();
+	Profiler::StartRecord(PROFILE_TEMPORARY_1);
 	while (CurPos != mLights.End() && CurTexPos != mLightTextures.end())
 	{
 		effect_light* CurLight = dynamic_cast<effect_light*>(*CurPos);
@@ -188,14 +189,16 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 		CurTexPos++;
 		CurPos = mLights.NextEnt(CurPos);
 	}
-
+	Profiler::StopRecord(PROFILE_TEMPORARY_1);
 	//Render all the light textures to the final image
+	Profiler::StartRecord(PROFILE_TEMPORARY_2); //THIS IS SLOW FIGURE OUT WHY LATER MAYBE PREMAKE ALL SPRITES?
 	CurTexPos = mLightTextures.begin();
 	while (CurTexPos != mLightTextures.end())
 	{
 		sf::Sprite mDrawingSprite;
 		(*CurTexPos)->display();
 		mDrawingSprite.setTexture((*CurTexPos)->getTexture());
+		mDrawingSprite.setScale(LIGHT_TEX_SCALE, LIGHT_TEX_SCALE);
 		sf::RenderStates states;
 		states.blendMode = sf::BlendAdd;
 	
@@ -206,8 +209,7 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 		CurTexPos++;
 	}
 	mFinalTexture.display();
-	Profiler::StopRecord(PROFILE_RENDER_LIGHTS);
-	mFinalSprite.setPosition(Vector2(1440/2, 900/2).SF());
+	Profiler::StopRecord(PROFILE_TEMPORARY_2);
 	ShadowCasters.ClearDontDelete();
 	mLights.ClearDontDelete();
 }

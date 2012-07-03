@@ -6,10 +6,10 @@
 		<density>9</density>
 		<vertex_count>4</vertex_count>
 		<vertices>
-			<vertex>55 110</vertex>
-			<vertex>-55 110</vertex>
-			<vertex>-55 -110</vertex>
-			<vertex>55 -110</vertex>
+			<vertex>50 100</vertex>
+			<vertex>-50 100</vertex>
+			<vertex>-50 -100</vertex>
+			<vertex>50 -100</vertex>
 		</vertices>
 	</physics_hull>
 </model>
