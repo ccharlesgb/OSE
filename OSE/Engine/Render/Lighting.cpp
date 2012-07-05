@@ -180,15 +180,14 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 	Profiler::StartRecord(PROFILE_TEMPORARY_1);
 
 	float day_light = 1.f;
-	Colour DayColour = Colour(255,165,0);
+	Colour DayColour = Colour(238,221,130);
 	float night_light = 0.f;
-	Colour NightColour = Colour(25,25,112);
+	Colour NightColour = Colour(15,15,125);
 	float speed = 0.1f;
 	float Amplitude = day_light - night_light; // Difference
 	float offset = (day_light + night_light) / 2.f; // Average 
 	float day_night = (Amplitude * 0.5f *std::sin(gGlobals.CurTime * speed * 6.28)) + offset;
-	std::cout << day_night << "\n";
-	day_night *= 255.f;
+	//std::cout << day_night << "\n";
 
 	Colour LerpColour;
 	LerpColour.r = (DayColour.r * day_night) + (NightColour.r * (1 - day_night));
