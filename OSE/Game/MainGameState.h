@@ -3,6 +3,7 @@
 #include "../Engine/IGameState.h"
 #include "../Engine/PhysicsWorld.h"
 #include "HUD.h"
+#include "../Engine/ai_mesh.h"
 
 class MainGameState : public IGameState
 {
@@ -16,6 +17,7 @@ private:
 	BaseObject* bg;
 	HUD *Hud;
 	double mNextHorde;
+	ai::NavMesh mNavMesh;
 public:
 	MainGameState(void);
 	~MainGameState(void);
