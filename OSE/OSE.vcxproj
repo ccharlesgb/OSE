@@ -11,6 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\ai_mesh.cpp" />
+    <ClCompile Include="Engine\ai_pathfinder.cpp" />
     <ClCompile Include="Game\effect_light.cpp" />
     <ClCompile Include="Engine\Render\BaseHUD.cpp" />
     <ClCompile Include="Engine\Render\BlendSprite.cpp" />
@@ -62,6 +64,8 @@
     <ClCompile Include="Game\Primitive.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\ai_mesh.h" />
+    <ClInclude Include="Engine\ai_pathfinder.h" />
     <ClInclude Include="Game\effect_light.h" />
     <ClInclude Include="Engine\Animation.h" />
     <ClInclude Include="engine\render\basehud.h" />

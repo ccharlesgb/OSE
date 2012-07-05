@@ -3,10 +3,12 @@
 #include "../Engine/Bases/BasePhysics.h"
 #include "../Engine/Render/Line.h"
 
+class effect_light;
+
 class Car : public BasePhysics
 {
 private:
-	BaseObject* mDriver;
+	BaseHuman* mDriver;
 	bool InUse() { return mDriver != NULL; };
 	float mWheelAngle;
 	float mThrottle;
@@ -17,11 +19,9 @@ private:
 	float mFrontWheelTraction;
 	float mBackWheelTraction;
 
+	effect_light *mLight;
+
 	Sprite* mWheelSprite;
-	Line* mLine;
-	Line* mLine2;
-	Line* mLine3;
-	Line* mLine4;
 	double mLastTrailDrop;
 public:
 	Car(void);
@@ -31,7 +31,7 @@ public:
 	void Think();
 	void StartTouch(CollisionInfo* info);
 	void Exit(Vector2 position);
-	void Use(BaseObject *ply);
+	void Use(BaseHuman *ply);
 	void Draw();
 	void PhysicsSimulate(float delta);
 };

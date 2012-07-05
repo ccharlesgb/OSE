@@ -28,7 +28,7 @@ void Player::Spawn()
 	SetOrigin(Vector2(0,30));
 	PhysicsHullFromModel();
 
-	BaseObject* mLight = CreateEntity("effect_light");
+	mLight = CreateEntity("effect_light");
 	mLight->SetPos(GetPos());
 	mLight->SetParent(this);
 	
@@ -73,6 +73,8 @@ void Player::ChooseWeapon(const char* name)
 
 void Player::Think()
 {	
+	mLight->SetNoDraw(GetNoDraw());
+
 	if (InputHandler::IsMouseButtonPressed(sf::Mouse::Left) && !InputHandler::IsKeyPressed(sf::Keyboard::LShift))
 	{
 		VariantMap dat;

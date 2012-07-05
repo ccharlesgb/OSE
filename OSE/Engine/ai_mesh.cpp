@@ -14,7 +14,7 @@ namespace ai {
 	
 	void NavMesh::AddTile(NavMeshTile tile)
 	{
-		mTiles.push
+		//mTiles.push
 	}
 	
 }

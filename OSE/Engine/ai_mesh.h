@@ -18,8 +18,8 @@ namespace ai {
 		std::vector<Vector2> mVerts;     ///< Vertices in tile.
 		std::vector<NavMeshTile> mLinks; ///< Adjacent tiles.
 	public:
-		NavMeshTile();
-		~NavMeshTile();
+		NavMeshTile() {};
+		~NavMeshTile() {};
 	};
 	
 	typedef std::vector<NavMeshTile*> MeshTileList;

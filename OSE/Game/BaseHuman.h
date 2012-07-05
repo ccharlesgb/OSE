@@ -12,7 +12,8 @@ class BaseHuman : public BasePhysics
 private:
 	float mWalkSpeed;
 	float mHeadAngle;
-
+	bool mInVehicle;
+	BaseObject *mVehicle;
 protected:
 	Sprite* mHead;
 	Sprite* mFeet;
@@ -35,5 +36,10 @@ public:
 
 	void SetWalkSpeed(float speed) {mWalkSpeed = speed;};
 	float GetWalkSpeed() {return mWalkSpeed;};
+
+	void EnterVehicle(BaseObject *ent);
+	void ExitVehicle(BaseObject* ent);
+
+	bool InVehicle() {return mInVehicle;};
 };
 

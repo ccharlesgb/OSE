@@ -14,6 +14,8 @@ private:
 	weapon_pistol *mActiveWeapon;
 	float mNextUse;
 
+	BaseObject* mLight;
+
 	float mLastTakeDamage;
 public:
 	Player(void);

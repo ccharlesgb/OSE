@@ -13,6 +13,7 @@ class Sprite;
 class PhysicsDef;
 class BaseObject;
 class CollisionInfo;
+class BaseHuman;
 
 typedef void (*InputFunc)(BaseObject* ent, VariantMap &Data);
 
@@ -359,7 +360,7 @@ public:
 	virtual void OnDelete() {}; //Called before the entity is deleted
 	virtual void Draw(); //Draw your sprites/Drawables here
 	virtual void StartTouch(CollisionInfo* info) {}; //When another entity begins to touch us
-	virtual void Use(BaseObject* ply) {}; //Player has pressed E on us!
+	virtual void Use(BaseHuman* ply) {}; //Player has pressed E on us!
 	virtual void TakeDamage(const DamageInfo &info);
 };
 
