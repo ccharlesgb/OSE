@@ -51,8 +51,8 @@ void StateManager::Cleanup()
 
 void StateManager::Begin()
 {
-	int width = 1920;
-	int height = 1080;
+	int width = 1024;
+	int height = 576;
 	gGlobals.GameWidth = width;
 	gGlobals.GameHeight = height;
 	std::string title = "Onslaught";

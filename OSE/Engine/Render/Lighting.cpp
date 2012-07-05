@@ -7,8 +7,8 @@
 
 
 #define AMBIENT_LIGHT 100.f
-#define MAX_LIGHTS 8
-#define LIGHT_TEX_SCALE 2.f //The higher this is the lower resolution the lighting images are
+#define MAX_LIGHTS 3
+#define LIGHT_TEX_SCALE 1.f //The higher this is the lower resolution the lighting images are
 #define FINAL_TEX_SCALE 1.f //DOESNT WORK YET
 
 Lighting::Lighting(void)
@@ -192,15 +192,16 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 	Profiler::StopRecord(PROFILE_TEMPORARY_1);
 	//Render all the light textures to the final image
 	Profiler::StartRecord(PROFILE_TEMPORARY_2); //THIS IS SLOW FIGURE OUT WHY LATER MAYBE PREMAKE ALL SPRITES?
+	sf::RenderStates states;
+	states.blendMode = sf::BlendAdd;
 	CurTexPos = mLightTextures.begin();
 	while (CurTexPos != mLightTextures.end())
 	{
 		sf::Sprite mDrawingSprite;
 		(*CurTexPos)->display();
 		mDrawingSprite.setTexture((*CurTexPos)->getTexture());
-		mDrawingSprite.setScale(LIGHT_TEX_SCALE, LIGHT_TEX_SCALE);
-		sf::RenderStates states;
-		states.blendMode = sf::BlendAdd;
+		//mDrawingSprite.setScale(LIGHT_TEX_SCALE, LIGHT_TEX_SCALE);
+
 	
 		mFinalTexture.draw(mDrawingSprite,states);
 		
