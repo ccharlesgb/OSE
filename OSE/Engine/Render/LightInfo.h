@@ -8,6 +8,7 @@ class LightInfo
 {
 private:
 	Vector2 mPos;
+	float mAngle;
 	sf::Sprite mLightSprite;
 	sf::RenderTexture rendertex;
 	sf::Color mColour;
@@ -32,5 +33,8 @@ public:
 
 	void SetSpreadAngle(float ang) {mSpreadAngle = ang;};
 	float GetSpreadAngle() {return mSpreadAngle;};
+
+	void SetAngle(float ang) {mAngle = ang;};
+	float GetAngle() {return mAngle;};
 };
 

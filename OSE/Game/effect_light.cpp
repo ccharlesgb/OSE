@@ -21,4 +21,5 @@ effect_light::~effect_light(void)
 void effect_light::Think()
 {
 	mLightInfo.SetPosition(GetPos());
+	mLightInfo.SetAngle(GetAngle());
 }

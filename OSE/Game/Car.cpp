@@ -52,7 +52,7 @@ Car::Car(void)
 	mBackWheelSkid = false;
 
 	mLight = dynamic_cast<effect_light*>(CreateEntity("effect_light"));
-	mLight->SetPos(GetPos() + GetForward() * 200.f);
+	mLight->SetPos(GetPos() + GetForward() * 120.f);
 	mLight->SetParent(this);
 }
 

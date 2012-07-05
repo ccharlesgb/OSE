@@ -26,14 +26,14 @@ void LightInfo::UpdateLightSprite()
 	{
 		sf::ConvexShape* shape = new sf::ConvexShape();
 		int point_count = std::ceil(ig::DegToRad(mSpreadAngle) * mRadius * 0.01f);
-		shape->setPointCount(point_count);
-		shape->setPoint(0, Vector2().SF());
-		for (int i = 1; i < point_count; i++)
+		shape->setPointCount(point_count + 2);
+		shape->setPoint(0, Vector2(mRadius, mRadius).SF());
+		for (int i = 1; i < point_count + 2; i++)
 		{
-			float circle_progress = i * ig::DegToRad(mSpreadAngle);
-			Vector2 pos = Vector2(std::cos(circle_progress) * mRadius, std::sin(circle_progress) * mRadius);
-
-			std::cout << "ADDING POINT: " << pos.ToString() << "\n";
+			float circle_progress = ((float)(i - 1) / (float)point_count) * ig::DegToRad(mSpreadAngle);
+			circle_progress += ig::DegToRad(180 - mSpreadAngle) * 0.5f;
+			Vector2 pos = Vector2(std::cos(circle_progress) * mRadius, std::sin(circle_progress) * -mRadius);
+			pos = pos + Vector2(mRadius, mRadius);
 			shape->setPoint(i, pos.SF());
 		}
 		mLightShape = shape;

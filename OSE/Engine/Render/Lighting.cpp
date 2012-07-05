@@ -97,6 +97,7 @@ void Lighting::DrawLight(LightInfo *light, sf::RenderTexture* tex)
 	light_state.blendMode = sf::BlendAdd;
 	light->GetSprite()->setColor(light->GetColour());
 	light->GetSprite()->setPosition(ConvertCoords(light->GetPosition()));
+	light->GetSprite()->setRotation(-light->GetAngle());
 	tex->draw(*light->GetSprite(),light_state);
 }
 
@@ -179,7 +180,7 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 {
 	Profiler::StartRecord(PROFILE_TEMPORARY_1);
 
-	float speed = 1 / (3 * 60);
+	float speed = 1 / (1 * 60);
 	float progress = std::sin(gGlobals.CurTime * speed * 3.14159265f * 2.f);
 
 	float day_light = 1.f;
@@ -187,10 +188,8 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 	float night_light = 0.f;
 	Colour NightColour = Colour(15,15,125);
 
-	float Amplitude = day_light - night_light; // Difference
-	float offset = (day_light + night_light) / 2.f; // Average 
-	float day_night = (Amplitude * 0.5f * progress) + offset;
-	//std::cout << day_night << "\n";
+	float day_night = (0.5f * progress) + 0.5f;
+	std::cout << day_night << "\n";
 
 	Colour LerpColour;
 	LerpColour.r = (DayColour.r * day_night) + (NightColour.r * (1 - day_night));
@@ -198,7 +197,6 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 	LerpColour.b = (DayColour.b * day_night) + (NightColour.b * (1 - day_night));
 
 	mFinalTexture.clear(LerpColour.SF()); // Clear the main texture to ambient
-
 
 	// This is pretty messy to use 3 iterators...
 	EntityList<BaseObject*>::iter CurPos = mLights.FirstEnt();
