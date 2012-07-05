@@ -8,19 +8,17 @@
 
 #define AMBIENT_LIGHT 100.f
 #define MAX_LIGHTS 8 //If this is high LOW FRAMES :<
-#define LIGHT_TEX_SCALE 8.f //The higher this is the lower resolution the lighting images are
+#define LIGHT_TEX_SCALE 4.f //The higher this is the lower resolution the lighting images are
 #define FINAL_TEX_SCALE 1.f //DOESNT WORK YET
 
 Lighting::Lighting(void)
 {
-	float Ambient = 50;
+	//Texture used to draw shadows
 	sf::Image BlackImg;
 	BlackImg.create(1,1, sf::Color::Black);
 	mBlackTex.loadFromImage(BlackImg);
-	BlackImg.create(1,1, sf::Color(Ambient,Ambient,Ambient,255));
+	BlackImg.create(1,1, sf::Color(AMBIENT_LIGHT,AMBIENT_LIGHT,AMBIENT_LIGHT,255));
 
-	float width = gGlobals.GameWidth;
-	float height = gGlobals.GameHeight;
 	mFinalTexture.create(gGlobals.GameWidth / FINAL_TEX_SCALE, gGlobals.GameHeight / FINAL_TEX_SCALE, false);
 	mFinalTexture.setSmooth(true);
 	mFinalSprite.setTexture(mFinalTexture.getTexture());
@@ -31,7 +29,7 @@ Lighting::Lighting(void)
 	mBlurShader.loadFromFile("shaders/blur.frag", sf::Shader::Fragment);
 	mLightShader.loadFromFile("shaders/light_falloff.frag", sf::Shader::Fragment);
 
-	//Create 3 light textures for lights to draw their shit on
+	//Create light textures for lights to draw their shit on
 	//These will be merged into one and then displayed by the renderer
 	sf::RenderTexture* rend_tex;
 	sf::Sprite* light_sprite;
@@ -180,16 +178,33 @@ void Lighting::DrawShadows(LightInfo *light, sf::RenderTexture* tex)
 void Lighting::UpdateLightingTexture(sf::View &view)
 {
 	Profiler::StartRecord(PROFILE_TEMPORARY_1);
-	mFinalTexture.clear(sf::Color(AMBIENT_LIGHT,AMBIENT_LIGHT,AMBIENT_LIGHT)); //Clear the main texture to ambient
+
+	float day_light = 1.f;
+	Colour DayColour = Colour(255,165,0);
+	float night_light = 0.f;
+	Colour NightColour = Colour(25,25,112);
+	float speed = 0.1f;
+	float Amplitude = day_light - night_light; // Difference
+	float offset = (day_light + night_light) / 2.f; // Average 
+	float day_night = (Amplitude * 0.5f *std::sin(gGlobals.CurTime * speed * 6.28)) + offset;
+	std::cout << day_night << "\n";
+	day_night *= 255.f;
+
+	Colour LerpColour;
+	LerpColour.r = (DayColour.r * day_night) + (NightColour.r * (1 - day_night));
+	LerpColour.g = (DayColour.g * day_night) + (NightColour.g * (1 - day_night));
+	LerpColour.b = (DayColour.b * day_night) + (NightColour.b * (1 - day_night));
+
+	mFinalTexture.clear(LerpColour.SF()); // Clear the main texture to ambient
 
 
-	//This is pretty messy to use 3 iterators...
+	// This is pretty messy to use 3 iterators...
 	EntityList<BaseObject*>::iter CurPos = mLights.FirstEnt();
 	std::vector<sf::RenderTexture*>::iterator CurTexPos = mLightTextures.begin();
 	std::vector<sf::Sprite*>::iterator CurSpritePos = mLightSprites.begin();
 
 	sf::RenderStates blend_add;
-	blend_add.blendMode = sf::BlendAdd; //Additive so one lights shadows dont overwrite another lights luminosity
+	blend_add.blendMode = sf::BlendAdd; // Additive so one lights shadows dont overwrite another lights luminosity
 
 	while (CurPos != mLights.End() && CurTexPos != mLightTextures.end())
 	{

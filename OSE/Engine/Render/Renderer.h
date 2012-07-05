@@ -44,6 +44,8 @@ public:
 	void OnEntityAdded(BaseObject* ent);
 	void OnEntityRemoved(BaseObject* ent);
 
+	void RenderLighting();
+
 	void AddEntity(BaseObject* render);
 	void Clear() {mRender->clear();};
 	void Display() {mRender->display();};

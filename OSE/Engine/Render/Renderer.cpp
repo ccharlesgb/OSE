@@ -181,6 +181,21 @@ void Renderer::UpdateOnScreenList()
 	}
 }
 
+void Renderer::RenderLighting()
+{
+	Profiler::StartRecord(PROFILE_RENDER_LIGHTS);
+	mLighting->UpdateLightingTexture(mView);
+	sf::RenderStates state;
+	state.blendMode = sf::BlendMultiply;
+	mLighting->mBlurShader.setParameter("blur_radius", 0.01f);
+	state.shader = &mLighting->mBlurShader;
+	mRender->setView(mHUDView);
+	mRender->draw(*mLighting->GetLightingSprite(), state);
+	mRender->setView(mView);
+
+	Profiler::StopRecord(PROFILE_RENDER_LIGHTS);
+}
+
 void Renderer::Draw(IGameState *State)
 {
 	Clear();
@@ -207,17 +222,8 @@ void Renderer::Draw(IGameState *State)
 			//OH GOD TREMENDOUS HACK OH DEAR OH DEAR
 			if ((*CurEnt)->GetDrawOrder() == RENDERGROUP_ENTITIES && !DrewLights)
 			{
-				Profiler::StartRecord(PROFILE_RENDER_LIGHTS);
-				mLighting->UpdateLightingTexture(mView);
-				sf::RenderStates state;
-				state.blendMode = sf::BlendMultiply;
-				mLighting->mBlurShader.setParameter("blur_radius", 0.01f);
-				state.shader = &mLighting->mBlurShader;
-				mRender->setView(mHUDView);
-				mRender->draw(*mLighting->GetLightingSprite(), state);
-				mRender->setView(mView);
+				//RenderLighting();
 				DrewLights = true;
-				Profiler::StopRecord(PROFILE_RENDER_LIGHTS);
 			}
 			if ((*CurEnt)->GetDrawOrder() == RENDERGROUP_TOP)
 			{
@@ -233,6 +239,8 @@ void Renderer::Draw(IGameState *State)
 		CurEnt = OnScreenEnts.NextEnt(CurEnt);
 	}
 	Profiler::StopRecord(PROFILE_ENTITY_DRAW);
+
+	RenderLighting();
 
 	if (InputHandler::IsKeyPressed(sf::Keyboard::F3))
 		State->DrawDebugData();
