@@ -8,7 +8,6 @@
 
 namespace ig
 {
-	
 	MTRand_closed Rand;
 	
 	//Seed the random generator to make sure its different every time

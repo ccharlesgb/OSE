@@ -179,9 +179,8 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 {
 	Profiler::StartRecord(PROFILE_TEMPORARY_1);
 
-	float speed = 0.02f;
-	float pi = 3.41;
-	float progress = std::sin(gGlobals.CurTime * speed * 6.28);
+	float speed = 1 / (3 * 60);
+	float progress = std::sin(gGlobals.CurTime * speed * 3.14159265f * 2.f);
 
 	float day_light = 1.f;
 	Colour DayColour = Colour(238,221,130);
