@@ -183,9 +183,7 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 	float speed = 1 / (1 * 60);
 	float progress = std::sin(gGlobals.CurTime * speed * 3.14159265f * 2.f);
 
-	float day_light = 1.f;
 	Colour DayColour = Colour(238,221,130);
-	float night_light = 0.f;
 	Colour NightColour = Colour(15,15,125);
 
 	float day_night = (0.5f * progress) + 0.5f;
