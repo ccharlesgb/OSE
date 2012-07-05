@@ -45,6 +45,7 @@ NOTES	: Draw the B2D world debug draw
 void MainGameState::DrawDebugData()
 {
 	mPhysicsWorld.DrawDebug();
+	mNavMesh.DrawDebug();
 }
 
 /*
@@ -102,6 +103,13 @@ void MainGameState::Initialize()
 	}
 	crate = CreateEntity("primitive");
 	crate->SetPos(Vector2());
+	
+	ai::NavMeshTile tile = *new ai::NavMeshTile();
+	tile.AddVerticies(Vector2(0,   0));
+	tile.AddVerticies(Vector2(0,   100));
+	tile.AddVerticies(Vector2(100, 100));
+	tile.AddVerticies(Vector2(100, 0));
+	mNavMesh.AddTile(tile);
 
 }
 
