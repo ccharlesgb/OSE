@@ -5,6 +5,8 @@
 #include "../Engine/Camera.h"
 #include "../Engine/Sound.h"
 #include "../Engine/Render/Sprite.h"
+#include "BaseHuman.h"
+#include "effect_light.h"
 
 //This function registers the entity to the EntityCreator.
 //"player" is the classname. Player is the coded classname
@@ -49,14 +51,9 @@ Car::Car(void)
 	mFrontWheelSkid = false;
 	mBackWheelSkid = false;
 
-	mLine = new Line(gGlobals.RenderWindow);
-	mLine->SetColour(Colour(255, 236, 139));
-	mLine2 = new Line(gGlobals.RenderWindow);
-	mLine2->SetColour(Colour(255, 236, 139));
-	mLine3 = new Line(gGlobals.RenderWindow);
-	mLine3->SetColour(Colour(255, 139, 139));
-	mLine4 = new Line(gGlobals.RenderWindow);
-	mLine4->SetColour(Colour(255, 139, 139));
+	mLight = dynamic_cast<effect_light*>(CreateEntity("effect_light"));
+	mLight->SetPos(GetPos() + GetForward() * 200.f);
+	mLight->SetParent(this);
 }
 
 Car::~Car(void)
@@ -89,16 +86,6 @@ void Car::Draw()
 	mWheelSprite->Draw();
 
 	DrawModel();
-
-	Vector2_Rect AABB = GetAABB();
-
-	mLine->mVerts[0] = AABB.Position;
-	mLine->mVerts[1] = AABB.Position + AABB.Size;
-
-	//mLine->Draw();
-	//mLine2->Draw();
-	//mLine3->Draw();
-	//mLine4->Draw();
 }
 
 void Car::OnDelete()
@@ -119,11 +106,11 @@ void Car::StartTouch(CollisionInfo* info)
 	}
 }
 
-void Car::Use(BaseObject *ply)
+void Car::Use(BaseHuman *ply)
 {
 	sCamera::FollowEntity(this);
+	ply->EnterVehicle(this);
 	mDriver = ply;
-	mDriver->SetNoDraw(true);
 	mEnterTime = (float)gGlobals.CurTime;
 	//EmitSound("enter");
 	GetSound("idle")->SetLoop(true);
@@ -251,9 +238,6 @@ void Car::PhysicsSimulate(float delta)
 	FrontForce = FrontForce.Rotate(-mWheelAngle);
 	FrontForce = ToGlobal(FrontForce) - GetPos();
 
-	mLine3->mVerts[0] = GetPos() + GetForward() * 90.f;
-	mLine3->mVerts[1] = (GetPos() + GetForward() * 90.f) + FrontForce * 2.f;
-
 	ApplyForce(FrontForce * GetPhysObj()->GetMass(), GetPos() + GetForward() * 90.f);
 
 	//Simulate back wheels
@@ -279,9 +263,6 @@ void Car::PhysicsSimulate(float delta)
 	}
 
 	BackForce = ToGlobal(BackForce) - GetPos();
-
-	mLine4->mVerts[0] = GetPos() + GetForward() * -90.f;
-	mLine4->mVerts[1] = (GetPos() + GetForward() * -90.f) + BackForce * 2.f;
 
 	ApplyForce(BackForce * GetPhysObj()->GetMass(), GetPos() + GetForward() * -90.f);
 

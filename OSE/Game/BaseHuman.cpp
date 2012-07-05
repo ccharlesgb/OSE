@@ -17,7 +17,7 @@ BaseHuman::BaseHuman(void)
 	SetWalkSpeed(DEFAULT_WALK_SPEED);
 
 	mHeadAngle = 0.f;
-	
+	mInVehicle;
 	mHead = NULL;
 	mFeet = NULL;
 }
@@ -81,4 +81,18 @@ void BaseHuman::DrawFeet()
 void BaseHuman::PhysicsSimulate(float delta)
 {
 
+}
+
+void BaseHuman::EnterVehicle(BaseObject *ent)
+{
+	mVehicle = ent;
+	mInVehicle = true;
+	SetNoDraw(true);
+}
+
+void BaseHuman::ExitVehicle(BaseObject *ent)
+{
+	mVehicle = NULL;
+	mInVehicle = false;
+	SetNoDraw(false);
 }

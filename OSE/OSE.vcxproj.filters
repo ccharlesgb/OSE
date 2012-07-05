@@ -56,6 +56,8 @@
     <ClCompile Include="Engine\Render\Lighting.cpp" />
     <ClCompile Include="Engine\Render\LightInfo.cpp" />
     <ClCompile Include="Game\effect_light.cpp" />
+    <ClCompile Include="Engine\ai_mesh.cpp" />
+    <ClCompile Include="Engine\ai_pathfinder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Bases\BaseObject.h" />
@@ -110,6 +112,8 @@
     <ClInclude Include="Engine\Render\Lighting.h" />
     <ClInclude Include="Engine\Render\LightInfo.h" />
     <ClInclude Include="Game\effect_light.h" />
+    <ClInclude Include="Engine\ai_pathfinder.h" />
+    <ClInclude Include="Engine\ai_mesh.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Utilities\Matrix3.inl" />
