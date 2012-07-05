@@ -6,6 +6,9 @@
 
 namespace ai {
 	
+	class NavMeshTile;
+	
+	typedef std::vector<NavMeshTile> MeshTileList;
 	
 	/**
 	 * Mesh tile structure.
@@ -16,7 +19,7 @@ namespace ai {
 	{
 	private:
 		std::vector<Vector2> mVertices;     ///< Vertices in tile.
-		std::vector<NavMeshTile> mLinks; ///< Adjacent tiles.
+		MeshTileList mLinks; ///< Adjacent tiles.
 	public:
 		NavMeshTile();
 		~NavMeshTile();
@@ -34,9 +37,18 @@ namespace ai {
 		 * @return std::vector<Vector2> Vector of vertices.
 		 */
 		std::vector<Vector2> GetVertices() { return mVertices; };
+		
+		/**
+		 * Add a link.
+		 *
+		 * @param NavMeshTile Tile to link to.
+		 */
+		void AddLink(const NavMeshTile tile);
+		
+		MeshTileList GetLinks() { return mLinks; };
+		
+		Vector2 GetCenter();
 	};
-	
-	typedef std::vector<NavMeshTile> MeshTileList;
 	
 	/**
 	 * Navigation mesh.
@@ -48,6 +60,14 @@ namespace ai {
 	private:
 		MeshTileList mTiles; ///< Tiles in Navigation mesh.
 		
+		/**
+		 * Return all tiles that has a vertex at position vert.
+		 *
+		 * @param Vector2 Position to check.
+		 * @return MeshTileList List of tiles with vertex at position.
+		 */
+		MeshTileList GetTilesWithVertex(Vector2 vert);
+		
 	public:
 		NavMesh();
 		~NavMesh();
@@ -57,7 +77,7 @@ namespace ai {
 		 *
 		 * @param NavMeshTile Tile to add
 		 */
-		void AddTile(const NavMeshTile tile);
+		void AddTile(NavMeshTile tile);
 		
 		/**
 		 * Draw the mesh, useful for debugging.
