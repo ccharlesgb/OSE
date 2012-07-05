@@ -54,6 +54,7 @@ Car::Car(void)
 	mLight = dynamic_cast<effect_light*>(CreateEntity("effect_light"));
 	mLight->SetPos(GetPos() + GetForward() * 120.f);
 	mLight->SetParent(this);
+	mLight->SetSpreadAngle(150.f);
 }
 
 Car::~Car(void)

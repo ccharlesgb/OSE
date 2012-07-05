@@ -29,7 +29,7 @@ void Player::Spawn()
 	PhysicsHullFromModel();
 
 	mLight = CreateEntity("effect_light");
-	mLight->SetPos(GetPos());
+	mLight->SetPos(GetPos() + GetForward() * 30.f);
 	mLight->SetParent(this);
 	
 	PlayAnimation("idle", false);

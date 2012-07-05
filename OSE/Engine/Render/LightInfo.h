@@ -28,10 +28,10 @@ public:
 
 	sf::Sprite* GetSprite() {return &mLightSprite;};
 
-	void SetColour(Colour col) {mColour = col.SF();};
+	void SetColour(Colour col) {mColour = col.SF(); UpdateLightSprite();};
 	sf::Color GetColour() {return mColour;};
 
-	void SetSpreadAngle(float ang) {mSpreadAngle = ang;};
+	void SetSpreadAngle(float ang) {mSpreadAngle = ang; UpdateLightSprite();};
 	float GetSpreadAngle() {return mSpreadAngle;};
 
 	void SetAngle(float ang) {mAngle = ang;};
