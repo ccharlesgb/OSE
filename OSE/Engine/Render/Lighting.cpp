@@ -7,8 +7,8 @@
 
 
 #define AMBIENT_LIGHT 100.f
-#define MAX_LIGHTS 3
-#define LIGHT_TEX_SCALE 1.f //The higher this is the lower resolution the lighting images are
+#define MAX_LIGHTS 8 //If this is high LOW FRAMES :<
+#define LIGHT_TEX_SCALE 8.f //The higher this is the lower resolution the lighting images are
 #define FINAL_TEX_SCALE 1.f //DOESNT WORK YET
 
 Lighting::Lighting(void)
@@ -34,6 +34,7 @@ Lighting::Lighting(void)
 	//Create 3 light textures for lights to draw their shit on
 	//These will be merged into one and then displayed by the renderer
 	sf::RenderTexture* rend_tex;
+	sf::Sprite* light_sprite;
 	for (int i = 0; i < MAX_LIGHTS; i++)
 	{
 		rend_tex = new sf::RenderTexture();
@@ -41,6 +42,11 @@ Lighting::Lighting(void)
 		rend_tex->clear(sf::Color::Black);
 		rend_tex->setSmooth(true);
 		mLightTextures.push_back(rend_tex);
+
+		light_sprite = new sf::Sprite();
+		light_sprite->setTexture(rend_tex->getTexture());
+		light_sprite->setScale(LIGHT_TEX_SCALE,LIGHT_TEX_SCALE);
+		mLightSprites.push_back(light_sprite);
 	}
 }
 
@@ -173,12 +179,18 @@ void Lighting::DrawShadows(LightInfo *light, sf::RenderTexture* tex)
 
 void Lighting::UpdateLightingTexture(sf::View &view)
 {
-
+	Profiler::StartRecord(PROFILE_TEMPORARY_1);
 	mFinalTexture.clear(sf::Color(AMBIENT_LIGHT,AMBIENT_LIGHT,AMBIENT_LIGHT)); //Clear the main texture to ambient
 
+
+	//This is pretty messy to use 3 iterators...
 	EntityList<BaseObject*>::iter CurPos = mLights.FirstEnt();
 	std::vector<sf::RenderTexture*>::iterator CurTexPos = mLightTextures.begin();
-	Profiler::StartRecord(PROFILE_TEMPORARY_1);
+	std::vector<sf::Sprite*>::iterator CurSpritePos = mLightSprites.begin();
+
+	sf::RenderStates blend_add;
+	blend_add.blendMode = sf::BlendAdd; //Additive so one lights shadows dont overwrite another lights luminosity
+
 	while (CurPos != mLights.End() && CurTexPos != mLightTextures.end())
 	{
 		effect_light* CurLight = dynamic_cast<effect_light*>(*CurPos);
@@ -186,33 +198,26 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 		DrawLight(CurLight->GetLight(), *CurTexPos);
 		DrawShadows(CurLight->GetLight(), *CurTexPos);
 
-		CurTexPos++;
-		CurPos = mLights.NextEnt(CurPos);
-	}
-	Profiler::StopRecord(PROFILE_TEMPORARY_1);
-	//Render all the light textures to the final image
-	Profiler::StartRecord(PROFILE_TEMPORARY_2); //THIS IS SLOW FIGURE OUT WHY LATER MAYBE PREMAKE ALL SPRITES?
-	sf::RenderStates states;
-	states.blendMode = sf::BlendAdd;
-	CurTexPos = mLightTextures.begin();
-	while (CurTexPos != mLightTextures.end())
-	{
-		sf::Sprite mDrawingSprite;
-		(*CurTexPos)->display();
-		mDrawingSprite.setTexture((*CurTexPos)->getTexture());
-		//mDrawingSprite.setScale(LIGHT_TEX_SCALE, LIGHT_TEX_SCALE);
+		(*CurTexPos)->display(); // Swap the frame buffers to make this light display properly
 
-	
-		mFinalTexture.draw(mDrawingSprite,states);
+		// Draw the texture to the final lightmap
+		sf::Sprite* mDrawingSprite = *CurSpritePos;
+
+		mFinalTexture.draw(*mDrawingSprite,blend_add);
 		
 		(*CurTexPos)->clear(sf::Color::Black);
 
+		CurSpritePos++;
 		CurTexPos++;
+		CurPos = mLights.NextEnt(CurPos);
 	}
-	mFinalTexture.display();
-	Profiler::StopRecord(PROFILE_TEMPORARY_2);
+
+	mFinalTexture.display(); // Swap framebuffer
+	// Clear all references ready to be rebuilt for the next frame
+	// We do this because the lighting engine only handles on screen ents, this is rebuilt everyframe
 	ShadowCasters.ClearDontDelete();
 	mLights.ClearDontDelete();
+	Profiler::StopRecord(PROFILE_TEMPORARY_1);
 }
 
 
