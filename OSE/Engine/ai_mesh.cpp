@@ -24,7 +24,7 @@ namespace ai {
 	void NavMeshTile::AddLink(const NavMeshTile tile)
 	{
 		mLinks.push_back(tile);
-		//std::cout << "LINKING TILE \n";
+		std::cout << "LINKING TILE \n";
 	};
 	
 	Vector2 NavMeshTile::GetCenter()
@@ -50,7 +50,7 @@ namespace ai {
 	 */
 	NavMesh::NavMesh()
 	{
-		int size = 3;
+		int size = 2;
 		int tile_size = 100;
 		
 		for (int x = 0; x < size; x++)
@@ -89,7 +89,7 @@ namespace ai {
 		
 		// Link the tiles.
 		MeshTileList::iterator it;
-		for (it = mTiles.begin(); it != mTiles.end(); it++)
+		for (it = referenceTiles.begin(); it != referenceTiles.end(); it++)
 		{
 			NavMeshTile t = *it;
 			
