@@ -79,7 +79,7 @@ namespace ai {
 		MeshTileList referenceTiles;
 		
 		// Get all tiles that shares a vertex with the tile.
-		std::vector<Vector2> vertices = tile.GetVertices();
+		std::vector<Vector2> vertices = tile.mVertices;
 		for (int i = 0; i < vertices.size(); ++i)
 		{
 			MeshTileList tmp = GetTilesWithVertex(vertices[i]);
@@ -105,7 +105,7 @@ namespace ai {
 		for (it = mTiles.begin(); it != mTiles.end(); it++)
 		{
 			NavMeshTile *tile = *it;
-			std::vector<Vector2> vertices = tile->GetVertices();
+			std::vector<Vector2> vertices = tile->mVertices;
 			
 			int vertexCount = vertices.size();
 			
@@ -153,7 +153,7 @@ namespace ai {
 		for (it = mTiles.begin(); it != mTiles.end(); it++)
 		{
 			NavMeshTile *tile = *it;
-			std::vector<Vector2> vertices = tile->GetVertices();
+			std::vector<Vector2> vertices = tile->mVertices;
 			for (int i = 0; i < vertices.size(); i++)
 			{
 				if (vert == vertices[i])
