@@ -155,12 +155,12 @@ void Lighting::DrawShadows(LightInfo *light, sf::RenderTexture* tex)
 		vert.texCoords = sf::Vector2f(0,0);
 		shadowhull.append(vert);
 
-		vertex_pos = MinDotPos + MinDotDir * (512.f / (1-std::abs(MinDot)));
+		vertex_pos = MinDotPos + MinDotDir * (512.f / (1-ig::Abs(MinDot)));
 		vert.position = ConvertCoords(vertex_pos);
 		vert.texCoords = sf::Vector2f(0,0);
 		shadowhull.append(vert);
 
-		vertex_pos = MaxDotPos + MaxDotDir * (512.f / (1-std::abs(MaxDot)));
+		vertex_pos = MaxDotPos + MaxDotDir * (512.f / (1-ig::Abs(MaxDot)));
 		vert.position = ConvertCoords(vertex_pos);
 		vert.texCoords = sf::Vector2f(0,0);
 		shadowhull.append(vert);
@@ -179,14 +179,17 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 {
 	Profiler::StartRecord(PROFILE_TEMPORARY_1);
 
+	float speed = 1 / (3 * 60);
+	float progress = std::sin(gGlobals.CurTime * speed * 3.14159265f * 2.f);
+
 	float day_light = 1.f;
 	Colour DayColour = Colour(238,221,130);
 	float night_light = 0.f;
 	Colour NightColour = Colour(15,15,125);
-	float speed = 0.1f;
+
 	float Amplitude = day_light - night_light; // Difference
 	float offset = (day_light + night_light) / 2.f; // Average 
-	float day_night = (Amplitude * 0.5f *std::sin(gGlobals.CurTime * speed * 6.28)) + offset;
+	float day_night = (Amplitude * 0.5f * progress) + offset;
 	//std::cout << day_night << "\n";
 
 	Colour LerpColour;

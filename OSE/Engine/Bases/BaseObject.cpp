@@ -91,10 +91,10 @@ Vector2_Rect BaseObject::GetAABB()
 
 		Vector2 UpperBound, LowerBound;
 
-		LowerBound.x = std::min(TL.x, std::min(TR.x, std::min(BL.x, BR.x)));
-		LowerBound.y = std::min(TL.y, std::min(TR.y, std::min(BL.y, BR.y)));
-		UpperBound.x = std::max(TL.x, std::max(TR.x, std::max(BL.x, BR.x)));
-		UpperBound.y = std::max(TL.y, std::max(TR.y, std::max(BL.y, BR.y)));
+		LowerBound.x = ig::Min(TL.x, ig::Min(TR.x, ig::Min(BL.x, BR.x)));
+		LowerBound.y = ig::Min(TL.y, ig::Min(TR.y, ig::Min(BL.y, BR.y)));
+		UpperBound.x = ig::Max(TL.x, ig::Max(TR.x, ig::Max(BL.x, BR.x)));
+		UpperBound.y = ig::Max(TL.y, ig::Max(TR.y, ig::Max(BL.y, BR.y)));
 
 		mAABB = Vector2_Rect(LowerBound,UpperBound-LowerBound);
 		

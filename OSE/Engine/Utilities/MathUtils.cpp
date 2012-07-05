@@ -8,9 +8,9 @@
 
 namespace ig
 {
-	
 	MTRand_closed Rand;
 	
+	//Seed the random generator to make sure its different every time
 	void SeedRandom()
 	{
 		Rand.seed(long(time(0)));
@@ -25,7 +25,7 @@ namespace ig
 	int RandomInt(int min, int max)
 	{
 		float frac = (float)Rand();
-		return (int)std::floor(((frac * (max-min)) + min) + 0.5f);
+		return (int)ig::Floor(((frac * (max-min)) + min) + 0.5f);
 	}
 	
 	float RadToDeg(float Rad)
@@ -40,7 +40,7 @@ namespace ig
 	
 	float NormalizeAngle(float Deg)
 	{
-		return Deg - (360 * (std::floor((Deg + 180)/360)));
+		return Deg - (360 * (ig::Floor((Deg + 180)/360)));
 	}
 	
 	float Approach(float Current, float Target, float Inc)
@@ -49,11 +49,11 @@ namespace ig
 		
 		if (Current < Target)
 		{
-			return std::min(Target, Current + Inc);
+			return ig::Min(Target, Current + Inc);
 		}
 		if (Current > Target)
 		{
-			return std::max(Target, Current - Inc);
+			return ig::Max(Target, Current - Inc);
 		}
 		return Current;
 	}
@@ -67,16 +67,14 @@ namespace ig
 		
 		return ang+(std::sin(DegToRad(targ-ang))*speed);
 	}
-	
+
 	float Limit(float var, float min, float max)
 	{
-		if (var < min)
-			var = min;
-		if (var > max)
-			var = max;
+		var = (var < min) ? min : var;
+		var = (var > max) ? max : var;
 		return var;
 	}
-	
+
 	Vector2 GameToSFML(Vector2 Pos)
 	{
 		Pos.y *= -1;
@@ -105,8 +103,8 @@ namespace ig
 	Vector2 NearestGrid(Vector2 pos, int grid_size_x , int grid_size_y)
 	{
 		Vector2 result;
-		result.x = std::floor((pos.x / grid_size_x) + 0.5f);
-		result.y = std::floor((pos.y / grid_size_y) + 0.5f);
+		result.x = ig::Floor((pos.x / grid_size_x) + 0.5f);
+		result.y = ig::Floor((pos.y / grid_size_y) + 0.5f);
 		return result;
 	}
 }
