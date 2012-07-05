@@ -20,6 +20,7 @@ public:
 	Vector2(const b2Vec2& vec);
 	~Vector2();
 
+	bool operator == (const Vector2 &param);
 	Vector2& operator = (const Vector2 &param);
 	Vector2& operator = (const sf::Vector2f &param);
 	Vector2 operator + (Vector2);

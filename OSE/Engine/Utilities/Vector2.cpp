@@ -72,6 +72,16 @@ Vector2& Vector2::operator= (const Vector2 &param)
 	return *this;
 }
 
+bool Vector2::operator== (const Vector2 &param)
+{
+	float epsilon = 0.1f;
+	if (ig::Abs(param.x - x) < epsilon && ig::Abs(param.y - y) < epsilon)
+	{
+		return true;
+	}
+	return false;
+}
+
 Vector2 Vector2::operator* (float param)
 {
 	return Vector2(x * param, y * param);
