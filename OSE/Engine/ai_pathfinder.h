@@ -3,13 +3,13 @@
 namespace ai {
 	
 	/**
-	 * Pathfinder
+	 * Pathfinder using the A* algorithm.
 	 *
 	 * @ingroup engine
 	 */
 	class Pathfinder
 	{
-	
+		
 	};
 
 }
