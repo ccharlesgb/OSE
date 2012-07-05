@@ -57,7 +57,7 @@ namespace ai {
 			Shape.setFillColor(sf::Color::Transparent);
 			for (int32 i = 0; i < vertexCount; ++i) 
 			{
-				Shape.setPoint(i, vertices[i].SF());
+				Shape.setPoint(i, ig::GameToSFML(vertices[i]).SF());
 			}
 			gGlobals.RenderWindow->draw(Shape);
 			
