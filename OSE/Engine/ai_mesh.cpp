@@ -21,10 +21,9 @@ namespace ai {
 		mVertices.push_back(vert);
 	};
 	
-	void NavMeshTile::AddLink(const NavMeshTile tile)
+	void NavMeshTile::AddLink(NavMeshTile *tile)
 	{
 		mLinks.push_back(tile);
-		std::cout << "LINKING TILE \n";
 	};
 	
 	Vector2 NavMeshTile::GetCenter()
@@ -91,13 +90,13 @@ namespace ai {
 		MeshTileList::iterator it;
 		for (it = referenceTiles.begin(); it != referenceTiles.end(); it++)
 		{
-			NavMeshTile t = *it;
+			NavMeshTile *t = *it;
 			
-			t.AddLink(tile);
+			t->AddLink(&tile);
 			tile.AddLink(t);
 		}
 		
-		mTiles.push_back(tile);
+		mTiles.push_back(&tile);
 	}
 	
 	void NavMesh::DrawDebug()
@@ -105,8 +104,8 @@ namespace ai {
 		MeshTileList::iterator it;
 		for (it = mTiles.begin(); it != mTiles.end(); it++)
 		{
-			NavMeshTile tile = *it;
-			std::vector<Vector2> vertices = tile.GetVertices();
+			NavMeshTile *tile = *it;
+			std::vector<Vector2> vertices = tile->GetVertices();
 			
 			int vertexCount = vertices.size();
 			
@@ -121,15 +120,15 @@ namespace ai {
 			gGlobals.RenderWindow->draw(Shape);
 			
 			MeshTileList::iterator links_it;
-			MeshTileList links = tile.GetLinks();
+			MeshTileList links = tile->GetLinks();
 			
 			for (links_it = links.begin(); links_it != links.end(); links_it++)
 			{
-				NavMeshTile t = *links_it;
+				NavMeshTile *t = *links_it;
 				
 				sf::VertexArray lines(sf::LinesStrip, 2);
-				lines[0].position = ig::GameToSFML(tile.GetCenter()).SF();
-				lines[1].position = ig::GameToSFML(t.GetCenter()).SF();
+				lines[0].position = ig::GameToSFML(tile->GetCenter()).SF();
+				lines[1].position = ig::GameToSFML(t->GetCenter()).SF();
 				
 				gGlobals.RenderWindow->draw(lines);
 			}
@@ -153,9 +152,9 @@ namespace ai {
 		MeshTileList::iterator it;
 		for (it = mTiles.begin(); it != mTiles.end(); it++)
 		{
-			NavMeshTile tile = *it;
-			std::vector<Vector2> vertices = tile.GetVertices();
-			for (int i = 0; i < vertices.size(); ++i)
+			NavMeshTile *tile = *it;
+			std::vector<Vector2> vertices = tile->GetVertices();
+			for (int i = 0; i < vertices.size(); i++)
 			{
 				if (vert == vertices[i])
 				{

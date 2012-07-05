@@ -8,7 +8,7 @@ namespace ai {
 	
 	class NavMeshTile;
 	
-	typedef std::vector<NavMeshTile> MeshTileList;
+	typedef std::vector<NavMeshTile*> MeshTileList;
 	
 	/**
 	 * Mesh tile structure.
@@ -43,7 +43,7 @@ namespace ai {
 		 *
 		 * @param NavMeshTile Tile to link to.
 		 */
-		void AddLink(const NavMeshTile tile);
+		void AddLink(NavMeshTile *tile);
 		
 		MeshTileList GetLinks() { return mLinks; };
 		
