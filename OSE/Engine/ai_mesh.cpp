@@ -23,7 +23,10 @@ namespace ai {
 	
 	void NavMeshTile::AddLink(NavMeshTile *tile)
 	{
-		mLinks.push_back(tile);
+		if (std::find(mLinks.begin(), mLinks.end(), tile) == mLinks.end())
+		{
+			mLinks.push_back(tile);
+		}
 	};
 	
 	Vector2 NavMeshTile::GetCenter()
@@ -49,8 +52,8 @@ namespace ai {
 	 */
 	NavMesh::NavMesh()
 	{
-		int size = 2;
-		int tile_size = 100;
+		int size = 10;
+		int tile_size = 200;
 		
 		for (int x = 0; x < size; x++)
 		{
@@ -59,12 +62,14 @@ namespace ai {
 				int x_pos = x * tile_size;
 				int y_pos = y * tile_size;
 				
-				ai::NavMeshTile tile = *new ai::NavMeshTile();
-				tile.AddVerticies(Vector2(x_pos,       y_pos));
-				tile.AddVerticies(Vector2(x_pos,       y_pos + 100));
-				tile.AddVerticies(Vector2(x_pos + 100, y_pos + 100));
-				tile.AddVerticies(Vector2(x_pos + 100, y_pos));
-				this->AddTile(tile);
+				if (rand()%11 < 6) {
+					ai::NavMeshTile *tile = new ai::NavMeshTile();
+					tile->AddVerticies(Vector2(x_pos,       y_pos));
+					tile->AddVerticies(Vector2(x_pos,       y_pos + tile_size));
+					tile->AddVerticies(Vector2(x_pos + tile_size, y_pos + tile_size));
+					tile->AddVerticies(Vector2(x_pos + tile_size, y_pos));
+					this->AddTile(tile);
+				}
 			}
 		}
 	};
@@ -74,12 +79,12 @@ namespace ai {
 		
 	};
 	
-	void NavMesh::AddTile(NavMeshTile tile)
+	void NavMesh::AddTile(NavMeshTile *tile)
 	{
 		MeshTileList referenceTiles;
 		
 		// Get all tiles that shares a vertex with the tile.
-		std::vector<Vector2> vertices = tile.mVertices;
+		std::vector<Vector2> vertices = tile->mVertices;
 		for (int i = 0; i < vertices.size(); ++i)
 		{
 			MeshTileList tmp = GetTilesWithVertex(vertices[i]);
@@ -92,11 +97,11 @@ namespace ai {
 		{
 			NavMeshTile *t = *it;
 			
-			t->AddLink(&tile);
-			tile.AddLink(t);
+			t->AddLink(tile);
+			tile->AddLink(t);
 		}
 		
-		mTiles.push_back(&tile);
+		mTiles.push_back(tile);
 	}
 	
 	void NavMesh::DrawDebug()
@@ -105,12 +110,15 @@ namespace ai {
 		for (it = mTiles.begin(); it != mTiles.end(); it++)
 		{
 			NavMeshTile *tile = *it;
+			
+			
+			// Draw vertices.
 			std::vector<Vector2> vertices = tile->mVertices;
 			
 			int vertexCount = vertices.size();
 			
 			sf::ConvexShape Shape(vertexCount); 
-			Shape.setOutlineThickness(1.f); 
+			Shape.setOutlineThickness(2.f); 
 			Shape.setOutlineColor(sf::Color::Cyan);
 			Shape.setFillColor(sf::Color::Transparent);
 			for (int32 i = 0; i < vertexCount; ++i) 
@@ -119,6 +127,8 @@ namespace ai {
 			}
 			gGlobals.RenderWindow->draw(Shape);
 			
+			
+			// Draw links
 			MeshTileList::iterator links_it;
 			MeshTileList links = tile->GetLinks();
 			
@@ -132,13 +142,6 @@ namespace ai {
 				
 				gGlobals.RenderWindow->draw(lines);
 			}
-			/*
-			sf::VertexArray lines(sf::LinesStrip, 2);
-			lines[0].position = pos1.SF();
-			lines[1].position = pos2.SF();
-			pRender->draw(lines);
-			*/
-			// TODO: Draw Relations between Tiles.
 		}
 	}
 	

@@ -71,7 +71,7 @@ namespace ai {
 		 *
 		 * @param NavMeshTile Tile to add
 		 */
-		void AddTile(NavMeshTile tile);
+		void AddTile(NavMeshTile *tile);
 		
 		/**
 		 * Draw the mesh, useful for debugging.
