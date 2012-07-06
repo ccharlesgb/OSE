@@ -9,7 +9,7 @@
 #define AMBIENT_LIGHT 100.f
 #define MAX_LIGHTS 8 //If this is high LOW FRAMES :<
 #define LIGHT_TEX_SCALE 4.f //The higher this is the lower resolution the lighting images are
-#define FINAL_TEX_SCALE 1.f //DOESNT WORK YET
+#define FINAL_TEX_SCALE 2.f //DOESNT WORK YET
 
 Lighting::Lighting(void)
 {
@@ -24,28 +24,10 @@ Lighting::Lighting(void)
 	mFinalSprite.setTexture(mFinalTexture.getTexture());
 	mFinalSprite.setScale(FINAL_TEX_SCALE,FINAL_TEX_SCALE);
 	mFinalSprite.setOrigin(gGlobals.GameWidth/2, gGlobals.GameHeight/2);
-	mFinalSprite.setPosition(Vector2(gGlobals.GameWidth/2, gGlobals.GameHeight/2).SF());
+	mFinalSprite.setPosition(Vector2(gGlobals.GameWidth, gGlobals.GameHeight).SF());
 
 	mBlurShader.loadFromFile("shaders/blur.frag", sf::Shader::Fragment);
 	mLightShader.loadFromFile("shaders/light_falloff.frag", sf::Shader::Fragment);
-
-	//Create light textures for lights to draw their shit on
-	//These will be merged into one and then displayed by the renderer
-	sf::RenderTexture* rend_tex;
-	sf::Sprite* light_sprite;
-	for (int i = 0; i < MAX_LIGHTS; i++)
-	{
-		rend_tex = new sf::RenderTexture();
-		rend_tex->create(gGlobals.GameWidth / LIGHT_TEX_SCALE, gGlobals.GameHeight / LIGHT_TEX_SCALE, false);
-		rend_tex->clear(sf::Color::Black);
-		rend_tex->setSmooth(true);
-		mLightTextures.push_back(rend_tex);
-
-		light_sprite = new sf::Sprite();
-		light_sprite->setTexture(rend_tex->getTexture());
-		light_sprite->setScale(LIGHT_TEX_SCALE,LIGHT_TEX_SCALE);
-		mLightSprites.push_back(light_sprite);
-	}
 }
 
 Lighting::~Lighting(void)
@@ -82,23 +64,27 @@ void Lighting::OnEntityRemoved(BaseObject* ent)
 	}
 }
 
-sf::Vector2f ConvertCoords(Vector2 coord)
-{
-	coord.y *= -1;
-	coord = coord + Vector2(gGlobals.GameWidth/2, gGlobals.GameHeight/2);
-	return coord.SF();
-}
-
 void Lighting::DrawLight(LightInfo *light, sf::RenderTexture* tex)
 {
 	//Draw Lights
 	sf::RenderStates light_state;
 	light_state.shader = &mLightShader;
 	light_state.blendMode = sf::BlendAdd;
-	light->GetSprite()->setColor(light->GetColour());
-	light->GetSprite()->setPosition(ConvertCoords(light->GetPosition()));
-	light->GetSprite()->setRotation(-light->GetAngle());
-	tex->draw(*light->GetSprite(),light_state);
+
+	Vector2 coord = light->GetPosition();
+	coord = ig::GameToSFML(coord);
+	light->mRealTimeSprite.setColor(light->GetColour());
+	light->mRealTimeSprite.setPosition(coord.SF());
+	light->mLightSprite.setRotation(-light->GetAngle());
+	light->mRealTimeTexture.draw(*light->GetSprite(),light_state);
+}
+
+sf::Vector2f ConvertCoords(Vector2 pos, Vector2 spr_pos)
+{
+	pos = ig::GameToSFML(pos);
+	pos = pos - spr_pos;
+	pos = pos + Vector2(512,512);
+	return pos.SF();
 }
 
 void Lighting::DrawShadows(LightInfo *light, sf::RenderTexture* tex)
@@ -152,33 +138,36 @@ void Lighting::DrawShadows(LightInfo *light, sf::RenderTexture* tex)
 		shadowhull.setPrimitiveType(sf::TrianglesFan);
 		sf::Vertex vert;
 		Vector2 vertex_pos = MinDotPos;
-		vert.position = ConvertCoords(vertex_pos);
+		vert.position = ConvertCoords(vertex_pos, light->mRealTimeSprite.getPosition());
 		vert.texCoords = sf::Vector2f(0,0);
 		shadowhull.append(vert);
 
 		vertex_pos = MinDotPos + MinDotDir * (512.f / (1-ig::Abs(MinDot)));
-		vert.position = ConvertCoords(vertex_pos);
+		vert.position = ConvertCoords(vertex_pos, light->mRealTimeSprite.getPosition());
 		vert.texCoords = sf::Vector2f(0,0);
 		shadowhull.append(vert);
 
 		vertex_pos = MaxDotPos + MaxDotDir * (512.f / (1-ig::Abs(MaxDot)));
-		vert.position = ConvertCoords(vertex_pos);
+		vert.position = ConvertCoords(vertex_pos, light->mRealTimeSprite.getPosition());
 		vert.texCoords = sf::Vector2f(0,0);
 		shadowhull.append(vert);
 
 		vertex_pos = MaxDotPos;
-		vert.position = ConvertCoords(vertex_pos);
+		vert.position = ConvertCoords(vertex_pos, light->mRealTimeSprite.getPosition());
 		vert.texCoords = sf::Vector2f(0,0);
 		shadowhull.append(vert);
 
-		tex->draw(shadowhull,state);
+		light->mRealTimeTexture.draw(shadowhull,state);
 		i = ShadowCasters.NextEnt(i);
 	}
 }
 
 void Lighting::UpdateLightingTexture(sf::View &view)
 {
+	mView = &view;
 	Profiler::StartRecord(PROFILE_TEMPORARY_1);
+
+	mFinalTexture.setView(view);
 
 	float speed = 1.f / (1.f * 60.f);
 	float progress = std::sin(gGlobals.CurTime * speed * 3.14159265f * 2.f);
@@ -198,30 +187,22 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 
 	// This is pretty messy to use 3 iterators...
 	EntityList<BaseObject*>::iter CurPos = mLights.FirstEnt();
-	std::vector<sf::RenderTexture*>::iterator CurTexPos = mLightTextures.begin();
-	std::vector<sf::Sprite*>::iterator CurSpritePos = mLightSprites.begin();
 
 	sf::RenderStates blend_add;
 	blend_add.blendMode = sf::BlendAdd; // Additive so one lights shadows dont overwrite another lights luminosity
 
-	while (CurPos != mLights.End() && CurTexPos != mLightTextures.end())
+	while (CurPos != mLights.End())
 	{
 		effect_light* CurLight = dynamic_cast<effect_light*>(*CurPos);
-		(*CurTexPos)->setView(view);
-		DrawLight(CurLight->GetLight(), *CurTexPos);
-		DrawShadows(CurLight->GetLight(), *CurTexPos);
+		DrawLight(CurLight->GetLight(), NULL);
+		DrawShadows(CurLight->GetLight(), NULL);
 
-		(*CurTexPos)->display(); // Swap the frame buffers to make this light display properly
+		CurLight->GetLight()->mRealTimeTexture.display(); // Swap the frame buffers to make this light display properly
 
 		// Draw the texture to the final lightmap
-		sf::Sprite* mDrawingSprite = *CurSpritePos;
-
-		mFinalTexture.draw(*mDrawingSprite,blend_add);
+		mFinalTexture.draw(CurLight->GetLight()->mRealTimeSprite, blend_add);
 		
-		(*CurTexPos)->clear(sf::Color::Black);
-
-		CurSpritePos++;
-		CurTexPos++;
+		CurLight->GetLight()->mRealTimeTexture.clear(sf::Color::Black);
 		CurPos = mLights.NextEnt(CurPos);
 	}
 

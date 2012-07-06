@@ -4,17 +4,22 @@
 LightInfo::LightInfo(void)
 {
 	mColour = sf::Color(200,200,200);
-	mRadius = 512.f;
-	mSpreadAngle = 90.f; //Default to full circle;
+	mRadius = 128.f;
+	mSpreadAngle = 360.f; //Default to full circle;
 }
 
 LightInfo::~LightInfo(void)
 {
 }
 
+//Call when the SHAPE of the light sprite changes
 void LightInfo::UpdateLightSprite()
 {
-	std::cout << "Rendering light sprite texture\n";
+	std::cout << "Rendering light ssprite texture\n";
+	mRealTimeTexture.create(mRadius * 2, mRadius * 2, false);
+	mRealTimeSprite.setTexture(mRealTimeTexture.getTexture());
+	mRealTimeSprite.setOrigin(mRadius, mRadius);
+
 	sf::Shape* mLightShape;
 	if (ig::Abs(mSpreadAngle - 360.f) < 0.5f) //We are omnidirectional
 	{
@@ -38,14 +43,15 @@ void LightInfo::UpdateLightSprite()
 		}
 		mLightShape = shape;
 	}
-	mLightShape->setFillColor(mColour);
+	mLightShape->setFillColor(sf::Color::White);
 	mLightShape->setOutlineThickness(0.f);
 	rendertex.create(mRadius * 2,mRadius * 2,false);
-	rendertex.clear(sf::Color(0,0,0,0));
+	rendertex.clear(sf::Color::Black);
 	rendertex.draw(*mLightShape);
 	rendertex.display();
 	mLightSprite.setTexture(rendertex.getTexture());
 	mLightSprite.setOrigin(mRadius, mRadius);
+	mLightSprite.setPosition(mRadius,mRadius);
 }
 
 

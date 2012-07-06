@@ -9,14 +9,17 @@ class LightInfo
 private:
 	Vector2 mPos;
 	float mAngle;
-	sf::Sprite mLightSprite;
-	sf::RenderTexture rendertex;
+	sf::RenderTexture rendertex; //render texture to draw the light shape onto.
 	sf::Color mColour;
 	float mRadius;
 	float mSpreadAngle; //How much of a circle are we?
 public:
 	LightInfo(void);
 	~LightInfo(void);
+
+	sf::Sprite mLightSprite;
+	sf::RenderTexture mRealTimeTexture;
+	sf::Sprite mRealTimeSprite;
 
 	void UpdateLightSprite();
 
@@ -28,7 +31,7 @@ public:
 
 	sf::Sprite* GetSprite() {return &mLightSprite;};
 
-	void SetColour(Colour col) {mColour = col.SF(); UpdateLightSprite();};
+	void SetColour(Colour col) {mColour = col.SF();};
 	sf::Color GetColour() {return mColour;};
 
 	void SetSpreadAngle(float ang) {mSpreadAngle = ang; UpdateLightSprite();};
