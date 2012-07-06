@@ -18,9 +18,10 @@ namespace ai {
 	class NavMeshTile
 	{
 	private:
-		std::vector<Vector2> mVertices;     ///< Vertices in tile.
 		MeshTileList mLinks; ///< Adjacent tiles.
 	public:
+		std::vector<Vector2> mVertices;     ///< Vertices in tile.
+		
 		NavMeshTile();
 		~NavMeshTile();
 		
@@ -30,13 +31,6 @@ namespace ai {
 		 * @param Vector2 Verticle to add.
 		 */
 		void AddVerticies(const Vector2 vert);
-		
-		/**
-		 * Get all the verticies for the tile.
-		 *
-		 * @return std::vector<Vector2> Vector of vertices.
-		 */
-		std::vector<Vector2> GetVertices() { return mVertices; };
 		
 		/**
 		 * Add a link.
