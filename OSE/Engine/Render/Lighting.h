@@ -23,9 +23,7 @@ private:
 
 	EntityList<BaseObject*> mLights; //effect_lights
 
-	std::vector<sf::RenderTexture*> mLightTextures; //Textures for each light in the screen
-	std::vector<sf::Sprite*> mLightSprites; //Sprites for displaying mLightTextures
-	float light_tex_size;
+	sf::View* mView;
 public:
 	sf::Shader mBlurShader;
 	sf::RenderWindow *mRender;

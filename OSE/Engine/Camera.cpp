@@ -18,7 +18,7 @@ void sCamera::UpdateView()
 {
 	if (IsFollowing())
 	{
-		mTargetPos = mTarget->GetPos() + mTarget->GetForward() * 200.f;
+		mTargetPos = mTarget->GetPos();
 	}
 	if (mZoomDamping == 0)
 	{

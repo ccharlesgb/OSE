@@ -3,6 +3,7 @@
 #include "../Engine/GameGlobals.h"
 #include "../Engine/PhysicsQueries.h"
 #include "../Engine/Render/Sprite.h"
+#include "effect_light.h"
 
 #define USE_RANGE 50.f
 #define DEFAULT_WALK_SPEED 50.f
@@ -28,9 +29,10 @@ void Player::Spawn()
 	SetOrigin(Vector2(0,30));
 	PhysicsHullFromModel();
 
-	mLight = CreateEntity("effect_light");
+	mLight = dynamic_cast<effect_light*>(CreateEntity("effect_light"));
 	mLight->SetPos(GetPos() + GetForward() * 30.f);
 	mLight->SetParent(this);
+	mLight->SetSpreadAngle(80.f);
 	
 	PlayAnimation("idle", false);
 }

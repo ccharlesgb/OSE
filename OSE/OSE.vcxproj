@@ -41,7 +41,7 @@
     <ClCompile Include="Engine\Utilities\Randomiser.cpp" />
     <ClCompile Include="Engine\Utilities\VariantMap.cpp" />
     <ClCompile Include="Engine\Utilities\Vector2.cpp" />
-    <ClCompile Include="Engine\Resource.cpp" />
+    <ClCompile Include="Engine\Render\Resource.cpp" />
     <ClCompile Include="Engine\Sound.cpp" />
     <ClCompile Include="Engine\StateManager.cpp" />
     <ClCompile Include="Game\BaseHuman.cpp" />

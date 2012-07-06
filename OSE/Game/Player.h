@@ -7,6 +7,8 @@
 
 #define USE_DELAY 0.5f
 
+class effect_light;
+
 class Player : public BaseHuman
 {
 private:
@@ -14,7 +16,7 @@ private:
 	weapon_pistol *mActiveWeapon;
 	float mNextUse;
 
-	BaseObject* mLight;
+	effect_light* mLight;
 
 	float mLastTakeDamage;
 public:
