@@ -205,9 +205,9 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 		CurLight->GetLight()->mRealTimeTexture.display(); // Swap the frame buffers to make this light display properly
 
 		// Draw the texture to the final lightmap
-		//mFinalTexture.draw(CurLight->GetLight()->mRealTimeSprite, blend_add);
+		mFinalTexture.draw(CurLight->GetLight()->mRealTimeSprite, blend_add);
 		
-		//CurLight->GetLight()->mRealTimeTexture.clear(sf::Color::Black);
+		CurLight->GetLight()->mRealTimeTexture.clear(sf::Color::Black);
 		CurPos = mLights.NextEnt(CurPos);
 	}
 
