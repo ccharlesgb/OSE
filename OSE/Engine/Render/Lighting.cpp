@@ -81,9 +81,10 @@ void Lighting::DrawLight(LightInfo *light, sf::RenderTexture* tex)
 
 sf::Vector2f ConvertCoords(Vector2 pos, Vector2 spr_pos)
 {
-	pos = ig::GameToSFML(pos);
-	pos = pos - spr_pos;
-	pos = pos + Vector2(512,512);
+	pos.y *= -1.f;
+	pos = pos * 0.5f;
+	pos = pos - (spr_pos * 0.5f);
+	pos = pos + Vector2(615,482); // THIS IS JUST AWFUL DONT DO THIS EVER OH DEAR
 	return pos.SF();
 }
 
@@ -167,13 +168,17 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 	mView = &view;
 	Profiler::StartRecord(PROFILE_TEMPORARY_1);
 
+	if (ig::RandomInt(0,100) == 0) // THIS IS UNFORGIVABLE
+		std::cout << "LIGHT COUNT: " << mLights.GetSize() << "\n";
+
 	mFinalTexture.setView(view);
 
-	float speed = 1.f / (1.f * 60.f);
-	float progress = std::sin(gGlobals.CurTime * speed * 3.14159265f * 2.f);
+	float speed = 1.f / (3.f * 60.f);
+	float progress = std::cos(gGlobals.CurTime * speed * 3.14159265f * 2.f);
 
-	Colour DayColour = Colour(238,221,130);
-	Colour NightColour = Colour(15,15,125);
+	Colour DayColour = Colour(245,235,190);
+	Colour NightColour = Colour(35,35,125);
+	DayColour = NightColour;
 
 	float day_night = (0.5f * progress) + 0.5f;
 	//std::cout << day_night << "\n";
@@ -200,9 +205,9 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 		CurLight->GetLight()->mRealTimeTexture.display(); // Swap the frame buffers to make this light display properly
 
 		// Draw the texture to the final lightmap
-		mFinalTexture.draw(CurLight->GetLight()->mRealTimeSprite, blend_add);
+		//mFinalTexture.draw(CurLight->GetLight()->mRealTimeSprite, blend_add);
 		
-		CurLight->GetLight()->mRealTimeTexture.clear(sf::Color::Black);
+		//CurLight->GetLight()->mRealTimeTexture.clear(sf::Color::Black);
 		CurPos = mLights.NextEnt(CurPos);
 	}
 

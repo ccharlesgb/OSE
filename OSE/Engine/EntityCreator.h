@@ -16,7 +16,7 @@ template <class T>
 class EntityFactory : public BaseRenderableFactory
 {
 public:
-	BaseObject* Create() {return new T;}
+	T* Create() {return new T;}
 };
 
 #define ENTITYCREATOR EntityCreator::Instance()

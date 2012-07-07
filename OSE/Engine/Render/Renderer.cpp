@@ -79,8 +79,6 @@ void Renderer::OnEntityAdded(BaseObject* ent)
 	{
 		AddEntity(ent);
 	}
-	//BaseRender* render = ent->GetRenderer();
-	//AddRenderer(render);
 }
 
 void Renderer::AddEntity(BaseObject* Ent)
@@ -187,7 +185,7 @@ void Renderer::RenderLighting()
 	mLighting->UpdateLightingTexture(mView);
 	sf::RenderStates state;
 	state.blendMode = sf::BlendMultiply;
-	mLighting->mBlurShader.setParameter("blur_radius", 0.01f);
+	mLighting->mBlurShader.setParameter("blur_radius", 0.008f);
 	state.shader = &mLighting->mBlurShader;
 	mRender->setView(mHUDView);
 	mRender->draw(*mLighting->GetLightingSprite(), state);
@@ -213,18 +211,11 @@ void Renderer::Draw(IGameState *State)
 
 	Profiler::StartRecord(PROFILE_ENTITY_DRAW);
 
-	bool DrewLights = false;
 	EntityList<BaseObject*>::iter CurEnt = OnScreenEnts.FirstEnt();
 	while(CurEnt != OnScreenEnts.End())
 	{
 		if (!(*CurEnt)->GetNoDraw())
 		{
-			//OH GOD TREMENDOUS HACK OH DEAR OH DEAR
-			if ((*CurEnt)->GetDrawOrder() == RENDERGROUP_ENTITIES && !DrewLights)
-			{
-				//RenderLighting();
-				DrewLights = true;
-			}
 			if ((*CurEnt)->GetDrawOrder() == RENDERGROUP_TOP)
 			{
 				float dist_squared = ((*CurEnt)->GetPos() - sCamera::GetCentre()).LengthSquared();

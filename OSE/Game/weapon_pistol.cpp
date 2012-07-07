@@ -31,6 +31,7 @@ weapon_pistol::~weapon_pistol(void)
 void weapon_pistol::Spawn()
 {
 	SetModel("decals/muzzle_flash", 0.2f);
+	SetOrigin(Vector2(0,55));
 }
 
 void weapon_pistol::Reload()

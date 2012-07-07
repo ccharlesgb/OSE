@@ -113,8 +113,8 @@ NOTES	: Adds an entity to the list
 template<class T>
 void EntityList<T>::Append(VType ent)
 {
-	mList.push_back(ent);
 	typename std::vector<IEntityListener<T>*>::iterator i;
+	mList.push_back(ent);
 	i = mListeners.begin();
 	while (i != mListeners.end())
 	{

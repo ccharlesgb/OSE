@@ -7,6 +7,7 @@ class effect_light : public BaseObject
 {
 private:
 	LightInfo mLightInfo;
+	bool mHasShadows;
 public:
 	effect_light(void);
 	~effect_light(void);
@@ -18,6 +19,10 @@ public:
 	void SetSpreadAngle(float ang) {mLightInfo.SetSpreadAngle(ang);};
 	float GetSpreaAngle() {return mLightInfo.GetSpreadAngle();};
 	void SetLightColour(Colour col) {mLightInfo.SetColour(col);};
+	void EnableShadows(bool enabled) {mHasShadows = enabled;};
+	bool IsShadowsEnabled() {return mHasShadows;};
+	
+
 	Colour GetLightColour()
 	{
 		Colour col;
