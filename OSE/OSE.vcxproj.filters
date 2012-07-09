@@ -58,7 +58,6 @@
     <ClCompile Include="Engine\ai_mesh.cpp" />
     <ClCompile Include="Engine\ai_pathfinder.cpp" />
     <ClCompile Include="Engine\Resource.cpp" />
-    <ClCompile Include="Engine\Render\BackgroundRender.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Bases\BaseObject.h" />
@@ -115,7 +114,6 @@
     <ClInclude Include="Game\effect_light.h" />
     <ClInclude Include="Engine\ai_pathfinder.h" />
     <ClInclude Include="Engine\ai_mesh.h" />
-    <ClInclude Include="Engine\Render\BackgroundRender.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Utilities\Matrix3.inl" />
