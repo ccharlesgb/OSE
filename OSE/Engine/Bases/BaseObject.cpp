@@ -164,6 +164,7 @@ void BaseObject::SetModel(const char* path, float scale)
 
 void BaseObject::PlayAnimation(const char* name, bool loop)
 {
+	std::cout << "PLAYING ANIM: " << name << "\n";
 	Animation* anim = NULL;
 	for (int i=0; i < mModelInfo->mAnimationCount; i++)
 	{
@@ -190,6 +191,16 @@ void BaseObject::AdvanceAnimation()
 {
 	if (!mIsPlaying) //No animation to advance
 		return;
+	//Update the sprite
+	sf::IntRect rect;
+	int mFrameHeight = mCurAnimation->mFrameSize;
+	rect.top = mCurAnimation->mRow * mFrameHeight;
+	rect.left = mCurAnimation->mSequence[mCurFrameID] * mFrameHeight;
+	rect.width = mFrameHeight;
+	rect.height = mFrameHeight;
+	mSprite->SetTextureRect(rect);
+
+	//Advance the frame
 	mCurFrameID++;
 	if (mCurFrameID >= mCurAnimation->mLength)
 	{
@@ -205,14 +216,6 @@ void BaseObject::AdvanceAnimation()
 			return;
 		}
 	}
-	//Update the sprite
-	sf::IntRect rect;
-	int mFrameHeight = mCurAnimation->mFrameSize;
-	rect.top = mCurAnimation->mRow * mFrameHeight;
-	rect.left = mCurAnimation->mSequence[mCurFrameID] * mFrameHeight;
-	rect.width = mFrameHeight;
-	rect.height = mFrameHeight;
-	mSprite->SetTextureRect(rect);
 }
 
 void BaseObject::Draw()

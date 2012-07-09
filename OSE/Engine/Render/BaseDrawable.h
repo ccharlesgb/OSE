@@ -6,6 +6,9 @@
 
 class BaseDrawable
 {
+private:
+	BaseDrawable& operator = (const BaseDrawable& other) { /*..*/}
+	BaseDrawable(const BaseDrawable& other) {/*..*/}
 protected:
 	Vector2 mPos;
 	Vector2 mOrigin;

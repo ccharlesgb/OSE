@@ -149,7 +149,8 @@ void Player::PhysicsSimulate(float delta)
 	}
 	else
 	{
-		PlayAnimation("idle", false);
+		if (!GetCurrentAnimation() || (GetCurrentAnimation()->mName != "idle"))
+			PlayAnimation("idle", true);
 	}
 	MoveVector = MoveVector * GetWalkSpeed();
 	MoveVector = ToGlobal(MoveVector) - GetPos();

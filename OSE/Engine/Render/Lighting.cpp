@@ -168,7 +168,7 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 	mView = &view;
 	Profiler::StartRecord(PROFILE_TEMPORARY_1);
 
-	if (ig::RandomInt(0,100) == 0) // THIS IS UNFORGIVABLE
+	if (ig::RandomInt(0,500) == 0) // THIS IS UNFORGIVABLE
 		std::cout << "LIGHT COUNT: " << mLights.GetSize() << "\n";
 
 	mFinalTexture.setView(view);
@@ -177,8 +177,7 @@ void Lighting::UpdateLightingTexture(sf::View &view)
 	float progress = std::cos(gGlobals.CurTime * speed * 3.14159265f * 2.f);
 
 	Colour DayColour = Colour(245,235,190);
-	Colour NightColour = Colour(35,35,125);
-	DayColour = NightColour;
+	Colour NightColour = Colour(40,40,165);
 
 	float day_night = (0.5f * progress) + 0.5f;
 	//std::cout << day_night << "\n";
